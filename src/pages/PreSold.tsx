@@ -2,18 +2,20 @@ import React, { ReactNode, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import styles from "./ParallaxPage.module.css";
 import Timeline from "../components/Timeline";
+import CardCarousel from "../components/HorizontalCarousel";
 
 export const PreSold = () => {
   return (
     <div className={styles.scrollContainer}>
       <div className={styles.scrollSection}>
-        <DynamicContent
+        <CardCarousel />
+        {/*<DynamicContent
           url="https://placehold.co/2671x1780/3E454C/566069?text=Pre+Sold"
           subheading=""
           heading=""
         >
-          {/*<ExampleContent />*/}
-        </DynamicContent>
+          <ExampleContent />
+        </DynamicContent>*/}
       </div>
       <div className={styles.scrollSection}>
         <Timeline />

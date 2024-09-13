@@ -22,51 +22,65 @@ const hotspotsData: Hotspot[] = [
   {
     id: 2,
     label: "Hotspot 2",
-    image: "image2.jpg",
+    image:
+      "https://www.executivehomes.com/static/media/CottagesImage.bd1fe48687e47e05e37d.png",
     description: "This is hotspot 2",
-    content: "More content for hotspot 2",
+    content:
+      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
   },
   {
     id: 3,
     label: "Hotspot 3",
-    image: "image3.jpg",
+    image:
+      "https://www.executivehomes.com/static/media/SideEntryGarageImage.bce2143d7780c333f826.png",
     description: "This is hotspot 3",
-    content: "More content for hotspot 3",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   },
   {
     id: 4,
     label: "Hotspot 4",
-    image: "image4.jpg",
+    image:
+      "https://www.executivehomes.com/static/media/FrontEntryGarageImage.5a14710d9ebc0d0a9d0b.png",
     description: "This is hotspot 4",
-    content: "More content for hotspot 4",
+    content:
+      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
   },
   {
     id: 5,
     label: "Hotspot 5",
-    image: "image5.jpg",
+    image:
+      "https://www.executivehomes.com/static/media/ThirdCustomizedLayoutDesktopImage.6128496f025be0b6b868.jpg",
     description: "This is hotspot 5",
-    content: "More content for hotspot 5",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   },
   {
     id: 6,
     label: "Hotspot 6",
-    image: "image6.jpg",
+    image:
+      "https://www.executivehomes.com/static/media/FirstLargeLotsImage.6d5ba8c6d4a9015b09dc.jpg",
     description: "This is hotspot 6",
-    content: "More content for hotspot 6",
+    content:
+      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
   },
   {
     id: 7,
     label: "Hotspot 7",
-    image: "image7.jpg",
+    image:
+      "https://www.executivehomes.com/static/media/FirstPremiumEntrywaysImage.ec5b8bdcfa7aa890c664.jpg",
     description: "This is hotspot 7",
-    content: "More content for hotspot 7",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   },
   {
     id: 8,
     label: "Hotspot 8",
-    image: "image8.jpg",
+    image:
+      "https://www.executivehomes.com/static/media/SecondPremiumEntrywaysImage.be1d80fbb3d963c87ade.jpg",
     description: "This is hotspot 8",
-    content: "More content for hotspot 8",
+    content:
+      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
   },
 ];
 
