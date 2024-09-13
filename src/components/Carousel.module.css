@@ -1,0 +1,42 @@
+/* Carousel.module.css */
+.carousel {
+    background-color: rgb(255, 255, 255);
+    height: 500vh;
+  }
+  
+  .contentContainer {
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+  }
+  
+  .images {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 3vw;
+    padding: 0 4rem 0 4rem;
+  }
+  
+  .imageItem {
+    min-width: 25vw;
+    height: 50vh;
+    background-color: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .imageItem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  

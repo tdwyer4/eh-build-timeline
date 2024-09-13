@@ -1,7 +1,7 @@
-import "./SplineLoader.css";
+import styles from "./SplineLoader.module.css";
 import React, { useRef, useState } from "react";
 import Spline from "@splinetool/react-spline";
-import { PreSold } from "./PreSold";
+import PreSold from "./PreSold";
 import { EarlyConstruction } from "./EarlyConstruction";
 import { MidConstruction } from "./MidConstruction";
 import { MoveInReady } from "./MoveInReady";
@@ -35,14 +35,14 @@ export default function SplineLoader() {
   };
 
   return (
-    <div className="app-container">
-      <div className="spline-container">
+    <div className={styles.appContainer}>
+      <div className={styles.splineContainer}>
         <Spline
           scene="https://prod.spline.design/kO-B88qC425jQ-Ne/scene.splinecode"
           onSplineMouseDown={onSplineMouseDown}
         />
       </div>
-      <div className="content-section" ref={contentRef}>
+      <div className={styles.contentSection} ref={contentRef}>
         {renderContent()}
       </div>
     </div>

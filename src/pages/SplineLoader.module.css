@@ -1,9 +1,9 @@
-.app-container {
+.appContainer {
     display: flex;
     flex-direction: column;
   }
   
-  .spline-container {
+  .splineContainer {
     position: sticky;
     top: 0;
     width: 100%;
@@ -12,7 +12,7 @@
     z-index: 100;
   }
   
-  .content-section {
+  .contentSection {
     margin-top: 100vh; /* Leave space for the Spline at the top */
     height: 100%;
     z-index: 100;

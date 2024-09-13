@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.css";
 import SplineLoader from "./pages/SplineLoader";
-import HorizontalCarousel from "./components/HorizontalCarousel";
-import Timeline from "./components/Timeline";
+import PreSold from "./pages/PreSold";
+
 function App() {
   return (
     <div className="app-container">
-      <SplineLoader />
+      <PreSold />
     </div>
   );
 }

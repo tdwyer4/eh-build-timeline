@@ -7,11 +7,16 @@
   position: sticky;
   top: 0;
   width: 100%;
-  height: 100vh; /* Full viewport height */
-  z-index: 100; /* Ensure it's on top */
+  height: 100vh;
+  background-color: #76D5D8; /* For debugging */
+  z-index: 100;
 }
 
-.content {
-  margin-top: 100vh; /* Ensure it starts below the SplineLoader */
-  padding: 20px;
+.content-section {
+  margin-top: 100vh; /* Leave space for the Spline at the top */
+  height: 100%;
+  z-index: 100;
+  background-color: white;
 }
+
+
