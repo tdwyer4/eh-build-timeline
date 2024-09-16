@@ -1,0 +1,24 @@
+.videoContainer {
+    background-size: cover;
+    background-position: center center;
+    height: 100svh;
+    width: 100%;
+    top: 0px;
+    position: relative;
+    transform: none;
+    object-fit: cover;
+}
+
+
+/*.vidMainContainer {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100vh;
+    -webkit-overflow-scrolling: touch;
+  }  
+  
+  .vidSubContainer {
+    scroll-snap-align: start;
+    height: 100vh;
+  }
+  */

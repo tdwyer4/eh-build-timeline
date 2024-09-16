@@ -6,7 +6,7 @@ import PreSold from "./pages/PreSold";
 function App() {
   return (
     <div className="app-container">
-      <PreSold />
+      <SplineLoader />
     </div>
   );
 }

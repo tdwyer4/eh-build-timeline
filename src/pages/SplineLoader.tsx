@@ -1,5 +1,5 @@
 import styles from "./SplineLoader.module.css";
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Spline from "@splinetool/react-spline";
 import PreSold from "./PreSold";
 import { EarlyConstruction } from "./EarlyConstruction";
@@ -11,9 +11,9 @@ export default function SplineLoader() {
   const contentRef = useRef<HTMLDivElement | null>(null);
 
   function onSplineMouseDown(e: { target: { name: string } }) {
+    console.log("Clicked target name:", e.target.name); // Debugging log
     if (e.target.name) {
       setCurrentContent(e.target.name);
-      // Delay scrolling to allow content to update
       setTimeout(() => {
         contentRef.current?.scrollIntoView({ behavior: "smooth" });
       }, 0);
@@ -22,15 +22,15 @@ export default function SplineLoader() {
 
   const renderContent = () => {
     switch (currentContent) {
+      case "Pre":
+      default:
+        return <PreSold />;
       case "Early":
         return <EarlyConstruction />;
       case "Mid":
         return <MidConstruction />;
       case "Ready":
         return <MoveInReady />;
-      case "Pre":
-      default:
-        return <PreSold />;
     }
   };
 
@@ -38,7 +38,7 @@ export default function SplineLoader() {
     <div className={styles.appContainer}>
       <div className={styles.splineContainer}>
         <Spline
-          scene="https://prod.spline.design/kO-B88qC425jQ-Ne/scene.splinecode"
+          scene="https://prod.spline.design/22smEYy1Sly7sAoz/scene.splinecode"
           onSplineMouseDown={onSplineMouseDown}
         />
       </div>

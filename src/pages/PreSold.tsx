@@ -1,14 +1,23 @@
 import React from "react";
-import styles from "./ParallaxPage.module.css";
+import styles from "./PageStyles.module.css";
 import Timeline from "../components/Timeline";
 import Carousel from "../components/Carousel";
+import VidSection from "../components/VidSection";
+import VideoScroll from "../components/VideoScroll";
 
 function PreSold() {
   return (
-    <div className={styles.appContainer}>
-      <Timeline />
+    <>
       <Carousel />
-    </div>
+
+      <Timeline />
+
+      <Carousel />
+
+      <VideoScroll />
+
+      <VidSection />
+    </>
   );
 }
 
