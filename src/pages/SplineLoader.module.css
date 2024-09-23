@@ -8,16 +8,54 @@
     top: 0;
     width: 100%;
     height: 100vh;
-    background-color: #76D5D8; /* For debugging */
-    z-index: 100;
+    background: linear-gradient(#293139 0%, #74c2cd 100%);
+    background-size: 250% 240%;
+    z-index: 1;
   }
   
   .contentSection {
     margin-top: 100vh; /* Leave space for the Spline at the top */
     height: 100%;
-    z-index: 100;
+    z-index: 3;
     background-color: white;
   }
   
-  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2; /* Ensure overlay is above canvas */
+    background-color: #293139;
+    opacity: 0; /* Start transparent */
+  }
+
+  .customControls {
+    display: flex;
+    flex-flow: column;
+    /* align-items: center; */
+    justify-content: center;
+    height: 100vh;
+    text-align: left;
+    gap: 16px;
+    margin-left: 200px;
+    cursor: auto;
+  }
+
+  .customControls button {
+    border: none;
+    background: none;
+    font-size: 48px;
+    color: white;
+    display: flex;
+    cursor: auto;
+  }
+
+  .customControls button:hover {
+    border: none;
+    background: none;
+    color: rgb(107, 236, 225);
+    cursor: default;
+  }
   

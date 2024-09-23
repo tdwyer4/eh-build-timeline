@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
-import "./Timeline.css";
+import { motion, useScroll, useTransform } from "framer-motion"; // Import framer-motion
+import styles from "./Timeline.module.css";
 
 interface Hotspot {
   id: number;
@@ -85,38 +86,16 @@ const hotspotsData: Hotspot[] = [
 ];
 
 const Timeline: React.FC = () => {
-  const [activeHotspot, setActiveHotspot] = useState<Hotspot | null>(
-    hotspotsData[0]
-  ); // Default to the first hotspot
+  // Ensure proper typing for the state
+  const [activeHotspot, setActiveHotspot] = useState<Hotspot | null>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
 
-  // Scroll to active hotspot or the first one when the component mounts
   useEffect(() => {
-    if (timelineRef.current && hotspotsData.length > 0) {
-      const firstHotspot = document.getElementById(
-        `hotspot-${hotspotsData[0].id}`
-      );
-      if (firstHotspot) {
-        const container = timelineRef.current;
-        const hotspotTop = firstHotspot.offsetTop;
-        const containerHeight = container.clientHeight;
-        const scrollPosition =
-          hotspotTop - containerHeight / 2 + firstHotspot.clientHeight / 2;
-
-        container.scrollTo({
-          top: scrollPosition,
-          behavior: "auto", // Use 'smooth' if you prefer a smooth scroll effect
-        });
-      }
-    }
-  }, []); // Empty dependency array to run only once on mount
-
-  useEffect(() => {
-    if (activeHotspot && timelineRef.current) {
+    if (timelineRef.current && activeHotspot) {
       const hotspotElement = document.getElementById(
         `hotspot-${activeHotspot.id}`
       );
-      if (hotspotElement && timelineRef.current) {
+      if (hotspotElement) {
         const container = timelineRef.current;
         const hotspotTop = hotspotElement.offsetTop;
         const containerHeight = container.clientHeight;
@@ -125,7 +104,7 @@ const Timeline: React.FC = () => {
 
         container.scrollTo({
           top: scrollPosition,
-          behavior: "smooth", // Smooth scroll for active hotspot
+          behavior: "smooth",
         });
       }
     }
@@ -135,44 +114,83 @@ const Timeline: React.FC = () => {
     setActiveHotspot(hotspot);
   };
 
+  const targetRef2 = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: scrollYProgressTarget2 } = useScroll({
+    target: targetRef2,
+  });
+  const x = useTransform(scrollYProgressTarget2, [0, 1], ["0%", "0%"]);
+
   return (
-    <div className="container">
-      <div className="timeline-container" ref={timelineRef}>
-        <div className="timeline">
+    <motion.div className={styles.container}>
+      <motion.div
+        className={styles.timelineContainer}
+        ref={timelineRef}
+        initial={{ x: -100 }}
+        animate={{ x: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
+        <motion.div className={styles.timeline}>
           {hotspotsData.map((hotspot) => (
-            <div
+            <motion.div
+              className={`${styles.hotspotContainer} ${
+                activeHotspot?.id === hotspot.id ? "active" : ""
+              }`}
               key={hotspot.id}
               id={`hotspot-${hotspot.id}`}
-              className={`hotspot-container ${
-                activeHotspot?.id === hotspot.id ? "active" : ""
-              }`} // Keeps the 'active' class applied when the hotspot is selected
               onClick={() => handleHotspotClick(hotspot)}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              style={{ x }}
+              initial={{ opacity: 0, y: 150 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
             >
-              <div className="line"></div>
-              <div className="line-hor"></div>
-              <div className="hotspot">
-                <div className="hotspot-label">{hotspot.label}</div>
-              </div>
-            </div>
+              <motion.div className={styles.line}></motion.div>
+              <motion.div className={styles.lineHor}></motion.div>
+              <motion.div
+                className={styles.hotSpot}
+                whileHover={{ scale: 1.1 }}
+              >
+                <motion.div className={styles.hotspotLabel}>
+                  {hotspot.label}
+                </motion.div>
+              </motion.div>
+            </motion.div>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
-      <div className="image-container">
+      <motion.div
+        className={styles.imageContainer}
+        initial={{ scale: 0.8 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 0.5 }}
+        style={{ x }}
+      >
         {activeHotspot ? (
-          <img src={activeHotspot.image} alt={activeHotspot.label} />
+          <img
+            src={activeHotspot.image}
+            alt={activeHotspot.label}
+            className={styles.imgTimeline}
+          />
         ) : (
           <p>Please click on a hotspot to see an image</p>
         )}
-        <div className="text-container">
+        <motion.div
+          className={styles.textContainer}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          style={{ x }}
+        >
           <p>
             {activeHotspot
               ? activeHotspot.content
               : "Select a hotspot to view more details."}
           </p>
-        </div>
-      </div>
-    </div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   );
 };
 

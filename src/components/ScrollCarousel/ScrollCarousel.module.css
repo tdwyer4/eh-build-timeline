@@ -3,7 +3,7 @@
   /* background-color: rgb(255, 255, 255); */
   height: 500vh;
   width: 100vw;
-  background: 
+  /* background: 
     radial-gradient(
       farthest-side at bottom left,
       #76D5D8, 
@@ -13,7 +13,23 @@
       farthest-corner at bottom right,
       rgba(50, 255, 238, 0.5), 
       transparent 400px
-    );
+    ); */
+    background: linear-gradient(300deg,#354445,#76D5D8,#293139,#485766,#4aa6a6);
+  background-size: 300% 300%;
+  animation: gradient-animation 10s ease infinite;
+  color: white;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .contentContainer {
@@ -28,9 +44,9 @@
 
 .images {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(12, 25vw); /* 9 columns, each 25% of viewport width */
   grid-template-rows: 1fr;
-  grid-gap: 3vw;
+  grid-gap: 5vw;
   padding: 0 4rem 0 4rem;
 }
 
@@ -52,7 +68,7 @@
 
 .imageItem img {
   width: 100%;
-  height: 50vh; /* Adjust image height */
+  height: 50vh; /*  Adjust image height */
   object-fit: cover;
 }
 
@@ -69,4 +85,11 @@
 .text p {
   font-size: 1rem;
   color: #666;
+}
+
+.headerTitle {
+  color: white;
+  margin: auto 30px;
+  font-size: 24px;
+  padding: 25px;
 }

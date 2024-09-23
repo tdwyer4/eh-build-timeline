@@ -1,6 +1,6 @@
 import React, { ReactNode, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import styles from "./ParallaxPage.module.css";
+import styles from "./FullPageStyles.module.css";
 
 export const MidConstruction = () => {
   return (

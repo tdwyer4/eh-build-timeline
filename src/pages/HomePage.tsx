@@ -1,8 +1,8 @@
 import React, { ReactNode, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import styles from "./ParallaxPage.module.css";
-import Timeline from "../components/Timeline";
-import Carousel from "../components/Carousel";
+import Timeline from "../components/Timeline-1/Timeline";
+import Carousel from "../components/ScrollCarousel/ScrollCarousel";
 
 export const FullPage = () => {
   return (

@@ -1,19 +1,20 @@
 .container {
     display: flex;
-    height: 100vh;
+    width: 100vw;
   }
   
-  .timeline-container {
+  .timelineContainer {
     flex: 1;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    position: relative;
+    position: sticky;
     background-color: #3E454C;
     height: 100vh;
-    scroll-behavior: smooth;
     scrollbar-width: none;
+    top: 0;
+    align-items: center;
+    justify-content: flex-start;
   }
   
   .timeline {
@@ -23,25 +24,24 @@
     flex-direction: column;
     align-items: flex-start; /* Align to the right of the line */
     /* padding: 20px; */
-    margin-left: 25%;
   }
   
-  .hotspot-container {
+  .hotspotContainer {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    height: calc(100vh / 5);
+    height: calc(100vh / 4);
   }
   
-  .hotspot-container.active .hotspot {
+  .hotspotContainer.active .hotSpot {
     background-color: #ffffff; /* Active background color */
     border: #76d5d8 1px solid;
     transform: scale(1.2);  /* Enlarged size */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   }
   
-  .hotspot {
+  .hotSpot {
     width: 30px;
     height: 30px;
     background-color: #76d5d8;
@@ -53,7 +53,7 @@
     animation: pulse 2s infinite;
   }
   
-  .hotspot:active {
+  .hotSpot:active {
     background-color: #ffffff;
     border: #76d5d8 1px solid;
     transform: scale(1.2); /* Enlarged when selected */
@@ -79,13 +79,13 @@
     /* margin-right: 20px; */
   }
 
-  .line-hor {
+  .lineHor {
     border: #76d5d8 2px solid;
     width: 20px;
     margin: auto;
   }
   
-  .hotspot-label {
+  .hotspotLabel {
     margin-left: 50px;
     font-size: 24px;
     color: rgb(184, 184, 184);
@@ -95,11 +95,11 @@
     margin-top: 5px;
   }
 
-  .hotspot-container.active .hotspot-label {
+  .hotspotContainer.active .hotspot-label {
     color: rgb(255, 255, 255);
   }
   
-  .text-container {
+  .textContainer {
     width: 100%;
     background-color: #fff;
     text-align: center;
@@ -108,13 +108,13 @@
     bottom: 0;
   }
   
-  .text-container p {
+  .textContainer p {
     padding: 10px 20px;
     text-align: left;
     font-size: 12px;
   }
 
-  .image-container {
+  .imageContainer {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -122,11 +122,12 @@
     justify-content: center;
     background-color: #fafafa;
     position: relative;
+    min-height: 100vh;
     overflow: hidden;
   }
   
-  img {
-    max-height: 100%;
+  .imgTimeline {
+    min-height: 100vh;
     object-fit: cover;
   }
   

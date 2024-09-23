@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import styles from "./Carousel.module.css";
+import styles from "./FullSectionScroll.module.css";
 
 const content = [
   {
@@ -41,13 +41,13 @@ const content = [
   },
 ];
 
-const Carousel = () => {
+const VerticalScroll = () => {
   const targetRef2 = useRef(null);
   const { scrollYProgress: scrollYProgressTarget2 } = useScroll({
     target: targetRef2,
   });
 
-  const x = useTransform(scrollYProgressTarget2, [0, 1], ["0%", "-55%"]);
+  const x = useTransform(scrollYProgressTarget2, [0, 1], ["0%", "-100%"]);
 
   return (
     <div className={styles.carousel} ref={targetRef2}>
@@ -59,7 +59,7 @@ const Carousel = () => {
               key={index}
               initial={{ opacity: 0, y: 150 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
+              transition={{ duration: 1, ease: "easeOut" }}
             >
               <img src={item.image} alt={`carousel-image-${index}`} />
               <div className={styles.text}>
@@ -74,4 +74,4 @@ const Carousel = () => {
   );
 };
 
-export default Carousel;
+export default VerticalScroll;

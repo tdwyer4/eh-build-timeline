@@ -1,8 +1,8 @@
 import React, { ReactNode, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import styles from "./ParallaxPage.module.css";
-import Timeline from "../components/Timeline";
-import Carousel from "../components/Carousel";
+import Timeline from "../components/Timeline-1/Timeline";
+import Carousel from "../components/ScrollCarousel/ScrollCarousel";
 
 const IMG_PADDING = 0;
 
@@ -29,9 +29,7 @@ const ParallaxContent = ({
 export const PreSoldOG = () => {
   return (
     <div className={styles.scrollContainer}>
-      <div className={styles.scrollSection}>
-        <Carousel />
-      </div>
+      <div className={styles.scrollSection}></div>
       <div className={styles.scrollSection}>
         <Timeline />
       </div>
