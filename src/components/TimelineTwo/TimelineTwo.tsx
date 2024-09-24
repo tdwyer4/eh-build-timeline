@@ -74,72 +74,74 @@ const TimelineTwo: React.FC = () => {
   };
 
   return (
-    <motion.div
-      className={styles.boxContainer}
-      ref={ref}
-      initial={{ opacity: 0 }} // Initial opacity
-      animate={{ opacity: inView ? 1 : 0 }} // Fade in when in view
-      transition={{ duration: 1 }}
-    >
-      <div className={styles.timelineContainer}>
-        {/* Left Side: Hotspots */}
-        <div className={styles.leftContainer}>
-          {timelineItems.map((item, index) => (
-            <motion.div
-              key={index}
-              className={`${styles.timelineItem} ${
-                selected === index ? styles.active : ""
-              }`} // Conditional active class
-              onClick={() => handleClick(index)}
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-            >
-              <div className={styles.dot}></div>
-              <div className={styles.content}>
-                <h3>{item.title}</h3>
-                <p>{item.date}</p>
+    <div className={styles.timelineWrap}>
+      <motion.div
+        className={styles.boxContainer}
+        ref={ref}
+        initial={{ opacity: 0 }} // Initial opacity
+        animate={{ opacity: inView ? 1 : 0 }} // Fade in when in view
+        transition={{ duration: 1 }}
+      >
+        <div className={styles.timelineContainer}>
+          {/* Left Side: Hotspots */}
+          <div className={styles.leftContainer}>
+            {timelineItems.map((item, index) => (
+              <motion.div
+                key={index}
+                className={`${styles.timelineItem} ${
+                  selected === index ? styles.active : ""
+                }`} // Conditional active class
+                onClick={() => handleClick(index)}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+              >
+                <div className={styles.dot}></div>
+                <div className={styles.content}>
+                  <h3>{item.title}</h3>
+                  <p>{item.date}</p>
 
-                <AnimatePresence>
-                  {selected === index && (
-                    <motion.div
-                      className={styles.paragraphText}
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.4 }}
-                    >
-                      {/* Optional paragraph content or additional details */}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+                  <AnimatePresence>
+                    {selected === index && (
+                      <motion.div
+                        className={styles.paragraphText}
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.4 }}
+                      >
+                        {/* Optional paragraph content or additional details */}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </motion.div>
+            ))}
+          </div>
 
-        {/* Right Side: Image & Text Overlay */}
-        <div className={styles.rightContainer}>
-          {selected !== null && (
-            <motion.div
-              key={selected}
-              className={styles.imageContainer}
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <img
-                src={timelineItems[selected].image}
-                alt={timelineItems[selected].title}
-              />
-              <div className={styles.overlayText}>
-                <p>{timelineItems[selected].description}</p>
-              </div>
-            </motion.div>
-          )}
+          {/* Right Side: Image & Text Overlay */}
+          <div className={styles.rightContainer}>
+            {selected !== null && (
+              <motion.div
+                key={selected}
+                className={styles.imageContainer}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <img
+                  src={timelineItems[selected].image}
+                  alt={timelineItems[selected].title}
+                />
+                <div className={styles.overlayText}>
+                  <p>{timelineItems[selected].description}</p>
+                </div>
+              </motion.div>
+            )}
+          </div>
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 };
 
