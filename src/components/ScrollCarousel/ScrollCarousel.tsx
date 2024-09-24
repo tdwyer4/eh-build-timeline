@@ -38,7 +38,9 @@ const ScrollCarousel: React.FC<ScrollCarouselProps> = ({ cards }) => {
         <motion.div className={styles.images} style={{ x }}>
           {cards.map((item, index) => (
             <motion.div
-              className={styles.imageItem}
+              className={`${styles.imageItem} ${
+                currentCard === index ? styles.active : ""
+              }`}
               key={index}
               initial={{ opacity: 0, y: 150 }}
               whileInView={{ opacity: 1, y: 0 }}

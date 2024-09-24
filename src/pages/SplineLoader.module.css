@@ -1,20 +1,40 @@
 .appContainer {
     display: flex;
     flex-direction: column;
+    position: relative;
+    
+  
+    /*Fallback if gradeints don't work */
+    background: #293139;
+    /*Linear gradient... */
+    background: 
+      radial-gradient(
+      at center, #76D5D8, #293139
+    );
+  }
+  
+  @keyframes gradient-animation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }
   
   .splineContainer {
-    position: sticky;
+    position: relative;
     top: 0;
     width: 100%;
     height: 100vh;
-    background: linear-gradient(#293139 0%, #74c2cd 100%);
-    background-size: 250% 240%;
     z-index: 1;
   }
   
   .contentSection {
-    margin-top: 100vh; /* Leave space for the Spline at the top */
+   /*  margin-top: 100vh; Leave space for the Spline at the top */
     height: 100%;
     z-index: 3;
     background-color: white;
@@ -39,8 +59,12 @@
     height: 100vh;
     text-align: left;
     gap: 16px;
-    margin-left: 200px;
     cursor: auto;
+    position: absolute; /* Position the buttons relative to the splineContainer */
+      top: 50%; /* Center vertically */
+      left: 25%; /* Center horizontally */
+      transform: translate(-50%, -50%); /* Adjust positioning to be truly centered */
+      z-index: 10; /* Ensures buttons are layered over SplineHero */
   }
 
   .customControls button {

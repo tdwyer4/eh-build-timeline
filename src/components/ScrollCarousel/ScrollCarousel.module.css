@@ -54,16 +54,21 @@
   min-width: 25vw;
   height: auto; /* Adjust height */
   background-color: white;
-  border: 1px solid black;
+  border: 0px solid black;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: left;
   text-align: left;
   padding: 15px;
+}
+
+.imageItem:hover {
+  border: 0px solid #76d5d8; /* Highlight active card */
+  box-shadow: #76d5d8 0px 0px 30px 10px;
+  transition: all 0.5s ease-in-out;
 }
 
 .imageItem img {

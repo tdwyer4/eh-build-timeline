@@ -1,12 +1,9 @@
 import React from "react";
 import "./SplineHero.css";
+import Spline from "@splinetool/react-spline";
 
-function SplineHero() {
+export default function SplineHero() {
   return (
-    <div className="splineTrack">
-        <spline-viewer url="https://prod.spline.design/22smEYy1Sly7sAoz/scene.splinecode"></spline-viewer>
-    </div>
+    <Spline scene="https://prod.spline.design/22smEYy1Sly7sAoz/scene.splinecode" />
   );
 }
-
-export default SplineHero;
