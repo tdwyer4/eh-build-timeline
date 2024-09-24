@@ -2,15 +2,8 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    
-  
-    /*Fallback if gradeints don't work */
-    background: #293139;
-    /*Linear gradient... */
-    background: 
-      radial-gradient(
-      at center, #76D5D8, #293139
-    );
+    background: linear-gradient(300deg,#293139,#c6dbf0,#393329,#52bdd2,#293139);
+    color: white;
   }
   
   @keyframes gradient-animation {

@@ -71,19 +71,25 @@ export const EarlyConstruction = () => {
     <div className={styles.bgwhite}>
       <Manifest />
       <VideoParallaxContent
-        video="https://placehold.co/2671x1780/3E454C/566069?text=Section+2"
-        subheading="You did the hard part."
+        video="https://www.executivehomes.com/static/media/DistinctionDesktopVideo.fd902a225cf0bf00b524.mp4"
+        subheading="Learn more about the EH Build Timeline"
         heading="Early Construction"
       >
-        <MoreContent />
+        <MoreContent
+          title="Initial Preparation"
+          para="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, blanditiis soluta eius quam modi aliquam quaerat odit deleniti minima maiores voluptate est ut saepe accusantium maxime doloremque nulla consectetur possimus."
+        />
       </VideoParallaxContent>
-      <ScrollCarousel cards={content} />
+      <CardCarousel cards={content} />
       <TextParallaxContent
         imgUrl="https://placehold.co/2671x1780/3E454C/566069?text=Section+2"
         subheading="COPYYYYYYYYY"
         heading="and MORE copyyyyyyyy!"
       >
-        <MoreContent />
+        <MoreContent
+          title="Middle Phase"
+          para="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, blanditiis soluta eius quam modi aliquam quaerat odit deleniti minima maiores voluptate est ut saepe accusantium maxime doloremque nulla consectetur possimus."
+        />
       </TextParallaxContent>
       <TimelineTwo />
       <TextParallaxContent
@@ -91,7 +97,10 @@ export const EarlyConstruction = () => {
         subheading="COPYYYYYYYYY"
         heading="and EVEN MORE copyyyyyyyy!"
       >
-        <MoreContent />
+        <MoreContent
+          title="Welcome Home"
+          para="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, blanditiis soluta eius quam modi aliquam quaerat odit deleniti minima maiores voluptate est ut saepe accusantium maxime doloremque nulla consectetur possimus."
+        />
       </TextParallaxContent>
     </div>
   );

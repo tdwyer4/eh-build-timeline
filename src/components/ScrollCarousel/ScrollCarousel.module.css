@@ -3,7 +3,7 @@
   /* background-color: rgb(255, 255, 255); */
   height: 500vh;
   width: 100vw;
-  /* background: 
+  background: 
     radial-gradient(
       farthest-side at bottom left,
       #76D5D8, 
@@ -13,23 +13,7 @@
       farthest-corner at bottom right,
       rgba(50, 255, 238, 0.5), 
       transparent 400px
-    ); */
-    background: linear-gradient(300deg,#354445,#76D5D8,#293139,#485766,#4aa6a6);
-  background-size: 300% 300%;
-  animation: gradient-animation 10s ease infinite;
-  color: white;
-}
-
-@keyframes gradient-animation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+    );
 }
 
 .contentContainer {
@@ -63,6 +47,8 @@
   align-items: left;
   text-align: left;
   padding: 15px;
+  box-shadow: #76d5d8 0px 0px 0px 00px;
+  transition: all 0.5s ease-in-out;
 }
 
 .imageItem:hover {

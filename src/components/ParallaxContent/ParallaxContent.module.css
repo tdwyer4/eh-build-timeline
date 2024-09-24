@@ -41,7 +41,7 @@
 .contentSectionContainer {
     grid-template-columns: repeat(12, minmax(0, 1fr));
     padding-top: 3rem;
-    padding-bottom: 6rem;
+    padding-bottom: 1rem;
     padding-left: 1rem;
     padding-right: 1rem;
     gap: 2rem;

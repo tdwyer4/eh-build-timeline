@@ -21,7 +21,8 @@ const CardCarousel: React.FC<CardCarouselProps> = ({ cards }) => {
   const scrollToCard = (index: number) => {
     if (carouselRef.current) {
       const cardWidth = carouselRef.current.scrollWidth / cards.length;
-      const scrollAmount = cardWidth * index;
+      // Offset the scroll slightly so part of the previous and next card is visible
+      const scrollAmount = cardWidth * index - cardWidth * 0.2; // Adjust 0.2 to control how much of the next/prev card is visible
 
       carouselRef.current.scrollTo({
         left: scrollAmount,
@@ -49,6 +50,10 @@ const CardCarousel: React.FC<CardCarouselProps> = ({ cards }) => {
             onClick={() => scrollToCard(index)}
             whileTap={{ scale: 1 }}
             transition={{ duration: 0.5, ease: "easeIn" }}
+            style={{
+              width: "80%", // Make each card take up 80% of the carousel width to show part of the next/previous card
+              margin: "0 0%", // Add margins to the left and right to create space for the next/previous cards
+            }}
           >
             <img
               src={card.image}
