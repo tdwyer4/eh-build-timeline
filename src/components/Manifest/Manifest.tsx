@@ -1,10 +1,17 @@
-import React, { useContext } from "react";
+import React from "react";
 import styles from "./Manifest.module.css";
-import { motion, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 
-export default function Manifest() {
+interface ManifestProps {
+  backgroundColor?: string; // Adding backgroundColor prop
+}
+
+export default function Manifest({ backgroundColor }: ManifestProps) {
   return (
-    <div className={styles.containerManifest}>
+    <div
+      className={styles.containerManifest}
+      style={{ backgroundColor }} // Dynamically set background color
+    >
       <motion.a
         className={styles.manifest}
         initial={{ opacity: 0, y: 150 }}

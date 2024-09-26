@@ -16,7 +16,7 @@
     width: 100vw;
     justify-content: center;
     height: 50vh;
-    background-color: #293139;
+    /* background-color: #293139; */
 }
 
 @media screen and (max-width: 450px) {
