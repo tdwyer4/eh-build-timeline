@@ -1,5 +1,6 @@
 import styles from "./SplineLoader.module.css";
 import { useRef, useState, useEffect, startTransition } from "react";
+import { motion } from "framer-motion";
 import { PreSold } from "./PreSold";
 import { EarlyConstruction } from "./EarlyConstruction";
 import { MidConstruction } from "./MidConstruction";
@@ -53,34 +54,41 @@ export default function SplineLoader() {
   return (
     <div className={styles.appContainer}>
       <div className={styles.splineContainer}>
-        {videoEnded ? (
-          <img
-            src={HeroImage}
-            alt="Static background"
-            className={styles.staticImage}
-          />
-        ) : (
-          <video
-            src={HeroVideo}
-            autoPlay
-            muted
-            onEnded={handleVideoEnd}
-            className={styles.video}
-          />
-        )}
+        <video
+          src={HeroVideo}
+          autoPlay
+          muted
+          onEnded={handleVideoEnd}
+          className={`${styles.video} ${videoEnded ? styles.hidden : ""}`} // Add a hidden class after video ends
+        />
+        {imageLoaded &&
+          videoEnded && ( // Only show image after video ends and image is loaded
+            <img
+              src={HeroImage}
+              alt="Static background"
+              className={`${styles.staticImage} ${
+                videoEnded ? styles.fadeIn : ""
+              }`} // Add fade-in effect
+            />
+          )}
 
         <div className={styles.manifestContainer}>
           <Manifest />
         </div>
 
-        <div className={styles.customControls}>
+        <motion.div
+          className={styles.customControls}
+          initial={{ opacity: 0, y: 150 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 4, duration: 0.7, ease: "easeOut" }}
+        >
           <button onClick={() => handleClick("Pre")}>Pre-Sold</button>
           <button onClick={() => handleClick("Early")}>
             Early Construction
           </button>
           <button onClick={() => handleClick("Mid")}>Mid Construction</button>
           <button onClick={() => handleClick("Ready")}>Move-In Ready</button>
-        </div>
+        </motion.div>
       </div>
 
       <div className={styles.contentSection} ref={contentRef}>

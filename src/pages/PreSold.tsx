@@ -69,7 +69,6 @@ export const PreSold = () => {
 
   return (
     <div className={styles.bgwhite}>
-      <Manifest />
       <VideoParallaxContent
         video="https://www.executivehomes.com/static/media/DistinctionDesktopVideo.fd902a225cf0bf00b524.mp4"
         subheading="Learn more about the EH Build Timeline"
