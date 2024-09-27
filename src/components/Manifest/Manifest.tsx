@@ -14,9 +14,9 @@ export default function Manifest({ backgroundColor }: ManifestProps) {
     >
       <motion.a
         className={styles.manifest}
-        initial={{ opacity: 0, y: 150 }}
+        initial={{ opacity: 0, y: -150 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ delay: 3.5, duration: 1, ease: "easeOut" }}
+        transition={{ delay: 3, duration: 1, ease: "easeOut" }}
       >
         <h1>
           Executive Homes.

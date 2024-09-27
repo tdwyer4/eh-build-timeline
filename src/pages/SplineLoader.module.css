@@ -20,6 +20,9 @@
     height: 100vh;
     z-index: 1;
     overflow: hidden; /* Ensure video and image don't overflow */
+    background: linear-gradient(200deg,#293139,#0d0e0f,#495462,#7abcb9,#000000);
+    animation: gradient-animation 20s ease infinite;
+    background-size: 250% 250%;
   }
   
   .video {
@@ -30,7 +33,7 @@
   top: 0;
   left: 0;
   z-index: 1;
-  transition: opacity 0.5s ease; /* Smooth fade out */
+  transition: opacity 1s ease; /* Smooth fade out */
 }
 
 .staticImage {
@@ -42,7 +45,8 @@
   left: 0;
   z-index: 1;
   opacity: 0;
-  transition: opacity 0.5s ease; /* Smooth fade in */
+  transition: opacity 1s ease; /* Smooth fade in */
+  animation: movement 60s linear infinite;
 }
 
   .fadeIn {
@@ -53,12 +57,20 @@
     opacity: 0; /* Fade out the video */
   }
   
+ @keyframes movement {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+}
   
   .appContainer {
     display: flex;
     flex-direction: column;
     background-color: #1F2429;
-    /* background: linear-gradient(300deg,#293139,#c6dbf0,#393329,#52bdd2,#293139); */
     color: white;
   }
   
@@ -76,15 +88,24 @@
   }
   
   .customControls button {
-    border: none;
+    border: 1px solid #76d5d8;
+    border-radius: 20px;
     background: none;
-    font-size: 18px; /* Adjust button font size for a row layout */
+    font-size: 14px;
     text-transform: uppercase;
     color: white;
     cursor: pointer;
+    padding: 5px 15px;
+    background-color: #1e2429;
+    box-shadow: #76d5d8 0px 0px 0px 0px;
+    transition: all 0.3s ease-in-out;
   }
   
   .customControls button:hover {
-    color: rgb(107, 236, 225);
+    color: #1e2429;
+    border: 1px solid #76d5d8;
+    box-shadow: #76d5d8 0px 0px 10px 0px;
+    transition: all 0.3s ease-in-out;
+    background-color: #76d5d8;
   }
   

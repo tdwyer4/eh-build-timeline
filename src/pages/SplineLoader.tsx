@@ -80,7 +80,7 @@ export default function SplineLoader() {
           className={styles.customControls}
           initial={{ opacity: 0, y: 150 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 4, duration: 0.7, ease: "easeOut" }}
+          transition={{ delay: 3.5, duration: 0.7, ease: "easeOut" }}
         >
           <button onClick={() => handleClick("Pre")}>Pre-Sold</button>
           <button onClick={() => handleClick("Early")}>

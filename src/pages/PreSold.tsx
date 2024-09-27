@@ -8,6 +8,7 @@ import ScrollCarousel from "../components/ScrollCarousel/ScrollCarousel";
 import TimelineTwo from "../components/TimelineTwo/TimelineTwo";
 import Manifest from "../components/Manifest/Manifest";
 import styles from "./FullPageStyles.module.css";
+import IntroCards from "../components/IntroCards/IntroCards";
 
 export const PreSold = () => {
   const content = [
@@ -91,7 +92,7 @@ export const PreSold = () => {
           para="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, blanditiis soluta eius quam modi aliquam quaerat odit deleniti minima maiores voluptate est ut saepe accusantium maxime doloremque nulla consectetur possimus."
         />
       </TextParallaxContent>
-
+      <IntroCards />
       <TextParallaxContent
         imgUrl="https://placehold.co/2671x1780/3E454C/566069?text=Section+3"
         subheading="COPYYYYYYYYY"
