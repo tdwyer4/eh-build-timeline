@@ -19,11 +19,10 @@ export default function Manifest({ backgroundColor }: ManifestProps) {
         transition={{ delay: 3, duration: 1, ease: "easeOut" }}
       >
         <h1>
-          Executive Homes.
+          What's it like to build
           <br />
-          Building Distinction
+          with Executive Homes?
           <br />
-          Since 2010.
         </h1>
       </motion.a>
     </div>

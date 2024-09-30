@@ -12,19 +12,24 @@
     justify-content: center;
     align-items: center;
     transition: opacity 0.5s ease-in-out;
+    backdrop-filter: blur(5px);
     
   }
   
   .modalContainer {
    display: flex; 
+   justify-content: center;
+   align-items: center;
   }
 
   .modalBox {
-    display: block;
-    background: white;
+    display: flex;
+    flex-direction: column;
+    background: #000000;
     width: 70%;
     height: 70%;
     padding: 1rem;
+    border: 1px solid #76D5D8;
     border-radius: 1rem;
     transition: all ease-in-out 0.3s;
     transform: scale(1.1);
@@ -32,7 +37,7 @@
 
   .modalClose {
     display: flex;
-    position: absolute;
+    /* position: fixed; */
     border-radius: 5px;
     padding: 5px 10px;
     font-weight: 200;
@@ -41,10 +46,28 @@
   }
 
   .modalHeader {
-    color: black;
+    color: #ffffff;
+    display: flex;
+    text-align: left;
+    padding: 0px 16px;
   }
 
   .modalDesc {
-    color: black;
+    color: #ffffff;
+    display: flex;
+    text-align: left;
+    padding: 0 16px;
+  }
+
+  .buttonPlacement {
+    display: flex;
+    justify-content: flex-end;
+    
+  }
+
+  .contentPlacement {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
   

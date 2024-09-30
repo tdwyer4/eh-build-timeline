@@ -20,7 +20,7 @@
     height: 100vh;
     z-index: 1;
     overflow: hidden; /* Ensure video and image don't overflow */
-    background: linear-gradient(200deg,#293139,#0d0e0f,#495462,#7abcb9,#000000);
+    background: linear-gradient(200deg,#293139,#0d0e0f,#363b42,#3e4c4c,#000000);
     animation: gradient-animation 20s ease infinite;
     background-size: 250% 250%;
   }
@@ -78,13 +78,32 @@
     display: flex;
     z-index: 10; /* Ensure Manifest is above the background */
   }
-  
+
   .customControls {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     gap: 24px;
     position: relative;
     z-index: 2; /* Ensure buttons are above the SplineHero */
+  }
+
+  .subTextContainer {
+    display: flex;
+    justify-content: center;
+  }
+
+  .subText {
+    font-size: 16px;
+    font-weight: 200;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .buttonContainer {
+    display: flex;
+    gap: 24px;
   }
   
   .customControls button {

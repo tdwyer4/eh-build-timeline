@@ -18,13 +18,12 @@ This is the sandbox for the Executive Homes Build Timeline webpage.
 ## Features
 
 - Framer Motion
-- Spline 3D
-- Rive
+- Spline 3D (Currently Unused)
+- Rive (Currently Unused)
 
 ## Stack
 
 - Framework: React
 - Language: TypeScript
 - Motion Library: Framer Motion
-- Component Library: none
-- Stylesheet: SCSS
+- Stylesheet: CSS Modules

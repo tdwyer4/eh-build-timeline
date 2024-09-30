@@ -82,12 +82,19 @@ export default function SplineLoader() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 3.5, duration: 0.7, ease: "easeOut" }}
         >
-          <button onClick={() => handleClick("Pre")}>Pre-Sold</button>
-          <button onClick={() => handleClick("Early")}>
-            Early Construction
-          </button>
-          <button onClick={() => handleClick("Mid")}>Mid Construction</button>
-          <button onClick={() => handleClick("Ready")}>Move-In Ready</button>
+          <div className={styles.subTextContainer}>
+            <h3 className={styles.subText}>
+              Choose an option below to find out
+            </h3>
+          </div>
+          <div className={styles.buttonContainer}>
+            <button onClick={() => handleClick("Pre")}>Pre-Sold</button>
+            <button onClick={() => handleClick("Early")}>
+              Early Construction
+            </button>
+            <button onClick={() => handleClick("Mid")}>Mid Construction</button>
+            <button onClick={() => handleClick("Ready")}>Move-In Ready</button>
+          </div>
         </motion.div>
       </div>
 

@@ -34,7 +34,7 @@ export default function IntroCards() {
             +
           </motion.button>
           <div className={styles.cardTop}>
-            <h2 className={`${styles.num} ${styles.seafoam}`}>Stat 1</h2>
+            <h2 className={`${styles.num} ${styles.seafoam}`}>Fact 1</h2>
             {/* <h2 className={`${styles.sign} ${styles.greenSign}`}></h2> */}
             {/*<h4 className="">Explanation</h4>*/}
           </div>
@@ -51,11 +51,7 @@ export default function IntroCards() {
             +
           </motion.button>
           <div className={styles.cardTop}>
-            <h2
-              className={`${styles.num} ${styles.place} ${styles.seafoamReverse}`}
-            >
-              Stat 2
-            </h2>
+            <h2 className={`${styles.num} ${styles.seafoamReverse}`}>Fact 2</h2>
             {/*<h4 className="">Explanation</h4>*/}
           </div>
         </motion.div>
@@ -70,7 +66,7 @@ export default function IntroCards() {
             +
           </motion.button>
           <div className={styles.cardTop}>
-            <h2 className={`${styles.num} ${styles.seafoamReverse}`}>Stat 3</h2>
+            <h2 className={`${styles.num} ${styles.seafoamReverse}`}>Fact 3</h2>
             {/* <h2 className={`${styles.sign} ${styles.purpleSign}`}></h2> */}
             {/*<h4 className={styles.lightEyebrow}>Explanation</h4>*/}
           </div>
@@ -87,7 +83,7 @@ export default function IntroCards() {
             +
           </motion.button>
           <div className={styles.cardTop}>
-            <h2 className={`${styles.num} ${styles.seafoam}`}>Stat 4</h2>
+            <h2 className={`${styles.num} ${styles.seafoam}`}>Fact 4</h2>
             {/* <h2 className={`${styles.sign} ${styles.percent} ${styles.redSign}`}></h2> */}
             {/* <h4 className="">Explanation</h4> */}
           </div>
