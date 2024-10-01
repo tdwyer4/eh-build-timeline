@@ -70,8 +70,8 @@
   .appContainer {
     display: flex;
     flex-direction: column;
-    background-color: #1F2429;
-    color: white;
+    background-color: white;
+    color: #1F2429;
   }
   
   .manifestContainer {
@@ -112,10 +112,10 @@
     background: none;
     font-size: 14px;
     text-transform: uppercase;
-    color: white;
+    color: #1F2429;
     cursor: pointer;
     padding: 5px 15px;
-    background-color: #1e2429;
+    background-color: white;
     box-shadow: #76d5d8 0px 0px 0px 0px;
     transition: all 0.3s ease-in-out;
   }

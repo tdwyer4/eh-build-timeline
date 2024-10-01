@@ -22,7 +22,7 @@ const VideoParallaxContent = ({
       style={{
         paddingLeft: IMG_PADDING,
         paddingRight: IMG_PADDING,
-        background: "#293139",
+        background: "#ffffff",
       }}
     >
       <div className={styles.parallaxStyling}>

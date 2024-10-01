@@ -9,6 +9,7 @@ interface CardCarouselProps {
 const CardCarousel: React.FC<CardCarouselProps> = ({ cards }) => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [currentCard, setCurrentCard] = useState<number>(0);
+  const [currentText, setCurrentText] = useState<number>(0);
 
   useEffect(() => {
     // Ensure the carousel starts from the first card
@@ -22,13 +23,14 @@ const CardCarousel: React.FC<CardCarouselProps> = ({ cards }) => {
     if (carouselRef.current) {
       const cardWidth = carouselRef.current.scrollWidth / cards.length;
       // Offset the scroll slightly so part of the previous and next card is visible
-      const scrollAmount = cardWidth * index - cardWidth * 0.2; // Adjust 0.2 to control how much of the next/prev card is visible
+      const scrollAmount = cardWidth * index - cardWidth * 0.4; // Adjust 0.2 to control how much of the next/prev card is visible
 
       carouselRef.current.scrollTo({
         left: scrollAmount,
         behavior: "smooth",
       });
       setCurrentCard(index);
+      setCurrentText(index);
     }
   };
 
@@ -60,7 +62,14 @@ const CardCarousel: React.FC<CardCarouselProps> = ({ cards }) => {
               alt={card.title}
               className={styles.cardImage}
             />
-            <h2 className={styles.cardTitle}>{card.title}</h2>
+            <h2
+              key={index}
+              className={`${styles.cardTitle} ${
+                currentText === index ? styles.activeTitle : ""
+              }`}
+            >
+              {card.title}
+            </h2>
             <p className={styles.cardDescription}>{card.paragraph}</p>
           </motion.div>
         ))}

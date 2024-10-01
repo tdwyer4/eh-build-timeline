@@ -3,7 +3,7 @@
 ![](https://www.executivehomes.com/static/media/FooterHouseImage.b763b780120ce55f8147.png)
 
 <p align="center">
-  Building with React, TypeScript, SASS and Framer Motion
+  Building with React, TypeScript, CSS Modules and Framer Motion
 </p>
 </div>
 
