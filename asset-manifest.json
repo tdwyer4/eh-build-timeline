@@ -1,17 +1,18 @@
 {
   "files": {
-    "main.css": "/eh-build-timeline/static/css/main.09e50072.css",
-    "main.js": "/eh-build-timeline/static/js/main.83d87c65.js",
+    "main.css": "/eh-build-timeline/static/css/main.c7a7ac8e.css",
+    "main.js": "/eh-build-timeline/static/js/main.caf53fcf.js",
     "static/js/453.b458b9d1.chunk.js": "/eh-build-timeline/static/js/453.b458b9d1.chunk.js",
-    "static/media/EH-GlowLogo-Hero.mp4": "/eh-build-timeline/static/media/EH-GlowLogo-Hero.f6b21f64f2067311a2ed.mp4",
-    "static/media/EH-GlowLogo-Hero.png": "/eh-build-timeline/static/media/EH-GlowLogo-Hero.bd1780d863a3e302974d.png",
+    "static/media/particles2.mp4": "/eh-build-timeline/static/media/particles2.67bc9897fc832d42ff87.mp4",
+    "static/media/HeroAnimation2.mp4": "/eh-build-timeline/static/media/HeroAnimation2.992a59fe49fda65bcaf1.mp4",
+    "static/media/PCard-1.jpg": "/eh-build-timeline/static/media/PCard-1.3343ea4f5588a7e46f54.jpg",
     "index.html": "/eh-build-timeline/index.html",
-    "main.09e50072.css.map": "/eh-build-timeline/static/css/main.09e50072.css.map",
-    "main.83d87c65.js.map": "/eh-build-timeline/static/js/main.83d87c65.js.map",
+    "main.c7a7ac8e.css.map": "/eh-build-timeline/static/css/main.c7a7ac8e.css.map",
+    "main.caf53fcf.js.map": "/eh-build-timeline/static/js/main.caf53fcf.js.map",
     "453.b458b9d1.chunk.js.map": "/eh-build-timeline/static/js/453.b458b9d1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.09e50072.css",
-    "static/js/main.83d87c65.js"
+    "static/css/main.c7a7ac8e.css",
+    "static/js/main.caf53fcf.js"
   ]
 }
