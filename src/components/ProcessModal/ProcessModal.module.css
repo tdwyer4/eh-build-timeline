@@ -1,0 +1,78 @@
+
+
+.modalOverlay {
+  position: fixed; /* Use fixed positioning */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  margin: 32px;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  /*background-color: rgba(0, 0, 0, 0.5);  Semi-transparent background */
+  z-index: 1000; /* Ensure it’s on top of other content */
+}
+
+.modalContent {
+  background: white; /* Background color for the modal content */
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+}
+
+
+  .modalBox {
+    display: flex;
+    flex-direction: column;
+    background: #000000;
+    padding: 1rem;
+    border: 1px solid #76D5D8;
+    border-radius: 1rem;
+    transition: all ease-in-out 0.3s;
+    transform: scale(1.1);
+  }
+
+  .modalClose {
+    display: flex;
+    /* position: fixed; */
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-weight: 200;
+    border: solid black 1px;
+    cursor: pointer;
+  }
+
+  .modalHeader {
+    color: #ffffff;
+    display: flex;
+    text-align: left;
+    padding: 0px 16px;
+  }
+
+  .modalVideo {
+    display: flex;
+    width: 100%;
+    border-radius: 8px;
+    margin: 16px 0px;
+  }
+
+  .modalDesc {
+    color: #ffffff;
+    display: flex;
+    text-align: left;
+    padding: 0 16px;
+  }
+
+  .buttonPlacement {
+    display: flex;
+    justify-content: flex-end;
+    
+  }
+
+  .contentPlacement {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  

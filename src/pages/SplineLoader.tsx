@@ -1,35 +1,36 @@
 import styles from "./SplineLoader.module.css";
 import { useRef, useState, useEffect, startTransition } from "react";
 import { motion } from "framer-motion";
+import FirstLoad from "./FirstLoad";
 import { PreSold } from "./PreSold";
 import { EarlyConstruction } from "./EarlyConstruction";
 import { MidConstruction } from "./MidConstruction";
 import { MoveInReady } from "./MoveInReady";
 import Manifest from "../components/Manifest/Manifest";
-import HeroVideo from "../media/EH-GlowLogo-Hero.mp4";
-import HeroImage from "../media/EH-GlowLogo-Hero.png";
+import HeroVideo from "../media/HeroAnimation2.mp4";
+import HeroImage from "../media/particles2.mp4";
 
 export default function SplineLoader() {
-  const [currentContent, setCurrentContent] = useState<string>("Pre");
+  const [currentContent, setCurrentContent] = useState<string>("Load");
   const [videoEnded, setVideoEnded] = useState(false); // Track if video has ended
-  const [imageLoaded, setImageLoaded] = useState(false); // Track if the image is preloaded
+  const [videoLoaded, setVideoLoaded] = useState(false); // Track if the image is preloaded
   const contentRef = useRef<HTMLDivElement | null>(null);
 
   function handleClick(contentName: string) {
+    console.log("Button clicked:", contentName); // Log the click event
     startTransition(() => {
       setCurrentContent(contentName);
     });
 
-    setTimeout(() => {
-      contentRef.current?.scrollIntoView({ behavior: "smooth" });
-    }, 0);
+    contentRef.current?.scrollIntoView({ behavior: "smooth" });
   }
 
   // Preload image before the video ends
   useEffect(() => {
-    const img = new Image();
-    img.src = HeroImage; // Use the imported HeroImage
-    img.onload = () => setImageLoaded(true); // Set when image is fully loaded
+    const video = document.createElement("video");
+    video.src = HeroImage; // Use the imported HeroImage
+    video.onloadeddata = () => setVideoLoaded(true); // Set when image is fully loaded
+    video.load();
   }, []);
 
   // Handle video end event
@@ -39,8 +40,10 @@ export default function SplineLoader() {
 
   const renderContent = () => {
     switch (currentContent) {
-      case "Pre":
+      case "Load":
       default:
+        return <FirstLoad />;
+      case "Pre":
         return <PreSold />;
       case "Early":
         return <EarlyConstruction />;
@@ -61,11 +64,13 @@ export default function SplineLoader() {
           onEnded={handleVideoEnd}
           className={`${styles.video} ${videoEnded ? styles.hidden : ""}`} // Add a hidden class after video ends
         />
-        {imageLoaded &&
+        {videoLoaded &&
           videoEnded && ( // Only show image after video ends and image is loaded
-            <img
+            <video
+              autoPlay
+              muted
+              loop={true}
               src={HeroImage}
-              alt="Static background"
               className={`${styles.staticImage} ${
                 videoEnded ? styles.fadeIn : ""
               }`} // Add fade-in effect
@@ -80,7 +85,7 @@ export default function SplineLoader() {
           className={styles.customControls}
           initial={{ opacity: 0, y: 150 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 3.5, duration: 0.7, ease: "easeOut" }}
+          transition={{ delay: 1.5, duration: 0.7, ease: "easeOut" }}
         >
           <div className={styles.subTextContainer}>
             <h3 className={styles.subText}>
@@ -88,12 +93,25 @@ export default function SplineLoader() {
             </h3>
           </div>
           <div className={styles.buttonContainer}>
-            <button onClick={() => handleClick("Pre")}>Pre-Sold</button>
-            <button onClick={() => handleClick("Early")}>
+            <motion.div
+              onClick={() => handleClick("Load")}
+              className={styles.Load}
+            ></motion.div>
+            <motion.button
+              onClick={() => handleClick("Pre")}
+              whileTap={{ scale: 0.5 }}
+            >
+              Pre-Sold
+            </motion.button>
+            <motion.button onClick={() => handleClick("Early")}>
               Early Construction
-            </button>
-            <button onClick={() => handleClick("Mid")}>Mid Construction</button>
-            <button onClick={() => handleClick("Ready")}>Move-In Ready</button>
+            </motion.button>
+            <motion.button onClick={() => handleClick("Mid")}>
+              Mid Construction
+            </motion.button>
+            <motion.button onClick={() => handleClick("Ready")}>
+              Move-In Ready
+            </motion.button>
           </div>
         </motion.div>
       </div>

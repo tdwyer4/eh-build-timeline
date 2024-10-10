@@ -11,6 +11,11 @@
     flex-direction: column;
 }
 
+.stickSticky {
+    position: sticky;
+    top: 0;
+}
+
 .sectionHeading {
     text-align: center;
     font-size: 4.5rem;

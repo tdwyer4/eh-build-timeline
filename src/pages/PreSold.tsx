@@ -9,6 +9,8 @@ import TimelineTwo from "../components/TimelineTwo/TimelineTwo";
 import Manifest from "../components/Manifest/Manifest";
 import styles from "./FullPageStyles.module.css";
 import IntroCards from "../components/IntroCards/IntroCards";
+import VideoScroll from "../components/VideoScroll/VideoScroll";
+import ProcessCards from "../components/ProcessCards/ProcessCards";
 
 export const PreSold = () => {
   const content = [
@@ -69,40 +71,46 @@ export const PreSold = () => {
   ];
 
   return (
-    <div className={styles.bgwhite}>
-      <VideoParallaxContent
-        video="https://www.executivehomes.com/static/media/EfficiencyDesktopVideo.6b2023a48db712551e9a.mp4"
-        subheading="Learn more about the EH Build Timeline"
-        heading="Pre-Sold"
-      >
-        <MoreContent
-          title="Initial Preparation"
-          para="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, blanditiis soluta eius quam modi aliquam quaerat odit deleniti minima maiores voluptate est ut saepe accusantium maxime doloremque nulla consectetur possimus."
-        />
-      </VideoParallaxContent>
-      <CardCarousel cards={content} />
-      <TimelineTwo />
-      <TextParallaxContent
-        imgUrl="https://placehold.co/2671x1780/3E454C/566069?text=Section+2"
-        subheading="COPYYYYYYYYY"
-        heading="and MORE copyyyyyyyy!"
-      >
-        <MoreContent
-          title="Middle Phase"
-          para="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, blanditiis soluta eius quam modi aliquam quaerat odit deleniti minima maiores voluptate est ut saepe accusantium maxime doloremque nulla consectetur possimus."
-        />
-      </TextParallaxContent>
-      <IntroCards />
-      <TextParallaxContent
-        imgUrl="https://placehold.co/2671x1780/3E454C/566069?text=Section+3"
-        subheading="COPYYYYYYYYY"
-        heading="and EVEN MORE copyyyyyyyy!"
-      >
-        <MoreContent
-          title="Welcome Home"
-          para="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, blanditiis soluta eius quam modi aliquam quaerat odit deleniti minima maiores voluptate est ut saepe accusantium maxime doloremque nulla consectetur possimus."
-        />
-      </TextParallaxContent>
-    </div>
+    <>
+      <div></div>
+      <div className={styles.bgwhite}>
+        <ProcessCards />
+        {/* This section will now appear once the user can scroll */}
+        <VideoParallaxContent
+          video="https://www.executivehomes.com/static/media/EfficiencyDesktopVideo.6b2023a48db712551e9a.mp4"
+          subheading="Learn more about the EH Build Timeline"
+          heading="Pre-Sold"
+        >
+          <MoreContent
+            title="Initial Preparation"
+            para="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+          />
+        </VideoParallaxContent>
+
+        <CardCarousel cards={content} />
+        <TimelineTwo />
+        <TextParallaxContent
+          imgUrl="https://placehold.co/2671x1780/3E454C/566069?text=Section+2"
+          subheading="COPYYYYYYYYY"
+          heading="and MORE copyyyyyyyy!"
+        >
+          <MoreContent
+            title="Middle Phase"
+            para="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, blanditiis soluta eius quam modi aliquam quaerat odit deleniti minima maiores voluptate est ut saepe accusantium maxime doloremque nulla consectetur possimus."
+          />
+        </TextParallaxContent>
+        <IntroCards />
+        <TextParallaxContent
+          imgUrl="https://placehold.co/2671x1780/3E454C/566069?text=Section+3"
+          subheading="COPYYYYYYYYY"
+          heading="and EVEN MORE copyyyyyyyy!"
+        >
+          <MoreContent
+            title="Welcome Home"
+            para="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, blanditiis soluta eius quam modi aliquam quaerat odit deleniti minima maiores voluptate est ut saepe accusantium maxime doloremque nulla consectetur possimus."
+          />
+        </TextParallaxContent>
+      </div>
+    </>
   );
 };

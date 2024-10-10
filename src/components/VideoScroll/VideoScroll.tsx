@@ -19,22 +19,35 @@ function Video({ id, videoUrl }: { id: number; videoUrl: string }) {
   const y = useParallax(scrollYProgress, 300);
 
   return (
-    <div className={styles.gradientBG}>
+    <div className={styles.videoMain}>
       <section className={styles.videoSections}>
-        <div ref={ref}>
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 100, y: 0 }}
+          whileInView={{ opacity: 100, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+        >
           <video
-            className="videoElement"
+            className={styles.vidContainer}
             src={videoUrl}
-            controls
             autoPlay
             muted
-            loop
-            style={{ width: "100%", height: "auto" }} // Ensure video fits properly
-          />
-        </div>
-        <motion.h2 className={styles.videoTitle} style={{ y }}>
+            loop={true}
+            style={{ width: "100%", height: "auto" }}
+          ></video>
+          <div className={styles.innerContent}>
+            <div className={styles.leftContent}>
+              <div className={styles.infoText}>Info Text</div>
+            </div>
+            <div className={styles.rightContent}>
+              <div className={styles.plusSign}>+</div>
+              <div className={styles.infoSign}>i</div>
+            </div>
+          </div>
+        </motion.div>
+        {/* <motion.h2 className={styles.videoTitle} style={{ y }}>
           {`#00${id}`}
-        </motion.h2>
+        </motion.h2> */}
       </section>
     </div>
   );

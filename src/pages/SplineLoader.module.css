@@ -20,7 +20,7 @@
     height: 100vh;
     z-index: 1;
     overflow: hidden; /* Ensure video and image don't overflow */
-    background: linear-gradient(200deg,#293139,#0d0e0f,#363b42,#3e4c4c,#000000);
+    /* background: linear-gradient(200deg,#ffffff,#dedede,#000000,#e7e7e7,#f8feff); */
     animation: gradient-animation 20s ease infinite;
     background-size: 250% 250%;
   }
@@ -32,8 +32,9 @@
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 1;
-  transition: opacity 1s ease; /* Smooth fade out */
+  z-index: 10;
+  pointer-events: none;
+  transition: opacity 0.5s ease; /* Smooth fade out */
 }
 
 .staticImage {
@@ -45,16 +46,19 @@
   left: 0;
   z-index: 1;
   opacity: 0;
-  transition: opacity 1s ease; /* Smooth fade in */
-  animation: movement 60s linear infinite;
+  pointer-events: none;
+  transition: opacity 0s ease; /* Smooth fade in */
+  /* animation: movement 60s linear infinite; */
 }
 
   .fadeIn {
     opacity: 1; /* Fade in the image */
+    pointer-events: none;
   }
   
   .hidden {
     opacity: 0; /* Fade out the video */
+    pointer-events: none;
   }
   
  @keyframes movement {
@@ -86,7 +90,7 @@
     justify-content: center;
     gap: 24px;
     position: relative;
-    z-index: 2; /* Ensure buttons are above the SplineHero */
+    z-index: 10; /* Ensure buttons are above the SplineHero */
   }
 
   .subTextContainer {
@@ -99,14 +103,18 @@
     font-weight: 200;
     text-transform: uppercase;
     letter-spacing: 1px;
+    color: white;
   }
 
   .buttonContainer {
     display: flex;
     gap: 24px;
+    position: relative;
+    cursor: pointer;
   }
   
   .customControls button {
+    position: relative;
     border: 1px solid #76d5d8;
     border-radius: 20px;
     background: none;
@@ -128,3 +136,6 @@
     background-color: #76d5d8;
   }
   
+  .Load {
+    display: none;
+  }

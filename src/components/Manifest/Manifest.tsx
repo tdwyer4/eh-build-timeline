@@ -14,9 +14,9 @@ export default function Manifest({ backgroundColor }: ManifestProps) {
     >
       <motion.a
         className={styles.manifest}
-        initial={{ opacity: 0, y: -150 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ delay: 3, duration: 1, ease: "easeOut" }}
+        initial={{ scale: 0, y: 0 }}
+        whileInView={{ scale: 1, y: 0 }}
+        transition={{ delay: 1.2, duration: 0.5, ease: "easeOut" }}
       >
         <h1>
           What's it like to build
