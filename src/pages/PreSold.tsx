@@ -102,10 +102,10 @@ export const PreSold = () => {
           subheading=""
           heading="Framing & Rough Trades"
         >
-          <MoreContent
+          {/* <MoreContent
             title="Initial Preparation"
             para="Lorem ipsum dolor sit amet consectetur adipisicing elit."
-          />
+          /> */}
         </VideoParallaxContent>
         <CardCarousel cards={content} />
 

@@ -35,46 +35,64 @@ const CardCarousel: React.FC<CardCarouselProps> = ({ cards }) => {
   };
 
   return (
-    <div className={styles.carouselContainer}>
-      <motion.div
-        className={styles.carousel}
-        ref={carouselRef}
-        initial={{ opacity: 0, y: 150 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-      >
-        {cards.map((card, index) => (
-          <motion.div
-            key={index}
-            className={`${styles.carouselCard} ${
-              currentCard === index ? styles.active : ""
-            }`}
-            onClick={() => scrollToCard(index)}
-            whileTap={{ scale: 1 }}
-            transition={{ duration: 0.5, ease: "easeIn" }}
-            style={{
-              width: "80%", // Make each card take up 80% of the carousel width to show part of the next/previous card
-              margin: "0 0%", // Add margins to the left and right to create space for the next/previous cards
-            }}
-          >
-            <img
-              src={card.image}
-              alt={card.title}
-              className={styles.cardImage}
-            />
-            <h2
+    <>
+      <div className={styles.headerContainer}>
+        <motion.div
+          className={styles.carouselInfo}
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+        >
+          <h2 className={styles.carouselHeader}>Make Your Selections</h2>
+          <p className={styles.carouselText}>
+            This is just some descriptive text to tell you more about making
+            selections.
+          </p>
+        </motion.div>
+      </div>
+      <div className={styles.carouselContainer}>
+        <motion.div
+          className={styles.carousel}
+          ref={carouselRef}
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        >
+          {cards.map((card, index) => (
+            <motion.div
               key={index}
-              className={`${styles.cardTitle} ${
-                currentText === index ? styles.activeTitle : ""
+              className={`${styles.carouselCard} ${
+                currentCard === index ? styles.active : ""
               }`}
+              onClick={() => scrollToCard(index)}
+              whileTap={{ scale: 1 }}
+              initial={{ y: 50 }}
+              whileInView={{ y: 0 }}
+              transition={{ duration: 0.0, ease: "easeIn" }}
+              style={{
+                width: "80%", // Make each card take up 80% of the carousel width to show part of the next/previous card
+                margin: "0 0%", // Add margins to the left and right to create space for the next/previous cards
+              }}
             >
-              {card.title}
-            </h2>
-            <p className={styles.cardDescription}>{card.paragraph}</p>
-          </motion.div>
-        ))}
-      </motion.div>
-    </div>
+              <img
+                src={card.image}
+                alt={card.title}
+                className={styles.cardImage}
+              />
+              <h2
+                key={index}
+                className={`${styles.cardTitle} ${
+                  currentText === index ? styles.activeTitle : ""
+                }`}
+              >
+                {card.title}
+              </h2>
+              <p className={styles.cardDescription}>{card.paragraph}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </>
   );
 };
 

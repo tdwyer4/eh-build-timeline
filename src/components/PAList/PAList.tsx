@@ -5,11 +5,8 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-// import { SiSpacex } from "react-icons/si";
-// import { FiArrowRight, FiMapPin } from "react-icons/fi";
 import { useRef } from "react";
 import styles from "./PAList.module.css";
-import mainImgBG from "../../media/scrollBG.jpg";
 
 const PAList = () => {
   return (
