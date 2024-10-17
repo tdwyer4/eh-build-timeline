@@ -11,6 +11,12 @@ import styles from "./FullPageStyles.module.css";
 import IntroCards from "../components/IntroCards/IntroCards";
 import VideoScroll from "../components/VideoScroll/VideoScroll";
 import ProcessCards from "../components/ProcessCards/ProcessCards";
+import ChoosePath from "../components/ChoosePath/ChoosePath";
+import ScrollInfo from "../components/ScrollInfo/ScrollInfo";
+import PAList from "../components/PAList/PAList";
+import PadVideo from "../media/Pad.mp4";
+import FramingRoughVideo from "../media/FramingRough.mp4";
+import { Communication } from "../components/Communication/Communication";
 
 export const PreSold = () => {
   const content = [
@@ -74,31 +80,35 @@ export const PreSold = () => {
     <>
       <div></div>
       <div className={styles.bgwhite}>
+        <ChoosePath />
         <ProcessCards />
+        <PAList />
+
         {/* This section will now appear once the user can scroll */}
         <VideoParallaxContent
-          video="https://www.executivehomes.com/static/media/EfficiencyDesktopVideo.6b2023a48db712551e9a.mp4"
-          subheading="Learn more about the EH Build Timeline"
-          heading="Pre-Sold"
+          video={PadVideo}
+          subheading="The foundation is being built."
+          heading="Footing & Slab"
+        >
+          {/* <MoreContent
+            title="Initial Preparation"
+            para="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+          /> */}
+        </VideoParallaxContent>
+        <Communication />
+
+        <VideoParallaxContent
+          video={FramingRoughVideo}
+          subheading=""
+          heading="Framing & Rough Trades"
         >
           <MoreContent
             title="Initial Preparation"
             para="Lorem ipsum dolor sit amet consectetur adipisicing elit."
           />
         </VideoParallaxContent>
-
         <CardCarousel cards={content} />
-        <TimelineTwo />
-        <TextParallaxContent
-          imgUrl="https://placehold.co/2671x1780/3E454C/566069?text=Section+2"
-          subheading="COPYYYYYYYYY"
-          heading="and MORE copyyyyyyyy!"
-        >
-          <MoreContent
-            title="Middle Phase"
-            para="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, blanditiis soluta eius quam modi aliquam quaerat odit deleniti minima maiores voluptate est ut saepe accusantium maxime doloremque nulla consectetur possimus."
-          />
-        </TextParallaxContent>
+
         <IntroCards />
         <TextParallaxContent
           imgUrl="https://placehold.co/2671x1780/3E454C/566069?text=Section+3"

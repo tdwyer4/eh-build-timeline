@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import styles from "./ParallaxSubContent.module.css";
 
 const IMG_PADDING = 0;
@@ -19,6 +19,7 @@ const VideoBox = ({ video }: { video: string }) => {
       src={video}
       autoPlay
       muted
+      loop={true}
       style={{
         backgroundImage: `url(${video})`,
         backgroundSize: "cover",

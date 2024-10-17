@@ -1,81 +1,233 @@
-import styles from "./VideoScroll.module.css";
-import { useRef } from "react";
+import { ReactLenis } from "lenis/dist/lenis-react";
 import {
   motion,
+  useMotionTemplate,
   useScroll,
-  useSpring,
   useTransform,
-  MotionValue,
 } from "framer-motion";
+// import { SiSpacex } from "react-icons/si";
+// import { FiArrowRight, FiMapPin } from "react-icons/fi";
+import { useRef } from "react";
+import styles from "./VideoScroll.module.css";
+import mainImgBG from "../../media/scrollBG.jpg";
 
-function useParallax(value: MotionValue<number>, distance: number) {
-  return useTransform(value, [0, 1], [-distance, distance]);
-}
-
-// Updated to handle video instead of image
-function Video({ id, videoUrl }: { id: number; videoUrl: string }) {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref });
-  const y = useParallax(scrollYProgress, 300);
-
+const VideoScroll = () => {
   return (
-    <div className={styles.videoMain}>
-      <section className={styles.videoSections}>
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 100, y: 0 }}
-          whileInView={{ opacity: 100, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-        >
-          <video
-            className={styles.vidContainer}
-            src={videoUrl}
-            autoPlay
-            muted
-            loop={true}
-            style={{ width: "100%", height: "auto" }}
-          ></video>
-          <div className={styles.innerContent}>
-            <div className={styles.leftContent}>
-              <div className={styles.infoText}>Info Text</div>
-            </div>
-            <div className={styles.rightContent}>
-              <div className={styles.plusSign}>+</div>
-              <div className={styles.infoSign}>i</div>
-            </div>
-          </div>
-        </motion.div>
-        {/* <motion.h2 className={styles.videoTitle} style={{ y }}>
-          {`#00${id}`}
-        </motion.h2> */}
-      </section>
+    <div className={styles.background}>
+      <ReactLenis
+        root
+        options={{
+          // Learn more -> https://github.com/darkroomengineering/lenis?tab=readme-ov-file#instance-settings
+          lerp: 0.05,
+          //   infinite: true,
+          //   syncTouch: true,
+        }}
+      >
+        <Nav />
+        <Hero />
+        <Schedule />
+      </ReactLenis>
     </div>
   );
-}
+};
 
-export default function VideoScroll() {
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001,
-  });
+const Nav = () => {
+  return (
+    <nav className={styles.nav}>
+      {/* <button
+        onClick={() => {
+          document.getElementById("build-schedule")?.scrollIntoView({
+            behavior: "smooth",
+          });
+        }}
+        className={styles.navButton}
+      >
+        LAUNCH SCHEDULE -
+      </button> */}
+    </nav>
+  );
+};
 
-  // Dynamic video URLs from an external source
-  const videoUrls = [
-    "https://www.executivehomes.com/static/media/DistinctionDesktopVideo.fd902a225cf0bf00b524.mp4",
-    "https://www.executivehomes.com/static/media/InnovationDesktopVideo.4dcf81559d735a1523fb.mp4",
-    "https://www.executivehomes.com/static/media/CommunityDesktopVideo.3db15170498a215a80dd.mp4",
-    "https://www.executivehomes.com/static/media/ValueDesktopVideo.117e24d42832b1e56a94.mp4",
-    "https://www.executivehomes.com/static/media/ForYouDesktopVideo.2d7bfc50fe4b2040cd44.mp4",
-  ];
+const SECTION_HEIGHT = 1500;
+
+const Hero = () => {
+  return (
+    <div
+      style={{ height: `calc(${SECTION_HEIGHT}px + 100vh)` }}
+      className={styles.heroSection}
+    >
+      <CenterImage />
+
+      <ParallaxImages />
+
+      <div className={styles.heroBottom} />
+    </div>
+  );
+};
+
+const CenterImage = () => {
+  const { scrollY } = useScroll();
+
+  const clip1 = useTransform(scrollY, [0, 1500], [25, 0]);
+  const clip2 = useTransform(scrollY, [0, 1500], [75, 100]);
+
+  const clipPath = useMotionTemplate`polygon(${clip1}% ${clip1}%, ${clip2}% ${clip1}%, ${clip2}% ${clip2}%, ${clip1}% ${clip2}%)`;
+
+  const backgroundSize = useTransform(
+    scrollY,
+    [0, SECTION_HEIGHT + 500],
+    ["170%", "100%"]
+  );
+  const opacity = useTransform(
+    scrollY,
+    [SECTION_HEIGHT, SECTION_HEIGHT + 500],
+    [1, 0]
+  );
 
   return (
-    <>
-      {videoUrls.map((videoUrl, index) => (
-        <Video id={index + 1} videoUrl={videoUrl} key={index} />
-      ))}
-      <motion.div className={styles.progress} style={{ scaleX }} />
-    </>
+    <motion.div
+      className={styles.backgroundImage}
+      style={{
+        clipPath,
+        backgroundSize,
+        opacity,
+        backgroundImage: `url(${mainImgBG})`,
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    />
   );
-}
+};
+
+const ParallaxImages = () => {
+  return (
+    <div className={styles.parallaxContainer}>
+      <ParallaxImg
+        src="https://images.unsplash.com/photo-1484600899469-230e8d1d59c0?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        alt="And example of a space launch"
+        start={-200}
+        end={200}
+        className={styles.imageOne}
+      />
+      <ParallaxImg
+        src="https://images.unsplash.com/photo-1446776709462-d6b525c57bd3?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        alt="An example of a space launch"
+        start={200}
+        end={-250}
+        className={styles.imageTwo}
+      />
+      <ParallaxImg
+        src="https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?q=80&w=2370&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        alt="Orbiting satellite"
+        start={-200}
+        end={200}
+        className={styles.imageOne}
+      />
+      <ParallaxImg
+        src="https://images.unsplash.com/photo-1494022299300-899b96e49893?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        alt="Orbiting satellite"
+        start={0}
+        end={-500}
+        className={styles.imageThree}
+      />
+    </div>
+  );
+};
+
+const ParallaxImg = ({
+  className,
+  alt,
+  src,
+  start,
+  end,
+}: {
+  className?: string;
+  alt: string;
+  src: string;
+  start: number;
+  end: number;
+}) => {
+  const ref = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    // @ts-ignore
+    offset: [`${start}px end`, `end ${end * -1}px`],
+  });
+
+  const opacity = useTransform(scrollYProgress, [0.75, 1], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0.75, 1], [1, 0.85]);
+
+  const y = useTransform(scrollYProgress, [0, 1], [start, end]);
+  const transform = useMotionTemplate`translateY(${y}px) scale(${scale})`;
+
+  return (
+    <motion.img
+      src={src}
+      alt={alt}
+      className={className}
+      ref={ref}
+      style={{ transform, opacity }}
+    />
+  );
+};
+
+const Schedule = () => {
+  return (
+    <section id="build-schedule" className={styles.buildSchedule}>
+      <motion.h1
+        initial={{ y: 48, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ ease: "easeInOut", duration: 0.75 }}
+        className={styles.buildScheduleHeader}
+      >
+        Build Schedule
+      </motion.h1>
+      <ScheduleItem title="PLANS" date="Week 1-2" location="Florida" />
+      <ScheduleItem title="MARKUP BLUEPRINTS" date="Week 3" location="Texas" />
+      <ScheduleItem
+        title="VIRTUAL PRE-CONSTRUCTION MEETING"
+        date="Week 4"
+        location="Florida"
+      />
+      <ScheduleItem title="SELECTIONS" date="Week 5-6" location="Florida" />
+      <ScheduleItem title="BUILD" date="Week 7-38" location="California" />
+      <ScheduleItem
+        title="FINAL WALKTHROUGH"
+        date="Week 39"
+        location="California"
+      />
+      <ScheduleItem title="CLOSING" date="Week 40" location="Texas" />
+    </section>
+  );
+};
+
+const ScheduleItem = ({
+  title,
+  date,
+  location,
+}: {
+  title: string;
+  date: string;
+  location: string;
+}) => {
+  return (
+    <motion.div
+      initial={{ y: 48, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      transition={{ ease: "easeInOut", duration: 0.75 }}
+      className={styles.buildScheduleItem}
+    >
+      <div>
+        <p className={styles.buildScheduleItemTitle}>{title}</p>
+        <p className={styles.buildScheduleItemPara}>{date}</p>
+      </div>
+      <div className={styles.buildScheduleItemIcon}>
+        <p>{location}</p>
+        <p>+</p>
+      </div>
+    </motion.div>
+  );
+};
+
+export default VideoScroll;

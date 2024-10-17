@@ -1,5 +1,4 @@
 import React, { useRef, ReactNode } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
 import OverlayCopy from "../ParallaxSubContent/OverlayCopy";
 import VideoBox from "../ParallaxSubContent/VideoBox";
 import styles from "./ParallaxContent.module.css";

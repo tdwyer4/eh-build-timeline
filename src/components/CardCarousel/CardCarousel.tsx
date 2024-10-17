@@ -23,7 +23,7 @@ const CardCarousel: React.FC<CardCarouselProps> = ({ cards }) => {
     if (carouselRef.current) {
       const cardWidth = carouselRef.current.scrollWidth / cards.length;
       // Offset the scroll slightly so part of the previous and next card is visible
-      const scrollAmount = cardWidth * index - cardWidth * 0.4; // Adjust 0.2 to control how much of the next/prev card is visible
+      const scrollAmount = cardWidth * index - cardWidth * 0.5; // Adjust 0.2 to control how much of the next/prev card is visible
 
       carouselRef.current.scrollTo({
         left: scrollAmount,

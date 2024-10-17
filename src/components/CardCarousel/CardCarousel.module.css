@@ -1,9 +1,10 @@
 .carouselContainer {
   width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: left;
   align-items: center;
-  padding: 50px 0 0 0;
+  padding: 0px 0 0 0;
   /* background: linear-gradient(0deg,#293139,#ffffff); */
   background-color: white;
 }

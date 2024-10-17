@@ -1,0 +1,78 @@
+.background {
+  background-color: #fff;
+  padding-left: 16px;
+  padding-right: 16px;
+  max-width: 72rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.heroSection {
+  gap: 5rem;
+  align-items: flex-start;
+  width: 100%;
+  display: flex;
+}
+
+.heroBottom {
+  padding-top: 50vh;
+  padding-bottom: 50vh;
+  width: 100%;
+}
+
+.heroBottom li {
+  list-style-type: none;
+}
+
+.pathText {
+  font-size: 64px;
+  font-weight: 200;
+  text-transform: uppercase;
+  line-height: 1;
+  padding: 64px 0px;
+  transition: all .4s ease-in-out;
+}
+.pathText.active{
+  color: #000;
+  opacity: 1;
+}
+.pathText.inactive{
+  color: #ddd;
+  opacity: 0;
+}
+
+.divColumnContainer {
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  top: 0px;
+  position: sticky;
+}
+
+.divColumn {
+  border-radius: 16px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  position: relative;
+}
+
+/* .scrollSpace {
+  height: 100vh;
+} */
+
+.pathMedia {
+  height: 100%;
+  width: 100%;
+  border-radius: 24px;
+  inset: 0;
+  transition: all 1s ease-in-out;
+  position: absolute;
+}
+
+.pathMedia.active{
+  scale: 1;
+}
+.pathMedia.inactive{
+  scale: 0;
+}

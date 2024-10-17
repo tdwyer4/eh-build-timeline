@@ -12,12 +12,12 @@ import HeroImage from "../media/particles2.mp4";
 
 export default function SplineLoader() {
   const [currentContent, setCurrentContent] = useState<string>("Load");
-  const [videoEnded, setVideoEnded] = useState(false); // Track if video has ended
-  const [videoLoaded, setVideoLoaded] = useState(false); // Track if the image is preloaded
+  const [videoEnded, setVideoEnded] = useState(false); // video has ended
+  const [videoLoaded, setVideoLoaded] = useState(false); // image is preloaded
   const contentRef = useRef<HTMLDivElement | null>(null);
 
   function handleClick(contentName: string) {
-    console.log("Button clicked:", contentName); // Log the click event
+    console.log("Button clicked:", contentName);
     startTransition(() => {
       setCurrentContent(contentName);
     });
@@ -28,8 +28,8 @@ export default function SplineLoader() {
   // Preload image before the video ends
   useEffect(() => {
     const video = document.createElement("video");
-    video.src = HeroImage; // Use the imported HeroImage
-    video.onloadeddata = () => setVideoLoaded(true); // Set when image is fully loaded
+    video.src = HeroImage; // use particle vid
+    video.onloadeddata = () => setVideoLoaded(true); // preload particle vid
     video.load();
   }, []);
 
@@ -62,10 +62,10 @@ export default function SplineLoader() {
           autoPlay
           muted
           onEnded={handleVideoEnd}
-          className={`${styles.video} ${videoEnded ? styles.hidden : ""}`} // Add a hidden class after video ends
+          className={`${styles.video} ${videoEnded ? styles.hidden : ""}`} // hidden after video ends
         />
         {videoLoaded &&
-          videoEnded && ( // Only show image after video ends and image is loaded
+          videoEnded && ( // video ends and image shows
             <video
               autoPlay
               muted
@@ -73,7 +73,7 @@ export default function SplineLoader() {
               src={HeroImage}
               className={`${styles.staticImage} ${
                 videoEnded ? styles.fadeIn : ""
-              }`} // Add fade-in effect
+              }`} // fade-in
             />
           )}
 

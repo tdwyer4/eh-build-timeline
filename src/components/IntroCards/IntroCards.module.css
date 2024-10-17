@@ -1,18 +1,64 @@
 .containerIntro {
-    margin: 135px 50px;
+    margin: 0px 50px;
     display: flex;
-    gap: 0px;
+    gap: 16px;
     position: relative;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
+    height: 100vh;
+}
+
+.cardContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.leftIntro {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    gap: 6px;
+    justify-content: space-between;
+    align-content: space-between;
+}
+
+.rightIntro {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    width: 50%;
+
 }
 
 .bigCard {
-    border-radius: 28px;
-    padding: 50px;
-    box-shadow: #76d5d8 0px 5px 25px 0px;
+    border-radius: 16px;
+    padding: 24px;
+    background-color: #1e2429;
+    /* box-shadow: #76d5d8 0px 5px 25px 0px; */
     /* animation: bs-animation 10s ease-in-out infinite;
     border: #ffffff1a solid 1px; */
+}
+
+.smallCard {
+    border-radius: 16px;
+    height: 100px;
+    width: 100%;
+    flex-wrap: wrap-reverse;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: space-evenly;
+    text-align: center;
+    /* background: linear-gradient(300deg,#ffffff30,#5b4f4f50,#76D5D850,#26222260,#2b282835);
+    animation: gradient-animation 10s ease infinite;
+    background-size: 400% 400%;
+    box-shadow: #00000040 0px 5px 25px 0px; */
+    background-color: #1e2429;
+    border: #ffffff50 solid 1px;
 }
 
 /* @keyframes bs-animation {
@@ -34,47 +80,21 @@ h3 {
     font-family: "Inter", sans-serif;
     font-weight: 600;
     margin: 0;
+    color: white;
+    font-weight: 200;
+    text-transform: uppercase;
 }
 
 p {
     max-width: 560px;
-    font-size: 20px;
-    font-family: "Inter", sans-serif;
-    line-height: 1.5;
+    font-size: 14px;
     letter-spacing: -0.025em;
     font-weight: 500;
     margin-top: 25px;
     color: white;
 }
 
-.leftIntro {
-}
 
-.rightIntro {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 678px;
-    gap: 18px;
-    justify-content: flex-end;
-
-}
-
-.smallCard {
-    border-radius: 20px;
-    height: 210px;
-    width: 300px;
-    flex-wrap: wrap-reverse;
-    display: flex;
-    flex-direction: column;
-    align-items: baseline;
-    justify-content: space-evenly;
-    text-align: center;
-    background: linear-gradient(300deg,#ffffff30,#5b4f4f50,#76D5D850,#26222260,#2b282835);
-    animation: gradient-animation 10s ease infinite;
-    background-size: 400% 400%;
-    box-shadow: #00000040 0px 5px 25px 0px;
-    border: #ffffff50 solid 1px;
-}
 
 
 @keyframes gradient-animation {
@@ -90,7 +110,7 @@ p {
   }
 
 h4 {
-    font-size: 16px;
+    font-size: 12px;
     font-family: "Inter", sans-serif;
     font-weight: 500;
     max-width: 200px;
@@ -107,12 +127,15 @@ h4 {
 h2 {
 
     margin: 0;
+    font-size: 24px;
+    font-weight: 200;
+    text-transform: uppercase;
 }
 
   
   .plusButton {
     border: none /* 1px solid #ffffff10 */;
-    border-radius: 0px 19px 19px 0px;
+    border-radius: 0px 14px 14px 0px;
     background: none;
     font-size: 24px;
     text-transform: uppercase;
@@ -177,7 +200,7 @@ h2 {
 }
 
 .num {
-    font-size: 64px;
+    font-size: 18px;
     font-family: "Inter", sans-serif;
     letter-spacing: -0.025em;
 }

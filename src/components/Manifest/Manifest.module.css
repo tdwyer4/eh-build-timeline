@@ -42,12 +42,13 @@
 }
 
 h1 {
-  font-family: "Inter", sans-serif;
-  font-size: 83px;
+  font-size: 64px;
   line-height: 1.05;
   letter-spacing: -0.04em;
   max-width: 1200px;
   text-align: center;
+  text-transform: uppercase;
+  font-weight: 100;
 }
 
             @media screen and (max-width: 1210px) {
