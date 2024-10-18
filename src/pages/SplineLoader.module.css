@@ -118,14 +118,15 @@
     border: 1px solid #76d5d8;
     border-radius: 20px;
     background: none;
-    font-size: 14px;
+    font-size: 12px;
     text-transform: uppercase;
-    color: #1F2429;
+    color: #76d5d8;
     cursor: pointer;
     padding: 5px 15px;
-    background-color: white;
+    background-color: transparent;
     box-shadow: #76d5d8 0px 0px 0px 0px;
     transition: all 0.3s ease-in-out;
+    width: 175px;
   }
   
   .customControls button:hover {

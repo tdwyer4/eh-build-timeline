@@ -19,7 +19,7 @@ const paths = [
   {
     title: "Choose a Floor Plan",
     id: "choose-floorplan",
-    src: "https://placehold.co/600x600/852423/FFF",
+    src: "https://placehold.co/600x600/76D5D8/FFF?text=PickPath",
   },
 ];
 
