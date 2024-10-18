@@ -5,13 +5,19 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-// import { SiSpacex } from "react-icons/si";
-// import { FiArrowRight, FiMapPin } from "react-icons/fi";
 import { useRef } from "react";
 import styles from "./VideoScroll.module.css";
 import mainImgBG from "../../media/scrollBG.jpg";
 
-const VideoScroll = () => {
+const VideoScroll = ({
+  videoMain,
+  headingMain,
+  descMain,
+}: {
+  videoMain: string;
+  headingMain: string;
+  descMain: string;
+}) => {
   return (
     <div className={styles.background}>
       <ReactLenis
@@ -23,50 +29,43 @@ const VideoScroll = () => {
           //   syncTouch: true,
         }}
       >
-        <Nav />
-        <Hero />
-        <Schedule />
+        <VideoSection
+          videoSrc={videoMain}
+          headingSrc={headingMain}
+          descSrc={descMain}
+        />
       </ReactLenis>
     </div>
   );
 };
 
-const Nav = () => {
-  return (
-    <nav className={styles.nav}>
-      {/* <button
-        onClick={() => {
-          document.getElementById("build-schedule")?.scrollIntoView({
-            behavior: "smooth",
-          });
-        }}
-        className={styles.navButton}
-      >
-        LAUNCH SCHEDULE -
-      </button> */}
-    </nav>
-  );
-};
+const SECTION_HEIGHT = 1000;
 
-const SECTION_HEIGHT = 1500;
-
-const Hero = () => {
+const VideoSection = ({
+  videoSrc,
+  headingSrc,
+  descSrc,
+}: {
+  videoSrc: string;
+  headingSrc: string;
+  descSrc: string;
+}) => {
   return (
     <div
       style={{ height: `calc(${SECTION_HEIGHT}px + 100vh)` }}
-      className={styles.heroSection}
+      className={styles.VideoSectionSection}
     >
-      <CenterImage />
+      <PhaseVideo video={videoSrc} />
+      <DescText heading={headingSrc} desc={descSrc} />
 
-      <ParallaxImages />
-
-      <div className={styles.heroBottom} />
+      <div className={styles.VideoSectionBottom} />
     </div>
   );
 };
 
-const CenterImage = () => {
-  const { scrollY } = useScroll();
+const PhaseVideo = ({ video }: { video: string }) => {
+  const ref = useRef(null);
+  const { scrollY } = useScroll({ target: ref });
 
   const clip1 = useTransform(scrollY, [0, 1500], [25, 0]);
   const clip2 = useTransform(scrollY, [0, 1500], [75, 100]);
@@ -81,151 +80,73 @@ const CenterImage = () => {
   const opacity = useTransform(
     scrollY,
     [SECTION_HEIGHT, SECTION_HEIGHT + 500],
-    [1, 0]
+    [0, 1]
+  );
+
+  const scale = useTransform(
+    scrollY,
+    [SECTION_HEIGHT, SECTION_HEIGHT + 500],
+    ["100%", "100%"]
   );
 
   return (
-    <motion.div
+    <motion.video
+      ref={ref}
+      initial={{ opacity: 1, scale: 0.8, y: 0, backgroundColor: "black" }}
+      whileInView={{ opacity: 1, scale: 1, y: 0, backgroundColor: "black" }}
+      transition={{ duration: 1, ease: "easeInOut", delay: 0.3 }}
       className={styles.backgroundImage}
+      src={video}
+      loop={true}
+      muted
+      autoPlay
       style={{
         clipPath,
-        backgroundSize,
-        opacity,
-        backgroundImage: `url(${mainImgBG})`,
         backgroundPosition: "center",
+        backgroundSize,
         backgroundRepeat: "no-repeat",
+        objectFit: "cover",
       }}
     />
   );
 };
 
-const ParallaxImages = () => {
+const DescText = ({ heading, desc }: { heading: string; desc: string }) => {
   return (
     <div className={styles.parallaxContainer}>
-      <ParallaxImg
-        src="https://images.unsplash.com/photo-1484600899469-230e8d1d59c0?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        alt="And example of a space launch"
-        start={-200}
-        end={200}
-        className={styles.imageOne}
-      />
-      <ParallaxImg
-        src="https://images.unsplash.com/photo-1446776709462-d6b525c57bd3?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        alt="An example of a space launch"
-        start={200}
-        end={-250}
-        className={styles.imageTwo}
-      />
-      <ParallaxImg
-        src="https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?q=80&w=2370&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        alt="Orbiting satellite"
-        start={-200}
-        end={200}
-        className={styles.imageOne}
-      />
-      <ParallaxImg
-        src="https://images.unsplash.com/photo-1494022299300-899b96e49893?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        alt="Orbiting satellite"
-        start={0}
-        end={-500}
-        className={styles.imageThree}
-      />
+      <TextHold title={heading} para={desc} className={styles.imageOne} />
     </div>
   );
 };
 
-const ParallaxImg = ({
+const TextHold = ({
   className,
-  alt,
-  src,
-  start,
-  end,
+  title,
+  para,
 }: {
   className?: string;
-  alt: string;
-  src: string;
-  start: number;
-  end: number;
+  title: string;
+  para: string;
 }) => {
-  const ref = useRef(null);
-
+  const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
-    target: ref,
-    // @ts-ignore
-    offset: [`${start}px end`, `end ${end * -1}px`],
+    target: targetRef,
+    offset: ["start center", "center end"],
   });
 
-  const opacity = useTransform(scrollYProgress, [0.75, 1], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0.75, 1], [1, 0.85]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+  const position = useTransform(scrollYProgress, (pos) => {
+    return pos === 1 ? "sticky" : "relative";
+  });
 
-  const y = useTransform(scrollYProgress, [0, 1], [start, end]);
-  const transform = useMotionTemplate`translateY(${y}px) scale(${scale})`;
-
-  return (
-    <motion.img
-      src={src}
-      alt={alt}
-      className={className}
-      ref={ref}
-      style={{ transform, opacity }}
-    />
-  );
-};
-
-const Schedule = () => {
-  return (
-    <section id="build-schedule" className={styles.buildSchedule}>
-      <motion.h1
-        initial={{ y: 48, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ ease: "easeInOut", duration: 0.75 }}
-        className={styles.buildScheduleHeader}
-      >
-        Build Schedule
-      </motion.h1>
-      <ScheduleItem title="PLANS" date="Week 1-2" location="Florida" />
-      <ScheduleItem title="MARKUP BLUEPRINTS" date="Week 3" location="Texas" />
-      <ScheduleItem
-        title="VIRTUAL PRE-CONSTRUCTION MEETING"
-        date="Week 4"
-        location="Florida"
-      />
-      <ScheduleItem title="SELECTIONS" date="Week 5-6" location="Florida" />
-      <ScheduleItem title="BUILD" date="Week 7-38" location="California" />
-      <ScheduleItem
-        title="FINAL WALKTHROUGH"
-        date="Week 39"
-        location="California"
-      />
-      <ScheduleItem title="CLOSING" date="Week 40" location="Texas" />
-    </section>
-  );
-};
-
-const ScheduleItem = ({
-  title,
-  date,
-  location,
-}: {
-  title: string;
-  date: string;
-  location: string;
-}) => {
   return (
     <motion.div
-      initial={{ y: 48, opacity: 0 }}
-      whileInView={{ y: 0, opacity: 1 }}
-      transition={{ ease: "easeInOut", duration: 0.75 }}
-      className={styles.buildScheduleItem}
+      className={className}
+      ref={targetRef}
+      style={{ opacity, position }}
     >
-      <div>
-        <p className={styles.buildScheduleItemTitle}>{title}</p>
-        <p className={styles.buildScheduleItemPara}>{date}</p>
-      </div>
-      <div className={styles.buildScheduleItemIcon}>
-        <p>{location}</p>
-        <p>+</p>
-      </div>
+      <h2>{title}</h2>
+      <p>{para}</p>
     </motion.div>
   );
 };

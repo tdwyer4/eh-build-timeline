@@ -1,37 +1,4 @@
 .background {
-  --tw-bg-opacity: 1;
-  background-color: rgb(9 9 11 / var(--tw-bg-opacity));
-}
-
-.nav {
-  --tw-text-opacity: 1;
-    color: rgb(255 255 255 / var(--tw-text-opacity));
-    padding-top: .75rem;
-    padding-bottom: .75rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    justify-content: space-between;
-    align-items: center;
-    display: flex;
-    z-index: 50;
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-}
-
-.navbutton {
-  --tw-text-opacity: 1;
-    color: rgb(161 161 170 / var(--tw-text-opacity));
-    font-size: .75rem;
-    line-height: 1rem;
-    gap: .25rem;
-    align-items: center;
-    display: flex;
-    cursor: pointer;
-    text-transform: none;
-    margin: 0;
-    padding: 0;
 }
 
 .heroSection {
@@ -60,20 +27,35 @@
 }
 
 .parallaxContainer {
-  padding-top: 200px;
+  /* padding-top: 200px; */
   padding-left: 1rem;
   padding-right: 1rem;
   max-width: 64rem;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 50vh;
+  margin-bottom: 50vh;
 }
 
 .imageOne {
-  width: 33.3%;
+  width: 50%;
   max-width: 100%;
   height: auto;
   display: block;
-  vertical-align: middle;
+  margin: auto;
+}
+
+.imageOne h2 {
+  font-size: 56px;
+  color: white;
+  text-align: center;
+}
+
+.imageOne p {
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  margin-top: 8px;
 }
 
 .imageTwo {

@@ -1,72 +1,91 @@
-import { ReactLenis } from "lenis/dist/lenis-react";
-import {
-  motion,
-  useMotionTemplate,
-  useScroll,
-  useTransform,
-} from "framer-motion";
-import { useState, useEffect, useRef } from "react";
+import { MotionValue, motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import styles from "./ChoosePath.module.css";
-import { PathText } from "./ChoosePathText";
-import { PathMedia } from "./ChoosePathMedia";
-
-const paths = [
-  {
-    title: "Choose A Lot",
-    id: "pick-a-lot",
-    src: "https://placehold.co/600x600/000000/FFF",
-  },
-  {
-    title: "Choose a Floor Plan",
-    id: "choose-floorplan",
-    src: "https://placehold.co/600x600/76D5D8/FFF?text=PickPath",
-  },
-];
+import { ReactLenis } from "lenis/dist/lenis-react";
+import FPVideo from "../../media/fpnew3.mp4";
 
 const ChoosePath = () => {
+  const targetRef = useRef<HTMLDivElement | null>(null);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+  });
+
   return (
-    <div>
-      <ReactLenis
-        root
-        options={{
-          // Learn more -> https://github.com/darkroomengineering/lenis?tab=readme-ov-file#instance-settings
-          lerp: 0.05,
-          //   infinite: true,
-          //   syncTouch: true,
-        }}
-      >
-        <PathOverview />
-      </ReactLenis>
+    <>
+      <section ref={targetRef} className={styles.mainWrap}>
+        <ReactLenis
+          root
+          options={{
+            lerp: 0.05,
+            //   infinite: true,
+            //   syncTouch: true,
+          }}
+        >
+          <Content content={items} />
+          <Images content={items} scrollYProgress={scrollYProgress} />
+        </ReactLenis>
+      </section>
+    </>
+  );
+};
+
+const Content = ({ content }: { content: typeof items }) => {
+  return (
+    <div className={styles.contentWrap}>
+      {content.map(({ id, title, description }, idx) => (
+        <div
+          key={id}
+          className={`${styles.contentContainer} ${
+            idx % 2 ? styles.textContainer2 : styles.textContainer1
+          }`}
+        >
+          <span className={styles.contentTitleText}>{title}</span>
+          <span className={styles.contentDescText}>{description}</span>
+        </div>
+      ))}
     </div>
   );
 };
 
-function PathOverview() {
+const Images = ({
+  content,
+  scrollYProgress,
+}: {
+  content: typeof items;
+  scrollYProgress: MotionValue<number>;
+}) => {
+  const top = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [`-${(content.length - 1) * 100}vh`, "0vh"]
+  );
+
   return (
-    <div className={styles.background}>
-      <div className={styles.heroSection}>
-        <div className={styles.heroBottom}>
-          <ul>
-            {paths.map((path) => (
-              <li key={path.id}>
-                <PathText>{path.title}</PathText>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className={styles.divColumnContainer}>
-          <div className={styles.divColumn}>
-            {paths.map((path) => (
-              <div key={path.id}>
-                <PathMedia src={path.src} children={undefined}></PathMedia>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-      {/* <div className={styles.scrollSpace}>Scrolling Space</div> */}
+    <div className={styles.imageContainer}>
+      <motion.div style={{ top }} className={styles.imagePosition}>
+        {[...content].reverse().map(({ video, id, title }) => (
+          <video key={id} className={styles.image} src={video} muted autoPlay />
+        ))}
+      </motion.div>
     </div>
   );
-}
+};
 
 export default ChoosePath;
+
+const items = [
+  {
+    id: 1,
+    title: "Pick A Lot",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
+    video: `${FPVideo}`,
+  },
+  {
+    id: 2,
+    title: "Choose A Floorplan",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
+    video: `${FPVideo}`,
+  },
+];

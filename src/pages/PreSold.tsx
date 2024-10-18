@@ -83,18 +83,22 @@ export const PreSold = () => {
         <ChoosePath />
         <ProcessCards />
         <PAList />
+        <VideoScroll
+          videoMain={PadVideo}
+          headingMain="Footing & Slab "
+          descMain="This is what the phase of footing and slab looks like."
+        />
 
-        {/* This section will now appear once the user can scroll */}
-        <VideoParallaxContent
+        {/* <VideoParallaxContent
           video={PadVideo}
           subheading="The foundation is being built."
           heading="Footing & Slab"
         >
-          {/* <MoreContent
+          <MoreContent
             title="Initial Preparation"
             para="Lorem ipsum dolor sit amet consectetur adipisicing elit."
-          /> */}
-        </VideoParallaxContent>
+          /> 
+        </VideoParallaxContent> */}
         <Communication />
 
         <VideoParallaxContent

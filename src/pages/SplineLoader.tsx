@@ -17,7 +17,6 @@ export default function SplineLoader() {
   const contentRef = useRef<HTMLDivElement | null>(null);
 
   function handleClick(contentName: string) {
-    console.log("Button clicked:", contentName);
     startTransition(() => {
       setCurrentContent(contentName);
     });
@@ -28,8 +27,8 @@ export default function SplineLoader() {
   // Preload image before the video ends
   useEffect(() => {
     const video = document.createElement("video");
-    video.src = HeroImage; // use particle vid
-    video.onloadeddata = () => setVideoLoaded(true); // preload particle vid
+    video.src = HeroImage;
+    video.onloadeddata = () => setVideoLoaded(true);
     video.load();
   }, []);
 
@@ -62,20 +61,19 @@ export default function SplineLoader() {
           autoPlay
           muted
           onEnded={handleVideoEnd}
-          className={`${styles.video} ${videoEnded ? styles.hidden : ""}`} // hidden after video ends
+          className={`${styles.video} ${videoEnded ? styles.hidden : ""}`}
         />
-        {videoLoaded &&
-          videoEnded && ( // video ends and image shows
-            <video
-              autoPlay
-              muted
-              loop={true}
-              src={HeroImage}
-              className={`${styles.staticImage} ${
-                videoEnded ? styles.fadeIn : ""
-              }`} // fade-in
-            />
-          )}
+        {videoLoaded && videoEnded && (
+          <video
+            autoPlay
+            muted
+            loop={true}
+            src={HeroImage}
+            className={`${styles.staticImage} ${
+              videoEnded ? styles.fadeIn : ""
+            }`} // fade-in
+          />
+        )}
 
         <div className={styles.manifestContainer}>
           <Manifest />
