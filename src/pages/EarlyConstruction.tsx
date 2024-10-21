@@ -80,7 +80,7 @@ export const EarlyConstruction = () => {
           para="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, blanditiis soluta eius quam modi aliquam quaerat odit deleniti minima maiores voluptate est ut saepe accusantium maxime doloremque nulla consectetur possimus."
         />
       </VideoParallaxContent>
-      <CardCarousel cards={content} />
+      <CardCarousel />
       <TextParallaxContent
         imgUrl="https://placehold.co/2671x1780/3E454C/566069?text=Section+2"
         subheading="COPYYYYYYYYY"

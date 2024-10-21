@@ -1,24 +1,79 @@
-.videoContainer {
-    background-size: cover;
-    background-position: center center;
-    height: 100svh;
-    width: 100%;
-    top: 0px;
-    position: relative;
-    transform: none;
-    object-fit: cover;
+.mainContainer {
+  display: grid;
+position: relative;
 }
 
+.videoContainer {
+  overflow: hidden; 
+  position: sticky; 
+  top: 0;
+  z-index: 0; 
+  border-radius: 0rem;  
+  width: 100%;
+  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+}
 
-/*.vidMainContainer {
-    scroll-snap-type: y mandatory;
-    overflow-y: scroll;
-    height: 100vh;
-    -webkit-overflow-scrolling: touch;
-  }  
-  
-  .vidSubContainer {
-    scroll-snap-align: start;
-    height: 100vh;
+.videoSubContainer {
+  position: absolute; 
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; 
+}
+
+.videoOpacity {
+  position: absolute; 
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; 
+  background: #000;
+}
+
+.textScrollContainer {
+  display: flex; 
+  position: relative; 
+  z-index: 0; 
+  flex-direction: column; 
+  height: 400vh; 
+  gap: 100vh;
+}
+
+.textHolder {
+  display: grid;
+  place-content: center; 
+  width: 100%; 
+  height: s0vh;
+}
+
+.videoDescription {
+  margin-bottom: 8px; 
+  font-size: 14px;
+  line-height: 20px; 
+  text-align: center; 
+  max-width: 100%;
+}
+
+.videoHeader {
+  font-size: 56px;
+  line-height: 16px;
+  letter-spacing: 2px;
+  text-align: center;
+  color: white;
+  font-weight: 200;
+  margin: 0;
+}
+
+.scrollBuffer {
+  width: 100%; 
+  height: 6rem; 
+
+
+  @media (min-width: 768px) { 
+    height: 12rem; 
   }
-  */
+}
+

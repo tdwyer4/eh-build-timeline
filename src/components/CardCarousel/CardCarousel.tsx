@@ -1,99 +1,144 @@
-import React, { useRef, useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useTransform, useScroll } from "framer-motion";
+import { useRef } from "react";
 import styles from "./CardCarousel.module.css";
 
-interface CardCarouselProps {
-  cards: { image: string; title: string; paragraph: string }[];
-}
+const CardCarousel = () => {
+  return (
+    <div className={styles.scrollContainer}>
+      <HorizontalScrollCarousel />
+    </div>
+  );
+};
 
-const CardCarousel: React.FC<CardCarouselProps> = ({ cards }) => {
-  const carouselRef = useRef<HTMLDivElement>(null);
-  const [currentCard, setCurrentCard] = useState<number>(0);
-  const [currentText, setCurrentText] = useState<number>(0);
+const HorizontalScrollCarousel = () => {
+  const targetRef = useRef<HTMLDivElement | null>(null);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+  });
 
-  useEffect(() => {
-    // Ensure the carousel starts from the first card
-    if (carouselRef.current) {
-      carouselRef.current.scrollLeft = 0;
-    }
-  }, []);
-
-  // Function to handle scrolling to the next card when a card is clicked
-  const scrollToCard = (index: number) => {
-    if (carouselRef.current) {
-      const cardWidth = carouselRef.current.scrollWidth / cards.length;
-      // Offset the scroll slightly so part of the previous and next card is visible
-      const scrollAmount = cardWidth * index - cardWidth * 0.5; // Adjust 0.2 to control how much of the next/prev card is visible
-
-      carouselRef.current.scrollTo({
-        left: scrollAmount,
-        behavior: "smooth",
-      });
-      setCurrentCard(index);
-      setCurrentText(index);
-    }
-  };
+  const x = useTransform(scrollYProgress, [0, 1], ["10%", "-60%"], {
+    clamp: true,
+  });
 
   return (
     <>
-      <div className={styles.headerContainer}>
-        <motion.div
-          className={styles.carouselInfo}
-          initial={{ opacity: 0, y: 100 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-        >
-          <h2 className={styles.carouselHeader}>Make Your Selections</h2>
-          <p className={styles.carouselText}>
-            This is just some descriptive text to tell you more about making
-            selections.
-          </p>
-        </motion.div>
-      </div>
-      <div className={styles.carouselContainer}>
-        <motion.div
-          className={styles.carousel}
-          ref={carouselRef}
-          initial={{ opacity: 0, y: 100 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-        >
-          {cards.map((card, index) => (
-            <motion.div
-              key={index}
-              className={`${styles.carouselCard} ${
-                currentCard === index ? styles.active : ""
-              }`}
-              onClick={() => scrollToCard(index)}
-              whileTap={{ scale: 1 }}
-              initial={{ y: 50 }}
-              whileInView={{ y: 0 }}
-              transition={{ duration: 0.0, ease: "easeIn" }}
-              style={{
-                width: "80%", // Make each card take up 80% of the carousel width to show part of the next/previous card
-                margin: "0 0%", // Add margins to the left and right to create space for the next/previous cards
-              }}
-            >
-              <img
-                src={card.image}
-                alt={card.title}
-                className={styles.cardImage}
-              />
-              <h2
-                key={index}
-                className={`${styles.cardTitle} ${
-                  currentText === index ? styles.activeTitle : ""
-                }`}
-              >
-                {card.title}
-              </h2>
-              <p className={styles.cardDescription}>{card.paragraph}</p>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
+      <section ref={targetRef} className={styles.mainContainer}>
+        <div className={styles.cardContainer}>
+          <SectionTitle />
+          <motion.div
+            style={{ x }}
+            className={styles.card}
+            viewport={{ once: true, amount: 1 }}
+          >
+            {cards.map((card) => {
+              return <Card card={card} key={card.id} />;
+            })}
+          </motion.div>
+        </div>
+      </section>
     </>
   );
 };
 
+const Card = ({ card }: { card: CardType }) => {
+  return (
+    <motion.div
+      key={card.id}
+      className={styles.cardTypeContainer}
+      initial={{ opacity: 0, y: 150 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, ease: "easeOut" }}
+    >
+      <img src={card.url} className={styles.cardImgContainer} />
+      <div className={styles.cardTitleContainer}>
+        <p className={styles.cardTitle}>{card.title}</p>
+        <p className={styles.cardDesc}>{card.description}</p>
+      </div>
+    </motion.div>
+  );
+};
+
+const SectionTitle = () => {
+  return (
+    <div className={styles.headerContainer}>
+      <motion.div
+        className={styles.carouselInfo}
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+      >
+        <h2 className={styles.carouselHeader}>Make Your Selections</h2>
+        <p className={styles.carouselText}>
+          This is just some descriptive text to tell you more about making
+          selections.
+        </p>
+      </motion.div>
+    </div>
+  );
+};
+
 export default CardCarousel;
+
+type CardType = {
+  url: string;
+  title: string;
+  description: string;
+  id: number;
+};
+
+const cards: CardType[] = [
+  {
+    url: "https://www.executivehomes.com/static/media/OneHundredPlusLayoutsImage.02de467e8933a912438e.jpg",
+    title: "Layout Designs",
+    description: "Discover amazing layout designs for your home.",
+    id: 1,
+  },
+  {
+    url: "https://www.executivehomes.com/static/media/CottagesImage.bd1fe48687e47e05e37d.png",
+    title: "Cottage Plans",
+    description: "Explore cozy cottage plans perfect for small families.",
+    id: 2,
+  },
+  {
+    url: "https://www.executivehomes.com/static/media/SideEntryGarageImage.bce2143d7780c333f826.png",
+    title: "Garage Entry",
+    description: "Side entry garages for a unique and functional home.",
+    id: 3,
+  },
+  {
+    url: "https://www.executivehomes.com/static/media/OneHundredPlusLayoutsImage.02de467e8933a912438e.jpg",
+    title: "Modern Layouts",
+    description: "Modern layout designs for efficient living.",
+    id: 4,
+  },
+  {
+    url: "https://www.executivehomes.com/static/media/CottagesImage.bd1fe48687e47e05e37d.png",
+    title: "Rustic Cottages",
+    description: "Charming rustic cottages for a cozy lifestyle.",
+    id: 5,
+  },
+  {
+    url: "https://www.executivehomes.com/static/media/SideEntryGarageImage.bce2143d7780c333f826.png",
+    title: "Garage Space",
+    description: "Maximize your space with smart garage designs.",
+    id: 6,
+  },
+  {
+    url: "https://www.executivehomes.com/static/media/OneHundredPlusLayoutsImage.02de467e8933a912438e.jpg",
+    title: "Layout Designs",
+    description: "Discover amazing layout designs for your home.",
+    id: 7,
+  },
+  {
+    url: "https://www.executivehomes.com/static/media/CottagesImage.bd1fe48687e47e05e37d.png",
+    title: "Cottage Plans",
+    description: "Explore cozy cottage plans perfect for small families.",
+    id: 8,
+  },
+  {
+    url: "https://www.executivehomes.com/static/media/SideEntryGarageImage.bce2143d7780c333f826.png",
+    title: "Garage Entry",
+    description: "Side entry garages for a unique and functional home.",
+    id: 9,
+  },
+];
