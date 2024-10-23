@@ -3,6 +3,7 @@ import { useRef } from "react";
 import styles from "./ChoosePath.module.css";
 import { ReactLenis } from "lenis/dist/lenis-react";
 import FPVideo from "../../media/fpnew3.mp4";
+import PLVideo from "../../media/lots.mp4";
 
 const ChoosePath = () => {
   const targetRef = useRef<HTMLDivElement | null>(null);
@@ -16,7 +17,7 @@ const ChoosePath = () => {
         <ReactLenis
           root
           options={{
-            lerp: 0.05,
+            lerp: 0.1,
             //   infinite: true,
             //   syncTouch: true,
           }}
@@ -79,7 +80,7 @@ const items = [
     title: "Pick A Lot",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
-    video: `${FPVideo}`,
+    video: `${PLVideo}`,
   },
   {
     id: 2,

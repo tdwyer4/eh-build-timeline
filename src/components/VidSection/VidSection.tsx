@@ -9,7 +9,27 @@ import {
 } from "framer-motion";
 import Video from "../../media/Pad.mp4";
 
-export const VidSection = ({ video }: { video: string }) => {
+export const VidSection = ({
+  video,
+  header1,
+  description1,
+  header2,
+  description2,
+  header3,
+  description3,
+  header4,
+  description4,
+}: {
+  video: string;
+  header1: string;
+  description1: string;
+  header2: string;
+  description2: string;
+  header3: string;
+  description3: string;
+  header4: string;
+  description4: string;
+}) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -23,29 +43,29 @@ export const VidSection = ({ video }: { video: string }) => {
           scrollYProgress={scrollYProgress}
           position={1}
           numItems={4}
-          header="Slab & Footing"
-          description="this is a description"
+          header={header1}
+          description={description1}
         />
         <TextHolder
           scrollYProgress={scrollYProgress}
           position={2}
           numItems={4}
-          header="This is more info"
-          description="this is a description"
+          header={header2}
+          description={description2}
         />
         <TextHolder
           scrollYProgress={scrollYProgress}
           position={3}
           numItems={4}
-          header="This is more info again"
-          description="this is a description"
+          header={header3}
+          description={description3}
         />
         <TextHolder
           scrollYProgress={scrollYProgress}
           position={4}
           numItems={4}
-          header="This is more info again"
-          description="this is a description"
+          header={header4}
+          description={description4}
         />
       </div>
       <ScrollBuffer />

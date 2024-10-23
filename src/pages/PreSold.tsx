@@ -15,7 +15,7 @@ import ChoosePath from "../components/ChoosePath/ChoosePath";
 import ScrollInfo from "../components/ScrollInfo/ScrollInfo";
 import PAList from "../components/PAList/PAList";
 import PadVideo from "../media/Pad.mp4";
-import FramingRoughVideo from "../media/FramingRough.mp4";
+import FramingRoughVideo from "../media/Framing.mp4";
 import { Communication } from "../components/Communication/Communication";
 import { VidSection } from "../components/VidSection/VidSection";
 
@@ -27,7 +27,17 @@ export const PreSold = () => {
         <ChoosePath />
         <ProcessCards />
         <PAList />
-        <VidSection video={PadVideo} />
+        <VidSection
+          video={PadVideo}
+          header1="Slab & Footing"
+          description1="this is a description"
+          header2="Lorem Ipsum 2"
+          description2="this is a description"
+          header3="Lorem Ipsum 3"
+          description3="this is a description"
+          header4="Lorem Ipsum 4"
+          description4="this is a description"
+        />
         {/* <VideoScroll
           videoMain={PadVideo}
           headingMain="Footing & Slab "
@@ -46,16 +56,17 @@ export const PreSold = () => {
         </VideoParallaxContent> */}
         <Communication />
 
-        <VideoParallaxContent
+        <VidSection
           video={FramingRoughVideo}
-          subheading=""
-          heading="Framing & Rough Trades"
-        >
-          {/* <MoreContent
-            title="Initial Preparation"
-            para="Lorem ipsum dolor sit amet consectetur adipisicing elit."
-          /> */}
-        </VideoParallaxContent>
+          header1="Framing & Rough Trades"
+          description1="this is a description"
+          header2="Lorem Ipsum 2"
+          description2="this is a description"
+          header3="Lorem Ipsum 3"
+          description3="this is a description"
+          header4="Lorem Ipsum 4"
+          description4="this is a description"
+        />
         <CardCarousel />
 
         <IntroCards />
