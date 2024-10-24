@@ -16,8 +16,10 @@ import ScrollInfo from "../components/ScrollInfo/ScrollInfo";
 import PAList from "../components/PAList/PAList";
 import PadVideo from "../media/Pad.mp4";
 import FramingRoughVideo from "../media/Framing.mp4";
+import PunchoutVideo from "../media/punchout.mp4";
 import { Communication } from "../components/Communication/Communication";
 import { VidSection } from "../components/VidSection/VidSection";
+import ConstructionQuality from "../components/ConstructionQuality/ConstructionQuality";
 
 export const PreSold = () => {
   return (
@@ -30,13 +32,13 @@ export const PreSold = () => {
         <VidSection
           video={PadVideo}
           header1="Slab & Footing"
-          description1="this is a description"
+          description1="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
           header2="Lorem Ipsum 2"
-          description2="this is a description"
+          description2="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
           header3="Lorem Ipsum 3"
-          description3="this is a description"
+          description3="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
           header4="Lorem Ipsum 4"
-          description4="this is a description"
+          description4="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
         />
         {/* <VideoScroll
           videoMain={PadVideo}
@@ -59,27 +61,28 @@ export const PreSold = () => {
         <VidSection
           video={FramingRoughVideo}
           header1="Framing & Rough Trades"
-          description1="this is a description"
+          description1="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
           header2="Lorem Ipsum 2"
-          description2="this is a description"
+          description2="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
           header3="Lorem Ipsum 3"
-          description3="this is a description"
+          description3="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
           header4="Lorem Ipsum 4"
-          description4="this is a description"
+          description4="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
         />
         <CardCarousel />
-
+        <ConstructionQuality />
         <IntroCards />
-        <TextParallaxContent
-          imgUrl="https://placehold.co/2671x1780/3E454C/566069?text=Section+3"
-          subheading="COPYYYYYYYYY"
-          heading="and EVEN MORE copyyyyyyyy!"
-        >
-          <MoreContent
-            title="Welcome Home"
-            para="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, blanditiis soluta eius quam modi aliquam quaerat odit deleniti minima maiores voluptate est ut saepe accusantium maxime doloremque nulla consectetur possimus."
-          />
-        </TextParallaxContent>
+        <VidSection
+          video={PunchoutVideo}
+          header1="Punch Out"
+          description1="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+          header2="Lorem Ipsum 2"
+          description2="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+          header3="Lorem Ipsum 3"
+          description3="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+          header4="Lorem Ipsum 4"
+          description4="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+        />
       </div>
     </>
   );

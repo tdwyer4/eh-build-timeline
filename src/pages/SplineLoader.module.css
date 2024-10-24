@@ -127,6 +127,7 @@
     box-shadow: #76d5d8 0px 0px 0px 0px;
     transition: all 0.3s ease-in-out;
     width: 175px;
+    font: 100;
   }
   
   .customControls button:hover {

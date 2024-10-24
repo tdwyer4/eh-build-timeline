@@ -46,7 +46,6 @@ position: relative;
   display: grid;
   place-content: center; 
   width: 100%; 
-  height: s0vh;
 }
 
 .videoDescription {
@@ -54,7 +53,6 @@ position: relative;
   font-size: 14px;
   line-height: 20px; 
   text-align: center; 
-  max-width: 100%;
 }
 
 .videoHeader {

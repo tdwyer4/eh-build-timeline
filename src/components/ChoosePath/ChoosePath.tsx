@@ -2,7 +2,7 @@ import { MotionValue, motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import styles from "./ChoosePath.module.css";
 import { ReactLenis } from "lenis/dist/lenis-react";
-import FPVideo from "../../media/fpnew3.mp4";
+import FPVideo from "../../media/floorplans.mp4";
 import PLVideo from "../../media/lots.mp4";
 
 const ChoosePath = () => {

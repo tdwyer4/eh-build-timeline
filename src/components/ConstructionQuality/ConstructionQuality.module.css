@@ -1,0 +1,60 @@
+.cqMainWrap {
+    display: flex;
+    width: 100vw;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #1A2229;
+}
+
+.contentContainer {
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    width: 100%;
+  }
+  
+.textContainer {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    height: 100vh;
+}
+
+.videoContainer {
+    overflow: hidden; 
+    position: sticky; 
+    top: 0; 
+    width: 100%; 
+    height: 100vh; 
+}
+  
+.videoPosition {
+    position: absolute; 
+    right: 0; 
+    left: 0; 
+}
+  
+.video {
+    object-fit: contain; 
+    width: 100%; 
+    height: 100vh; 
+    scale: 1;
+}
+
+.contentTitle {
+    font-size: 48px;
+    line-height: 48px;
+    text-transform: uppercase;
+    margin-left: 32px;
+    margin-right: 32px;
+    color: white;
+}
+
+.contentDesc {
+    font-size: 14px;
+    line-height: 16px;
+    margin-top: 16px;
+    margin-left: 32px;
+    margin-right: 32px;
+    color: White;
+}

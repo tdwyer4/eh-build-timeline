@@ -1,81 +1,65 @@
-.scrollContainer {
-  background-color: #fff;
+.mainContainer {
+  display: flex;
+    width: 100vw;
+    flex-direction: row;
+    justify-content: space-between;
+    background: linear-gradient(#ffffff 10%, #1A2229 95%);
 }
 
-.mainContainer {
-  background-color: #fff;
-  height: 300vh;
-  position: relative;
+.selectionsContainer {
+  display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    width: 100%;
 }
 
 .cardContainer {
-  overflow: hidden;
-  align-items: center;
-  height: 100vh;
-  display: grid;
-  top: 0;
-  position: sticky;
-  align-content: center;
-}
-
-.card {
-  gap: 16px;
-  display: flex;
-}
-
-.cardTypeContainer {
-  background-color: #3E454C;
-  box-shadow: #3E454C50 0px 2px 15px 0px;
-  overflow: hidden;
-  width: 300px;
-  height: 400px;
-  position: relative;
-  border-radius: 20px;
+  margin-top: 50vh;
   display: flex;
   flex-direction: column;
-}
-
-.cardImgContainer {
-  width: 100%;
-  border-radius: 8px 8px 0px 0px;
-  margin-bottom: 16px;
-  display: flex;
-}
-
-.cardHover {}
-
-.cardTitleContainer {
-  display: flex;
-  flex-direction: column;
-  padding: 16px;
-}
-
-.cardTitle {
-  --tw-backdrop-blur: blur(16px);
-  color: #fff;
-  text-transform: uppercase;
-  font-weight: 200;
-  font-size: 24px;
-  line-height: 1;
-  margin: 0;
 }
 
 .headerContainer {
-  display: flex;
-  margin: 48px;
+    overflow: hidden; 
+    position: sticky; 
+    top: 0; 
+    width: 100%; 
+    height: 100vh; 
+    display: flex;
+    align-items: center;
 }
 
-.carouselInfo {
-  display: flex;
-  flex-direction: column;
+.textContainer {
+  position: absolute; 
+    right: 0; 
+    left: 0;
+    background-color:transparent;
+
 }
 
-.carouselHeader {
+.headerText {
   font-size: 48px;
-  font-weight: 200;
+  line-height: 48px;
+  text-transform: uppercase;
+  margin-left: 32px;
+  margin-right: 32px;
+  margin-bottom: 0;
+  color: #ffffff;
+  background: linear-gradient(#858a8b 0%, #1A2229 100%);
+  background-size: 350% 350%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.carouselText {
-  color: #3E454C;
-  margin: 0;
+.descText {
+    font-size: 14px;
+    line-height: 16px;
+    margin-top: 16px;
+    margin-left: 32px;
+    margin-right: 32px;
+    color: #ffffff;
+  background: linear-gradient(#b2b8b9 0%, #1A2229 100%);
+  background-size: 150% 150%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

@@ -101,8 +101,10 @@ const VideoHolder = ({ video }: { video: string }) => {
           loop={true}
           style={{
             height: "100vh",
+            width: "100%",
             backgroundSize: "cover",
             backgroundPosition: "center",
+            objectFit: "cover",
           }}
         ></motion.video>
         <motion.div
@@ -138,8 +140,9 @@ const TextHolder = ({
   const scale = useTransform(scrollYProgress, [start, end], [1, 0.75]);
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1, transition: { duration: 1 } }}
+      initial={{ opacity: 1, y: 250 }}
+      whileInView={{ opacity: 1, y: 50, transition: { duration: 1 } }}
+      viewport={{ once: false, amount: 0.5 }}
       className={styles.textHolder}
       style={{ opacity, scale }}
     >
