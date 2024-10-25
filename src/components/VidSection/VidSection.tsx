@@ -33,7 +33,7 @@ export const VidSection = ({
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start center", "end center"],
+    offset: ["center center", "end center"],
   });
   return (
     <motion.div className={styles.mainContainer}>
@@ -110,8 +110,8 @@ const VideoHolder = ({ video }: { video: string }) => {
         <motion.div
           className={styles.videoOpacity}
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 0.4 }}
-          transition={{ duration: 1 }}
+          whileInView={{ opacity: 0.7 }}
+          transition={{ duration: 2 }}
           exit={{ opacity: 0 }}
         />
       </motion.div>
@@ -136,15 +136,14 @@ const TextHolder = ({
   const end = stepSize * position;
   const start = end - stepSize;
 
-  const opacity = useTransform(scrollYProgress, [start, end], [1, 0]);
+  const y = useTransform(scrollYProgress, [start, end], [0, 0]);
   const scale = useTransform(scrollYProgress, [start, end], [1, 0.75]);
   return (
     <motion.div
-      initial={{ opacity: 1, y: 250 }}
-      whileInView={{ opacity: 1, y: 50, transition: { duration: 1 } }}
-      viewport={{ once: false, amount: 0.5 }}
+      initial={{ opacity: 0, y: 0 }}
+      whileInView={{ opacity: 1, y: 0, transition: { duration: 2 } }}
       className={styles.textHolder}
-      style={{ opacity, scale }}
+      style={{}}
     >
       <h1 className={styles.videoHeader}>{header}</h1>
       <p className={styles.videoDescription}>{description}</p>

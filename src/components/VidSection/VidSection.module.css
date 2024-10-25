@@ -44,6 +44,7 @@ position: relative;
 
 .textHolder {
   display: grid;
+  justify-items: center;
   place-content: center; 
   width: 100%; 
 }
