@@ -35,42 +35,42 @@ const Schedule = () => {
         transition={{ ease: "easeInOut", duration: 0.75 }}
         className={styles.buildScheduleHeader}
       >
-        Purchase Agreement Signed. What's Next?
+        THE PURCHASE AGREEMENT IS SIGNED. WHAT'S NEXT?
       </motion.h1>
       <ScheduleItem
         title="PLANS ARE PREPARED"
-        date="Week 1-2"
-        location="Short description text here explaining the step."
+        date="1"
+        location="Our in-house plans team creates the detailed blueprints for your new home."
       />
       <ScheduleItem
         title="Pre-Construction Meeting"
-        date="Week 3"
-        location="Short description text here explaining the step."
+        date="2"
+        location="You'll meet with our Plans Coordinator to review the plans and discuss the upcoming building experience."
       />
       <ScheduleItem
         title="Plans Finalized"
-        date="Week 4"
-        location="Short description text here explaining the step."
+        date="3"
+        location="Our team will finalize the plans with any upgrades you might add during the Pre-Con Meeting."
       />
       <ScheduleItem
         title="Cut Sheet Built"
-        date="Week 5"
-        location="Short description text here explaining the step."
+        date="4"
+        location="Our proprietary Cut Sheet prepares instructions for the contractors based on the EXACT features in your home. "
       />
       <ScheduleItem
-        title="Checklist Generated"
-        date="Week 6"
-        location="Short description text here explaining the step."
+        title="Checklist Created"
+        date="5"
+        location="Our one-of-a-kind quality assurance checklists are automatically created based on the precise finishes in your home. "
       />
       <ScheduleItem
-        title="House Automatically Scheduled"
-        date="Week 7"
-        location="Short description text here explaining the step."
+        title="Schedule Generated"
+        date="6"
+        location="Every stage of construction is automatically scheduled by our proprietary algorithm."
       />
       <ScheduleItemLast
-        title="House Starts"
-        date="Week 8"
-        location="Short description text here explaining the step."
+        title="Let's Get Started"
+        date="7"
+        location="With everything in place, construction gets rolling. The foundation stage is up first."
       />
     </section>
   );

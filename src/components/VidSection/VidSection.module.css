@@ -1,78 +1,74 @@
-.mainContainer {
-  display: grid;
+.vidSliderWrap {
 position: relative;
 }
 
-.videoContainer {
-  overflow: hidden; 
-  position: sticky; 
-  top: 0;
-  z-index: 0; 
-  border-radius: 0rem;  
-  width: 100%;
-  object-fit: cover;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-}
-
-.videoSubContainer {
-  position: absolute; 
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0; 
-}
-
-.videoOpacity {
-  position: absolute; 
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0; 
-  background: #000;
-}
-
-.textScrollContainer {
+.slideContainer {
   display: flex; 
-  position: relative; 
-  z-index: 0; 
+  position: sticky; 
+  top: 0; 
   flex-direction: column; 
-  height: 400vh; 
-  gap: 100vh;
+  justify-content: center; 
+  align-items: center; 
+  transform-origin: top;
 }
 
-.textHolder {
-  display: grid;
-  justify-items: center;
-  place-content: center; 
-  width: 100%; 
+.slideVideoContainer {
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: 0px;
 }
 
-.videoDescription {
-  margin-bottom: 8px; 
-  font-size: 14px;
-  line-height: 20px; 
-  text-align: center; 
+.slideVideo {
+  object-fit: cover;
+  border-radius: 24px;
 }
 
-.videoHeader {
-  font-size: 56px;
-  line-height: 16px;
-  letter-spacing: 2px;
-  text-align: center;
+.slideVideoOverlay {
+  position: absolute; 
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; 
+  background: #000000;
+  border-radius: 24px;
+}
+
+.slideTextContainer {
+  position: absolute;
+  display: flex;
+  top: 0;
+  bottom: 0;
+  /* left: 0; */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
   color: white;
-  font-weight: 200;
-  margin: 0;
+  padding: 16px;
+  text-align: center;
+  max-width: 100%;
 }
 
-.scrollBuffer {
-  width: 100%; 
-  height: 6rem; 
+.slideTitle {
+  margin-bottom: 0; 
+  font-size: 56px;
+  line-height: 56px; 
+  font-weight: 200;
+  letter-spacing: 2px;
+  max-width: 50%;
+}
 
+.slideParagraph {
+  margin-bottom: 32px; 
+  max-width: 50%; 
+  font-size: 16px;
+  font-weight: 00;
+  line-height: 1.25rem; 
+}
 
-  @media (min-width: 768px) { 
-    height: 12rem; 
-  }
+.screenBuffer {
+  height: 100vh; 
+background-color: #000000;
 }
 

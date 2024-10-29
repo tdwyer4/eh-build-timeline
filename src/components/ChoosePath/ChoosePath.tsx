@@ -1,74 +1,83 @@
-import { MotionValue, motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import {
+  MotionValue,
+  motion,
+  useScroll,
+  useTransform,
+  useMotionValueEvent,
+} from "framer-motion";
+import React, { useRef, useState } from "react";
 import styles from "./ChoosePath.module.css";
 import { ReactLenis } from "lenis/dist/lenis-react";
-import FPVideo from "../../media/floorplans.mp4";
+import FPVideo from "../../media/floorplansV2.mp4";
 import PLVideo from "../../media/lots.mp4";
 
 const ChoosePath = () => {
-  const targetRef = useRef<HTMLDivElement | null>(null);
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-  });
-
-  return (
-    <>
-      <section ref={targetRef} className={styles.mainWrap}>
-        <ReactLenis
-          root
-          options={{
-            lerp: 0.1,
-            //   infinite: true,
-            //   syncTouch: true,
-          }}
-        >
-          <Content content={items} />
-          <Images content={items} scrollYProgress={scrollYProgress} />
-        </ReactLenis>
-      </section>
-    </>
-  );
+  return <Content content={items} />;
 };
 
 const Content = ({ content }: { content: typeof items }) => {
+  const [activeCard, setActiveCard] = React.useState(0);
+  const ref = useRef<any>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    // container: ref,
+    offset: ["start start", "end start"],
+  });
+  const cardLength = content.length;
+
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    const cardsBreakpoints = content.map((_, index) => index / cardLength);
+    const closestBreakpointIndex = cardsBreakpoints.reduce(
+      (acc, breakpoint, index) => {
+        const distance = Math.abs(latest - breakpoint);
+        if (distance < Math.abs(latest - cardsBreakpoints[acc])) {
+          return index;
+        }
+        return acc;
+      },
+      0
+    );
+    setActiveCard(closestBreakpointIndex);
+  });
+
   return (
-    <div className={styles.contentWrap}>
-      {content.map(({ id, title, description }, idx) => (
-        <div
-          key={id}
-          className={`${styles.contentContainer} ${
-            idx % 2 ? styles.textContainer2 : styles.textContainer1
-          }`}
-        >
-          <span className={styles.contentTitleText}>{title}</span>
-          <span className={styles.contentDescText}>{description}</span>
+    <motion.div ref={ref} className={styles.mainWrap}>
+      <div className={styles.contentWrap}>
+        <div className={styles.contentContainer}>
+          {content.map((item, index) => (
+            <div key={item.title + index} className={styles.content}>
+              <motion.h2
+                initial={{ opacity: 0.2 }}
+                animate={{ opacity: activeCard === index ? 1 : 0 }}
+                transition={{ duration: 1 }}
+                className={styles.contentTitleText}
+              >
+                {item.title}
+              </motion.h2>
+              <motion.p
+                initial={{ opacity: 0.2 }}
+                animate={{ opacity: activeCard === index ? 1 : 0 }}
+                transition={{ duration: 1 }}
+                className={styles.contentDescText}
+              >
+                {item.description}
+              </motion.p>
+            </div>
+          ))}
+          <div className={styles.bufferSpace} />
         </div>
-      ))}
-    </div>
-  );
-};
-
-const Images = ({
-  content,
-  scrollYProgress,
-}: {
-  content: typeof items;
-  scrollYProgress: MotionValue<number>;
-}) => {
-  const top = useTransform(
-    scrollYProgress,
-    [0, 1],
-    [`-${(content.length - 1) * 100}vh`, "0vh"]
-  );
-
-  return (
-    <div className={styles.imageContainer}>
-      <motion.div style={{ top }} className={styles.imagePosition}>
-        {[...content].reverse().map(({ video, id, title }) => (
-          <video key={id} className={styles.image} src={video} muted autoPlay />
-        ))}
-      </motion.div>
-    </div>
+      </div>
+      <div className={styles.imageContainer}>
+        <div className={styles.imagePosition}>
+          <video
+            src={content[activeCard].video ?? null}
+            className={styles.image}
+            muted
+            autoPlay
+          />
+        </div>
+      </div>
+    </motion.div>
   );
 };
 
@@ -76,14 +85,12 @@ export default ChoosePath;
 
 const items = [
   {
-    id: 1,
     title: "Pick A Lot",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
     video: `${PLVideo}`,
   },
   {
-    id: 2,
     title: "Choose A Floorplan",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",

@@ -35,10 +35,9 @@ const Copy = () => {
       {/* <span className={styles.headerTag}>Lorem ipsum dolor</span> */}
       <h2 className={styles.header}>Communication every step of the way</h2>
       <p className={styles.paragraph}>
-        Lorem ipsum dolor sit amet consectetur. Dolor quis a leo lobortis orci
-        tortor eget. Enim proin aliquam nulla a lacus pellentesque quam in. Nec
-        vel vel nulla nunc vel in molestie proin convallis. Leo et vulputate
-        tincidunt justo a varius et elementum.
+        We provide extremely detailed updates during every stage of
+        construction. Our uniquely streamlined communication means resources are
+        allocated to high-end finishes and not time-consuming meetings.
       </p>
     </div>
   );
@@ -60,29 +59,29 @@ const Carousel = () => {
           scrollYProgress={scrollYProgress}
           position={1}
           numItems={4}
-          heading="Regular updates at every phase"
-          desc="Description1"
+          heading="Status Updates"
+          desc="You'll receive more than 25 detailed status updates filled with info about each stage of construction. The updates will also have estimated closing dates so you can plan your move. "
         />
         <CarouselItem
           scrollYProgress={scrollYProgress}
           position={2}
           numItems={4}
-          heading="Access to hundreds of FAQs"
-          desc="Description2"
+          heading="FAQ Database"
+          desc="You'll have access to an FAQ database that's filled with answers to most any questions you might have during construction. It's the go-to-resource when you visit the home during construction! "
         />
         <CarouselItem
           scrollYProgress={scrollYProgress}
           position={3}
           numItems={4}
-          heading="30 minute average response time"
-          desc="Description3"
+          heading="Fast Response Times"
+          desc="If the status updates and FAQ database don't do the trick, our team will be happy to provide nearly immediate responses. Our average email response during business hours is less than 30 minutes! "
         />
         <CarouselItem
           scrollYProgress={scrollYProgress}
           position={4}
           numItems={4}
-          heading="no gimmicks. quality guaranteed."
-          desc="Description4"
+          heading="Streamlined Communication"
+          desc="We always communicate by email to ensure every detail in your home is implemented in the most efficient way possible. Emails also allow you to communicate when convenient for you and reference anything at any time! "
         />
       </div>
 

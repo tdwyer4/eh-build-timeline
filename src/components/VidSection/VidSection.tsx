@@ -1,106 +1,74 @@
 import React, { useRef } from "react";
 import styles from "./VidSection.module.css";
-import {
-  AnimatePresence,
-  motion,
-  MotionValue,
-  useScroll,
-  useTransform,
-} from "framer-motion";
-import Video from "../../media/Pad.mp4";
+import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
+import PadVideo from "../../media/Pad.mp4";
+import FramingRoughVideo from "../../media/Framing.mp4";
+import PunchoutVideo from "../../media/punchout.mp4";
 
-export const VidSection = ({
-  video,
-  header1,
-  description1,
-  header2,
-  description2,
-  header3,
-  description3,
-  header4,
-  description4,
-}: {
-  video: string;
-  header1: string;
-  description1: string;
-  header2: string;
-  description2: string;
-  header3: string;
-  description3: string;
-  header4: string;
-  description4: string;
-}) => {
+export const VidSection = () => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["center center", "end center"],
+    offset: ["start start", "end start"],
   });
+
   return (
-    <motion.div className={styles.mainContainer}>
-      <VideoHolder video={video} />
-      <div ref={ref} className={styles.textScrollContainer}>
-        <TextHolder
-          scrollYProgress={scrollYProgress}
-          position={1}
-          numItems={4}
-          header={header1}
-          description={description1}
-        />
-        <TextHolder
-          scrollYProgress={scrollYProgress}
-          position={2}
-          numItems={4}
-          header={header2}
-          description={description2}
-        />
-        <TextHolder
-          scrollYProgress={scrollYProgress}
-          position={3}
-          numItems={4}
-          header={header3}
-          description={description3}
-        />
-        <TextHolder
-          scrollYProgress={scrollYProgress}
-          position={4}
-          numItems={4}
-          header={header4}
-          description={description4}
-        />
+    <>
+      <div ref={ref} className={styles.vidSliderWrap}>
+        {SLIDES.map((s, idx) => (
+          <Slide
+            key={s.id}
+            slide={s}
+            scrollYProgress={scrollYProgress}
+            position={idx + 1}
+          />
+        ))}
       </div>
-      <ScrollBuffer />
-    </motion.div>
+      {/* <div className={styles.screenBuffer} /> */}
+    </>
   );
 };
 
-const VideoHolder = ({ video }: { video: string }) => {
-  const targetRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-    offset: ["end end", "end start"],
-  });
+interface SlideProps {
+  position: number;
+  slide: SlideType;
+  scrollYProgress: MotionValue;
+}
 
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.85]);
-  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+const Slide = ({ position, slide, scrollYProgress }: SlideProps) => {
+  const scaleFromPct = (position - 1) / SLIDES.length;
+  const y = useTransform(
+    scrollYProgress,
+    [scaleFromPct, 1],
+    [0, -SLIDE_HEIGHT]
+  );
+
+  const isOddSlide = position % 2;
 
   return (
-    <AnimatePresence>
+    <motion.div
+      style={{
+        height: SLIDE_HEIGHT,
+        y: position === SLIDES.length ? undefined : y,
+        // background: isOddSlide ? "black" : "white",
+        // color: isOddSlide ? "white" : "black",
+      }}
+      className={styles.slideContainer}
+    >
       <motion.div
-        initial={{ opacity: 1, y: 0, scale: 1, borderRadius: 0 }}
-        whileInView={{ opacity: 1, y: 0, scale: 0.95, borderRadius: 24 }}
+        className={styles.slideVideoContainer}
+        initial={{ scale: 0.85, opacity: 1, borderRadius: 24 }}
+        whileInView={{ scale: 0.95, opacity: 1, borderRadius: 24 }}
         transition={{ duration: 1 }}
-        viewport={{ once: true }}
-        exit={{ scale: 1, borderRadius: 0 }}
-        ref={targetRef}
-        className={styles.videoContainer}
       >
         <motion.video
-          src={video}
+          src={slide.video}
           muted
           autoPlay
           loop={true}
+          className={styles.slideVideo}
           style={{
-            height: "100vh",
+            height: "100%",
             width: "100%",
             backgroundSize: "cover",
             backgroundPosition: "center",
@@ -108,49 +76,61 @@ const VideoHolder = ({ video }: { video: string }) => {
           }}
         ></motion.video>
         <motion.div
-          className={styles.videoOpacity}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 0.7 }}
-          transition={{ duration: 2 }}
-          exit={{ opacity: 0 }}
+          className={styles.slideVideoOverlay}
+          whileInView={{ opacity: 0.3 }}
         />
       </motion.div>
-    </AnimatePresence>
-  );
-};
-
-const TextHolder = ({
-  scrollYProgress,
-  position,
-  numItems,
-  header,
-  description,
-}: {
-  scrollYProgress: MotionValue<number>;
-  position: number;
-  numItems: number;
-  header: string;
-  description: string;
-}) => {
-  const stepSize = 1 / numItems;
-  const end = stepSize * position;
-  const start = end - stepSize;
-
-  const y = useTransform(scrollYProgress, [start, end], [0, 0]);
-  const scale = useTransform(scrollYProgress, [start, end], [1, 0.75]);
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 0 }}
-      whileInView={{ opacity: 1, y: 0, transition: { duration: 2 } }}
-      className={styles.textHolder}
-      style={{}}
-    >
-      <h1 className={styles.videoHeader}>{header}</h1>
-      <p className={styles.videoDescription}>{description}</p>
+      <motion.div className={styles.slideTextContainer}>
+        <h3 className={styles.slideTitle}>{slide.title}</h3>
+        <p className={styles.slideParagraph}>{slide.paragraph}</p>
+      </motion.div>
     </motion.div>
   );
 };
 
-const ScrollBuffer = () => {
-  return <div className={styles.scrollBuffer} />;
+const SLIDE_HEIGHT = 960;
+
+type SlideType = {
+  id: number;
+  title: string;
+  paragraph: string;
+  video: string;
 };
+
+const SLIDES: SlideType[] = [
+  {
+    id: 1,
+    title: "Footings",
+    paragraph:
+      "The footing is the perimeter foundation and is the first step after the dirt pad is built. You'll notice rebar extending up from the footing - this rebar is tied into the slab concrete to anchor your home into the ground. ",
+    video: `${PadVideo}`,
+  },
+  {
+    id: 2,
+    title: "Rough Plumbing",
+    paragraph:
+      "The plumbers first visit to the home is call the Rough Plumbing phase. This is when the drain pipes and water lines are run. Our team uses laser levels to ensure everything is properly installed. ",
+    video: `${FramingRoughVideo}`,
+  },
+  {
+    id: 3,
+    title: "Post-Tension Cables",
+    paragraph:
+      "Every Executive home features post-tension cables that are engineered precisely for each layout. The post-tension cables bind the concrete together and provide the home with incredible tensile strength. ",
+    video: `${PunchoutVideo}`,
+  },
+  {
+    id: 4,
+    title: "Termite Treatment",
+    paragraph:
+      "A termite treatment will be applied before the slab is poured. The treatment comes with a 5-year warranty for extra peace of mind!",
+    video: `${PadVideo}`,
+  },
+  {
+    id: 5,
+    title: "Slab",
+    paragraph:
+      "Once the internal systems are in place, the slab is backfilled and concrete is poured. Framing is up next!.",
+    video: `${FramingRoughVideo}`,
+  },
+];

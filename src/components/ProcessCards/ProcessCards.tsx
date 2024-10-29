@@ -1,93 +1,101 @@
-import { motion, useTransform, useScroll } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import { useRef } from "react";
 import styles from "./ProcessCards.module.css";
+import Card from "./Card";
+import UpgradesPic from "../../media/upgrades.jpg";
 
 const ProcessCards = () => {
+  const targetRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+  });
   return (
-    <div className={styles.scrollContainer}>
-      <HorizontalScrollCarousel />
+    <div ref={targetRef} className={styles.mainContainer}>
+      <Selections />
     </div>
   );
 };
 
-const HorizontalScrollCarousel = () => {
-  const targetRef = useRef<HTMLDivElement | null>(null);
+function Selections() {
+  const container = useRef<HTMLElement | null>(null);
   const { scrollYProgress } = useScroll({
-    target: targetRef,
-  });
-
-  const x = useTransform(scrollYProgress, [0, 1], ["5%", "-70%"], {
-    clamp: true,
+    target: container,
+    offset: ["start end", "end end"],
   });
 
   return (
-    <section ref={targetRef} className={styles.mainContainer}>
-      <div className={styles.cardContainer}>
-        <motion.div
-          style={{ x }}
-          className={styles.card}
-          viewport={{ once: true, amount: 1 }}
-        >
-          {cards.map((card) => {
-            return <Card card={card} key={card.id} />;
+    <>
+      <div className={styles.selectionsContainer}>
+        <main className={styles.cardContainer} ref={container}>
+          {cards.map((card, i) => {
+            const targetScale = 1 - (cards.length - i) * 0.03;
+            return (
+              <Card
+                key={i}
+                i={i}
+                {...card}
+                progress={scrollYProgress}
+                range={[i * 0.05, 1]}
+                targetScale={targetScale}
+              />
+            );
           })}
-        </motion.div>
+        </main>
       </div>
-    </section>
+    </>
   );
-};
+}
 
-const Card = ({ card }: { card: CardType }) => {
+interface ManifestProps {
+  backgroundColor?: string; // Adding backgroundColor prop
+}
+
+function HeaderText({ backgroundColor }: ManifestProps) {
   return (
-    <motion.div
-      key={card.id}
-      className={styles.cardTypeContainer}
-      initial={{ opacity: 0, y: 150 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1, ease: "easeOut" }}
-    >
-      <div
-        style={{
-          backgroundImage: `url(${card.url})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-        className={styles.cardImgContainer}
-      ></div>
-      <div className={styles.cardTitleContainer}>
-        <p className={styles.cardTitle}>{card.title}</p>
+    <div className={styles.headerContainer} style={{ backgroundColor }}>
+      <div className={styles.textContainer}>
+        <p className={styles.headerText}>Make Your Selections</p>
+        <p className={styles.descText}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur.
+        </p>
       </div>
-    </motion.div>
+    </div>
   );
-};
+}
 
 export default ProcessCards;
 
-type CardType = {
-  url: string;
-  title: string;
-  id: number;
-};
-
-const cards: CardType[] = [
+const cards = [
   {
-    url: "/imgs/abstract/1.jpg",
-    title: "SELECT STYLE",
+    img: "https://assets.cloud.executivehomes.com/static/pages/styles-page/TwoStylesImage.jpg",
+    title: "Select Your Style",
+    description: "Choose the style that best matches your preferences.",
     id: 1,
   },
   {
-    url: "/imgs/abstract/2.jpg",
-    title: "SEE INCLUDED FEATURES",
+    img: "https://assets.cloud.executivehomes.com/prod/public/house-styles/STY~TRANSITIONAL/SMD~g-xsZbV9EQ0wUZvd",
+    title: "Luxury is Included",
+    description:
+      "Every home is loaded with premium finishes at no additional cost.",
     id: 2,
   },
   {
-    url: "/imgs/abstract/3.jpg",
-    title: "CHOOSE UPGRADES",
+    img: `${UpgradesPic}`,
+    title: "Customize with Upgrades",
+    description:
+      "100+ upgrades are available to choose online to personalize your home.",
     id: 3,
   },
   {
-    url: "/imgs/abstract/4.jpg",
-    title: "SIGN PURCHASE AGREEMENT",
+    img: "https://www.executivehomes.com/static/media/OneHundredPlusLayoutsImage.02de467e8933a912438e.jpg",
+    title: "Let's Get Started!",
+    description:
+      "Our simple Purchase Agreement locks in your price and guarantees your home's quality.",
     id: 4,
   },
 ];

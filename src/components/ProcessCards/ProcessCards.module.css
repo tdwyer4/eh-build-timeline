@@ -1,60 +1,57 @@
-.scrollContainer {
-  background-color: #fff;
+.mainContainer {
+  display: flex;
+    width: 100vw;
+    flex-direction: row;
+    justify-content: space-between;
+    background: linear-gradient(#1A2229 10%, #fff 95%);
 }
 
-.mainContainer {
-  background: linear-gradient(#1A2229, #fff);
-  height: 300vh;
-  position: relative;
+.selectionsContainer {
+  display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    width: 100%;
 }
 
 .cardContainer {
-  overflow: hidden;
-  align-items: center;
-  height: 100vh;
+  margin-top: 50vh;
   display: flex;
-  top: 0;
-  position: sticky;
+  flex-direction: column;
 }
 
-.card {
-  gap: 16px;
-  display: flex;
+.headerContainer {
+    overflow: hidden; 
+    position: sticky; 
+    top: 0; 
+    width: 100%; 
+    height: 100vh; 
+    display: flex;
+    align-items: center;
 }
 
-.cardTypeContainer {
-  --tw-bg-opacity: 1;
-  background-color: #3E454C;
-  overflow: hidden;
-  width: 960px;
-  height: 540px;
-  position: relative;
-  border-radius: 20px;
+.textContainer {
+  position: absolute; 
+    right: 0; 
+    left: 0;
+    background-color:transparent;
+
 }
 
-.cardImgContainer {
-  z-index: 0;
-  inset: 0;
-  position: absolute;
-}
-
-.cardHover {}
-
-.cardTitleContainer {
-  place-content: center;
-  display: grid;
-  z-index: 10;
-  inset: 0;
-  position: absolute;
-}
-
-.cardTitle {
-  --tw-backdrop-blur: blur(16px);
-  color: #fff;
-  text-transform: uppercase;
-  font-weight: 200;
+.headerText {
   font-size: 48px;
-  line-height: 1;
-  padding: 32px;
-  margin: 0;
+  line-height: 48px;
+  text-transform: uppercase;
+  margin-left: 32px;
+  margin-right: 32px;
+  margin-bottom: 0;
+  color: #ffffff;
+}
+
+.descText {
+    font-size: 14px;
+    line-height: 16px;
+    margin-top: 16px;
+    margin-left: 32px;
+    margin-right: 32px;
+    color: #ffffff;
 }

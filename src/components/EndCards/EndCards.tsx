@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import "./EndCards.scss";
+import "./EndCards.css";
 import { motion } from "framer-motion";
 
 export default function EndCards() {

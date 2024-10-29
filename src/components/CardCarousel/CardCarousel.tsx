@@ -1,128 +1,148 @@
-import { motion, useScroll } from "framer-motion";
+import { motion, useTransform, useScroll } from "framer-motion";
 import { useRef } from "react";
 import styles from "./CardCarousel.module.css";
-import Card from "./Card";
 
 const CardCarousel = () => {
-  const targetRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-  });
   return (
-    <div ref={targetRef} className={styles.mainContainer}>
-      <HeaderText />
-      <Selections />
+    <div className={styles.bgGradient}>
+      <div className={styles.scrollContainer}>
+        <HorizontalScrollCarousel />
+      </div>
     </div>
   );
 };
 
-function Selections() {
-  const container = useRef<HTMLElement | null>(null);
+const HorizontalScrollCarousel = () => {
+  const targetRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
-    target: container,
-    offset: ["start end", "end end"],
+    target: targetRef,
+  });
+
+  const x = useTransform(scrollYProgress, [0, 1], ["10%", "-60%"], {
+    clamp: true,
   });
 
   return (
     <>
-      <div className={styles.selectionsContainer}>
-        <main className={styles.cardContainer} ref={container}>
-          {cards.map((card, i) => {
-            const targetScale = 1 - (cards.length - i) * 0.05;
-            return (
-              <Card
-                key={i}
-                i={i}
-                {...card}
-                progress={scrollYProgress}
-                range={[i * 0.05, 1]}
-                targetScale={targetScale}
-              />
-            );
-          })}
-        </main>
-      </div>
+      <section ref={targetRef} className={styles.mainContainer}>
+        <div className={styles.cardContainer}>
+          <SectionTitle />
+          <motion.div
+            style={{ x }}
+            className={styles.card}
+            viewport={{ once: true, amount: 1 }}
+          >
+            {cards.map((card) => {
+              return <Card card={card} key={card.id} />;
+            })}
+          </motion.div>
+        </div>
+      </section>
     </>
   );
-}
+};
 
-interface ManifestProps {
-  backgroundColor?: string; // Adding backgroundColor prop
-}
-
-function HeaderText({ backgroundColor }: ManifestProps) {
+const Card = ({ card }: { card: CardType }) => {
   return (
-    <div className={styles.headerContainer} style={{ backgroundColor }}>
-      <div className={styles.textContainer}>
-        <p className={styles.headerText}>Make Your Selections</p>
-        <p className={styles.descText}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur.
-        </p>
+    <motion.div
+      key={card.id}
+      className={styles.cardTypeContainer}
+      initial={{ opacity: 0, y: 0 }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+        transition: { duration: 1, ease: "easeOut" },
+      }}
+    >
+      <img src={card.url} className={styles.cardImgContainer} />
+      <div className={styles.cardTitleContainer}>
+        <p className={styles.cardTitle}>{card.title}</p>
+        <p className={styles.cardDesc}>{card.description}</p>
       </div>
+    </motion.div>
+  );
+};
+
+const SectionTitle = () => {
+  return (
+    <div className={styles.headerContainer}>
+      <motion.div
+        className={styles.carouselInfo}
+        initial={{ opacity: 0, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, ease: "easeInOut" }}
+      >
+        <h2 className={styles.carouselHeader}>
+          STREAMLINED SELECTION <br /> EXPERIENCE
+        </h2>
+        <p className={styles.carouselText}>
+          We’ve streamlined the home personalization process so you can choose
+          all of the fun, value-added selections, without the time-consuming
+          minutiae that’s often associated with custom building. To make it even
+          easier, most every selection can be made remotely!
+        </p>
+      </motion.div>
     </div>
   );
-}
+};
 
 export default CardCarousel;
 
-const cards = [
+type CardType = {
+  url: string;
+  title: string;
+  description: string;
+  id: number;
+};
+
+const cards: CardType[] = [
   {
-    img: "https://www.executivehomes.com/static/media/OneHundredPlusLayoutsImage.02de467e8933a912438e.jpg",
-    title: "Layout Designs",
-    description: "Discover amazing layout designs for your home.",
+    url: "https://assets.cloud.executivehomes.com/prod/public/catalog-item/CIT~NYV-DHbQeguPXMVW/SMD~T90NB09LtsQWqEMc",
+    title: "Masonry",
+    description: "Every home features full brick below the plate line. ",
     id: 1,
   },
   {
-    img: "https://www.executivehomes.com/static/media/CottagesImage.bd1fe48687e47e05e37d.png",
-    title: "Cottage Plans",
-    description: "Explore cozy cottage plans perfect for small families.",
+    url: "https://assets.cloud.executivehomes.com/prod/public/catalog-item/CIT~xusBvPi17Y4ecTey/SMD~lDmKMufAkDFF2nzE",
+    title: "Light Fixtures",
+    description: "Our lighting vendor can source most anything you'd like! ",
     id: 2,
   },
   {
-    img: "https://www.executivehomes.com/static/media/SideEntryGarageImage.bce2143d7780c333f826.png",
-    title: "Garage Entry",
-    description: "Side entry garages for a unique and functional home.",
+    url: "https://assets.cloud.executivehomes.com/prod/public/catalog-item/CIT~-qq2eU15drq4_JfU/SMD~mfTG064n_TpLyL1j",
+    title: "Paint Colors",
+    description:
+      "Personalize your colors or choose one of our time-tested combos. ",
     id: 3,
   },
   {
-    img: "https://www.executivehomes.com/static/media/OneHundredPlusLayoutsImage.02de467e8933a912438e.jpg",
-    title: "Modern Layouts",
-    description: "Modern layout designs for efficient living.",
+    url: "https://assets.cloud.executivehomes.com/prod/public/catalog-item/CIT~FraxVi0GJGdERbTb/SMD~etT73hz7MdcdSv1P",
+    title: "Countertops",
+    description: "Dozens of high-end natural stone options are available! ",
     id: 4,
   },
   {
-    img: "https://www.executivehomes.com/static/media/CottagesImage.bd1fe48687e47e05e37d.png",
-    title: "Rustic Cottages",
-    description: "Charming rustic cottages for a cozy lifestyle.",
+    url: "https://assets.cloud.executivehomes.com/prod/public/catalog-item/CIT~TmqmVUO0vFNma52i/SMD~wLxOcDNHG87zs9CG",
+    title: "Backsplash",
+    description: "Choose a backsplash to accent your countertop choice.",
     id: 5,
   },
   {
-    img: "https://www.executivehomes.com/static/media/SideEntryGarageImage.bce2143d7780c333f826.png",
-    title: "Garage Space",
-    description: "Maximize your space with smart garage designs.",
+    url: "https://assets.cloud.executivehomes.com/prod/public/catalog-item/CIT~MNw6H0Et13l3iRRF/SMD~j1lKk3ZDOZrkNpGE",
+    title: "Floor Stain",
+    description: "Every home features real oak floors",
     id: 6,
   },
   {
-    img: "https://www.executivehomes.com/static/media/OneHundredPlusLayoutsImage.02de467e8933a912438e.jpg",
-    title: "Layout Designs",
-    description: "Discover amazing layout designs for your home.",
+    url: "https://assets.cloud.executivehomes.com/prod/public/catalog-item/CIT~6RuS72GS_ZNJ3-R2/SMD~EIclyb14nPSmSJbt",
+    title: "Tile & Carpet",
+    description: "High-end tile and carpet are standard.",
     id: 7,
   },
   {
-    img: "https://www.executivehomes.com/static/media/CottagesImage.bd1fe48687e47e05e37d.png",
-    title: "Cottage Plans",
-    description: "Explore cozy cottage plans perfect for small families.",
+    url: "https://assets.cloud.executivehomes.com/prod/public/catalog-item/CIT~93YJg1822ETNocCG/SMD~y427fX_82kVM-ZKi",
+    title: "Front Door",
+    description: "Choose from premium iron and wood options. ",
     id: 8,
-  },
-  {
-    img: "https://www.executivehomes.com/static/media/SideEntryGarageImage.bce2143d7780c333f826.png",
-    title: "Garage Entry",
-    description: "Side entry garages for a unique and functional home.",
-    id: 9,
   },
 ];
