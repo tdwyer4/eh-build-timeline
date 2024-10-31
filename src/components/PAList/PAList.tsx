@@ -40,7 +40,7 @@ const Schedule = () => {
       <ScheduleItem
         title="PLANS ARE PREPARED"
         date="1"
-        location="Our in-house plans team creates the detailed blueprints for your new home."
+        location="Our in-house plans team works diligently to create the detailed blueprints for your new home."
       />
       <ScheduleItem
         title="Pre-Construction Meeting"
@@ -95,10 +95,7 @@ const ScheduleItem = ({
       <div className={styles.buildScheduleInfo}>
         <p className={styles.buildScheduleItemPara}>{date}</p>
         <p className={styles.buildScheduleItemTitle}>{title}</p>
-      </div>
-      <div>
         <p className={styles.buildScheduleItemIcon}>{location}</p>
-        {/* <p>+</p> */}
       </div>
     </motion.div>
   );
@@ -123,10 +120,7 @@ const ScheduleItemLast = ({
       <div className={styles.buildScheduleInfo}>
         <p className={styles.buildScheduleItemParaLast}>{date}</p>
         <p className={styles.buildScheduleItemTitleLast}>{title}</p>
-      </div>
-      <div>
         <p className={styles.buildScheduleItemIconLast}>{location}</p>
-        {/* <p>+</p> */}
       </div>
     </motion.div>
   );

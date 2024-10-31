@@ -56,7 +56,8 @@ position: relative;
   line-height: 56px; 
   font-weight: 200;
   letter-spacing: 2px;
-  max-width: 50%;
+  max-width: 100%;
+  text-transform: uppercase;
 }
 
 .slideParagraph {
