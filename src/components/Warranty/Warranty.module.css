@@ -1,6 +1,7 @@
 .scrollContainer {
   background-color: #fff;
   background: linear-gradient(#1A2229, #fff);
+  background-size: 100% 100%;
   background-position: center;
 }
 
@@ -92,12 +93,13 @@
   line-height: 48px;
   letter-spacing: 1px;
   color: #fff;
-  text-align: center;
+  text-align: left;
 }
 
 .carouselText {
   color: #fff;
   margin: auto;
-  width: 50%;
-  text-align: center;
+  width: 100%;
+  text-align: left;
+  width: 50vw;
 }

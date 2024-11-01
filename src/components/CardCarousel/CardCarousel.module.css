@@ -69,6 +69,13 @@
   margin: 0;
 }
 
+.cardDesc {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  font-size: 14px;
+}
+
 .headerContainer {
   display: flex;
   margin: 48px;
@@ -87,4 +94,5 @@
 .carouselText {
   color: #3E454C;
   margin: 0;
+  width: 50vw;
 }
