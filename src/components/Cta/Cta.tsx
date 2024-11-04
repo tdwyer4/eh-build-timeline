@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import styles from "./Cta.module.css";
+import ctaVideo from "../../media/videos/ctaWizard.mp4";
 
 const CTA = () => {
   return (
@@ -39,7 +40,15 @@ const CTA = () => {
           animate={{ scale: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <div className={styles.ipadFrame}></div>
+          <div className={styles.videoFrame}>
+            <video
+              src={ctaVideo}
+              muted
+              autoPlay
+              loop={true}
+              className={styles.videoFit}
+            />
+          </div>
         </motion.div>
       </motion.div>
     </div>

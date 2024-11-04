@@ -25,6 +25,7 @@ import ConstructionQuality from "../components/ConstructionQuality/ConstructionQ
 import Warranty from "../components/Warranty/Warranty";
 import Closing from "../components/Closing/Closing";
 import CTA from "../components/Cta/Cta";
+import FinishQuality from "../components/FinishQuality/FinishQuality";
 
 export const PreSold = () => {
   return (
@@ -59,6 +60,7 @@ export const PreSold = () => {
         />
         <CardCarousel />
         <ConstructionQuality />
+        <FinishQuality />
         <Closing />
         <Warranty />
         <CTA />

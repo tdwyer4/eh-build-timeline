@@ -101,7 +101,7 @@
   left: 50; /* Align to the left */
   right: 50; /* Align to the right */
   display: flex;
-  width: 75%;
+  width: 75vw;
   height: 50vh;
   justify-content: center; /* Center video within the container */
   padding:  16px 16px 0 16px; /* Horizontal padding */
@@ -110,7 +110,7 @@
   overflow: hidden; /* Hide overflow from video corners */
 }
 
-.video {
+.videoFrame {
   position: absolute; /* Position the video absolutely within the container */
   top: 0; /* Align to the top */
   left: 50; /* Align to the left */
@@ -120,4 +120,8 @@
   object-fit: cover; /* Cover the entire container */
   border-radius: 8px 8px 0 0; /* Rounded corners */
   z-index: 4; /* Ensure the video is on top */
+}
+
+.videoFit {
+  width: 100%;
 }
