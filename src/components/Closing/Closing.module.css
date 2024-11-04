@@ -1,0 +1,162 @@
+.mainContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #1A2229;
+  }
+  
+  .leftContainer {
+    flex: 1;
+    margin-left: 0; 
+    display: flex;
+    padding-left: 5%;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: flex-start; 
+  }
+  
+  .rightContainer {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    width: 50vw; 
+    height: 100vh; 
+    position: relative; 
+  }
+  
+  .title {
+    font-size: 83px;
+    font-weight: 100;
+    background: linear-gradient(300deg, #76D5D8, #defeff, #00eeff, #76D5D8, #426b9b);
+    background-size: 360% 360%;
+    animation: gradient-animation 10s ease infinite;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    line-height: 75px;
+    margin: 0; 
+  }
+  
+  .subtitle {
+    font-size: 1.75rem;
+    font-weight: 200;
+    text-transform: uppercase;
+    color: white;
+    margin-bottom: 15px;
+  }
+  
+  .description {
+    margin: 15px 0;
+    font-size: 1rem;
+    color: rgba(188, 188, 188, 0.478);
+    line-height: 1.5;
+  }
+  
+  .button {
+    padding: 12px 24px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 20px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #141111;
+  }
+  
+  .statsContainer {
+    display: flex;
+    justify-content: flex-start;
+    gap: 40px;
+    margin-top: 20px;
+  }
+  
+  .stat {
+    text-align: left;
+  }
+  
+  .statNumber {
+    font-size: 83px;
+    font-weight: 100;
+    background: linear-gradient(300deg, #76D5D8, #defeff, #00eeff, #76D5D8, #426b9b);
+    background-size: 360% 360%;
+    animation: gradient-animation 10s ease infinite;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .statDescription {
+    font-size: 0.9rem;
+    color: white;
+  }
+  
+  .card {
+    position: relative; /* Necessary for pseudo-elements */
+    background: rgba(255, 255, 255, 0);
+    border-top: 0.5px solid rgba(255, 255, 255, 0.3);
+    border-left: 0.5px solid rgba(255, 255, 255, 0.3);
+    border-right: 0.5px solid rgba(255, 255, 255, 0.3);
+    border-bottom: none;
+    border-radius: 0px;
+    padding: 20px;
+    margin: 0px 0;
+    color: rgba(255, 255, 255, 0.318);
+      height: 24%;
+      width: 65%;
+    overflow: hidden;
+    transition: filter 0.3s ease;
+  }
+  
+  .card:hover {
+      filter: brightness(0.9);
+      background-color: #ffffff0b;
+      transition: all 1s cubic-bezier(.45, .17, .31, .99); /* Smooth transition */
+  
+    }
+    
+    .card::before {
+      content: "";
+      position: absolute;
+      bottom: -100%; /* Start from the bottom */
+      left: -100%; /* Start from the left */
+      height: 100%;
+      width: 100%;
+      font-weight: 600;
+      background: linear-gradient(45deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.057), rgba(255, 255, 255, 0)); /* Adjusted gradient for shimmer */
+      transition: all 1s cubic-bezier(.45, .17, .31, .99); /* Smooth transition */
+      z-index: 0;
+    }
+    
+    .card:hover::before {
+      bottom: 100%; /* Move the shimmer effect up on hover */
+      font-weight: 600;
+      left: 100%; /* Move the shimmer effect to the right on hover */
+    }
+    
+    .cardTitle {
+      font-size: 1.5rem;
+      font-weight: 200;
+      text-transform: uppercase;
+      margin: 0;
+    }
+    
+    .cardTitle:hover {
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      margin: 0;
+    }
+    .cardDescription {
+      font-size: 1rem;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.415);
+    }

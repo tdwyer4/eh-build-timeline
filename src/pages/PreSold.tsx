@@ -23,6 +23,8 @@ import { FootingVideo } from "../components/VidSection/FootingVideo";
 import { FramingVideo } from "../components/VidSection/FramingVideo";
 import ConstructionQuality from "../components/ConstructionQuality/ConstructionQuality";
 import Warranty from "../components/Warranty/Warranty";
+import Closing from "../components/Closing/Closing";
+import CTA from "../components/Cta/Cta";
 
 export const PreSold = () => {
   return (
@@ -57,7 +59,9 @@ export const PreSold = () => {
         />
         <CardCarousel />
         <ConstructionQuality />
+        <Closing />
         <Warranty />
+        <CTA />
       </div>
     </>
   );
