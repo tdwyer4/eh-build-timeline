@@ -18,15 +18,14 @@ const HorizontalScrollCarousel = () => {
     target: targetRef,
   });
 
-  const x = useTransform(scrollYProgress, [0, 1], ["10%", "-60%"], {
-    clamp: true,
+  const x = useTransform(scrollYProgress, [0, 1], ["3%", "-60%"], {
+    clamp: false,
   });
 
   return (
     <>
       <section ref={targetRef} className={styles.mainContainer}>
         <div className={styles.cardContainer}>
-          <SectionTitle />
           <motion.div
             style={{ x }}
             className={styles.card}

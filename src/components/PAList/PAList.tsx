@@ -40,7 +40,7 @@ const Schedule = () => {
       <ScheduleItem
         title="PLANS ARE PREPARED"
         date="1"
-        location="Our in-house plans team works diligently to create the detailed blueprints for your new home."
+        location="Our in-house plans team works diligently to create   the detailed blueprints for your new home."
       />
       <ScheduleItem
         title="Pre-Construction Meeting"

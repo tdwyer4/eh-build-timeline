@@ -26,13 +26,17 @@ import Warranty from "../components/Warranty/Warranty";
 import Closing from "../components/Closing/Closing";
 import CTA from "../components/Cta/Cta";
 import FinishQuality from "../components/FinishQuality/FinishQuality";
+import GetStarted from "../components/GetStarted/GetStarted";
+import { Selections } from "../components/Selections/Selections";
+import ChooseHouse from "../components/ChooseHouse/ChooseHouse";
+import { RoughVideo } from "../components/VidSection/RoughVideo";
 
 export const PreSold = () => {
   return (
     <>
       <div className={styles.bgwhite}>
-        <ChoosePath />
-        <ProcessCards />
+        <ChooseHouse />
+        <GetStarted />
         <PAList />
         <FootingVideo
         // video={PadVideo}
@@ -58,7 +62,8 @@ export const PreSold = () => {
         // header4="Lorem Ipsum 4"
         // description4="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
         />
-        <CardCarousel />
+        <Selections />
+        <RoughVideo />
         <ConstructionQuality />
         <FinishQuality />
         <Closing />

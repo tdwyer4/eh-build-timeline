@@ -10,21 +10,28 @@
     display: flex; 
     flex-direction: column; 
     justify-content: center; 
-    width: 100%;
+    width: 50%;
+    height: 400vh;
+    position: sticky;
+    
   }
   
 .textContainer {
-    display: flex;
+    /* display: flex;
     flex-direction: column; 
-    justify-content: center; 
+    justify-content: center; */
+    text-align: left;
     height: 100vh;
+    margin-top: 50%;
 }
 
 .videoContainer {
+    display: flex;
+    justify-content: center;
     overflow: hidden; 
     position: sticky; 
     top: 0; 
-    width: 100%; 
+    width: 50%; 
     height: 100vh; 
 }
   
@@ -38,23 +45,30 @@
     object-fit: contain; 
     width: 100%; 
     height: 100vh; 
-    scale: 1;
+    scale: 0.75;
+}
+
+.imgPhoneFrame {
+    object-fit: contain;
+    width: 100%;
+    height: 100vh;
+    scale: 0.75;
 }
 
 .contentTitle {
     font-size: 48px;
     line-height: 48px;
     text-transform: uppercase;
-    margin-left: 32px;
-    margin-right: 32px;
     color: white;
+    display: flex;
+    width: 75%;
 }
 
 .contentDesc {
     font-size: 14px;
     line-height: 16px;
     margin-top: 16px;
-    margin-left: 32px;
-    margin-right: 32px;
     color: White;
+    display: flex;
+    width: 75%;
 }

@@ -1,9 +1,8 @@
 import React, { useRef } from "react";
 import styles from "./VidSection.module.css";
 import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
-import PadVideo from "../../media/Pad.mp4";
-import FramingRoughVideo from "../../media/Framing.mp4";
-import PunchoutVideo from "../../media/punchout.mp4";
+import Framing from "../../media/videos/phases/6Framing.mp4";
+import Roofing from "../../media/videos/phases/7Roofing.mp4";
 
 export const FramingVideo = () => {
   const ref = useRef(null);
@@ -103,41 +102,13 @@ const SLIDES: SlideType[] = [
     title: "Framing",
     paragraph:
       "Framing is split into several phases. The first step involves standing the walls and setting the ceiling joists. Then, the framers add the rafters that form the roof line. From there, the cornice details are installed and roof is decked. The framers will make a return trip for their punch work after the rough trades are finished.",
-    video: `${PadVideo}`,
+    video: `${Framing}`,
   },
   {
     id: 2,
     title: "Roofing",
     paragraph:
       "The roofers arrive once the decking is installed. Our roofing contractor is the best in the area and has roofed thousands of homes. Their expertise during construction, as well as during the warranty after closing, is one of many reasons our homeowners have experienced unmatched new home resale value.",
-    video: `${FramingRoughVideo}`,
-  },
-  {
-    id: 3,
-    title: "Plumbing Top Out",
-    paragraph:
-      "For the plumbers, this is their second trip to the home and is a stage referred to as the plumbing “top out.” This is when the water lines and pipes to the various fixtures and showers are installed. The plumbers will return again shortly before closing to install the fixtures.",
-    video: `${PunchoutVideo}`,
-  },
-  {
-    id: 4,
-    title: "HVAC Rough",
-    paragraph:
-      "This stage is when the furnace and ducts are installed. The HVAC system for each home is specifically designed through a J-Calc completed by a third-party energy company. The system is also tested by an energy rating company to ensure the ducts have less than 4% leakage (compared to 15-25% in non-certified homes!",
-    video: `${PadVideo}`,
-  },
-  {
-    id: 5,
-    title: "Electric Rough",
-    paragraph:
-      "Now it's the electrician's turn. At this stage, wiring for fixtures, can lights, recepts, and other features are run throughout the home. The electricians will return later during the fixtures stage to finalize their work. We offer an on-site electric consultation as an upgrade for those who want to personalize their electric locations and features.",
-    video: `${FramingRoughVideo}`,
-  },
-  {
-    id: 6,
-    title: "Audio/Video",
-    paragraph:
-      "The A/V prewiring occurs near the end of the rough trades process. We offer a complementary on-site A/V consultation to personalize TV locations and add other features, such as speaker and camera wiring.",
-    video: `${FramingRoughVideo}`,
+    video: `${Roofing}`,
   },
 ];

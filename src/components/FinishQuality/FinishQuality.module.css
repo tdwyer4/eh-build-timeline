@@ -1,28 +1,107 @@
-.mainContainer {
+.container {
     position: relative;
-    height: 300vh;
-}
-
-.stickyContainer {
-    position: sticky;
-    overflow: hidden;
-    top: 0;
-    height: 100vh;
     width: 100vw;
-    background-color: white;
-}
-
-.textContainer {
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+  }
+  
+  .buttonContainer {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 36px;
+    width: fit-content;
+    height: 5vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
-}
-
-.textTitle {
-    text-transform: uppercase;
-    font-weight: 200;
-    font-size: 48px;
-    letter-spacing: 1px;
-}
+    padding: 0 8px;
+    background: rgba(213, 213, 213, 0.1);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+  }
+  
+  .button {
+    margin: 8px;
+    padding: 0.5rem 1.5rem;
+    border: 1px solid white;
+    border-radius: 25px;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: 0.3s ease;
+  }
+  
+  .hotpoint {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #76d5d8;
+    border-radius: 50%;
+    box-shadow: 0px 0px 12px #29313932;
+    z-index: 3;
+    cursor: pointer;
+    animation: pulse 1.5s infinite ease-in-out;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+  }
+  
+  .tooltip {
+    position: absolute;
+    width: 280px;
+    max-width: 90vw;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    opacity: 0;
+    transform-origin: top left;
+    backdrop-filter: blur(4px);
+    box-shadow: 0px 0px 24px rgba(41, 49, 57, 0.8);
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+  }
+  
+  .tooltip.active {
+    opacity: 1;
+  }
+  
+  .tooltip img {
+    width: 100%;
+    height: auto;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+  
+  .tooltip h1 {
+    font-size: 1.25rem;
+    color: #ffffff;
+    margin: 0;
+    text-align: center;
+  }
+  
+  .tooltip p {
+    font-size: 0.875rem;
+    color: #ffffff;
+    margin-top: 4px;
+    text-align: center;
+  }

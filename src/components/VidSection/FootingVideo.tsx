@@ -1,9 +1,11 @@
 import React, { useRef } from "react";
 import styles from "./VidSection.module.css";
 import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
-import PadVideo from "../../media/Pad.mp4";
-import FramingRoughVideo from "../../media/Framing.mp4";
-import PunchoutVideo from "../../media/punchout.mp4";
+import Pad from "../../media/videos/phases/1Pad.mp4";
+import RoughPlumbing from "../../media/videos/phases/2RoughPlumbing.mp4";
+import PostTension from "../../media/videos/phases/3PostTension.mp4";
+import Termite from "../../media/videos/phases/4Termite.mp4";
+import Slab from "../../media/videos/phases/5Slab.mp4";
 
 export const FootingVideo = () => {
   const ref = useRef(null);
@@ -103,34 +105,34 @@ const SLIDES: SlideType[] = [
     title: "Footings",
     paragraph:
       "The footing is the perimeter foundation and is the first step after the dirt pad is built. You'll notice rebar extending up from the footing - this rebar is tied into the slab concrete to anchor your home into the ground. ",
-    video: `${PadVideo}`,
+    video: `${Pad}`,
   },
   {
     id: 2,
     title: "Rough Plumbing",
     paragraph:
       "The plumbers first visit to the home is call the Rough Plumbing phase. This is when the drain pipes and water lines are run. Our team uses laser levels to ensure everything is properly installed. ",
-    video: `${FramingRoughVideo}`,
+    video: `${RoughPlumbing}`,
   },
   {
     id: 3,
     title: "Post-Tension Cables",
     paragraph:
       "Every Executive home features post-tension cables that are engineered precisely for each layout. The post-tension cables bind the concrete together and provide the home with incredible tensile strength. ",
-    video: `${PunchoutVideo}`,
+    video: `${PostTension}`,
   },
   {
     id: 4,
     title: "Termite Treatment",
     paragraph:
       "A termite treatment will be applied before the slab is poured. The treatment comes with a 5-year warranty for extra peace of mind!",
-    video: `${PadVideo}`,
+    video: `${Termite}`,
   },
   {
     id: 5,
     title: "Slab",
     paragraph:
       "Once the internal systems are in place, the slab is backfilled and concrete is poured. Framing is up next!.",
-    video: `${FramingRoughVideo}`,
+    video: `${Slab}`,
   },
 ];

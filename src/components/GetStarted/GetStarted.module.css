@@ -1,0 +1,61 @@
+.cardGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+    height: 100vh;
+    padding: 72px;
+    box-sizing: border-box;
+    background: linear-gradient(#1A2229, #fff);
+  }
+  
+  .card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cardImage {
+    width: 100%;
+    height: 100%;
+    border-radius: 0px;
+    object-fit: cover;
+  }
+
+  .cardOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.7); /* Optional dark overlay for readability */
+    color: #fff; /* Text color to contrast with the overlay */
+    padding: 24px;
+    text-align: center;
+  }
+  
+  .cardTitle {
+    font-size: 24px;
+    font-weight: 200;
+    letter-spacing: 1px;
+    line-height: 48px;
+    text-transform: uppercase;
+    margin: 0;
+    margin-bottom: 0;
+    color: #000;
+  }
+  .cardHeader {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 200;
+    line-height: 16px;
+    margin-top: 0px;
+    color: #000;
+    width: 75%;
+  }
+  
