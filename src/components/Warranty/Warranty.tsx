@@ -1,5 +1,5 @@
-import { motion, useTransform, useScroll } from "framer-motion";
-import { useRef } from "react";
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import styles from "./Warranty.module.css";
 import ACIcon from "../../media/icons/AC.png";
 import ApplianceIcon from "../../media/icons/Appliances.png";
@@ -10,153 +10,253 @@ import MembersIcon from "../../media/icons/Members.png";
 import PlumbingIcon from "../../media/icons/Plumbing.png";
 import WarrantyIcon from "../../media/icons/Warranty.png";
 
-const Warranty = () => {
+const CARD_SIZE_LG = 365;
+const CARD_SIZE_SM = 290;
+
+const BORDER_SIZE = 0;
+const CORNER_CLIP = 0;
+const CORNER_LINE_LEN = Math.sqrt(
+  CORNER_CLIP * CORNER_CLIP + CORNER_CLIP * CORNER_CLIP
+);
+
+const ROTATE_DEG = 0.8;
+
+const STAGGER = 0;
+const CENTER_STAGGER = 0;
+
+const SECTION_HEIGHT = 800;
+
+export const Warranty = () => {
+  const [cardSize, setCardSize] = useState(CARD_SIZE_LG);
+
+  const [selections, setselections] = useState(WARRANTY_DATA);
+
+  const handleMove = (position: number) => {
+    const copy = [...selections];
+
+    if (position > 0) {
+      for (let i = position; i > 0; i--) {
+        const firstEl = copy.shift();
+
+        if (!firstEl) return;
+
+        copy.push({ ...firstEl, tempId: Math.random() });
+      }
+    } else {
+      for (let i = position; i < 0; i++) {
+        const lastEl = copy.pop();
+
+        if (!lastEl) return;
+
+        copy.unshift({ ...lastEl, tempId: Math.random() });
+      }
+    }
+
+    setselections(copy);
+  };
+
+  useEffect(() => {
+    const { matches } = window.matchMedia("(min-width: 640px)");
+
+    if (matches) {
+      setCardSize(CARD_SIZE_LG);
+    } else {
+      setCardSize(CARD_SIZE_SM);
+    }
+
+    const handleSetCardSize = () => {
+      const { matches } = window.matchMedia("(min-width: 640px)");
+
+      if (matches) {
+        setCardSize(CARD_SIZE_LG);
+      } else {
+        setCardSize(CARD_SIZE_SM);
+      }
+    };
+
+    window.addEventListener("resize", handleSetCardSize);
+
+    return () => window.removeEventListener("resize", handleSetCardSize);
+  }, []);
+
   return (
-    <div className={styles.bgGradient}>
-      <div className={styles.scrollContainer}>
-        <HorizontalScrollCarousel />
-      </div>
-    </div>
-  );
-};
-
-const HorizontalScrollCarousel = () => {
-  const targetRef = useRef<HTMLDivElement | null>(null);
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-  });
-
-  const x = useTransform(scrollYProgress, [0, 1], ["10%", "-60%"], {
-    clamp: true,
-  });
-
-  return (
-    <>
-      <section ref={targetRef} className={styles.mainContainer}>
-        <div className={styles.cardContainer}>
-          <SectionTitle />
-          <motion.div
-            style={{ x }}
-            className={styles.card}
-            viewport={{ once: true, amount: 1 }}
-          >
-            {cards.map((card) => {
-              return <Card card={card} key={card.id} />;
-            })}
-          </motion.div>
-        </div>
-      </section>
-    </>
-  );
-};
-
-const Card = ({ card }: { card: CardType }) => {
-  return (
-    <motion.div
-      key={card.id}
-      className={styles.cardTypeContainer}
-      initial={{ opacity: 0, y: 0 }}
-      whileInView={{
-        opacity: 1,
-        y: 0,
-        transition: { duration: 1, ease: "easeOut" },
+    <div
+      className={styles.sectionWrap}
+      style={{
+        height: SECTION_HEIGHT,
       }}
     >
-      <img src={card.icon} className={styles.cardImgContainer} />
-      <div className={styles.cardTitleContainer}>
-        <p className={styles.cardTitle}>{card.title}</p>
-        <p className={styles.cardDesc}>{card.description}</p>
-      </div>
-    </motion.div>
-  );
-};
-
-const SectionTitle = () => {
-  return (
-    <div className={styles.headerContainer}>
-      <motion.div
-        className={styles.carouselInfo}
-        initial={{ opacity: 0, y: 0 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: "easeInOut" }}
-      >
-        <h2 className={styles.carouselHeader}>
-          OUR WARRANTY <br /> COVERAGE
-        </h2>
-        <p className={styles.carouselText}>
+      <motion.div className={styles.copyContainer}>
+        <h2 className={styles.header}>OUR WARRANTY COVERAGE</h2>
+        <p className={styles.paragraph}>
           Explore our range of home warranty coverages that keep your home
           protected year-round. Choose from heating, air conditioning, plumbing,
           and more!
         </p>
       </motion.div>
+      {selections.map((t, idx) => {
+        let position = 0;
+
+        if (selections.length % 2) {
+          position = idx - (selections.length + 1) / 2;
+        } else {
+          position = idx - selections.length / 2;
+        }
+
+        return (
+          <SelectionsCard
+            key={t.tempId}
+            testimonial={t}
+            handleMove={handleMove}
+            position={position}
+            cardSize={cardSize}
+          />
+        );
+      })}
+      <div className={styles.btnContainer}>
+        <button onClick={() => handleMove(-1)} className={styles.btnWrap}>
+          ←
+        </button>
+        <button onClick={() => handleMove(1)} className={styles.btnWrap}>
+          →
+        </button>
+      </div>
     </div>
   );
 };
 
-export default Warranty;
+interface SelectionsProps {
+  position: number;
+  testimonial: WarrantyType;
+  handleMove: Function;
+  cardSize: number;
+}
 
-type CardType = {
-  icon: string;
-  title: string;
-  description: string;
-  id: number;
+const SelectionsCard = ({
+  position,
+  testimonial,
+  handleMove,
+  cardSize,
+}: SelectionsProps) => {
+  const isActive = position === 0;
+
+  return (
+    <motion.div
+      initial={false}
+      onClick={() => handleMove(position)}
+      className={`
+      ${styles.cardContainer} ${
+        isActive ? `${styles.cardActive}` : `${styles.cardInactive}`
+      }
+      `}
+      style={{
+        borderWidth: BORDER_SIZE,
+      }}
+      animate={{
+        width: cardSize,
+        height: cardSize,
+        x: `calc(-50% + ${position * (cardSize / 1.15)}px)`,
+        y: `calc(-50% + ${
+          isActive ? CENTER_STAGGER : position % 2 ? STAGGER : -STAGGER
+        }px)`,
+        scale: isActive ? 1 : position % 2 ? ROTATE_DEG : ROTATE_DEG,
+      }}
+      transition={{
+        type: "smooth",
+        mass: 3,
+        stiffness: 400,
+        damping: 50,
+      }}
+    >
+      <span
+        className={styles.cardWrap}
+        style={{
+          right: -BORDER_SIZE,
+          top: CORNER_CLIP - BORDER_SIZE,
+          width: CORNER_LINE_LEN,
+          height: BORDER_SIZE,
+        }}
+      />
+      <img
+        src={testimonial.imgSrc}
+        alt={`Testimonial image for ${testimonial.by}`}
+        className={styles.cardImage}
+        style={{}}
+      />
+      <h3
+        className={`${styles.cardHeader} ${
+          isActive
+            ? `${styles.cardHeaderActive}`
+            : `${styles.cardHeaderInactive}`
+        }`}
+      >
+        {testimonial.testimonial}
+      </h3>
+      <p
+        className={`${styles.cardDesc} ${
+          isActive ? `${styles.cardDescActive}` : `${styles.cardDescInactive}`
+        }`}
+      >
+        {testimonial.by}
+      </p>
+    </motion.div>
+  );
 };
 
-const cards: CardType[] = [
+type WarrantyType = {
+  tempId: number;
+  testimonial: string;
+  by: string;
+  imgSrc: string;
+};
+
+const WARRANTY_DATA: WarrantyType[] = [
   {
-    icon: `${HeatingIcon}`,
-    title: "Heating",
-    description:
-      "If staying warm and cozy is your thing, we’ve got the right home warranty coverage for you. Upgrade to a new HVAC system with exclusive member discounts on top brands.> Heating services include annual maintenance and repair to keep your system running efficiently.",
-    id: 1,
+    imgSrc: `${HeatingIcon}`,
+    testimonial: "Heating",
+    by: "If staying warm and cozy is your thing, we’ve got the right home warranty coverage for you. Upgrade to a new HVAC system with exclusive member discounts on top brands.> Heating services include annual maintenance and repair to keep your system running efficiently.",
+    tempId: 1,
   },
   {
-    icon: `${ACIcon}`,
-    title: "Air Conditioning",
-    description:
-      "We’ll help make sure your air conditioning keeps its cool so you can too. Keep cool during the summer months with repair services for your AC unit.",
-    id: 2,
+    imgSrc: `${ACIcon}`,
+    testimonial: "Air Conditioning",
+    by: "We’ll help make sure your air conditioning keeps its cool so you can too. Keep cool during the summer months with repair services for your AC unit.",
+    tempId: 2,
   },
   {
-    icon: `${ApplianceIcon}`,
-    title: "Kitchen & Laundry Appliances",
-    description:
-      "When these home heroes stop working, it’s a good day to have a home warranty. Covering everything from refrigerators to washers and dryers, we help keep your household running.",
-    id: 3,
+    imgSrc: `${ApplianceIcon}`,
+    testimonial: "Kitchen & Laundry Appliances",
+    by: "When these home heroes stop working, it’s a good day to have a home warranty. Covering everything from refrigerators to washers and dryers, we help keep your household running.",
+    tempId: 3,
   },
   {
-    icon: `${ElectricalIcon}`,
-    title: "Electrical",
-    description:
-      "You don’t have to power through electrical issues. We’ll help you get your spark back (safely of course). Electrical repairs and troubleshooting to keep your home powered and safe.",
-    id: 4,
+    imgSrc: `${ElectricalIcon}`,
+    testimonial: "Electrical",
+    by: "You don’t have to power through electrical issues. We’ll help you get your spark back (safely of course). Electrical repairs and troubleshooting to keep your home powered and safe.",
+    tempId: 4,
   },
   {
-    icon: `${PlumbingIcon}`,
-    title: "Plumbing",
-    description:
-      "Whether you’re dealing with a drip, leak or clog, we’ll help get things flowing again. Full coverage for leaks, clogs, and other plumbing issues that keep water flowing smoothly.",
-    id: 5,
+    imgSrc: `${PlumbingIcon}`,
+    testimonial: "Plumbing",
+    by: "Whether you’re dealing with a drip, leak or clog, we’ll help get things flowing again. Full coverage for leaks, clogs, and other plumbing issues that keep water flowing smoothly.",
+    tempId: 5,
   },
   {
-    icon: `${MembersIcon}`,
-    title: "Member Benefits",
-    description:
-      "We offer additional services like seasonal HVAC tune-ups and rekeys, as well as partner discounts. Enjoy exclusive discounts and additional services that make maintaining your home easier.",
-    id: 6,
+    imgSrc: `${MembersIcon}`,
+    testimonial: "Member Benefits",
+    by: "We offer additional services like seasonal HVAC tune-ups and rekeys, as well as partner discounts. Enjoy exclusive discounts and additional services that make maintaining your home easier.",
+    tempId: 6,
   },
   {
-    icon: `${WarrantyIcon}`,
-    title: "Additional Coverage",
-    description:
-      "Choose from add-ons like electronics protection, roof leak repair coverage, pool & built-in spa equipment. Expand your coverage with add-ons like electronics protection and roof leak repairs.",
-    id: 7,
+    imgSrc: `${WarrantyIcon}`,
+    testimonial: "Additional Coverage",
+    by: "Choose from add-ons like electronics protection, roof leak repair coverage, pool & built-in spa equipment. Expand your coverage with add-ons like electronics protection and roof leak repairs.",
+    tempId: 7,
   },
   {
-    icon: `${HVACIcon}`,
-    title: "New HVAC Program",
-    description:
-      "In the market for a new HVAC? Get exclusive pricing on name brand heating and cooling systems. Upgrade to a new HVAC system with exclusive member discounts on top brands.",
-    id: 8,
+    imgSrc: `${HVACIcon}`,
+    testimonial: "New HVAC Program",
+    by: "In the market for a new HVAC? Get exclusive pricing on name brand heating and cooling systems. Upgrade to a new HVAC system with exclusive member discounts on top brands.",
+    tempId: 8,
   },
 ];

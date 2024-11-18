@@ -35,7 +35,7 @@
   height: 100vh; /* Full viewport height */
   width: 100vw; /* Full viewport width */
   overflow: hidden; /* Prevent overflow */
-  background: linear-gradient(#76D5D830, #1a2229);
+  background: #1A2229;
   background-size: 100% 100%;
   background-position: center;
 }

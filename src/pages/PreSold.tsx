@@ -17,12 +17,11 @@ import PAList from "../components/PAList/PAList";
 import ZoomScroll from "../components/ZoomScroll/ZoomScroll";
 import PadVideo from "../media/Pad.mp4";
 import FramingRoughVideo from "../media/Framing.mp4";
-import PunchoutVideo from "../media/punchout.mp4";
 import { Communication } from "../components/Communication/Communication";
 import { FootingVideo } from "../components/VidSection/FootingVideo";
 import { FramingVideo } from "../components/VidSection/FramingVideo";
 import ConstructionQuality from "../components/ConstructionQuality/ConstructionQuality";
-import Warranty from "../components/Warranty/Warranty";
+import { Warranty } from "../components/Warranty/Warranty";
 import Closing from "../components/Closing/Closing";
 import CTA from "../components/Cta/Cta";
 import FinishQuality from "../components/FinishQuality/FinishQuality";
@@ -30,6 +29,9 @@ import GetStarted from "../components/GetStarted/GetStarted";
 import { Selections } from "../components/Selections/Selections";
 import ChooseHouse from "../components/ChooseHouse/ChooseHouse";
 import { RoughVideo } from "../components/VidSection/RoughVideo";
+import { InsulationVideo } from "../components/VidSection/InsulationVideo";
+import { MasonryVideo } from "../components/VidSection/Masonry";
+import { PunchoutVideo } from "../components/VidSection/PunchoutVideo";
 
 export const PreSold = () => {
   return (
@@ -65,8 +67,11 @@ export const PreSold = () => {
         <Selections />
         <RoughVideo />
         <ConstructionQuality />
+        <InsulationVideo />
         <FinishQuality />
+        <MasonryVideo />
         <Closing />
+        <PunchoutVideo />
         <Warranty />
         <CTA />
       </div>

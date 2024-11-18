@@ -14,7 +14,6 @@
   .splineContainer {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     position: relative;
     width: 100%;
     height: 100vh;
@@ -90,7 +89,7 @@
     justify-content: center;
     gap: 24px;
     position: relative;
-    z-index: 10; /* Ensure buttons are above the SplineHero */
+    z-index: 999; /* Ensure buttons are above the SplineHero */
   }
 
   .subTextContainer {
@@ -99,11 +98,12 @@
   }
 
   .subText {
-    font-size: 16px;
-    font-weight: 200;
+    font-size: 20px;
+    font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: white;
+    text-align: center;
   }
 
   .buttonContainer {
@@ -116,7 +116,7 @@
   .customControls button {
     position: relative;
     border: 1px solid #76d5d8;
-    border-radius: 20px;
+    border-radius: 9999px;
     background: none;
     font-size: 12px;
     text-transform: uppercase;
@@ -126,7 +126,7 @@
     background-color: transparent;
     box-shadow: #76d5d8 0px 0px 0px 0px;
     transition: all 0.3s ease-in-out;
-    width: 175px;
+    width: 100%;
   }
   
   .customControls button:hover {
@@ -139,4 +139,45 @@
   
   .Load {
     display: none;
+  }
+
+  .btnInfoContainer {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    border: #76d5d8 1px solid;
+    border-radius: 16px;
+    background-color: #1e242990 ;
+    padding: 16px 16px;
+    transition: all 0.3s ease-in-out;
+    width: 50%;
+    justify-content: space-between;
+  }
+
+  .btnInfoContainer:hover {
+    background-color: #76d5d810 ;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .infoHeader {
+    font-size: 24px;
+    font-weight: 200;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+  .infoInfo {
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 0;
+    color: #76d5d8;
+  }
+
+  .infoTime {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 0;
   }

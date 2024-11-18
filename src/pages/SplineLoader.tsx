@@ -20,9 +20,13 @@ export default function SplineLoader() {
     startTransition(() => {
       setCurrentContent(contentName);
     });
-
-    contentRef.current?.scrollIntoView({ behavior: "smooth" });
   }
+
+  useEffect(() => {
+    if (currentContent !== "Load") {
+      contentRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [currentContent]);
 
   // Preload image before the video ends
   useEffect(() => {
@@ -87,29 +91,64 @@ export default function SplineLoader() {
         >
           <div className={styles.subTextContainer}>
             <h3 className={styles.subText}>
-              Choose an option below to find out
+              Building a home is easier than you think. <br /> Pick a phase
+              below to get started!
             </h3>
           </div>
           <div className={styles.buttonContainer}>
-            <motion.div
-              onClick={() => handleClick("Load")}
-              className={styles.Load}
-            ></motion.div>
-            <motion.button
-              onClick={() => handleClick("Pre")}
-              whileTap={{ scale: 0.5 }}
-            >
-              Pre-Sold
-            </motion.button>
-            <motion.button onClick={() => handleClick("Early")}>
-              Early Construction
-            </motion.button>
-            <motion.button onClick={() => handleClick("Mid")}>
-              Mid Construction
-            </motion.button>
-            <motion.button onClick={() => handleClick("Ready")}>
-              Move-In Ready
-            </motion.button>
+            <motion.div className={styles.Load}></motion.div>
+            <motion.div className={styles.btnInfoContainer}>
+              <h3 className={styles.infoHeader}>PRE-SOLD</h3>
+              <div className={styles.infoSub}>
+                <p className={styles.infoInfo}>Build Time:</p>
+                <p className={styles.infoTime}>5-6 Months</p>
+              </div>
+              <motion.button
+                onClick={() => handleClick("Pre")}
+                whileTap={{ scale: 0.5 }}
+              >
+                Learn More
+              </motion.button>
+            </motion.div>
+            <motion.div className={styles.btnInfoContainer}>
+              <h3 className={styles.infoHeader}>EARLY CONSTRUCTION</h3>
+              <div className={styles.infoSub}>
+                <p className={styles.infoInfo}>Build Time:</p>
+                <p className={styles.infoTime}>3-4 Months</p>
+              </div>
+              <motion.button
+                onClick={() => handleClick("Early")}
+                whileTap={{ scale: 0.5 }}
+              >
+                Learn More
+              </motion.button>
+            </motion.div>
+            <motion.div className={styles.btnInfoContainer}>
+              <h3 className={styles.infoHeader}>MID-CONSTRUCTION</h3>
+              <div className={styles.infoSub}>
+                <p className={styles.infoInfo}>Build Time:</p>
+                <p className={styles.infoTime}>2-3 Months</p>
+              </div>
+              <motion.button
+                onClick={() => handleClick("Mid")}
+                whileTap={{ scale: 0.5 }}
+              >
+                Learn More
+              </motion.button>
+            </motion.div>
+            <motion.div className={styles.btnInfoContainer}>
+              <h3 className={styles.infoHeader}>MOVE IN READY</h3>
+              <div className={styles.infoSub}>
+                <p className={styles.infoInfo}>Build Time:</p>
+                <p className={styles.infoTime}>Available Now!</p>
+              </div>
+              <motion.button
+                onClick={() => handleClick("Ready")}
+                whileTap={{ scale: 0.5 }}
+              >
+                Learn More
+              </motion.button>
+            </motion.div>
           </div>
         </motion.div>
       </div>

@@ -1,105 +1,147 @@
-.scrollContainer {
-  background-color: #fff;
-  background: linear-gradient(#1A2229, #76D5D830);
-  background-size: 100% 100%;
-  background-position: center;
+.sectionWrap {
+  overflow: hidden; 
+  position: relative; 
+  width: 100%; 
+  background: linear-gradient(#fff 0%, #4f5458 55%, #1A2229 90%);
 }
 
-.bgGradient {
-  /* background: radial-gradient(#1A2229, #fff); */
-  background-size: 200% 200%;
-  background-position: center;
+.copyContainer {
+  display: flex;
+  flex-direction: column;
+  margin-left: 48px;
+  width: 100%;
+
 }
 
-.mainContainer {
-  height: 300vh;
-  position: relative;
+.header {
+  line-height: 48px;
+  font-weight: 200;
+  font-size: 48px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.paragraph {
+  color: black;
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0;
+  width: 75%;
+}
+
+.btnContainer {
+  display: flex;
+  position: absolute;
+  bottom: 48px;
+  /* left: 50%; */
+  gap: 2rem;
+  justify-content: center;
+  flex-direction: row;
+  margin: auto;
+  width: 100%; 
+}
+
+.btnWrap {
+  display: grid;
+  place-content: center; 
+  border-radius: 9999px;
+  background-color: transparent;
+  border: #76D5D8 solid 1px;
+  color: #fff;
+  width: 3.5rem; 
+  height: 3.5rem; 
+  font-size: 1.875rem;
+  line-height: 2.25rem; 
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms; 
+}
+
+.btnWrap:hover {
+  color: #000; 
+  background-color: #76D5D8; 
 }
 
 .cardContainer {
-  overflow: hidden;
-  align-items: center;
-  height: 100vh;
-  display: grid;
-  top: 0;
-  position: sticky;
-  align-content: center;
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  padding: 8px; 
+  border-color: #000000; 
+  border-radius: 16px;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms; 
+  transition-duration: 500ms; 
+  cursor: pointer; 
 }
 
-.card {
-  gap: 16px;
-  display: flex;
-}
-
-.cardTypeContainer {
-  background: radial-gradient(at top left, #fff 0%, #76D5D870 100%);
+.cardActive {
+  z-index: 10; 
+  background: radial-gradient(at top left, #fff 0%, #76D5D8 100%);
   background-size: 100% 100%;
-  box-shadow: #3E454C50 0px 2px 15px 0px;
-  overflow: hidden;
-  width: 300px;
-  /* height: 400px; */
-  position: relative;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  box-shadow: #76D5D8 0px 0px 30px 0px;
 }
 
-.cardImgContainer {
-  width: 48px;
-  height: 48px;
-  padding: 16px;
-  border-radius: 8px 8px 0px 0px;
-  margin-bottom: 16px;
-  display: flex;
+.cardInactive {
+  z-index: 0; 
+  background-color: #ffffff;
+  filter: blur(3px);
+  box-shadow: #00000050 0px 0px 10px 0px;
 }
 
-/* .cardHover {} */
-
-.cardTitleContainer {
-  display: flex;
-  flex-direction: column;
-  padding: 32px;
+.cardWrap {
+  display: block; 
+  object-fit: cover; 
+  position: absolute; 
+  background-color: #000000; 
+  --transform-rotate: 45deg; 
+  transform-origin: top right; 
 }
 
-.cardTitle {
-  --tw-backdrop-blur: blur(16px);
-  color: #1A2229;
-  text-transform: uppercase;
+.cardImage {
+  object-fit: contain; 
+  object-position: center; 
+  margin-bottom: 16px; 
+  height: 56px; 
+
+}
+
+.cardHeader {
+  font-size: 32px;
   font-weight: 200;
-  font-size: 24px;
-  line-height: 1;
-  margin: 0;
+  text-transform: uppercase;
+  line-height: 1.5rem; 
+  margin-left: 16px;
+
+@media (min-width: 640px) { 
+  font-size: 32px;
+  line-height: 1.75rem; 
+}
+}
+
+.cardHeaderActive {
+  color: #1A2229;
+}
+
+.cardHeaderInactive {
+  color: #000000;
 }
 
 .cardDesc {
-  display: flex;
-  flex-direction: column;
+  position: absolute; 
+  margin-left: 16px;
+  margin-right: 32px;
+  margin-top: 8px; 
+  font-size: 0.875rem;
+  line-height: 1.25rem; 
+}
+
+.cardDescActive {
   color: #1A2229;
-  font-size: 14px;
 }
 
-.headerContainer {
-  display: flex;
-  margin: 48px;
-}
-
-
-
-.carouselHeader {
-  font-size: 48px;
-  font-weight: 200;
-  margin-bottom: 16px;
-  line-height: 48px;
-  letter-spacing: 1px;
-  color: #fff;
-  text-align: left;
-}
-
-.carouselText {
-  color: #fff;
-  margin: auto;
-  width: 100%;
-  text-align: left;
-  width: 50vw;
+.cardDescInactive {
+  color: #000000;
 }

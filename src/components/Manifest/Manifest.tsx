@@ -18,12 +18,7 @@ export default function Manifest({ backgroundColor }: ManifestProps) {
         whileInView={{ scale: 1, y: 0 }}
         transition={{ delay: 1.2, duration: 0.5, ease: "easeOut" }}
       >
-        <h1>
-          What's it like to build
-          <br />
-          with Executive Homes?
-          <br />
-        </h1>
+        <h1>THE EXECUTIVE EXPERIENCE</h1>
       </motion.a>
     </div>
   );
