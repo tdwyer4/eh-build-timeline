@@ -9,7 +9,7 @@ import TimelineTwo from "../components/TimelineTwo/TimelineTwo";
 import Manifest from "../components/Manifest/Manifest";
 import styles from "./FullPageStyles.module.css";
 import IntroCards from "../components/IntroCards/IntroCards";
-import VideoScroll from "../components/VideoScroll/VideoScroll";
+import { VideoCarousel } from "../components/VideoCarousel/VideoCarousel";
 import ProcessCards from "../components/ProcessCards/ProcessCards";
 import ChoosePath from "../components/ChoosePath/ChoosePath";
 import ScrollInfo from "../components/ScrollInfo/ScrollInfo";
@@ -35,46 +35,114 @@ import { PunchoutVideo } from "../components/VidSection/PunchoutVideo";
 
 export const PreSold = () => {
   return (
-    <>
-      <div className={styles.bgwhite}>
-        <ChooseHouse />
-        <GetStarted />
-        <PAList />
-        <FootingVideo
-        // video={PadVideo}
-        // header1="Slab & Footing"
-        // description1="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-        // header2="Lorem Ipsum 2"
-        // description2="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-        // header3="Lorem Ipsum 3"
-        // description3="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-        // header4="Lorem Ipsum 4"
-        // description4="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-        />
-        <Communication />
-
-        <FramingVideo
-        // video={FramingRoughVideo}
-        // header1="Framing & Rough Trades"
-        // description1="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-        // header2="Lorem Ipsum 2"
-        // description2="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-        // header3="Lorem Ipsum 3"
-        // description3="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-        // header4="Lorem Ipsum 4"
-        // description4="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-        />
-        <Selections />
-        <RoughVideo />
-        <ConstructionQuality />
-        <InsulationVideo />
-        <FinishQuality />
-        <MasonryVideo />
-        <Closing />
-        <PunchoutVideo />
-        <Warranty />
-        <CTA />
+    <div className={styles.fullPageStyle}>
+      {/* Fixed Navigation */}
+      <div className={styles.pageNavContainer}>
+        <div className={styles.pageNav}>
+          <ul>
+            <li>
+              <a href="#1">Choose Your House</a>
+            </li>
+            <li>
+              <a href="#2">Choose Your Styles</a>
+            </li>
+            <li>
+              <a href="#3">What's Next?</a>
+            </li>
+            <li>
+              <a href="#4">Phase 1 - Footing</a>
+            </li>
+            <li>
+              <a href="#5">Communication</a>
+            </li>
+            <li>
+              <a href="#6">Phase 2 - Framing</a>
+            </li>
+            <li>
+              <a href="#7">Selections</a>
+            </li>
+            <li>
+              <a href="#8">Phase 3 - Rough Trades</a>
+            </li>
+            <li>
+              <a href="#9">Construction Quality</a>
+            </li>
+            <li>
+              <a href="#10">Phase 4 - Drywall</a>
+            </li>
+            <li>
+              <a href="#11">Finish Quality</a>
+            </li>
+            <li>
+              <a href="#12">Phase 5 - Masonry</a>
+            </li>
+            <li>
+              <a href="#13">Closing</a>
+            </li>
+            <li>
+              <a href="#14">Phase 6 - Punch Out</a>
+            </li>
+            <li>
+              <a href="#15">Warranty</a>
+            </li>
+            <li>
+              <a href="#16">Next Steps</a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </>
+
+      {/* Page Content */}
+      <div className={styles.bgwhite}>
+        <section id="1">
+          <ChooseHouse />
+        </section>
+        <section id="2">
+          <GetStarted />
+        </section>
+        <section id="3">
+          <PAList />
+        </section>
+        <section id="4">
+          <FootingVideo />
+        </section>
+        <section id="5">
+          <Communication />
+        </section>
+        <section id="6">
+          <FramingVideo />
+        </section>
+        <section id="7">
+          <Selections />
+        </section>
+        <section id="8">
+          <RoughVideo />
+        </section>
+        <section id="9">
+          <ConstructionQuality />
+        </section>
+        <section id="10">
+          <InsulationVideo />
+        </section>
+        <section id="11">
+          <FinishQuality />
+        </section>
+        <section id="12">
+          <MasonryVideo />
+        </section>
+        <section id="13">
+          <Closing />
+        </section>
+        <section id="14">
+          <PunchoutVideo />
+        </section>
+        <section id="15">
+          <Warranty />
+        </section>
+        <section id="16">
+          <CTA />
+        </section>
+      </div>
+    </div>
   );
 };

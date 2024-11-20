@@ -5,27 +5,12 @@
     height: 100vh;
     width: 100vw;
     background-color: #1A2229;
+    gap: 24px;
   }
   
-  .leftContainer {
-    flex: 1;
-    margin-left: 0; 
-    display: flex;
-    padding-left: 5%;
-    flex-direction: column;
-    justify-content: center; 
-    align-items: flex-start; 
-  }
   
-  .rightContainer {
-    display: flex;
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center; 
-    width: 50vw; 
-    height: 100vh; 
-    position: relative; 
-  }
+  
+  
   
   .title {
     font-size: 83px;
@@ -55,108 +40,107 @@
     color: rgba(188, 188, 188, 0.478);
     line-height: 1.5;
   }
-  
-  .button {
-    padding: 12px 24px;
-    background-color: #000000;
-    color: white;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    margin-top: 20px;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    transition: background-color 0.3s ease;
-  }
-  
-  .button:hover {
-    background-color: #141111;
+ 
+  .leftContainer {
+    flex: 1;
+    margin-left: 0; 
+    display: flex;
+    padding-left: 5%;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: flex-start; 
+    width: 50%;
   }
   
   .statsContainer {
-    display: flex;
-    justify-content: flex-start;
-    gap: 40px;
-    margin-top: 20px;
+    display: grid; 
+    grid-template-columns: 1fr 1fr;
+    justify-content: center; 
+    align-items: center; 
   }
   
   .stat {
-    text-align: left;
+    display: flex; 
+    padding-top: 2rem;
+    padding-bottom: 2rem; 
+    flex-direction: column; 
+    align-items: center; 
+    width: 18rem; 
+
+    @media (min-width: 640px) { 
+      padding-top: 0;
+    padding-bottom: 0; 
+ }
+
   }
   
   .statNumber {
-    font-size: 83px;
-    font-weight: 100;
-    background: linear-gradient(300deg, #76D5D8, #defeff, #00eeff, #76D5D8, #426b9b);
-    background-size: 360% 360%;
-    animation: gradient-animation 10s ease infinite;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem; 
+    font-size: 24px;
+    line-height: 1; 
+    font-weight: 600; 
+    text-align: center; 
+    color: #76D5D8;
+
+    @media (min-width: 640px) { 
+      font-size: 48px;
+    line-height: 1; 
+ }
+
   }
   
   .statDescription {
-    font-size: 0.9rem;
-    color: white;
+    text-align: center; 
+    color: #fff;
+    text-transform: uppercase;
+
+  }
+
+  .rightContainer {
+    position: relative;
+    padding-right: 5%;
+    width: 50%;
+  }
+
+  .cardContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+    height: 100%;
+    padding: 72px;
+    box-sizing: border-box;
   }
   
   .card {
-    position: relative; /* Necessary for pseudo-elements */
-    background: rgba(255, 255, 255, 0);
-    border-top: 0.5px solid rgba(255, 255, 255, 0.3);
-    border-left: 0.5px solid rgba(255, 255, 255, 0.3);
-    border-right: 0.5px solid rgba(255, 255, 255, 0.3);
-    border-bottom: none;
-    border-radius: 0px;
-    padding: 20px;
-    margin: 0px 0;
-    color: rgba(255, 255, 255, 0.318);
-      height: 24%;
-      width: 65%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #27333d;
+    border: #76D5D8 0.5px solid;
+    border-radius: 16px;
+    margin: 0;
+    color: #fff;
     overflow: hidden;
     transition: filter 0.3s ease;
+    padding: 24px;
   }
-  
-  .card:hover {
-      filter: brightness(0.9);
-      background-color: #ffffff0b;
-      transition: all 1s cubic-bezier(.45, .17, .31, .99); /* Smooth transition */
-  
-    }
     
-    .card::before {
-      content: "";
-      position: absolute;
-      bottom: -100%; /* Start from the bottom */
-      left: -100%; /* Start from the left */
-      height: 100%;
-      width: 100%;
-      font-weight: 600;
-      background: linear-gradient(45deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.057), rgba(255, 255, 255, 0)); /* Adjusted gradient for shimmer */
-      transition: all 1s cubic-bezier(.45, .17, .31, .99); /* Smooth transition */
-      z-index: 0;
-    }
+  .cardTitle {
+    font-size: 24px;
+    font-weight: 200;
+    text-transform: uppercase;
+    margin: 0;
+  }
     
-    .card:hover::before {
-      bottom: 100%; /* Move the shimmer effect up on hover */
-      font-weight: 600;
-      left: 100%; /* Move the shimmer effect to the right on hover */
-    }
-    
-    .cardTitle {
-      font-size: 1.5rem;
-      font-weight: 200;
-      text-transform: uppercase;
-      margin: 0;
-    }
-    
-    .cardTitle:hover {
-      font-size: 1.5rem;
-      text-transform: uppercase;
-      margin: 0;
-    }
-    .cardDescription {
-      font-size: 1rem;
-      font-weight: 300;
-      color: rgba(255, 255, 255, 0.415);
-    }
+  .cardTitle:hover {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  .cardDescription {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.415);
+  }

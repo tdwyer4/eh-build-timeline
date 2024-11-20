@@ -11,17 +11,7 @@ import styles from "./PAList.module.css";
 const PAList = () => {
   return (
     <div className={styles.background}>
-      <ReactLenis
-        root
-        options={{
-          // Learn more -> https://github.com/darkroomengineering/lenis?tab=readme-ov-file#instance-settings
-          lerp: 0.05,
-          //   infinite: true,
-          //   syncTouch: true,
-        }}
-      >
-        <Schedule />
-      </ReactLenis>
+      <Schedule />
     </div>
   );
 };

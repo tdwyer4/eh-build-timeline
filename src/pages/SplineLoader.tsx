@@ -9,6 +9,7 @@ import { MoveInReady } from "./MoveInReady";
 import Manifest from "../components/Manifest/Manifest";
 import HeroVideo from "../media/HeroAnimation2.mp4";
 import HeroImage from "../media/particles2.mp4";
+import ParticlesBackground from "../components/ParticleBG/ParticleBG";
 
 export default function SplineLoader() {
   const [currentContent, setCurrentContent] = useState<string>("Load");
@@ -68,15 +69,21 @@ export default function SplineLoader() {
           className={`${styles.video} ${videoEnded ? styles.hidden : ""}`}
         />
         {videoLoaded && videoEnded && (
-          <video
-            autoPlay
-            muted
-            loop={true}
-            src={HeroImage}
-            className={`${styles.staticImage} ${
-              videoEnded ? styles.fadeIn : ""
-            }`} // fade-in
-          />
+          <>
+            <video
+              autoPlay
+              muted
+              loop={true}
+              src={HeroImage}
+              className={`${styles.staticImage} ${
+                videoEnded ? styles.fadeIn : ""
+              }`} // fade-in
+            />
+            <motion.div
+              className={styles.videoOverlay}
+              whileInView={{ opacity: 1 }}
+            />
+          </>
         )}
 
         <div className={styles.manifestContainer}>
