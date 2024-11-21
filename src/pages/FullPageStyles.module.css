@@ -9,7 +9,7 @@
   z-index: 1000;
 }
 
-/* Container that holds all islands, ensuring the background adjusts */
+/* Container that holds all islands */
 .navBarContainer {
   display: flex;
   justify-content: center;
@@ -17,9 +17,9 @@
   background-color: rgba(130, 130, 130, 0.153);
   backdrop-filter: blur(2px);
   align-items: center;
-  width: fit-content;
+  width: auto; /* Ensure the container adapts to its content */
   border-radius: 50px;
-  padding: 8px; /* Padding around the container */
+  padding: 8px;
 }
 
 /* Link wrapper for each island */
@@ -30,28 +30,27 @@
 
 /* Main style for each island (including background) */
 .navBarIsland {
-  display: inline-flex; /* Keep it inline-flex for dynamic width based on content */
+  display: inline-flex;  /* Keeps it inline-flex for dynamic width based on content */
   align-items: center;
-  justify-content: flex-start; /* Make sure it aligns properly */
+  justify-content: flex-start;
   padding: 8px;
-  background-color: #ffffff; /* Default background color for inactive state */
+  background-color: #ffffff;
   border-radius: 50px;
   transition: all 0.3s ease;
-  width: auto;
-  box-sizing: border-box; /* Prevent overflow */
-  position: relative; /* For positioning the title */
-  min-width: 130px; /* Ensure islands don’t shrink too small */
-  max-width: 100%; /* Prevent from stretching */
+  width: auto;  /* Let the island adjust to the content */
+  min-width: 130px;  /* Prevent the island from shrinking too much */
+  max-width: none;  /* Allow expansion beyond 130px */
+  box-sizing: border-box;
 }
 
-/* Adjust the content inside each island (image, title, dots) */
+/* Content of each island (image, title, dots) */
 .navBarIsland .navBarContent {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-/* Styling for the image in each island */
+/* Image inside each island */
 .navBarImage {
   width: 48px;
   height: 48px;
@@ -59,7 +58,7 @@
   object-fit: cover;
 }
 
-/* Title styling (hidden initially) */
+/* Title hidden initially */
 .navBarTitle {
   font-size: 1rem;
   font-weight: bold;
@@ -70,18 +69,17 @@
   text-overflow: ellipsis;
   visibility: hidden; /* Hidden by default */
   opacity: 0;
-  position: absolute; /* Take it out of the layout flow */
-  transition: opacity 0.2s ease-in-out, visibility 0s 0.3s; /* Smooth opacity transition */
+  position: absolute;
+  transition: opacity 0.2s ease-in-out, visibility 0s 0.3s;
 }
 
 /* Hover effect to show the title */
 .navBarIsland:hover .navBarTitle {
   visibility: visible;
   opacity: 1;
-  position: relative; /* Bring it back into the layout flow */
-  transition: opacity 0.3s ease-in-out, visibility 5ms 0s; /* Smooth fade-in */
+  position: relative;
+  transition: opacity 0.3s ease-in-out, visibility 5ms 0s;
 }
-
 
 /* Dots for each island */
 .navBarDots {
@@ -90,7 +88,7 @@
   gap: 6px;
 }
 
-/* Individual dot styling */
+/* Dots inside the island */
 .navBarDot {
   width: 12px;
   height: 12px;
@@ -112,30 +110,30 @@
   transform: scale(1);
 }
 
-/* Individual island background color and shadow effects */
+/* Background color and shadow effects for each island */
 .navBarGettingStarted {
   background-color: #9747ff;
-  box-shadow: 0 14px 48px rgba(151, 71, 255, 0.885); /* Purple shadow */
+  box-shadow: 0 14px 48px rgba(151, 71, 255, 0.885);
 }
 
 .navBarEarlyConstruction {
   background-color: #76d5d8;
-  box-shadow: 0 14px 48px rgba(118, 213, 216, 0.891); /* Light blue shadow */
+  box-shadow: 0 14px 48px rgba(118, 213, 216, 0.891);
 }
 
 .navBarMidConstruction {
   background-color: #fe7e66;
-  box-shadow: 0 14px 48px rgba(254, 125, 102, 0.831); /* Orange shadow */
+  box-shadow: 0 14px 48px rgba(254, 125, 102, 0.831);
 }
 
 .navBarMoveInReady {
   background-color: #1a2229;
-  box-shadow: 0 14px 48px rgba(26, 34, 41, 0.873); /* Dark gray shadow */
+  box-shadow: 0 14px 48px rgba(26, 34, 41, 0.873);
 }
 
 /* Container for the content (sections) */
 .contentContainer {
-  margin-top: 80px; /* Adjust based on your page layout */
+  margin-top: 80px;
 }
 
 section {
