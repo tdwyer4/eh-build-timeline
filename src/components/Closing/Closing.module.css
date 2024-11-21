@@ -8,9 +8,15 @@
     gap: 24px;
   }
   
-  
-  
-  
+  .glowBG {
+    position: absolute;
+    height: 100%;
+    transform: scaleY(2);
+    left: -25%;
+    width: 100%;
+    top: 0%;
+    object-fit: contain;
+  } 
   
   .title {
     font-size: 83px;

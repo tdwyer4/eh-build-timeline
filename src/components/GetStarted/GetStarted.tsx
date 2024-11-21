@@ -7,7 +7,7 @@ const GetStarted: React.FC = () => {
   return (
     <div className={styles.mainContainer}>
       <div className={styles.leftContainer}>
-        <h1 className={styles.title}>Design made easy</h1>
+        <h1 className={styles.title}>LET'S Get Started</h1>
         <h2 className={styles.subtitle}>Now for the fun part!</h2>
         <p className={styles.description}>
           We've developed a turnkey experience to make your new home journey as

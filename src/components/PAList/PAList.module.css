@@ -1,5 +1,5 @@
 .background {
-  background-color: #fff;
+  background-color: #1A2229;
 }
 
 .buildSchedule {
@@ -10,36 +10,50 @@
   max-width: 64rem;
   margin-left: auto;
   margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .buildScheduleHeader {
-  --tw-text-opacity: 1;
-    color: #293139;
+    color: #fff;
     text-transform: uppercase;
-    font-weight: 900;
-    font-size: 24px;
-    line-height: 40px;
-    margin-bottom: 80px;
+    font-weight: 700;
+    font-size: 32px;
+    text-align: center;
+    margin: 0;
+    margin-bottom: 60px;
+}
+
+.buildScheduleHeaderEnd {
+  color: #76D5D8;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 80px;
+  text-align: center;
 }
 
 .buildScheduleItem {
-    padding: 24px;
-    border-color: #293139;
-    border-bottom: 1px solid;
+    height: 60px;
+    padding: 32px 24px;
+    border: 1px solid #76D5D830;
+    border-radius: 24px;
+    background: radial-gradient(farthest-corner at 100px 200px, #76d5d850 0%, #1A2229 100%);
+    box-shadow: #76D5D890 0px 50px 100px 0px;
     justify-content: space-between;
     align-items: center;
     display: flex;
 }
 
 .buildScheduleInfo {
-  display: flex;
+    display: flex;
     flex-direction: row;
     align-items: center;
     gap: 8px;
 }
 
 .buildScheduleItemTitle {
-    color: #293139;
+    color: #fff;
     font-size: 20px;
     line-height: 28px;
     text-transform: uppercase;
@@ -50,7 +64,7 @@
 }
 
 .buildScheduleItemPara {
-    color: #293139;
+    color: #1A2229;
     font-size: 10px;
     line-height: 20px;
     margin: 0;
@@ -62,33 +76,33 @@
 }
 
 .buildScheduleItemIcon {
-    color: #293139;
+    color: #fff;
     text-transform: uppercase;
     font-size: 14px;
     line-height: 20px;
     margin-top: 16px;
-    text-align: end;
     gap: 6px;
     display: flex;
     align-items: center;
     text-align: left;
-    min-width: 50%;
     
 }
 
 .buildScheduleItemLast {
-  padding: 32px 24px;
-  background-color: #293139;
-  --tw-border-opacity: 1;
-    border-color: #293139;
+    height: 60px;
+    padding: 32px 24px;
+    background-color: #cef2f3;
+    border: #fff 1px solid;
+    border-radius: 24px;
     justify-content: space-between;
     align-items: center;
     display: flex;
+    margin-top: 4px;
 }
 
 .buildScheduleItemTitleLast {
     min-width: 50%;
-    color: #cef2f3;
+    color: #1A2229;
     font-size: 22px;
     font-weight: 700;
     line-height: 32px;
@@ -98,25 +112,23 @@
 }
 
 .buildScheduleItemParaLast {
-    color: #293139;
+    color: #fff;
     text-transform: uppercase;
     font-size: 10px;
     line-height: 20px;
     margin: 0;
     width: fit-content;
-    background-color: #cef2f3;
+    background-color: #1A2229;
     border-radius: 4px;
     padding: 2px 8px;
 }
 
 .buildScheduleItemIconLast {
-    min-width: 50%;
-    color: #cef2f3;
+    color: #1A2229;
     text-transform: uppercase;
     font-size: 14px;
     line-height: 20px;
     margin-top: 16px;
-    text-align: end;
     gap: 6px;
     display: flex;
     align-items: center;

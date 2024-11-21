@@ -12,6 +12,7 @@ import CQ2 from "../../media/CQ-2.png";
 import CQ3 from "../../media/CQ-3.png";
 import CQ4 from "../../media/CQ-4.png";
 import CQFrame from "../../media/CQ-Frame.png";
+import GlowBG from "../../media/glowBG.png";
 
 const ConstructionQuality = () => {
   const targetRef = useRef<HTMLDivElement>(null);
@@ -72,6 +73,12 @@ const Videos = ({
 
   return (
     <div className={styles.videoContainer}>
+      <motion.img
+        src={GlowBG}
+        className={styles.glowBG}
+        animate={{ rotate: 360 }}
+        transition={{ duration: 120, repeat: Infinity }}
+      />
       <motion.img className={styles.imgPhoneFrame} src={CQFrame} />
       <motion.div style={{ top }} className={styles.videoPosition}>
         <AnimatePresence>

@@ -80,20 +80,17 @@ export const Warranty = () => {
   }, []);
 
   return (
-    <div
-      className={styles.sectionWrap}
-      style={{
-        height: SECTION_HEIGHT,
-      }}
-    >
-      <motion.div className={styles.copyContainer}>
-        <h2 className={styles.header}>OUR WARRANTY COVERAGE</h2>
-        <p className={styles.paragraph}>
-          Explore our range of home warranty coverages that keep your home
-          protected year-round. Choose from heating, air conditioning, plumbing,
-          and more!
-        </p>
-      </motion.div>
+    <div className={styles.sectionWrap} style={{}}>
+      <div className={styles.topContainer}>
+        <motion.div className={styles.copyContainer}>
+          <h2 className={styles.header}>OUR WARRANTY COVERAGE</h2>
+          <p className={styles.paragraph}>
+            Explore our range of home warranty coverages that keep your home
+            protected year-round. Choose from heating, air conditioning,
+            plumbing, and more!
+          </p>
+        </motion.div>
+      </div>
       {selections.map((t, idx) => {
         let position = 0;
 

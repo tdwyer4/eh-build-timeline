@@ -1,5 +1,6 @@
 .vidSliderWrap {
 position: relative;
+background: #1a2229;
 }
 
 .slideContainer {
@@ -64,7 +65,7 @@ position: relative;
   margin-bottom: 32px; 
   max-width: 50%; 
   font-size: 16px;
-  font-weight: 00;
+  font-weight: 200;
   line-height: 1.25rem; 
 }
 

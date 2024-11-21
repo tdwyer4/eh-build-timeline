@@ -116,7 +116,7 @@ const CarouselItem = ({
   const end = stepSize * position;
   const start = end - stepSize;
 
-  const opacity = useTransform(scrollYProgress, [start, end], [1, 0.5]);
+  const opacity = useTransform(scrollYProgress, [start, end], [1, 0]);
   const scale = useTransform(scrollYProgress, [start, end], [1, 0.9]);
 
   return (
@@ -125,9 +125,8 @@ const CarouselItem = ({
         opacity,
         scale,
       }}
-      initial={{ y: 200 }}
-      whileInView={{ opacity: 1, y: 50 }}
-      transition={{ duration: 0.5, ease: "easeInOut" }}
+      initial={{ y: 0 }}
+      transition={{ duration: 1, ease: "easeInOut" }}
       className={styles.vertCarouselCard}
     >
       <div className={styles.imageContainer}>

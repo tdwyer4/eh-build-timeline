@@ -25,7 +25,8 @@ const Schedule = () => {
         transition={{ ease: "easeInOut", duration: 0.75 }}
         className={styles.buildScheduleHeader}
       >
-        THE PURCHASE AGREEMENT IS SIGNED. WHAT'S NEXT?
+        THE PURCHASE AGREEMENT IS SIGNED.{" "}
+        <span className={styles.buildScheduleHeaderEnd}>WHAT'S NEXT?</span>
       </motion.h1>
       <ScheduleItem
         title="PLANS ARE PREPARED"
@@ -102,9 +103,9 @@ const ScheduleItemLast = ({
 }) => {
   return (
     <motion.div
-      initial={{ y: 48, opacity: 0 }}
-      whileInView={{ y: 0, opacity: 1 }}
-      transition={{ ease: "easeInOut", duration: 0.75 }}
+      initial={{ y: 0, opacity: 1, scale: 1 }}
+      animate={{ opacity: [0.7, 1, 0.7] }}
+      transition={{ ease: "easeInOut", duration: 3, repeat: Infinity }}
       className={styles.buildScheduleItemLast}
     >
       <div className={styles.buildScheduleInfo}>

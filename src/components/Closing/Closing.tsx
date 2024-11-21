@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, animate, useInView } from "framer-motion";
 import styles from "./Closing.module.css"; // Importing CSS module
+import GlowBG from "../../media/glowBG.png";
 
 const Closing: React.FC = () => {
   return (
@@ -27,7 +28,18 @@ const Closing: React.FC = () => {
         </div>
       </div>
 
-      <div className={styles.rightContainer}>
+      <motion.div
+        className={styles.rightContainer}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 2 }}
+      >
+        <motion.img
+          src={GlowBG}
+          className={styles.glowBG}
+          animate={{ rotate: 360, scale: 1.5 }}
+          transition={{ duration: 120, repeat: Infinity }}
+        />
         <div className={styles.cardContainer}>
           <motion.div
             className={styles.card}
@@ -89,7 +101,7 @@ const Closing: React.FC = () => {
             </p>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

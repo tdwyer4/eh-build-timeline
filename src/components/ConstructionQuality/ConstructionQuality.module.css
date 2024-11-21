@@ -6,6 +6,12 @@
     background-color: #1A2229;
 }
 
+.glowBG {
+    position: absolute;
+    height: 100%;
+    scale: 0.7;
+}
+
 .contentContainer {
     display: flex; 
     flex-direction: column; 
