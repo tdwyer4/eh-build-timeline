@@ -1,4 +1,4 @@
-/* Wrapper for the navigation bar, fixed to the bottom */
+/* Main wrapper for the navigation bar, fixed at the bottom */
 .navBarWrapper {
   position: fixed;
   bottom: 0;
@@ -9,7 +9,7 @@
   z-index: 1000;
 }
 
-/* Container that holds all islands */
+/* Container that holds all islands, ensuring the background adjusts */
 .navBarContainer {
   display: flex;
   justify-content: center;
@@ -17,7 +17,7 @@
   background-color: rgba(130, 130, 130, 0.153);
   backdrop-filter: blur(2px);
   align-items: center;
-  width: auto; /* Ensure the container adapts to its content */
+  width: fit-content;
   border-radius: 50px;
   padding: 8px;
 }
@@ -28,37 +28,38 @@
   text-decoration: none;
 }
 
-/* Main style for each island (including background) */
+/* Main style for each island (background and size) */
 .navBarIsland {
-  display: inline-flex;  /* Keeps it inline-flex for dynamic width based on content */
-  align-items: center;
-  justify-content: flex-start;
-  padding: 8px;
-  background-color: #ffffff;
-  border-radius: 50px;
-  transition: all 0.3s ease;
-  width: auto;  /* Let the island adjust to the content */
-  min-width: 130px;  /* Prevent the island from shrinking too much */
-  max-width: none;  /* Allow expansion beyond 130px */
-  box-sizing: border-box;
+  background-color: #9747ff; /* Purple background */
+  display: flex;
+  align-items: center; /* Align content vertically inside the pill */
+  justify-content: flex-start; /* Align content to the left inside the pill */
+  padding: 8px 16px; /* Add padding to ensure space inside */
+  border-radius: 50px; /* Round pill shape */
+  width: auto; /* Let the width adjust to content */
+  box-sizing: border-box; /* Ensure padding is considered in the width */
+  min-width: 130px; /* Ensure minimum width of the island */
+  position: relative; /* For absolute positioning inside */
+  max-width: none; /* Allow the island to grow in size */
+  transition: all 0.3s ease; /* Smooth transition for the background */
 }
 
-/* Content of each island (image, title, dots) */
-.navBarIsland .navBarContent {
+/* Content (image and text) inside the island */
+.navBarContent {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 8px; /* Space between the image and title */
 }
 
-/* Image inside each island */
+/* Styling for the image */
 .navBarImage {
   width: 48px;
   height: 48px;
-  border-radius: 50%;
-  object-fit: cover;
+  border-radius: 50%; /* Circular image */
+  object-fit: cover; /* Ensure image covers the circle */
 }
 
-/* Title hidden initially */
+/* Title styling (hidden initially) */
 .navBarTitle {
   font-size: 1rem;
   font-weight: bold;
@@ -69,16 +70,16 @@
   text-overflow: ellipsis;
   visibility: hidden; /* Hidden by default */
   opacity: 0;
-  position: absolute;
-  transition: opacity 0.2s ease-in-out, visibility 0s 0.3s;
+  position: absolute; /* Take it out of the layout flow */
+  transition: opacity 0.2s ease-in-out, visibility 0s 0.3s; /* Smooth opacity transition */
 }
 
 /* Hover effect to show the title */
 .navBarIsland:hover .navBarTitle {
   visibility: visible;
   opacity: 1;
-  position: relative;
-  transition: opacity 0.3s ease-in-out, visibility 5ms 0s;
+  position: relative; /* Bring the title back into the layout flow */
+  transition: opacity 0.3s ease-in-out, visibility 5ms 0s; /* Smooth fade-in */
 }
 
 /* Dots for each island */
@@ -88,7 +89,7 @@
   gap: 6px;
 }
 
-/* Dots inside the island */
+/* Individual dot styling */
 .navBarDot {
   width: 12px;
   height: 12px;
@@ -96,44 +97,44 @@
   background-color: white;
 }
 
-/* Expanded state (active state) for each island */
+/* Expanded state for active islands */
 .navBarIsland.expanded {
   background-color: black;
   opacity: 1;
   transform: scale(1.1);
 }
 
-/* Collapsed state (inactive state) for each island */
+/* Collapsed state for inactive islands */
 .navBarIsland.collapsed {
   background-color: transparent;
   opacity: 0.8;
   transform: scale(1);
 }
 
-/* Background color and shadow effects for each island */
+/* Individual background colors and shadow effects */
 .navBarGettingStarted {
   background-color: #9747ff;
-  box-shadow: 0 14px 48px rgba(151, 71, 255, 0.885);
+  box-shadow: 0 14px 48px rgba(151, 71, 255, 0.885); /* Purple shadow */
 }
 
 .navBarEarlyConstruction {
   background-color: #76d5d8;
-  box-shadow: 0 14px 48px rgba(118, 213, 216, 0.891);
+  box-shadow: 0 14px 48px rgba(118, 213, 216, 0.891); /* Light blue shadow */
 }
 
 .navBarMidConstruction {
   background-color: #fe7e66;
-  box-shadow: 0 14px 48px rgba(254, 125, 102, 0.831);
+  box-shadow: 0 14px 48px rgba(254, 125, 102, 0.831); /* Orange shadow */
 }
 
 .navBarMoveInReady {
   background-color: #1a2229;
-  box-shadow: 0 14px 48px rgba(26, 34, 41, 0.873);
+  box-shadow: 0 14px 48px rgba(26, 34, 41, 0.873); /* Dark gray shadow */
 }
 
 /* Container for the content (sections) */
 .contentContainer {
-  margin-top: 80px;
+  margin-top: 80px; /* Adjust based on your page layout */
 }
 
 section {
