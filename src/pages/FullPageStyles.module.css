@@ -1,46 +1,152 @@
-html {
-    scroll-behavior: smooth;
-    scroll-snap-type: proximity;
+/* Wrapper for the navigation bar, fixed to the bottom */
+.navBarWrapper {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
 }
 
-body {
-    scroll-behavior: smooth;
+/* Container that holds all islands, ensuring the background adjusts */
+.navBarContainer {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  background-color: rgba(130, 130, 130, 0.153);
+  backdrop-filter: blur(2px);
+  align-items: center;
+  width: fit-content;
+  border-radius: 50px;
+  padding: 8px; /* Padding around the container */
 }
 
-.pageNavContainer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #fff;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .pageNav ul {
-    list-style: none;
-    margin: 0;
-    padding: 1rem;
-    display: flex;
-    flex-wrap: column;
-    gap: 1rem;
-    font-size: 10px;
-    font-weight: 100;
-    text-transform: uppercase;
-    font-family: 'Montserrat', sans-serif;
-  }
-  
-  .pageNav ul li {
-    display: inline-block;
-  }
-  
-  .pageNav ul li a {
-    text-decoration: none;
-    color: #76D5D8;
-    font-weight: bold;
-  }
-  
-  .pageNav ul li a:hover {
-    color: #76D5D820;
-  }
-  
+/* Link wrapper for each island */
+.navLink {
+  display: block;
+  text-decoration: none;
+}
+
+/* Main style for each island (including background) */
+.navBarIsland {
+  display: inline-flex; /* Keep it inline-flex for dynamic width based on content */
+  align-items: center;
+  justify-content: flex-start; /* Make sure it aligns properly */
+  padding: 8px;
+  background-color: #ffffff; /* Default background color for inactive state */
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  width: auto;
+  box-sizing: border-box; /* Prevent overflow */
+  position: relative; /* For positioning the title */
+  min-width: 130px; /* Ensure islands don’t shrink too small */
+  max-width: 100%; /* Prevent from stretching */
+}
+
+/* Adjust the content inside each island (image, title, dots) */
+.navBarIsland .navBarContent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Styling for the image in each island */
+.navBarImage {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Title styling (hidden initially) */
+.navBarTitle {
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  visibility: hidden; /* Hidden by default */
+  opacity: 0;
+  position: absolute; /* Take it out of the layout flow */
+  transition: opacity 0.2s ease-in-out, visibility 0s 0.3s; /* Smooth opacity transition */
+}
+
+/* Hover effect to show the title */
+.navBarIsland:hover .navBarTitle {
+  visibility: visible;
+  opacity: 1;
+  position: relative; /* Bring it back into the layout flow */
+  transition: opacity 0.3s ease-in-out, visibility 5ms 0s; /* Smooth fade-in */
+}
+
+
+/* Dots for each island */
+.navBarDots {
+  display: flex;
+  padding-left: 8px;
+  gap: 6px;
+}
+
+/* Individual dot styling */
+.navBarDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+/* Expanded state (active state) for each island */
+.navBarIsland.expanded {
+  background-color: black;
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Collapsed state (inactive state) for each island */
+.navBarIsland.collapsed {
+  background-color: transparent;
+  opacity: 0.8;
+  transform: scale(1);
+}
+
+/* Individual island background color and shadow effects */
+.navBarGettingStarted {
+  background-color: #9747ff;
+  box-shadow: 0 14px 48px rgba(151, 71, 255, 0.885); /* Purple shadow */
+}
+
+.navBarEarlyConstruction {
+  background-color: #76d5d8;
+  box-shadow: 0 14px 48px rgba(118, 213, 216, 0.891); /* Light blue shadow */
+}
+
+.navBarMidConstruction {
+  background-color: #fe7e66;
+  box-shadow: 0 14px 48px rgba(254, 125, 102, 0.831); /* Orange shadow */
+}
+
+.navBarMoveInReady {
+  background-color: #1a2229;
+  box-shadow: 0 14px 48px rgba(26, 34, 41, 0.873); /* Dark gray shadow */
+}
+
+/* Container for the content (sections) */
+.contentContainer {
+  margin-top: 80px; /* Adjust based on your page layout */
+}
+
+section {
+  height: 100vh;
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+section h2 {
+  text-transform: uppercase;
+  color: #333;
+  font-size: 2rem;
+  font-weight: bold;
+}
