@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/eh-build-timeline/static/css/main.85eeede6.css",
-    "main.js": "/eh-build-timeline/static/js/main.72497df3.js",
+    "main.css": "/eh-build-timeline/static/css/main.e7e773e3.css",
+    "main.js": "/eh-build-timeline/static/js/main.f23d453a.js",
     "static/js/453.b458b9d1.chunk.js": "/eh-build-timeline/static/js/453.b458b9d1.chunk.js",
     "static/media/particles2.mp4": "/eh-build-timeline/static/media/particles2.67bc9897fc832d42ff87.mp4",
     "static/media/1Pad.mp4": "/eh-build-timeline/static/media/1Pad.5a0e518e16048463cb71.mp4",
@@ -25,6 +25,7 @@
     "static/media/HeroAnimation2.mp4": "/eh-build-timeline/static/media/HeroAnimation2.992a59fe49fda65bcaf1.mp4",
     "static/media/kitchen.jpg": "/eh-build-timeline/static/media/kitchen.e62ec51716264723c62e.jpg",
     "static/media/living.jpg": "/eh-build-timeline/static/media/living.373b9b98dc3afc8f71e3.jpg",
+    "static/media/glowBG.png": "/eh-build-timeline/static/media/glowBG.8b0bb8fff7d2ed6f20d6.png",
     "static/media/bathroom.jpg": "/eh-build-timeline/static/media/bathroom.aa61e90d57b4d88c9388.jpg",
     "static/media/PickALot.png": "/eh-build-timeline/static/media/PickALot.5cb346d35a7396dbee38.png",
     "static/media/CQ-1.png": "/eh-build-timeline/static/media/CQ-1.63c448d4805462a7a5f5.png",
@@ -37,14 +38,14 @@
     "static/media/faqs.png": "/eh-build-timeline/static/media/faqs.ac5d1fac77642a17b9ac.png",
     "static/media/statusUpdates.png": "/eh-build-timeline/static/media/statusUpdates.c9956f01a44d3a88c73b.png",
     "static/media/communication.png": "/eh-build-timeline/static/media/communication.b789ff7d2be2e0010213.png",
-    "static/media/CQ-Frame.png": "/eh-build-timeline/static/media/CQ-Frame.36a65d83a58eaefa30ac.png",
+    "static/media/CQ-Frame.png": "/eh-build-timeline/static/media/CQ-Frame.49e01b7b75d3ba14d3d1.png",
     "index.html": "/eh-build-timeline/index.html",
-    "main.85eeede6.css.map": "/eh-build-timeline/static/css/main.85eeede6.css.map",
-    "main.72497df3.js.map": "/eh-build-timeline/static/js/main.72497df3.js.map",
+    "main.e7e773e3.css.map": "/eh-build-timeline/static/css/main.e7e773e3.css.map",
+    "main.f23d453a.js.map": "/eh-build-timeline/static/js/main.f23d453a.js.map",
     "453.b458b9d1.chunk.js.map": "/eh-build-timeline/static/js/453.b458b9d1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.85eeede6.css",
-    "static/js/main.72497df3.js"
+    "static/css/main.e7e773e3.css",
+    "static/js/main.f23d453a.js"
   ]
 }
