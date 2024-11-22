@@ -81,10 +81,11 @@ const Slide = ({ position, slide, scrollYProgress }: SlideProps) => {
           className={styles.slideVideoOverlay}
           whileInView={{ opacity: 0.3 }}
         />
-      </motion.div>
-      <motion.div className={styles.slideTextContainer}>
-        <h3 className={styles.slideTitle}>{slide.title}</h3>
-        <p className={styles.slideParagraph}>{slide.paragraph}</p>
+        {/* I moved this into the slideVideoContainer div to move the text to the bottom. Move it below into the .slideContainer to make it center of video and use TextInMiddle css */}
+        <motion.div className={styles.slideTextContainer}>
+          <h3 className={styles.slideTitle}>{slide.title}</h3>
+          <p className={styles.slideParagraph}>{slide.paragraph}</p>
+        </motion.div>
       </motion.div>
     </motion.div>
   );

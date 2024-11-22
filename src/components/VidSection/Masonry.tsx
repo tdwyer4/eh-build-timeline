@@ -79,10 +79,10 @@ const Slide = ({ position, slide, scrollYProgress }: SlideProps) => {
           className={styles.slideVideoOverlay}
           whileInView={{ opacity: 0.3 }}
         />
-      </motion.div>
-      <motion.div className={styles.slideTextContainer}>
-        <h3 className={styles.slideTitle}>{slide.title}</h3>
-        <p className={styles.slideParagraph}>{slide.paragraph}</p>
+        <motion.div className={styles.slideTextContainer}>
+          <h3 className={styles.slideTitle}>{slide.title}</h3>
+          <p className={styles.slideParagraph}>{slide.paragraph}</p>
+        </motion.div>
       </motion.div>
     </motion.div>
   );
