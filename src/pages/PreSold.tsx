@@ -1,6 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import styles from "./FullPageStyles.module.css";
+<<<<<<< HEAD
+=======
+import IntroCards from "../components/IntroCards/IntroCards";
+import { VideoCarousel } from "../components/VideoCarousel/VideoCarousel";
+import ProcessCards from "../components/ProcessCards/ProcessCards";
+import ChoosePath from "../components/ChoosePath/ChoosePath";
+import ScrollInfo from "../components/ScrollInfo/ScrollInfo";
+import PAList from "../components/PAList/PAList";
+import ZoomScroll from "../components/ZoomScroll/ZoomScroll";
+import PadVideo from "../media/Pad.mp4";
+import FramingRoughVideo from "../media/Framing.mp4";
+import { Communication } from "../components/Communication/Communication";
+import { FootingVideo } from "../components/VidSection/FootingVideo";
+import { FramingVideo } from "../components/VidSection/FramingVideo";
+import ConstructionQuality from "../components/ConstructionQuality/ConstructionQuality";
+import { Warranty } from "../components/Warranty/Warranty";
+import Closing from "../components/Closing/Closing";
+import CTA from "../components/Cta/Cta";
+import FinishQuality from "../components/FinishQuality/FinishQuality";
+import { GetStarted } from "../components/GetStarted/GetStarted";
+import { Selections } from "../components/Selections/Selections";
+>>>>>>> 620625d (EOD page updates)
 import ChooseHouse from "../components/ChooseHouse/ChooseHouse";
 import GetStarted from "../components/GetStarted/GetStarted";
 import PAList from "../components/PAList/PAList";
@@ -52,6 +74,7 @@ export const PreSold: React.FC = () => {
   };
 
   return (
+<<<<<<< HEAD
     <>
       <div className={styles.navBarWrapper}>
         {/* Container for Islands */}
@@ -156,6 +179,65 @@ export const PreSold: React.FC = () => {
           <ChooseHouse />
         </section>
         <section id="2" data-section="2">
+=======
+    <div className={styles.fullPageStyle}>
+      {/* Fixed Navigation */}
+      <div className={styles.pageNavContainer}>
+        <div className={styles.pageNav}>
+          <ul>
+            <li>
+              <a href="#2">Choose Your Styles</a>
+            </li>
+            <li>
+              <a href="#3">What's Next?</a>
+            </li>
+            <li>
+              <a href="#4">Phase 1 - Footing</a>
+            </li>
+            <li>
+              <a href="#5">Communication</a>
+            </li>
+            <li>
+              <a href="#6">Phase 2 - Framing</a>
+            </li>
+            <li>
+              <a href="#7">Selections</a>
+            </li>
+            <li>
+              <a href="#8">Phase 3 - Rough Trades</a>
+            </li>
+            <li>
+              <a href="#9">Construction Quality</a>
+            </li>
+            <li>
+              <a href="#10">Phase 4 - Drywall</a>
+            </li>
+            <li>
+              <a href="#11">Finish Quality</a>
+            </li>
+            <li>
+              <a href="#12">Phase 5 - Masonry</a>
+            </li>
+            <li>
+              <a href="#13">Closing</a>
+            </li>
+            <li>
+              <a href="#14">Phase 6 - Punch Out</a>
+            </li>
+            <li>
+              <a href="#15">Warranty</a>
+            </li>
+            <li>
+              <a href="#16">Next Steps</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Page Content */}
+      <div className={styles.bgwhite}>
+        <section id="2">
+>>>>>>> 620625d (EOD page updates)
           <GetStarted />
         </section>
         <section id="3" data-section="3">

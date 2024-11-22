@@ -9,6 +9,7 @@
 .glowBG {
     position: absolute;
     height: 100%;
+    will-change: transform;
     scale: 0.7;
 }
 

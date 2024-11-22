@@ -76,8 +76,8 @@ const Videos = ({
       <motion.img
         src={GlowBG}
         className={styles.glowBG}
-        animate={{ rotate: 360 }}
-        transition={{ duration: 120, repeat: Infinity }}
+        animate={{ opacity: [1, 0.5, 1] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeIn" }}
       />
       <motion.img className={styles.imgPhoneFrame} src={CQFrame} />
       <motion.div style={{ top }} className={styles.videoPosition}>

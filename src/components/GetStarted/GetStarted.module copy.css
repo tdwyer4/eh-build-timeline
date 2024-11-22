@@ -1,21 +1,12 @@
-.scrollWrap {
-    background-color: #1a2229;
-    height: fit-content;
-    position: relative;
-}
-
-.pagePosition {
-    background-color: #1a2229;
-}
-
-.gsWrap {
-    grid-template-columns: repeat(2,minmax(0,1fr));
-    gap: 32px;
-    height: 200vh;
-    display: grid;
-    margin: auto;
-    position: relative;
-}
+.mainContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #1A2229;
+    gap: 24px;
+  }
   
   .title {
     font-size: 83px;
@@ -48,15 +39,14 @@
   }
  
   .leftContainer {
+    flex: 1;
+    margin-left: 0; 
     display: flex;
-    /* width: 100%; */
-    padding-left: 48px;
-    padding-right: 48px;
+    padding-left: 5%;
     flex-direction: column;
-    justify-content: center;
-    position: sticky;
-    top: 0;
-    height: 100vh;
+    justify-content: center; 
+    align-items: flex-start; 
+    width: 50%;
   }
   
   .statsContainer {
@@ -104,10 +94,10 @@
   }
 
   .rightContainer {
-    margin-left: 48px;
-    margin-right: 48px;
     position: relative;
-    top: 15%;
+    padding-right: 5%;
+    width: 50%;
+    height: 100%;
   }
 
   .cardContainer {
@@ -115,6 +105,8 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     gap: 20px;
+    height: 100%;
+    padding: 72px;
     box-sizing: border-box;
   }
 
