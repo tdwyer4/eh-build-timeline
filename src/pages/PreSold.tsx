@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import styles from "./FullPageStyles.module.css";
-<<<<<<< HEAD
-=======
 import IntroCards from "../components/IntroCards/IntroCards";
 import { VideoCarousel } from "../components/VideoCarousel/VideoCarousel";
 import ProcessCards from "../components/ProcessCards/ProcessCards";
@@ -22,23 +20,11 @@ import CTA from "../components/Cta/Cta";
 import FinishQuality from "../components/FinishQuality/FinishQuality";
 import { GetStarted } from "../components/GetStarted/GetStarted";
 import { Selections } from "../components/Selections/Selections";
->>>>>>> 620625d (EOD page updates)
 import ChooseHouse from "../components/ChooseHouse/ChooseHouse";
-import GetStarted from "../components/GetStarted/GetStarted";
-import PAList from "../components/PAList/PAList";
-import { FootingVideo } from "../components/VidSection/FootingVideo";
-import { Communication } from "../components/Communication/Communication";
-import { FramingVideo } from "../components/VidSection/FramingVideo";
-import { Selections } from "../components/Selections/Selections";
 import { RoughVideo } from "../components/VidSection/RoughVideo";
-import ConstructionQuality from "../components/ConstructionQuality/ConstructionQuality";
 import { InsulationVideo } from "../components/VidSection/InsulationVideo";
-import FinishQuality from "../components/FinishQuality/FinishQuality";
 import { MasonryVideo } from "../components/VidSection/Masonry";
-import Closing from "../components/Closing/Closing";
 import { PunchoutVideo } from "../components/VidSection/PunchoutVideo";
-import { Warranty } from "../components/Warranty/Warranty";
-import CTA from "../components/Cta/Cta";
 
 // Import images for each section
 import bathroomImage from "../media/bathroom.jpg";
@@ -54,7 +40,10 @@ export const PreSold: React.FC = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const sectionId = parseInt(entry.target.getAttribute("data-section") || "0", 10);
+            const sectionId = parseInt(
+              entry.target.getAttribute("data-section") || "0",
+              10
+            );
             setActiveIsland(sectionId);
           }
         });
@@ -74,112 +63,6 @@ export const PreSold: React.FC = () => {
   };
 
   return (
-<<<<<<< HEAD
-    <>
-      <div className={styles.navBarWrapper}>
-        {/* Container for Islands */}
-        <div className={styles.navBarContainer}>
-          {/* Island 1 */}
-          <a href="#1" className={styles.navLink}>
-            <motion.div
-              className={`${styles.navBarIsland} ${styles.navBarGettingStarted}`}
-              initial="collapsed"
-              animate={activeIsland === 1 ? "expanded" : "collapsed"}
-              variants={motionVariants}
-            >
-              <div className={styles.navBarContent}>
-                <img
-                  className={styles.navBarImage}
-                  src={bathroomImage}
-                  alt="Getting Started"
-                />
-                <span className={styles.navBarTitle}>Getting Started</span>
-              </div>
-              <div className={styles.navBarDots}>
-                <span className={styles.navBarDot}></span>
-                <span className={styles.navBarDot}></span>
-                <span className={styles.navBarDot}></span>
-              </div>
-            </motion.div>
-          </a>
-
-          {/* Island 2 */}
-          <a href="#2" className={styles.navLink}>
-            <motion.div
-              className={`${styles.navBarIsland} ${styles.navBarEarlyConstruction}`}
-              initial="collapsed"
-              animate={activeIsland === 2 ? "expanded" : "collapsed"}
-              variants={motionVariants}
-            >
-              <div className={styles.navBarContent}>
-                <img
-                  className={styles.navBarImage}
-                  src={livingImage}
-                  alt="Early Construction"
-                />
-                <span className={styles.navBarTitle}>Early Construction</span>
-              </div>
-              <div className={styles.navBarDots}>
-                <span className={styles.navBarDot}></span>
-                <span className={styles.navBarDot}></span>
-              </div>
-            </motion.div>
-          </a>
-
-          {/* Island 3 */}
-          <a href="#3" className={styles.navLink}>
-            <motion.div
-              className={`${styles.navBarIsland} ${styles.navBarMidConstruction}`}
-              initial="collapsed"
-              animate={activeIsland === 3 ? "expanded" : "collapsed"}
-              variants={motionVariants}
-            >
-              <div className={styles.navBarContent}>
-                <img
-                  className={styles.navBarImage}
-                  src={kitchenImage}
-                  alt="Mid Construction"
-                />
-                <span className={styles.navBarTitle}>Mid Construction</span>
-              </div>
-              <div className={styles.navBarDots}>
-                <span className={styles.navBarDot}></span>
-                <span className={styles.navBarDot}></span>
-              </div>
-            </motion.div>
-          </a>
-
-          {/* Island 4 */}
-          <a href="#4" className={styles.navLink}>
-            <motion.div
-              className={`${styles.navBarIsland} ${styles.navBarMoveInReady}`}
-              initial="collapsed"
-              animate={activeIsland === 4 ? "expanded" : "collapsed"}
-              variants={motionVariants}
-            >
-              <div className={styles.navBarContent}>
-                <img
-                  className={styles.navBarImage}
-                  src={exteriorImage}
-                  alt="Move In Ready"
-                />
-                <span className={styles.navBarTitle}>Move In Ready</span>
-              </div>
-              <div className={styles.navBarDots}>
-                <span className={styles.navBarDot}></span>
-                <span className={styles.navBarDot}></span>
-              </div>
-            </motion.div>
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.contentContainer}>
-        <section id="1" data-section="1">
-          <ChooseHouse />
-        </section>
-        <section id="2" data-section="2">
-=======
     <div className={styles.fullPageStyle}>
       {/* Fixed Navigation */}
       <div className={styles.pageNavContainer}>
@@ -237,7 +120,6 @@ export const PreSold: React.FC = () => {
       {/* Page Content */}
       <div className={styles.bgwhite}>
         <section id="2">
->>>>>>> 620625d (EOD page updates)
           <GetStarted />
         </section>
         <section id="3" data-section="3">
@@ -283,6 +165,6 @@ export const PreSold: React.FC = () => {
           <CTA />
         </section>
       </div>
-    </>
+    </div>
   );
 };
