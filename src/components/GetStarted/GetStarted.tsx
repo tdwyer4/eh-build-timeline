@@ -95,7 +95,7 @@ const Cards = () => {
         />
         <CardItem
           scrollYProgress={scrollYProgress}
-          position={4}
+          position={3}
           numItems={6}
           img="https://assets.cloud.executivehomes.com/prod/public/house-styles/STY~TRANSITIONAL/SMD~g-xsZbV9EQ0wUZvd"
           step="Step 2"
@@ -104,7 +104,7 @@ const Cards = () => {
         />
         <CardItem
           scrollYProgress={scrollYProgress}
-          position={5}
+          position={4}
           numItems={6}
           img={UpgradesPic}
           step="Step 3"
@@ -114,11 +114,11 @@ const Cards = () => {
         />
         <CardItem
           scrollYProgress={scrollYProgress}
-          position={6}
+          position={4}
           numItems={6}
           img="https://assets.cloud.executivehomes.com/static/pages/styles-page/TwoStylesImage.jpg"
-          step="Step 6"
-          title="Let's Get Started!"
+          step="Step 4"
+          title="Sign Purchase Agreement"
           desc="Our simple Purchase Agreement locks in your price and guarantees
               your home's quality."
         />
@@ -237,7 +237,13 @@ const ChooseItem = ({
       initial={{ y: 0 }}
       transition={{ duration: 1, ease: "easeInOut" }}
     >
-      <img className={styles.chooseCardImage} src={img} />
+      <motion.img
+        className={styles.chooseCardImage}
+        src={img}
+        initial={{ rotateY: 45 }}
+        whileInView={{ rotateY: 0 }}
+        transition={{ duration: 1, ease: "easeInOut" }}
+      />
       <div className={styles.chooseCardTextContainer}>
         <h3 className={styles.chooseCardTitle}>{title}</h3>
         <p className={styles.chooseCardDescription}>{desc}</p>
