@@ -39,14 +39,16 @@ background: #1a2229;
   position: absolute;
   display: flex;
   bottom: 0;
+  right: 0;
+  left: 0;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   color: white;
   text-align: left;
-  width: 100%;
   background: #1a222990;
   height: fit-content;
+  width: 100%;
 }
 
 .slideTitle {
@@ -74,3 +76,55 @@ background: #1a2229;
 background-color: #000000;
 }
 
+.glowBG {
+  position: fixed;
+  height: 100vh;
+  right: 0;
+  top: -25%;
+  will-change: transform;
+  scale: 1;
+  rotate: 180deg;
+}
+
+.fixedHeaderContainer {
+  color: #fff;
+  z-index: 100;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.fixedHeader {
+  margin: 0;
+    text-align: center;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: 24px;
+    background: linear-gradient(#1a222990, #1a222990) ;
+    border-radius: 0px 0px 16px 16px;
+    position: relative;
+    backdrop-filter: blur(10px);
+}
+
+.fixedHeaderPhase {
+  color: #fff;
+  font-size: 24px;
+  margin: 0;
+}
+
+.fixedHeaderSub {
+  color: #76d5d8;
+  font-size: 72px;
+  margin: 0;
+}
+
+.fixedHeaderTime {
+  color: #fff;
+  font-size: 14px;
+  padding: 4px;
+  border: 1px solid #76d5d8;
+  border-radius: 9999px;
+  width: 100px;
+  margin: auto;
+}

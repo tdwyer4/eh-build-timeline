@@ -32,36 +32,7 @@ import livingImage from "../media/living.jpg";
 import kitchenImage from "../media/kitchen2.jpg";
 import exteriorImage from "../media/exterior.jpg";
 
-export const PreSold: React.FC = () => {
-  const [activeIsland, setActiveIsland] = useState<number | null>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const sectionId = parseInt(
-              entry.target.getAttribute("data-section") || "0",
-              10
-            );
-            setActiveIsland(sectionId);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-
-    const sections = document.querySelectorAll("[data-section]");
-    sections.forEach((section) => observer.observe(section));
-
-    return () => observer.disconnect();
-  }, []);
-
-  const motionVariants = {
-    collapsed: { width: "20%", opacity: 0.8 },
-    expanded: { width: "25%", opacity: 1, scale: 1.05 },
-  };
-
+export const PreSold = () => {
   return (
     <div className={styles.fullPageStyle}>
       {/* Fixed Navigation */}
