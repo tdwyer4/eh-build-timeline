@@ -1,45 +1,294 @@
-html {
-  scroll-behavior: smooth;
-  scroll-snap-type: proximity;
-}
-
-body {
-  scroll-behavior: smooth;
-}
-
-.pageNavContainer {
+/* Navigation Container */
+.push-pageNavContainer {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: #fff;
-  z-index: 1000;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.pageNav ul {
-  list-style: none;
-  margin: 0;
-  padding: 1rem;
+  top: 3%;
+  right: 2%;
+  width: 200px;
+  padding: 16px;
+  z-index: 9999;
   display: flex;
-  flex-wrap: column;
-  gap: 1rem;
-  font-size: 10px;
-  font-weight: 100;
-  text-transform: uppercase;
-  font-family: 'Montserrat', sans-serif;
+  flex-direction: column;
+  align-items: center; /* Centering horizontally */
+  justify-content: flex-start;
+  border-radius: 16px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  pointer-events: auto;
+  overflow: visible;
+  gap: 4px;  /* 4px gap between progress ring and nav items */
 }
 
-.pageNav ul li {
-  display: inline-block;
+/* Dark Background with Soft Edges */
+.push-pageNavContainer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -2;
+  border-radius: inherit;
+  background: rgba(0, 0, 0, 0.6);
+  filter: blur(30px);
 }
 
-.pageNav ul li a {
+/* Gradient Background with Blur */
+.push-pageNavContainer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: 
+    linear-gradient(
+      208deg,
+      #0073FF 16.61%,
+      rgba(118, 213, 216, 0.00) 48.27%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(118, 213, 216, 0.70) 0%,
+      rgba(118, 213, 216, 0.07) 100%
+    );
+  filter: blur(44px);
+  opacity: 0.85;
+  animation: push-hero-gradient-animation 10s linear infinite alternate;
+}
+
+/* Gradient Animation */
+@keyframes push-hero-gradient-animation {
+  0% {
+    background: 
+      linear-gradient(
+        208deg,
+        #0073FF 16.61%,
+        rgba(118, 213, 216, 0.00) 48.27%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(118, 213, 216, 0.70) 0%,
+        rgba(118, 213, 216, 0.07) 100%
+      );
+  }
+  100% {
+    background: 
+      linear-gradient(
+        208deg,
+        #76D5D8 16.61%,
+        rgba(71, 99, 255, 0.00) 48.27%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(71, 99, 255, 0.70) 0%,
+        rgba(71, 99, 255, 0.07) 100%
+      );
+  }
+}
+
+/* Circular Progress Bar Wrapper */
+.push-progressBarWrapper {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: transparent; /* Transparent center */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 4px; /* 4px gap between progress ring and nav items */
+  z-index: 2;
+}
+
+/* Center Circle (to fill the middle with pink) */
+.push-progressCenter {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: #ff007f; /* Pink center */
+  border-radius: 50%;
+  z-index: 3; /* Ensures it's on top of the background circle */
+}
+
+/* Static Background Circle */
+.push-progressBarBackground {
+  stroke: #3dccc8; /* Teal color of the outer ring */
+  stroke-width: 10;
+  fill: none; /* Ensures center is transparent */
+  stroke-dasharray: 440;
+  stroke-linecap: round;
+  transform: rotate(-90deg); /* Makes the ring start from top */
+}
+
+/* Progress Circle (Dynamic) */
+.push-progressBarProgress {
+  stroke: #3dccc8; /* Teal progress ring */
+  stroke-width: 10;
+  fill: none; /* Transparent center */
+  stroke-dasharray: 440;
+  stroke-linecap: round;
+  stroke-dashoffset: calc(440 - (440 * 13) / 100); /* Example for 13% progress */
+  transition: stroke-dashoffset 0.3s ease;
+  animation: progressAnimation 1.5s linear;
+}
+
+/* Centered Percentage Label */
+.push-progressLabel {
+  position: absolute;
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
+  z-index: 4; /* Ensuring text is on top */
+}
+
+/* Animation for the progress ring */
+@keyframes progressAnimation {
+  0% {
+    stroke-dashoffset: 440;
+  }
+  100% {
+    stroke-dashoffset: calc(440 - (440 * 13) / 100); /* 13% progress */
+  }
+}
+
+
+
+
+
+
+/* Centered Percentage Label */
+.push-progressLabel {
+  position: absolute;
+  color: white;
+  font-size: 32px;
+  font-weight: 200;
+  z-index: 3; /* Ensuring text is on top */
+}
+
+/* Animation for the progress ring */
+@keyframes progressAnimation {
+  0% {
+    stroke-dashoffset: 440;
+  }
+  100% {
+    stroke-dashoffset: calc(440 - (440 * 19) / 100); /* Adjust according to the percentage */
+  }
+}
+
+/* Navigation List */
+.push-pageNav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+/* Navigation Item */
+.push-pageNav ul li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  height: 1.5em;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 1;
+}
+
+/* Navigation Item Marker - Circle */
+.push-pageNav ul li::after {
+  content: "";
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: white;
+  font-weight: 500;
+  margin-left: 8px;
+}
+
+/* Hidden Items */
+.push-pageNav ul li.hidden {
+  opacity: 0;
+  transform: translateX(20px);
+  pointer-events: none;
+}
+
+/* Revealed Items */
+.push-pageNav ul li.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Active Navigation Item */
+.push-pageNav ul li.active {
+  font-weight: 400;
+  color: #3dccc8;
+}
+
+.push-pageNav ul li.active::after {
+  background: #3dccc8;
+}
+
+/* Navigation Links */
+.push-pageNav ul li a {
+  color: white;
   text-decoration: none;
-  color: #76D5D8;
-  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  width: 100%;
+  display: block;
+  cursor: pointer;
+  transition: color 0.3s ease;
 }
 
-.pageNav ul li a:hover {
-  color: #76D5D820;
+/* Hover Effect for Links */
+.push-pageNav ul li a:hover {
+  color: #3dccc8;
+}
+
+/* Navigation Buttons */
+.push-navButtons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+/* Navigation Buttons - Individual Buttons */
+.push-navButtons button {
+  background: #ffffff40;
+  border: 1px solid rgba(255, 255, 255, 0.123);
+  color: white;
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+  border-radius: 8px;
+  padding: 4px 8px;
+  cursor: pointer;
+  backdrop-filter: blur(2px);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Navigation Buttons - Hover State */
+.push-navButtons button:hover {
+  background: rgba(255, 255, 255, 0.459);
+  color: rgb(31, 28, 28);
+}
+
+/* Full Page Style */
+.push-fullPageStyle {
+  position: relative;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+
+/* Background White */
+.push-bgwhite {
+  background-color: white;
 }

@@ -1,124 +1,120 @@
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import styles from "./FullPageStyles.module.css";
-import IntroCards from "../components/IntroCards/IntroCards";
-import { VideoCarousel } from "../components/VideoCarousel/VideoCarousel";
-import ProcessCards from "../components/ProcessCards/ProcessCards";
-import ChoosePath from "../components/ChoosePath/ChoosePath";
-import ScrollInfo from "../components/ScrollInfo/ScrollInfo";
-import PAList from "../components/PAList/PAList";
-import ZoomScroll from "../components/ZoomScroll/ZoomScroll";
-import PadVideo from "../media/Pad.mp4";
-import FramingRoughVideo from "../media/Framing.mp4";
-import { Communication } from "../components/Communication/Communication";
-import { FootingVideo } from "../components/VidSection/FootingVideo";
-import { FramingVideo } from "../components/VidSection/FramingVideo";
-import ConstructionQuality from "../components/ConstructionQuality/ConstructionQuality";
-import { Warranty } from "../components/Warranty/Warranty";
-import Closing from "../components/Closing/Closing";
-import CTA from "../components/Cta/Cta";
-import FinishQuality from "../components/FinishQuality/FinishQuality";
 import { GetStarted } from "../components/GetStarted/GetStarted";
+import PAList from "../components/PAList/PAList";
+import { FootingVideo } from "../components/VidSection/FootingVideo";
+import { Communication } from "../components/Communication/Communication";
+import { FramingVideo } from "../components/VidSection/FramingVideo";
 import { Selections } from "../components/Selections/Selections";
-import ChooseHouse from "../components/ChooseHouse/ChooseHouse";
 import { RoughVideo } from "../components/VidSection/RoughVideo";
+import ConstructionQuality from "../components/ConstructionQuality/ConstructionQuality";
 import { InsulationVideo } from "../components/VidSection/InsulationVideo";
+import FinishQuality from "../components/FinishQuality/FinishQuality";
 import { MasonryVideo } from "../components/VidSection/Masonry";
+import Closing from "../components/Closing/Closing";
 import { PunchoutVideo } from "../components/VidSection/PunchoutVideo";
+import { Warranty } from "../components/Warranty/Warranty";
+import CTA from "../components/Cta/Cta";
 
-// Import images for each section
-import bathroomImage from "../media/bathroom.jpg";
-import livingImage from "../media/living.jpg";
-import kitchenImage from "../media/kitchen2.jpg";
-import exteriorImage from "../media/exterior.jpg";
-
-export const PreSold: React.FC = () => {
+const PreSold: React.FC = () => {
   const [activeIsland, setActiveIsland] = useState<number | null>(null);
+  const [navExpanded, setNavExpanded] = useState(false);
+  const [progress, setProgress] = useState(0); // Progress state (0 to 100)
+
+  const toggleNav = () => setNavExpanded(!navExpanded);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const sectionId = parseInt(
-              entry.target.getAttribute("data-section") || "0",
-              10
-            );
+          const sectionId = parseInt(entry.target.getAttribute("id") || "0", 10);
+          if (entry.isIntersecting && !isNaN(sectionId)) {
             setActiveIsland(sectionId);
+
+            // Calculate progress only when sectionId is valid
+            const totalSections = 16; // Total number of sections
+            const progressValue = (sectionId / totalSections) * 100;
+            setProgress(progressValue);
           }
         });
       },
       { threshold: 0.5 }
     );
 
-    const sections = document.querySelectorAll("[data-section]");
+    const sections = document.querySelectorAll("section[id]");
     sections.forEach((section) => observer.observe(section));
 
     return () => observer.disconnect();
   }, []);
 
-  const motionVariants = {
-    collapsed: { width: "20%", opacity: 0.8 },
-    expanded: { width: "25%", opacity: 1, scale: 1.05 },
-  };
+  const circleLength = 440; // Circumference for the circle
+  const offset = circleLength - (circleLength * progress) / 100; // Calculate the stroke-dashoffset
 
   return (
-    <div className={styles.fullPageStyle}>
-      {/* Fixed Navigation */}
-      <div className={styles.pageNavContainer}>
-        <div className={styles.pageNav}>
+    <div className={styles["push-fullPageStyle"]}>
+      <div className={styles["push-pageNavContainer"]}>
+        {/* Circular Progress Bar */}
+        <div className={styles["push-progressBarWrapper"]}>
+          <svg
+            className={styles["push-progressBar"]}
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 120 120"
+          >
+            <circle
+              cx="60"
+              cy="60"
+              r="52" // Radius of the circle
+              className={styles["push-progressBarBackground"]}
+              style={{
+                strokeDashoffset: offset,
+              }}
+            />
+            <circle
+              cx="60"
+              cy="60"
+              r="52"
+              className={styles["push-progressBarProgress"]}
+              style={{
+                strokeDashoffset: offset,
+              }}
+            />
+          </svg>
+          <div className={styles["push-progressLabel"]}>
+            {Math.round(progress)}%
+          </div>
+        </div>
+
+        {/* Navigation Buttons */}
+        <div className={styles["push-navButtons"]}>
+          <button onClick={() => setActiveIsland(Math.max((activeIsland || 0) - 1, 2))}>
+            ←
+          </button>
+          <button onClick={toggleNav}>{navExpanded ? "Close" : "Expand"}</button>
+          <button onClick={() => setActiveIsland(Math.min((activeIsland || 0) + 1, 16))}>
+            →
+          </button>
+        </div>
+
+        {/* Navigation Content (List) */}
+        <div
+          className={`${styles["push-pageNav"]} ${navExpanded ? styles["push-expanded"] : ""}`}
+        >
           <ul>
-            <li>
-              <a href="#2">Choose Your Styles</a>
-            </li>
-            <li>
-              <a href="#3">What's Next?</a>
-            </li>
-            <li>
-              <a href="#4">Phase 1 - Footing</a>
-            </li>
-            <li>
-              <a href="#5">Communication</a>
-            </li>
-            <li>
-              <a href="#6">Phase 2 - Framing</a>
-            </li>
-            <li>
-              <a href="#7">Selections</a>
-            </li>
-            <li>
-              <a href="#8">Phase 3 - Rough Trades</a>
-            </li>
-            <li>
-              <a href="#9">Construction Quality</a>
-            </li>
-            <li>
-              <a href="#10">Phase 4 - Drywall</a>
-            </li>
-            <li>
-              <a href="#11">Finish Quality</a>
-            </li>
-            <li>
-              <a href="#12">Phase 5 - Masonry</a>
-            </li>
-            <li>
-              <a href="#13">Closing</a>
-            </li>
-            <li>
-              <a href="#14">Phase 6 - Punch Out</a>
-            </li>
-            <li>
-              <a href="#15">Warranty</a>
-            </li>
-            <li>
-              <a href="#16">Next Steps</a>
-            </li>
+            {["Choose Your Styles", "What's Next?", "Phase 1 - Footing", "Communication", "Phase 2 - Framing", "Selections", "Phase 3 - Rough Trades", "Construction Quality", "Phase 4 - Drywall", "Finish Quality", "Phase 5 - Masonry", "Closing", "Phase 6 - Punch Out", "Warranty", "Next Steps"].map((item, index) => (
+              <li
+                key={index}
+                className={`${activeIsland === index + 2 ? styles["push-active"] : ""} ${navExpanded ? styles["push-item-expanded"] : ""}`}
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <a href={`#${index + 2}`}>{item}</a>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
 
       {/* Page Content */}
-      <div className={styles.bgwhite}>
+      <div className={styles["push-bgwhite"]}>
         <section id="2">
           <GetStarted />
         </section>
@@ -168,3 +164,5 @@ export const PreSold: React.FC = () => {
     </div>
   );
 };
+
+export default PreSold;

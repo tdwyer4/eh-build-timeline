@@ -2,7 +2,7 @@ import styles from "./SplineLoader.module.css";
 import { useRef, useState, useEffect, startTransition } from "react";
 import { motion } from "framer-motion";
 import FirstLoad from "./FirstLoad";
-import { PreSold } from "./PreSold";
+import PreSold from "./PreSold";
 import { EarlyConstruction } from "./EarlyConstruction";
 import { MidConstruction } from "./MidConstruction";
 import { MoveInReady } from "./MoveInReady";
