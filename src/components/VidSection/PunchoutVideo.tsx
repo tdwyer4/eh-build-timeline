@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import styles from "./VidSection.module.css";
 import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
 import Punchout from "../../media/videos/phases/16Punchout.mp4";
+import { VidSectionHeader } from "./VidSectionHeader";
 
 export const PunchoutVideo = () => {
   const ref = useRef(null);
@@ -13,6 +14,13 @@ export const PunchoutVideo = () => {
   return (
     <>
       <div ref={ref} className={styles.vidSliderWrap}>
+        <VidSectionHeader
+          title="Punch Out "
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat."
+        />
         {SLIDES.map((s, idx) => (
           <Slide
             key={s.id}

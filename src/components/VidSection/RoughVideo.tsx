@@ -4,6 +4,7 @@ import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
 import TopOut from "../../media/videos/phases/8TopOut.mp4";
 import HVACRough from "../../media/videos/phases/9HVACRough.mp4";
 import ElectricRough from "../../media/videos/phases/10ElectricRough.mp4";
+import { VidSectionHeader } from "./VidSectionHeader";
 
 export const RoughVideo = () => {
   const ref = useRef(null);
@@ -15,6 +16,13 @@ export const RoughVideo = () => {
   return (
     <>
       <div ref={ref} className={styles.vidSliderWrap}>
+        <VidSectionHeader
+          title="Rough Trades"
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat."
+        />
         {SLIDES.map((s, idx) => (
           <Slide
             key={s.id}
