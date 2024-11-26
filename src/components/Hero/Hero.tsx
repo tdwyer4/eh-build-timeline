@@ -1,7 +1,7 @@
 import styles from "./Hero.module.css";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Manifest from "../components/Manifest/Manifest";
+import Manifest from "../Manifest/Manifest";
 import HeroVideo from "../media/HeroAnimation2.mp4";
 import ParticleVideo from "../media/particles2.mp4";
 
