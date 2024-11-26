@@ -7,12 +7,12 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import GlowBG from "../../media/glowBG.png";
 import Pad from "../../media/videos/phases/1Pad.mp4";
 import RoughPlumbing from "../../media/videos/phases/2RoughPlumbing.mp4";
 import PostTension from "../../media/videos/phases/3PostTension.mp4";
 import Termite from "../../media/videos/phases/4Termite.mp4";
 import Slab from "../../media/videos/phases/5Slab.mp4";
+import { VidSectionHeader } from "./VidSectionHeader";
 
 export const FootingVideo = () => {
   const ref = useRef(null);
@@ -23,41 +23,13 @@ export const FootingVideo = () => {
   return (
     <>
       <div ref={ref} className={styles.vidSliderWrap}>
-        <motion.div className={styles.fixedHeaderContainer}>
-          <motion.div className={styles.fixedHeader}>
-            <motion.img
-              src={GlowBG}
-              className={styles.glowBG}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 1, ease: "easeIn" }}
-            />
-            <motion.p
-              className={styles.fixedHeaderPhase}
-              initial={{ opacity: 0, y: 100 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.5 }}
-            >
-              Phase 1
-            </motion.p>
-            <motion.p
-              className={styles.fixedHeaderSub}
-              initial={{ opacity: 0, y: 100 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 2 }}
-            >
-              Foundation
-            </motion.p>
-            <motion.p
-              className={styles.fixedHeaderTime}
-              initial={{ opacity: 0, y: 100 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 2.5 }}
-            >
-              0-1 Months
-            </motion.p>
-          </motion.div>
-        </motion.div>
+        <VidSectionHeader
+          title="Foundation"
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat."
+        />
         {SLIDES.map((s, idx) => (
           <Slide
             key={s.id}

@@ -123,8 +123,6 @@ background-color: #000000;
   color: #fff;
   font-size: 14px;
   padding: 4px;
-  border: 1px solid #76d5d8;
-  border-radius: 9999px;
-  width: 100px;
+  width: 50%;
   margin: auto;
 }
