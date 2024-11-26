@@ -1,11 +1,18 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import styles from "./VidSection.module.css";
-import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  MotionValue,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import Pad from "../../media/videos/phases/1Pad.mp4";
 import RoughPlumbing from "../../media/videos/phases/2RoughPlumbing.mp4";
 import PostTension from "../../media/videos/phases/3PostTension.mp4";
 import Termite from "../../media/videos/phases/4Termite.mp4";
 import Slab from "../../media/videos/phases/5Slab.mp4";
+import { VidSectionHeader } from "./VidSectionHeader";
 
 export const FootingVideo = () => {
   const ref = useRef(null);
@@ -13,16 +20,23 @@ export const FootingVideo = () => {
     target: ref,
     offset: ["start start", "end start"],
   });
-
   return (
     <>
       <div ref={ref} className={styles.vidSliderWrap}>
+        <VidSectionHeader
+          title="Foundation"
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat."
+        />
         {SLIDES.map((s, idx) => (
           <Slide
             key={s.id}
             slide={s}
             scrollYProgress={scrollYProgress}
             position={idx + 1}
+            numItems={s.ni}
           />
         ))}
       </div>
@@ -35,9 +49,10 @@ interface SlideProps {
   position: number;
   slide: SlideType;
   scrollYProgress: MotionValue;
+  numItems: number;
 }
 
-const Slide = ({ position, slide, scrollYProgress }: SlideProps) => {
+const Slide = ({ position, slide, scrollYProgress, numItems }: SlideProps) => {
   const scaleFromPct = (position - 1) / SLIDES.length;
   const y = useTransform(
     scrollYProgress,
@@ -45,23 +60,25 @@ const Slide = ({ position, slide, scrollYProgress }: SlideProps) => {
     [0, -SLIDE_HEIGHT]
   );
 
-  const isOddSlide = position % 2;
+  const stepSize = 1 / numItems;
+  const end = stepSize * position;
+  const start = end - stepSize;
+  const mid = (start + end) / 2;
+
+  const opacity = useTransform(scrollYProgress, [start, mid, end], [0.9, 1, 0]);
+  const scale = useTransform(scrollYProgress, [start, end], [1, 0.9]);
 
   return (
     <motion.div
       style={{
         height: SLIDE_HEIGHT,
         y: position === SLIDES.length ? undefined : y,
-        // background: isOddSlide ? "black" : "white",
-        // color: isOddSlide ? "white" : "black",
       }}
       className={styles.slideContainer}
     >
       <motion.div
         className={styles.slideVideoContainer}
-        initial={{ scale: 0.85, opacity: 1, borderRadius: 24 }}
-        whileInView={{ scale: 0.95, opacity: 1, borderRadius: 24 }}
-        transition={{ duration: 1 }}
+        style={{ opacity, scale }}
       >
         <motion.video
           src={slide.video}
@@ -78,13 +95,14 @@ const Slide = ({ position, slide, scrollYProgress }: SlideProps) => {
           }}
         ></motion.video>
         <motion.div
-          className={styles.slideVideoOverlay}
-          whileInView={{ opacity: 0.3 }}
-        />
-      </motion.div>
-      <motion.div className={styles.slideTextContainer}>
-        <h3 className={styles.slideTitle}>{slide.title}</h3>
-        <p className={styles.slideParagraph}>{slide.paragraph}</p>
+          className={styles.slideTextContainer}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <h3 className={styles.slideTitle}>{slide.title}</h3>
+          <p className={styles.slideParagraph}>{slide.paragraph}</p>
+        </motion.div>
       </motion.div>
     </motion.div>
   );
@@ -94,6 +112,7 @@ const SLIDE_HEIGHT = 960;
 
 type SlideType = {
   id: number;
+  ni: number;
   title: string;
   paragraph: string;
   video: string;
@@ -102,6 +121,7 @@ type SlideType = {
 const SLIDES: SlideType[] = [
   {
     id: 1,
+    ni: 5,
     title: "Footings",
     paragraph:
       "The footing is the perimeter foundation and is the first step after the dirt pad is built. You'll notice rebar extending up from the footing - this rebar is tied into the slab concrete to anchor your home into the ground. ",
@@ -109,6 +129,7 @@ const SLIDES: SlideType[] = [
   },
   {
     id: 2,
+    ni: 5,
     title: "Rough Plumbing",
     paragraph:
       "The plumbers first visit to the home is call the Rough Plumbing phase. This is when the drain pipes and water lines are run. Our team uses laser levels to ensure everything is properly installed. ",
@@ -116,6 +137,7 @@ const SLIDES: SlideType[] = [
   },
   {
     id: 3,
+    ni: 5,
     title: "Post-Tension Cables",
     paragraph:
       "Every Executive home features post-tension cables that are engineered precisely for each layout. The post-tension cables bind the concrete together and provide the home with incredible tensile strength. ",
@@ -123,6 +145,7 @@ const SLIDES: SlideType[] = [
   },
   {
     id: 4,
+    ni: 5,
     title: "Termite Treatment",
     paragraph:
       "A termite treatment will be applied before the slab is poured. The treatment comes with a 5-year warranty for extra peace of mind!",
@@ -130,6 +153,7 @@ const SLIDES: SlideType[] = [
   },
   {
     id: 5,
+    ni: 5,
     title: "Slab",
     paragraph:
       "Once the internal systems are in place, the slab is backfilled and concrete is poured. Framing is up next!.",

@@ -104,7 +104,9 @@ export default function SplineLoader() {
           </div>
           <div className={styles.buttonContainer}>
             <motion.div className={styles.Load}></motion.div>
-            <motion.div className={styles.btnInfoContainer}>
+            <motion.div
+              className={`${styles.btnInfoContainer} ${styles.yellowBG}`}
+            >
               <h3 className={styles.infoHeader}>PRE-SOLD</h3>
               <div className={styles.infoSub}>
                 <p className={styles.infoInfo}>Build Time:</p>
@@ -117,7 +119,9 @@ export default function SplineLoader() {
                 Learn More
               </motion.button>
             </motion.div>
-            <motion.div className={styles.btnInfoContainer}>
+            <motion.div
+              className={`${styles.btnInfoContainer} ${styles.orangeBG}`}
+            >
               <h3 className={styles.infoHeader}>EARLY CONSTRUCTION</h3>
               <div className={styles.infoSub}>
                 <p className={styles.infoInfo}>Build Time:</p>
@@ -130,7 +134,9 @@ export default function SplineLoader() {
                 Learn More
               </motion.button>
             </motion.div>
-            <motion.div className={styles.btnInfoContainer}>
+            <motion.div
+              className={`${styles.btnInfoContainer} ${styles.purpleBG}`}
+            >
               <h3 className={styles.infoHeader}>MID-CONSTRUCTION</h3>
               <div className={styles.infoSub}>
                 <p className={styles.infoInfo}>Build Time:</p>
@@ -143,7 +149,9 @@ export default function SplineLoader() {
                 Learn More
               </motion.button>
             </motion.div>
-            <motion.div className={styles.btnInfoContainer}>
+            <motion.div
+              className={`${styles.btnInfoContainer} ${styles.seafoamBG}`}
+            >
               <h3 className={styles.infoHeader}>MOVE IN READY</h3>
               <div className={styles.infoSub}>
                 <p className={styles.infoInfo}>Build Time:</p>

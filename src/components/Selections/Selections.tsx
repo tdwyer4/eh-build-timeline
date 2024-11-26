@@ -5,7 +5,7 @@ import styles from "./Selections.module.css";
 const CARD_SIZE_LG = 365;
 const CARD_SIZE_SM = 290;
 
-const BORDER_SIZE = 0;
+const BORDER_SIZE = 0.5;
 const CORNER_CLIP = 0;
 const CORNER_LINE_LEN = Math.sqrt(
   CORNER_CLIP * CORNER_CLIP + CORNER_CLIP * CORNER_CLIP

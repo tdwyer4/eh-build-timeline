@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import styles from "./FullPageStyles.module.css";
 import { GetStarted } from "../components/GetStarted/GetStarted";
 import PAList from "../components/PAList/PAList";
 import { FootingVideo } from "../components/VidSection/FootingVideo";
@@ -15,6 +14,8 @@ import Closing from "../components/Closing/Closing";
 import { PunchoutVideo } from "../components/VidSection/PunchoutVideo";
 import { Warranty } from "../components/Warranty/Warranty";
 import CTA from "../components/Cta/Cta";
+
+import styles from "./FullPageStyles.module.css";
 
 const PreSold: React.FC = () => {
   const [activeIsland, setActiveIsland] = useState<number | null>(null);

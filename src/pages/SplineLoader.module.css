@@ -165,6 +165,27 @@
     justify-content: space-between;
   }
 
+  .yellowBG {
+    border: 1px solid #FFCF38;
+    background: linear-gradient(219deg, rgba(255, 207, 56, 0.0) 20.19%, rgba(153, 151, 43, 0.5) 62.05%, rgba(91, 75, 23, 0.50) 99.93%);
+
+  }
+
+  .orangeBG {
+    border: 1px solid #FE7E66;
+    background: linear-gradient(219deg, rgba(254, 126, 102, 0.0) 20.19%, rgba(153, 81, 43, 0.5) 62.05%, rgba(89, 49, 41, 0.50) 99.93%);
+  }
+
+  .purpleBG {
+    border: 1px solid #9A6FEF;
+    background: linear-gradient(219deg, rgba(151, 71, 255, 0.0) 20.19%, rgba(90, 43, 153, 0.50) 62.05%, rgba(36, 17, 60, 0.50) 99.93%);
+  }
+
+  .seafoamBG {
+    border: 1px solid #76d5d8;
+    background: linear-gradient(219deg, rgba(118, 213, 216, 0.0) 20.19%, rgba(43, 146, 153, 0.5) 62.05%, rgba(19, 59, 61, 0.50) 99.93%);
+  }
+
   .btnInfoContainer:hover {
     background-color: #76d5d810 ;
     transition: all 0.3s ease-in-out;

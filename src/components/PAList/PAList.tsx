@@ -59,7 +59,7 @@ const Schedule = () => {
         location="Every stage of construction is automatically scheduled by our proprietary algorithm."
       />
       <ScheduleItemLast
-        title="Let's Get Started"
+        title="Construction Begins!"
         date="7"
         location="With everything in place, construction gets rolling. The foundation stage is up first."
       />
