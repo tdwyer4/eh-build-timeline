@@ -1,25 +1,24 @@
 import React from "react";
-import styles from "./GradientType.module.css";
+import styles from "./gradientType.module.css";
 import { motion } from "framer-motion";
 
-interface ManifestProps {
-  backgroundColor?: string; // Adding backgroundColor prop
+interface GradientTypeProps {
+  children: React.ReactNode;
 }
 
-export default function gradientType({ backgroundColor }: ManifestProps) {
+const GradientType: React.FC<GradientTypeProps> = ({ children }) => {
   return (
-    <div
-      className={styles.containerManifest}
-      style={{ backgroundColor }} // Dynamically set background color
-    >
-      <motion.a
-        className={styles.gradientType}
+    <div className={styles.containerGradientType}>
+      <motion.div
+        className={styles.gradientText}
         initial={{ scale: 0, y: 0 }}
         whileInView={{ scale: 1, y: 0 }}
         transition={{ delay: 1.2, duration: 0.5, ease: "easeOut" }}
       >
-        <h1>THE EXECUTIVE EXPERIENCE</h1>
-      </motion.a>
+        {children}
+      </motion.div>
     </div>
   );
-}
+};
+
+export default GradientType;

@@ -16,6 +16,8 @@ import { Warranty } from "../components/Warranty/Warranty";
 import CTA from "../components/Cta/Cta";
 
 import styles from "./FullPageStyles.module.css";
+import Hero from "../components/Hero/Hero";
+import { ProgressBar } from "../components/ProgressBar/ProgressBar";
 
 const PreSold: React.FC = () => {
   const [activeIsland, setActiveIsland] = useState<number | null>(null);
@@ -53,37 +55,9 @@ const PreSold: React.FC = () => {
 
   return (
     <div className={styles["push-fullPageStyle"]}>
+      <Hero />
       <div className={styles["push-pageNavContainer"]}>
-        {/* Circular Progress Bar */}
-        <div className={styles["push-progressBarWrapper"]}>
-          <svg
-            className={styles["push-progressBar"]}
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 120 120"
-          >
-            <circle
-              cx="60"
-              cy="60"
-              r="52" // Radius of the circle
-              className={styles["push-progressBarBackground"]}
-              style={{
-                strokeDashoffset: offset,
-              }}
-            />
-            <circle
-              cx="60"
-              cy="60"
-              r="52"
-              className={styles["push-progressBarProgress"]}
-              style={{
-                strokeDashoffset: offset,
-              }}
-            />
-          </svg>
-          <div className={styles["push-progressLabel"]}>
-            {Math.round(progress)}%
-          </div>
-        </div>
+    <ProgressBar progress={progress} offset={offset} />
 
         {/* Navigation Buttons */}
         <div className={styles["push-navButtons"]}>
@@ -115,7 +89,7 @@ const PreSold: React.FC = () => {
       </div>
 
       {/* Page Content */}
-      <div className={styles["push-bgwhite"]}>
+      <div>
         <section id="2">
           <GetStarted />
         </section>
@@ -167,3 +141,5 @@ const PreSold: React.FC = () => {
 };
 
 export default PreSold;
+
+

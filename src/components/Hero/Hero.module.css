@@ -1,283 +1,40 @@
-@keyframes gradient-animation {
-  0% {
-    background-position: 0% 50%;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+.heroContainer {
+    position: relative;
+    width: 100vw;
+    overflow: visible;
+    align-items: center;
+    z-index: 1;
   }
-  50% {
-    background-position: 100% 50%;
+  
+  .heroContentContainer {
+    position: relative;
+    z-index: 10; 
+    color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    height: 100%;
+    text-align: center;
+    padding: 20px;
   }
-  100% {
-    background-position: 0% 50%;
+
+  .textWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 50px;
+    justify-content: center;
+    text-align: center;
   }
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;700&display=swap');
-
-.splineContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  z-index: 1;
-  overflow: hidden; 
-  animation: gradient-animation 20s ease infinite;
-  background-size: 250% 250%;
-}
-
-.video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 9;
-  pointer-events: none;
-  transition: opacity 1.5s ease;
-}
-
-.staticImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0s ease;
-}
-
-.fadeIn {
-  opacity: 1;
-  pointer-events: none;
-}
-
-.hidden {
-  opacity: 0;
-}
-
-.appContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
-  position: relative;
-}
-
-.manifestContainer {
-  display: flex;
-  z-index: 10;
-}
-
-.customControls {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 24px;
-  position: relative;
-  z-index: 10;
-}
-
-.subText {
-  font-size: 16px;
-  font-weight: 200;
-  font-family: "Montserrat", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: white;
-}
-
-.buttonContainer {
-  display: flex;
-  gap: 24px;
-  position: relative;
-  cursor: pointer;
-}
-
-.customControls button {
-  border: 1px solid #76d5d8;
-  border-radius: 20px;
-  background: none;
-  font-size: 14px;
-  text-transform: uppercase;
-  color: #76d5d8;
-  padding: 5px 15px;
-  transition: all 0.3s ease-in-out;
-}
-
-.customControls button:hover {
-  color: #1F2429;
-  background-color: #76d5d8;
-  box-shadow: #76d5d8 0px 0px 10px;
-}
-
-.videoContainerWrapper {
-  display: flex;
-  flex-direction: column; 
-}
-
-.videoContainer {
-  display: flex;
-  justify-content: space-evenly; 
-  flex-direction: row; /* Change to row for side-by-side layout */
-  padding: 25px; 
-  width: 100%;
-  height: auto;
-  position: relative;
-  z-index: 10;
-}
-
-.videoPath {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  background-color: black;
-  border: 1px solid #76d5d8; 
-  border-radius: 16px;
-  overflow: hidden; 
-  width: 400px; 
-  height: 600px; 
-  position: relative; 
-  transition: box-shadow 0.3s ease-in-out; 
-}
-
-.videoPath:hover {
-  box-shadow: 0px 0px 20px 5px rgba(118, 213, 216, 0.7); 
-}
-
-.videoContent {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; 
-}
-
-.leftText, .rightText {
-  position: absolute;
-  color: white;
-  font-size: 24px;
-  font-weight: 100;
-  z-index: 10;
-}
-
-.leftText {
-  left: 20px;
-  bottom: 20px; 
-}
-
-.rightText {
-  right: 20px;
-  bottom: 20px; 
-}
-
-.fullscreenContainer {
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(31, 36, 41, 1); 
-  z-index: 999; 
-  display: flex;
-  align-items: flex-start; 
-  justify-content: flex-start; 
-  padding: 0%; 
-}
-
-.videoDescription {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  max-width: 50%;
-  height: auto;
-  color: white;
-  z-index: 10;
-  display: flex; 
-  align-items: center; 
-}
-
-.videoTitle {
-  font-size: 24px;
-  font-weight: 100;
-  justify-content: left;
-  width: fit-content;
-  height: auto;
-  margin-right: 10px; 
-  white-space: nowrap; 
-  overflow: hidden; 
-  text-overflow: ellipsis; 
-}
-
-.separator {
-  height: 45px;
-  width: 1px; 
-  background: white;
-  margin: 0 10px; 
-}
-
-.videoText {
-  font-size: 16px;
-  font-weight: 200;
-}
-
-.videoPath::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(rgba(31, 36, 41, 0), rgba(31, 36, 41, 0.5));
-  z-index: 5; 
-  border-radius: 16px; 
-}
-
-.gradientOverlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(rgba(31, 36, 41, 0), rgba(31, 36, 41, 0.5));
-  z-index: 5; 
-  border-radius: 0; 
-}
-
-.startTextContainer {
-  text-align: left; 
-  display: flex;
-  justify-content: space-evenly; 
-  flex-direction: row; /* Change to row for side-by-side layout */
-  padding: 25px; 
-  width: 100%;
-  height: auto;
-  position: relative;
-  z-index: 11;
-
-}
-
-.startHeading {
-  font-family: 'Montserrat', sans-serif; 
-  background: linear-gradient(300deg, #76D5D8, #defeff, #00eeff, #76D5D8, #426b9b);
-  background-size: 360% 360%;
-  animation: gradient-animation 10s ease infinite;
-  -webkit-background-clip: text; 
-  background-clip: text; 
-  -webkit-text-fill-color: transparent; 
-  font-size: 32px; 
-}
-
-.subText {
-  font-family: 'Montserrat', sans-serif; 
-  color: white; 
-  font-size: 18px; 
-  line-height: 1.5; 
-  max-width: 600px; 
-  margin: 0 auto; 
-}
+  
+  .heroSubText {
+    font-size: 1.5rem;
+    font-weight: 200;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    margin-top: 20px;
+  }

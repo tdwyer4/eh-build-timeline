@@ -28,7 +28,6 @@
   bottom: 0;
   z-index: -2;
   border-radius: inherit;
-  background: rgba(0, 0, 0, 0.6);
   filter: blur(30px);
 }
 
@@ -88,49 +87,6 @@
   }
 }
 
-/* Circular Progress Bar Wrapper */
-.push-progressBarWrapper {
-  position: relative;
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background-color: transparent; /* Transparent center */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 4px; /* 4px gap between progress ring and nav items */
-  z-index: 2;
-}
-
-/* Static Background Circle */
-.push-progressBarBackground {
-  stroke: #ff0f0f; /* Background color of the ring */
-  stroke-width: 2;
-  stroke-dasharray: 200;
-  stroke-linecap: round;
-  transform: rotate(-90deg); /* Makes the ring start from top */
-}
-
-/* Progress Circle (Dynamic) */
-.push-progressBarProgress {
-  stroke: #3dccc8; /* Color of the progress ring */
-  stroke-width: 10;
-  fill: none;
-  stroke-dasharray: 440;
-  stroke-linecap: round;
-  stroke-dashoffset: calc(440 - (440 * 19) / 100); /* Example for 19% progress */
-  transition: stroke-dashoffset 0.3s ease;
-  animation: progressAnimation 1.5s linear;
-}
-
-/* Centered Percentage Label */
-.push-progressLabel {
-  position: absolute;
-  color: white;
-  font-size: 24px;
-  font-weight: 600;
-  z-index: 3; /* Ensuring text is on top */
-}
 
 /* Animation for the progress ring */
 @keyframes progressAnimation {

@@ -1,0 +1,44 @@
+.gansterWrapper {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  padding: 20px;
+  
+}
+
+.pathCardContainer {
+  display: flex;
+  flex-direction: row; 
+  gap: 20px; 
+}
+
+.pathCardContainer > div {
+  flex: 1;
+  min-width: 200px; 
+  max-width: 300px; 
+  text-align: center; 
+  padding: 15px;
+  transition: transform 0.2s ease;
+}
+
+.pathCardContainer > div:hover {
+  transform: scale(1.05); 
+}
+
+@media (max-width: 1024px) {
+  .pathCardContainer .btnInfoContainer {
+    flex: 1 1 calc(33.33% - 20px);
+  }
+}
+
+@media (max-width: 768px) {
+  .pathCardContainer .btnInfoContainer {
+    flex: 1 1 calc(50% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .pathCardContainer .btnInfoContainer {
+    flex: 1 1 100%;
+  }
+}

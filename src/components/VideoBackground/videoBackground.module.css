@@ -1,0 +1,55 @@
+.videoContainer {
+    position: fixed;
+    width: 100dvw;
+    height: 100dvh;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
+  
+  .splineContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+  
+  .hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease-out;
+  }
+  
+  .staticImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 2;
+    transition: opacity 1s ease-in;
+  }
+  
+  .fadeIn {
+    opacity: 1;
+    visibility: visible;
+  }
+  

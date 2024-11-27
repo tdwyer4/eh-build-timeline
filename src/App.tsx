@@ -1,13 +1,17 @@
 import React from "react";
 import "./App.css";
-import SplineLoader from "./pages/SplineLoader";
+import Hero from "./components/Hero/Hero";
+import VideoBackground from "./components/VideoBackground/VideoBackground"; 
+import PreSold from "./pages/PreSold";
 
 function App() {
   return (
-    <div className="app-container">
-      <SplineLoader />
-    </div>
+      <>
+        <VideoBackground />
+        <PreSold />
+      </>
   );
 }
 
 export default App;
+

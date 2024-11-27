@@ -1,102 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap');
+
+
 @keyframes gradient-animation {
     0% {
-      background-position: 0% 50%;
+        background-position: 0% 50%;
     }
     50% {
-      background-position: 100% 50%;
+        background-position: 100% 50%;
     }
     100% {
-      background-position: 0% 50%;
+        background-position: 0% 50%;
     }
 }
 
+/* Container for gradient with text */
 .containerGradientType {
     display: flex;
     align-items: center;
-    width: 100vw;
     justify-content: center;
+    width: 100vw;
     height: 50vh;
-    /* background-color: #293139; */
+    background-color: transparent;
+    overflow: hidden; /* Ensure the gradient doesn't overflow */
 }
 
-@media screen and (max-width: 450px) {
-  .containerManifest {height: 30vh;}
+/* Gradient text animation with background clip */
+.gradientText {
+    display: flex;
+    background: linear-gradient(300deg, #76D5D8, #defeff, #FE7E66, #76D5D8, #426b9b);
+    background-size: 400% 400%;  /* Adjust for a wider gradient */
+    animation: gradient-animation 10s ease infinite;
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-family: Montserrat;
+    -webkit-text-fill-color: transparent;
+    font-size: 5rem;
+    font-weight: 100;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    max-width: 90%;
 }
 
-.gradientType {
-  background: linear-gradient(300deg,#76D5D8,#defeff,#FE7E66,#76D5D8,#426b9b);
-  background-size: 360% 360%;
-  animation: gradient-animation 10s ease infinite;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  /* margin-bottom: 90px; */
+/* Adjust for screen sizes */
+h1 {
+    font-size: 64px;
+    line-height: 1.05;
+    text-align: center;
+    font-weight: 100;
+    color: transparent; /* Ensure text is transparent for the gradient */
+}
+
+/* Responsive typography adjustments */
+@media screen and (max-width: 1210px) {
+    .gradientText {
+        font-size: 5rem;
+    }
+}
+
+@media screen and (max-width: 1040px) {
+    .gradientText {
+        font-size: 4.5rem;
+    }
+}
+
+@media screen and (max-width: 880px) {
+    .gradientText {
+        font-size: 4rem;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .gradientText {
+        font-size: 3.5rem;
+    }
+}
+
+@media screen and (max-width: 690px) {
+    .gradientText {
+        font-size: 3rem;
+    }
 }
 
 @media screen and (max-width: 598px) {
-  .manifest {margin-bottom: 0px;}
+    .gradientText {
+        font-size: 2.5rem;
+    }
 }
 
+@media screen and (max-width: 490px) {
+    .gradientText {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 432px) {
+    .gradientText {
+        font-size: 1.8rem;
+    }
+}
+
+@media screen and (max-width: 386px) {
+    .gradientText {
+        font-size: 1.6rem;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .gradientText {
+        font-size: 1.5rem;
+    }
+}
+
+/* Responsive design for smaller screens */
 @media screen and (max-width: 450px) {
-  .manifest {margin-bottom: 90px;}
+    .containerGradientType {
+        height: 30vh;
+    }
 }
-
-h1 {
-  font-size: 64px;
-  line-height: 1.05;
-  letter-spacing: -0.04em;
-  max-width: 1200px;
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: 100;
-}
-
-            @media screen and (max-width: 1210px) {
-              h1 {font-size: 72px;
-              max-width: 1100px;}
-            }
-
-            @media screen and (max-width: 1040px) {
-              h1 {font-size: 62px;
-              max-width: 950px;}
-            }
-
-            @media screen and (max-width: 880px) {
-              h1 {font-size: 52px;
-              max-width: 700px;}
-            }
-
-            @media screen and (max-width: 750px) {
-              h1 {font-size: 46px;
-              max-width: 650px;}
-            }
-
-            @media screen and (max-width: 690px) {
-              h1 {font-size: 40px;
-              max-width: 575px;}
-            }
-
-            @media screen and (max-width: 598px) {
-              h1 {font-size: 34px;
-              max-width: 500px;}
-            }
-
-            @media screen and (max-width: 490px) {
-              h1 {font-size: 30px;
-              max-width: 400px;}
-            }
-
-            @media screen and (max-width: 432px) {
-              h1 {font-size: 26px;
-              max-width: 350px;}
-            }
-
-            @media screen and (max-width: 386px) {
-              h1 {font-size: 24px;
-              max-width: 350px;}
-            }
-
-            @media screen and (max-width: 350px) {
-              h1 {font-size: 26px;
-              max-width: 300px;}
-            }
