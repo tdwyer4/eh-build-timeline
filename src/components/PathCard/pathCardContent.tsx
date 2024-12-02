@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from "framer-motion";
 import PathCard from './pathCard';
 import readyImage from '../../media/ready.jpg';
 import earlyImage from '../../media/early.jpg';
@@ -43,20 +44,35 @@ export default function PathCardContent() {
     },
   ];
 
+  const cardVariants = {
+    hidden: { opacity: 0, y: 40 }, // Cards start faded out and further down
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }, // Cards fade in and move up
+  };
+
   return (
     <div className={styles.gansterWrapper}>
-      <div className={styles.pathCardContainer}>
+    {/* Cards Section */}
+      <motion.div
+        className={styles.pathCardContainer}
+        initial="hidden"
+        animate="visible"
+        transition={{
+          delay: 1.2, // Delay for cards to start after text animation completes
+          staggerChildren: 0.3, // Stagger between card animations
+        }}
+      >
         {phases.map((phase, index) => (
-          <PathCard
-            key={index}
-            image={phase.image}
-            title={phase.title}
-            buildTime={phase.buildTime}
-            backgroundColor={phase.backgroundColor}
-            onClick={phase.onClick}
-          />
+          <motion.div key={index} variants={cardVariants}>
+            <PathCard
+              image={phase.image}
+              title={phase.title}
+              buildTime={phase.buildTime}
+              backgroundColor={phase.backgroundColor}
+              onClick={phase.onClick}
+            />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 }

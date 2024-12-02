@@ -26,19 +26,19 @@
 }
 
 .yellowBG::before {
-  background: radial-gradient(circle, rgba(255, 209, 56, 0.327) 20%, rgba(255, 207, 56, 0) 70%);
+  background: radial-gradient(circle, rgba(255, 209, 56, 0.168) 20%, rgba(255, 207, 56, 0) 70%);
 }
 
 .orangeBG::before {
-  background: radial-gradient(circle, rgba(254, 125, 102, 0.47) 20%, rgba(254, 126, 102, 0) 70%);
+  background: radial-gradient(circle, rgba(254, 125, 102, 0.209) 20%, rgba(254, 126, 102, 0) 70%);
 }
 
 .purpleBG::before {
-  background: radial-gradient(circle, rgba(151, 71, 255, 0.52) 20%, rgba(151, 71, 255, 0) 70%);
+  background: radial-gradient(circle, rgba(151, 71, 255, 0.234) 20%, rgba(151, 71, 255, 0) 70%);
 }
 
 .seafoamBG::before {
-  background: radial-gradient(circle, rgba(118, 213, 216, 0.447) 20%, rgba(118, 213, 216, 0) 70%);
+  background: radial-gradient(circle, rgba(118, 213, 216, 0.177) 20%, rgba(118, 213, 216, 0) 70%);
 }
 
 
@@ -46,8 +46,14 @@
   font-size: 1.5rem;
   color: white;
   font-weight: 200;
+  align-items: center;
   text-transform: uppercase;
   margin-bottom: 10px;
+  height: 3rem; /* Fixed height to accommodate up to two lines of text */
+  display: flex; /* Ensures vertical centering */
+  justify-content: center; /* Ensures horizontal alignment */
+  text-align: center; /* Centers the text within the container */
+  overflow: hidden; /* Prevents overflow */
 }
 
 .infoSub {

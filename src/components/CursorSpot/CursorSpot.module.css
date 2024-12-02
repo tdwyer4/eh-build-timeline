@@ -1,0 +1,37 @@
+body {
+    cursor: none !important;
+  }
+  
+  .cursor-container {
+    position: fixed;
+    z-index: 10000;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+  }
+  
+  .circle {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 255, 0, 0.5);
+    border-radius: 50%;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* No longer needed here */
+  .text-container {
+    transform-origin: 50% 50%;
+  }
+  
+  svg {
+    overflow: visible;
+    animation: spin 8s linear infinite !important; /* Force the animation on the svg */
+  }
+  

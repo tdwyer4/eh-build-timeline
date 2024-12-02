@@ -11,9 +11,9 @@ const GradientType: React.FC<GradientTypeProps> = ({ children }) => {
     <div className={styles.containerGradientType}>
       <motion.div
         className={styles.gradientText}
-        initial={{ scale: 0, y: 0 }}
-        whileInView={{ scale: 1, y: 0 }}
-        transition={{ delay: 1.2, duration: 0.5, ease: "easeOut" }}
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 2, duration: 0.5, ease: "easeOut" }}
       >
         {children}
       </motion.div>

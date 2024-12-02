@@ -27,6 +27,7 @@
 /* Gradient text animation with background clip */
 .gradientText {
     display: flex;
+    padding-top: 8%;
     background: linear-gradient(300deg, #76D5D8, #defeff, #FE7E66, #76D5D8, #426b9b);
     background-size: 400% 400%;  /* Adjust for a wider gradient */
     animation: gradient-animation 10s ease infinite;
