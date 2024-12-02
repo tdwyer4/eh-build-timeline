@@ -8,7 +8,9 @@ import presoldImage from '../../media/pre.jpg';
 
 import styles from './pathCardContent.module.css';
 
-export default function PathCardContent() {
+
+
+export default function PathCardContent({ isAnimationComplete }: { isAnimationComplete: boolean }) {
   const handleClick = (phase: string) => {
     console.log(`Phase clicked: ${phase}`);
   };
@@ -49,7 +51,12 @@ export default function PathCardContent() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }, // Cards fade in and move up
   };
 
+  if (!isAnimationComplete) {
+    return <></>
+  }
+
   return (
+    
     <div className={styles.gansterWrapper}>
     {/* Cards Section */}
       <motion.div

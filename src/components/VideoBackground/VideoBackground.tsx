@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import styles from "./videoBackground.module.css";
+import CursorSpot from "../CursorSpot/CursorSpot"; // Import the CursorSpot component
 
-function VideoBackground () {
+function VideoBackground() {
   const [videoEnded, setVideoEnded] = useState(false);
   const [videoLoaded, setVideoLoaded] = useState(false);
 
   const handleVideoEnd = () => setVideoEnded(true);
 
-  const EES = require('./HeroAnimation2.mp4'); 
-  const PARTICLES = require('./particles2.mp4');     
+  const EES = require("./HeroAnimation2.mp4");
+  const PARTICLES = require("./particles2.mp4");
 
   useEffect(() => {
-    const video = document.createElement('video');
+    const video = document.createElement("video");
     video.src = PARTICLES;
     video.onloadeddata = () => setVideoLoaded(true);
     video.load();
@@ -20,6 +21,9 @@ function VideoBackground () {
 
   return (
     <div className={styles.videoContainer}>
+      {/* Cursor Spotlight */}
+      <CursorSpot />
+
       <div className={styles.splineContainer}>
         <video
           src={EES}

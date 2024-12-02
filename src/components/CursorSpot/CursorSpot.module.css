@@ -1,37 +1,20 @@
-body {
-    cursor: none !important;
-  }
-  
-  .cursor-container {
-    position: fixed;
-    z-index: 10000;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-  }
-  
-  .circle {
-    width: 50px;
-    height: 50px;
-    background-color: rgba(0, 255, 0, 0.5);
-    border-radius: 50%;
-  }
-  
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  
-  /* No longer needed here */
-  .text-container {
-    transform-origin: 50% 50%;
-  }
-  
-  svg {
-    overflow: visible;
-    animation: spin 8s linear infinite !important; /* Force the animation on the svg */
-  }
-  
+.spotlight {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+
+  /* Radial gradient using CSS custom properties */
+  background: radial-gradient(
+    circle at var(--cursor-x, 50%) var(--cursor-y, 50%),
+    #1a222900 0%,
+    #1A2229 50%,
+    #1A2229 100%
+  );
+
+  /* Smooth transition for gradient updates */
+  transition: background 0.05s ease-out;
+}
