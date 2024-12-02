@@ -9,8 +9,9 @@ import {
   useTransform,
   MotionValue,
 } from "framer-motion";
-import PLImage from "../../media/PickALot.png";
-import FPImage from "../../media/PickFloorPlan.png";
+import PLImage from "../../media/PickALot-V2.png";
+import FPImage from "../../media/PickFloorPlan-V2.png";
+import GetStartedStyle from "./GetStartedStyle/GetStartedStyle";
 
 export const GetStarted = () => {
   return (
@@ -73,6 +74,7 @@ const Cards = () => {
           img={PLImage}
           title="Choose A Lot"
           desc="Start by picking a lot in one of our neighborhoods. The website will identify every floor plan that's a match for your lot. "
+          altStyle={styles.chooseCard}
         />
         <ChooseItem
           scrollYProgress={scrollYProgress}
@@ -81,21 +83,20 @@ const Cards = () => {
           img={FPImage}
           title="Pick A Floor Plan"
           desc="Or start by picking your floor plan. The website will show you every lot where your plan can be built. "
+          altStyle={styles.chooseCardAlt}
+        />
+        <ChooseStyle
+          scrollYProgress={scrollYProgress}
+          position={3}
+          numItems={6}
+          title="Choose Your Style"
+          desc="Select from our Signature or Transitional style homes. "
         />
       </div>
       <div className={styles.cardContainer}>
         <CardItem
           scrollYProgress={scrollYProgress}
-          position={3}
-          numItems={6}
-          img="https://assets.cloud.executivehomes.com/static/pages/styles-page/TwoStylesImage.jpg"
-          step="Step 1"
-          title="Select Your Style"
-          desc="Choose the style that best matches your preferences."
-        />
-        <CardItem
-          scrollYProgress={scrollYProgress}
-          position={3}
+          position={4}
           numItems={6}
           img="https://assets.cloud.executivehomes.com/prod/public/house-styles/STY~TRANSITIONAL/SMD~g-xsZbV9EQ0wUZvd"
           step="Step 2"
@@ -111,16 +112,6 @@ const Cards = () => {
           title="Customize with Upgrades"
           desc="100+ upgrades are available to choose online to personalize your
               home."
-        />
-        <CardItem
-          scrollYProgress={scrollYProgress}
-          position={4}
-          numItems={6}
-          img="https://assets.cloud.executivehomes.com/static/pages/styles-page/TwoStylesImage.jpg"
-          step="Step 4"
-          title="Sign Purchase Agreement"
-          desc="Our simple Purchase Agreement locks in your price and guarantees
-              your home's quality."
         />
       </div>
     </div>
@@ -215,11 +206,55 @@ const ChooseItem = ({
   img,
   title,
   desc,
+  altStyle,
 }: {
   scrollYProgress: MotionValue<number>;
   position: number;
   numItems: number;
   img: string;
+  title: string;
+  desc: string;
+  altStyle: string;
+}) => {
+  const stepSize = 1 / numItems;
+  const end = stepSize * position;
+  const start = end - stepSize;
+
+  const opacity = useTransform(scrollYProgress, [start, end], [1, 0]);
+  const scale = useTransform(scrollYProgress, [start, end], [1, 0.9]);
+
+  return (
+    <motion.div
+      className={altStyle}
+      style={{ opacity, scale }}
+      initial={{ y: 0 }}
+      transition={{ duration: 1, ease: "easeInOut" }}
+    >
+      <motion.img
+        className={styles.chooseCardImage}
+        src={img}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1, ease: "easeInOut" }}
+      />
+      <div className={styles.chooseCardTextContainer}>
+        <h3 className={styles.chooseCardTitle}>{title}</h3>
+        <p className={styles.chooseCardDescription}>{desc}</p>
+      </div>
+    </motion.div>
+  );
+};
+
+const ChooseStyle = ({
+  scrollYProgress,
+  position,
+  numItems,
+  title,
+  desc,
+}: {
+  scrollYProgress: MotionValue<number>;
+  position: number;
+  numItems: number;
   title: string;
   desc: string;
 }) => {
@@ -232,22 +267,23 @@ const ChooseItem = ({
 
   return (
     <motion.div
-      className={styles.chooseCard}
+      className={styles.chooseStyle}
       style={{ opacity, scale }}
       initial={{ y: 0 }}
       transition={{ duration: 1, ease: "easeInOut" }}
     >
-      <motion.img
-        className={styles.chooseCardImage}
-        src={img}
-        initial={{ rotateY: 45 }}
+      <motion.div
+        className={styles.chooseStyleContainer}
+        initial={{ rotateY: 0 }}
         whileInView={{ rotateY: 0 }}
         transition={{ duration: 1, ease: "easeInOut" }}
-      />
-      <div className={styles.chooseCardTextContainer}>
-        <h3 className={styles.chooseCardTitle}>{title}</h3>
-        <p className={styles.chooseCardDescription}>{desc}</p>
-      </div>
+      >
+        <GetStartedStyle />
+      </motion.div>
+      {/* <div className={styles.chooseStyleTextContainer}>
+        <h3 className={styles.chooseStyleTitle}>{title}</h3>
+        <p className={styles.chooseStyleDescription}>{desc}</p>
+      </div> */}
     </motion.div>
   );
 };
