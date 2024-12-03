@@ -26,68 +26,9 @@ import { InsulationVideo } from "../components/VidSection/InsulationVideo";
 import { MasonryVideo } from "../components/VidSection/Masonry";
 import { PunchoutVideo } from "../components/VidSection/PunchoutVideo";
 
-// Import images for each section
-import bathroomImage from "../media/bathroom.jpg";
-import livingImage from "../media/living.jpg";
-import kitchenImage from "../media/kitchen2.jpg";
-import exteriorImage from "../media/exterior.jpg";
-
 export const PreSold = () => {
   return (
     <div className={styles.fullPageStyle}>
-      {/* Fixed Navigation */}
-      <div className={styles.pageNavContainer}>
-        <div className={styles.pageNav}>
-          <ul>
-            <li>
-              <a href="#2">Choose Your Styles</a>
-            </li>
-            <li>
-              <a href="#3">What's Next?</a>
-            </li>
-            <li>
-              <a href="#4">Phase 1 - Footing</a>
-            </li>
-            <li>
-              <a href="#5">Communication</a>
-            </li>
-            <li>
-              <a href="#6">Phase 2 - Framing</a>
-            </li>
-            <li>
-              <a href="#7">Selections</a>
-            </li>
-            <li>
-              <a href="#8">Phase 3 - Rough Trades</a>
-            </li>
-            <li>
-              <a href="#9">Construction Quality</a>
-            </li>
-            <li>
-              <a href="#10">Phase 4 - Drywall</a>
-            </li>
-            <li>
-              <a href="#11">Finish Quality</a>
-            </li>
-            <li>
-              <a href="#12">Phase 5 - Masonry</a>
-            </li>
-            <li>
-              <a href="#13">Closing</a>
-            </li>
-            <li>
-              <a href="#14">Phase 6 - Punch Out</a>
-            </li>
-            <li>
-              <a href="#15">Warranty</a>
-            </li>
-            <li>
-              <a href="#16">Next Steps</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
       {/* Page Content */}
       <div className={styles.bgwhite}>
         <section id="2">
