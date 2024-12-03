@@ -1,143 +1,51 @@
+/* Body container styling */
 .body {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   height: 100vh;
   width: 100vw;
-  background: #1A2229;
+  background: #1a222900;
   margin: 0;
-}
-
-.mainContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  max-width: 1200px;
-  text-align: center;
-  z-index: 1;
-  flex-grow: 1;
-}
-
-.textContainer {
-  color: white;
-}
-
-.subheading {
-  font-size: 24px;
-  font-weight: 300;
-  margin-top: 10px;
-}
-
-.buttonContainer {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-button {
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: transparent;
-  color: white;
-  border: 1px solid #76d5d8;
-  border-radius: 32px;
-  cursor: pointer;
-  text-transform: uppercase;
-  transition: all 0.3s ease;
-  font-size: 1rem;
   position: relative;
+}
+
+/* Background gradients */
+.backgroundGradients {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 75%; /* Ensures it takes up the bottom half of the screen */
+  z-index: 0; /* Ensure it is behind all other content */
   overflow: hidden;
 }
 
-button:hover {
-  transform: scale(1.05);
-  border-color: transparent;
-}
-
-.tealButton {
-  color: #76d5d8;
-  border: 1px solid #76d5d8;
-}
-
-.tealButton:hover {
-  background-color: #76d5d8;
-  color: rgb(11, 91, 76);
-}
-
-.purpleButton {
-  color: #aa7cff;
-  border: 1px solid #aa7cff;
-}
-
-.purpleButton:hover {
-  background-color: #aa7cff;
-  color: rgb(67, 11, 116);
-}
-
-.videoContainer {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  width: 100%;
-  max-height: 50vh;
-  background-color: #ffffff;
-  border-radius: 16px 16px 0 0;
-  border-top: 14px solid #1A2229;
-  border-left: 14px solid #1A2229;
-  border-right: 14px solid #1A2229;
-  box-shadow: 0px 0px 75px #76D5D8;
-  position: relative;
-  overflow: hidden;
-  margin-bottom: 0; /* Remove the margin-top: auto; to make it stick to the bottom */
-}
-
-.videoFrame {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  margin-bottom: 0;
-}
-
-video {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  object-position: center top;
-  border-radius: 16px 16px 0 0;
-}
-
-/* Gradients Positioned at Bottom-Left and Bottom-Right */
 .radialGradient1,
 .radialGradient2 {
   position: absolute;
   filter: blur(25px);
-  z-index: -1; /* Keep the gradients behind content */
-  width: 70vw; /* Adjust width */
-  height: 100vh; /* Extend height to the full height of the viewport */
+  z-index: -1;
+  width: 100%; /* Fixed size */
+  height: 100%; /* Fixed size */
+  opacity: 50%;
 }
 
 .radialGradient1 {
-  background: radial-gradient(circle, #76d5d8 0%, rgba(118, 213, 216, 0) 65%); /* Solid teal in the center */
-  bottom: -50%; /* Position at bottom-left, with 50% off the page */
-  left: 0; /* Position at left side */
+  background: radial-gradient(circle, #76d5d8 0%, rgba(118, 213, 216, 0) 65%);
+  bottom: -50%;
+  left: 0;
   animation: moveGradient1 30s infinite linear;
 }
 
 .radialGradient2 {
-  background: radial-gradient(circle, #aa7cff 0%, rgba(170, 124, 255, 0) 65%); /* Solid purple in the center */
-  bottom: -50%; /* Position at bottom-right, with 50% off the page */
-  right: 0; /* Position at right side */
+  background: radial-gradient(circle, #aa7cff 0%, rgba(170, 124, 255, 0) 65%);
+  bottom: -50%;
+  right: 0;
   animation: moveGradient2 40s infinite linear;
 }
 
-/* Keyframes for Random Movement */
 @keyframes moveGradient1 {
   0% {
     transform: translateX(0) translateY(0);
@@ -172,4 +80,98 @@ video {
   100% {
     transform: translateX(0) translateY(0);
   }
+}
+
+.tsparticles{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+/* Particles container */
+.particlesContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: visible;
+}
+
+
+/* Main wrapper for text and buttons */
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  flex-grow: 1;
+  overflow: visible; /* Prevent particles from overflowing */
+}
+
+/* Text styling */
+.textContainer {
+  color: white;
+}
+
+.subheading {
+  font-size: 24px;
+  font-weight: 300;
+  margin-top: 10px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Buttons */
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: transparent;
+  color: white;
+  border: 1px solid #76d5d8;
+  border-radius: 32px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+button:hover {
+  transform: scale(1.05);
+  border-color: transparent;
+}
+
+.tealButton {
+  color: #76d5d8;
+  border: 1px solid #76d5d8;
+}
+
+.tealButton:hover {
+  background-color: #76d5d8;
+  color: rgb(11, 91, 76);
+}
+
+.purpleButton {
+  color: #aa7cff;
+  border: 1px solid #aa7cff;
+}
+
+.purpleButton:hover {
+  background-color: #aa7cff;
+  color: rgb(67, 11, 116);
 }

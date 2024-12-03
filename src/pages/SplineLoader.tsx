@@ -9,7 +9,7 @@ import { MoveInReady } from "./MoveInReady";
 import Manifest from "../components/Manifest/Manifest";
 import HeroVideo from "../media/HeroAnimation2.mp4";
 import HeroImage from "../media/particles2.mp4";
-import ParticlesBackground from "../components/ParticleBG/ParticleBG";
+import ParticlesBackground from "../components/ParticlesBackground/ParticlesBackground";
 
 export default function SplineLoader() {
   const [currentContent, setCurrentContent] = useState<string>("Load");
