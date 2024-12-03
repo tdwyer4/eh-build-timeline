@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap');
 
-
 @keyframes gradient-animation {
     0% {
         background-position: 0% 50%;
@@ -19,9 +18,11 @@
     align-items: center;
     justify-content: center;
     width: 100vw;
-    height: 50vh;
+    min-height: 30vh; /* Ensure it has a minimum height */
+    max-height: 50vh; /* Prevent it from growing too large */
     background-color: transparent;
     overflow: hidden; /* Ensure the gradient doesn't overflow */
+    padding: 1rem; /* Add some padding for better spacing */
 }
 
 /* Gradient text animation with background clip */
@@ -41,6 +42,7 @@
     text-transform: uppercase;
     letter-spacing: .05em;
     max-width: 90%;
+    word-wrap: break-word; /* Ensure text wraps if needed */
 }
 
 /* Adjust for screen sizes */
@@ -116,6 +118,7 @@ h1 {
 /* Responsive design for smaller screens */
 @media screen and (max-width: 450px) {
     .containerGradientType {
-        height: 30vh;
+        min-height: 20vh; /* Reduce the minimum height for smaller screens */
+        max-height: 30vh; /* Adjust max height to prevent overflow */
     }
 }

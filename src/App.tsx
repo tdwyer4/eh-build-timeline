@@ -2,13 +2,13 @@ import React from "react";
 import "./App.css";
 import Hero from "./components/Hero/Hero";
 import VideoBackground from "./components/VideoBackground/VideoBackground"; 
-import PreSold from "./pages/PreSold";
+import CTA from "./components/Cta/Cta";
 
 function App() {
   return (
       <>
         <VideoBackground />
-        <PreSold />
+        <CTA />
       </>
   );
 }
