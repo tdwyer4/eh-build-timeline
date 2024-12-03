@@ -3,6 +3,7 @@ import styles from "./VidSection.module.css";
 import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
 import SprayFoam from "../../media/videos/phases/11SprayFoam.mp4";
 import Drywall from "../../media/videos/phases/12Drywall.mp4";
+import { VidSectionHeader } from "./VidSectionHeader";
 
 export const InsulationVideo = () => {
   const ref = useRef(null);
@@ -14,6 +15,13 @@ export const InsulationVideo = () => {
   return (
     <>
       <div ref={ref} className={styles.vidSliderWrap}>
+        <VidSectionHeader
+          title="Insulation & Drywall"
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat."
+        />
         {SLIDES.map((s, idx) => (
           <Slide
             key={s.id}
