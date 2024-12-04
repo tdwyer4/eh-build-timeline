@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Hero from "../components/Hero/Hero";
+import ProgressBar from "../components/ProgressBar/ProgressBar";
 import { GetStarted } from "../components/GetStarted/GetStarted";
 import PAList from "../components/PAList/PAList";
 import { FootingVideo } from "../components/VidSection/FootingVideo";
@@ -13,18 +15,36 @@ import { MasonryVideo } from "../components/VidSection/Masonry";
 import Closing from "../components/Closing/Closing";
 import { PunchoutVideo } from "../components/VidSection/PunchoutVideo";
 import { Warranty } from "../components/Warranty/Warranty";
+import styles from "./FullPageStyles.module.css";
 import CTA from "../components/Cta/Cta";
 
-import styles from "./FullPageStyles.module.css";
-import Hero from "../components/Hero/Hero";
-import { ProgressBar } from "../components/ProgressBar/ProgressBar";
 
-const PreSold: React.FC = () => {
-  const [activeIsland, setActiveIsland] = useState<number | null>(null);
+interface PreSoldProps {
+  pageTitle: string; // Title of the selected page from PathCard in Hero
+}
+
+const PreSold: React.FC<PreSoldProps> = ({ pageTitle }) => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [progress, setProgress] = useState(0);
   const [navExpanded, setNavExpanded] = useState(false);
-  const [progress, setProgress] = useState(0); // Progress state (0 to 100)
 
-  const toggleNav = () => setNavExpanded(!navExpanded);
+  const sections = [
+    { id: "2", title: "Get Started", component: <GetStarted /> },
+    { id: "3", title: "Purchase Agreement", component: <PAList /> },
+    { id: "4", title: "Footing", component: <FootingVideo /> },
+    { id: "5", title: "Communication", component: <Communication /> },
+    { id: "6", title: "Framing", component: <FramingVideo /> },
+    { id: "7", title: "Selections", component: <Selections /> },
+    { id: "8", title: "Rough Trades", component: <RoughVideo /> },
+    { id: "9", title: "Quality", component: <ConstructionQuality /> },
+    { id: "10", title: "Insulation", component: <InsulationVideo /> },
+    { id: "11", title: "Finish", component: <FinishQuality /> },
+    { id: "12", title: "Exterior", component: <MasonryVideo /> },
+    { id: "13", title: "Close", component: <Closing /> },
+    { id: "14", title: "Punch", component: <PunchoutVideo /> },
+    { id: "15", title: "Warranty", component: <Warranty /> },
+    { id: "16", title: "Warranty", component: <CTA /> },
+  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -32,107 +52,40 @@ const PreSold: React.FC = () => {
         entries.forEach((entry) => {
           const sectionId = parseInt(entry.target.getAttribute("id") || "0", 10);
           if (entry.isIntersecting && !isNaN(sectionId)) {
-            setActiveIsland(sectionId);
-
-            // Calculate progress only when sectionId is valid
-            const totalSections = 16; // Total number of sections
-            const progressValue = (sectionId / totalSections) * 100;
-            setProgress(progressValue);
+            setActiveIndex(sectionId - 2);
+            setProgress(((sectionId - 2) / (sections.length - 1)) * 100);
           }
         });
       },
       { threshold: 0.5 }
     );
 
-    const sections = document.querySelectorAll("section[id]");
-    sections.forEach((section) => observer.observe(section));
+    const sectionElements = document.querySelectorAll("section[id]");
+    sectionElements.forEach((section) => observer.observe(section));
 
     return () => observer.disconnect();
   }, []);
 
-  const circleLength = 440; // Circumference for the circle
-  const offset = circleLength - (circleLength * progress) / 100; // Calculate the stroke-dashoffset
+  const toggleNav = () => setNavExpanded(!navExpanded);
 
   return (
-    <div className={styles["push-fullPageStyle"]}>
-      <Hero />
-      <div className={styles["push-pageNavContainer"]}>
-    <ProgressBar progress={progress} offset={offset} />
+    <div className={styles.pageContent}>
 
-        {/* Navigation Buttons */}
-        <div className={styles["push-navButtons"]}>
-          <button onClick={() => setActiveIsland(Math.max((activeIsland || 0) - 1, 2))}>
-            ←
-          </button>
-          <button onClick={toggleNav}>{navExpanded ? "Close" : "Expand"}</button>
-          <button onClick={() => setActiveIsland(Math.min((activeIsland || 0) + 1, 16))}>
-            →
-          </button>
-        </div>
+      {/* Progress Bar */}
+      <ProgressBar
+        progress={progress}
+        activeIndex={activeIndex}
+        items={sections.map(({ id, title }) => ({ id, title }))}
+        pageTitle={pageTitle}
+      />
 
-        {/* Navigation Content (List) */}
-        <div
-          className={`${styles["push-pageNav"]} ${navExpanded ? styles["push-expanded"] : ""}`}
-        >
-          <ul>
-            {["Choose Your Styles", "What's Next?", "Phase 1 - Footing", "Communication", "Phase 2 - Framing", "Selections", "Phase 3 - Rough Trades", "Construction Quality", "Phase 4 - Drywall", "Finish Quality", "Phase 5 - Masonry", "Closing", "Phase 6 - Punch Out", "Warranty", "Next Steps"].map((item, index) => (
-              <li
-                key={index}
-                className={`${activeIsland === index + 2 ? styles["push-active"] : ""} ${navExpanded ? styles["push-item-expanded"] : ""}`}
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <a href={`#${index + 2}`}>{item}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
+      {/* Page Sections */}
       <div>
-        <section id="2">
-          <GetStarted />
-        </section>
-        <section id="3" data-section="3">
-          <PAList />
-        </section>
-        <section id="4" data-section="4">
-          <FootingVideo />
-        </section>
-        <section id="5" data-section="5">
-          <Communication />
-        </section>
-        <section id="6" data-section="6">
-          <FramingVideo />
-        </section>
-        <section id="7" data-section="7">
-          <Selections />
-        </section>
-        <section id="8" data-section="8">
-          <RoughVideo />
-        </section>
-        <section id="9" data-section="9">
-          <ConstructionQuality />
-        </section>
-        <section id="10" data-section="10">
-          <InsulationVideo />
-        </section>
-        <section id="11" data-section="11">
-          <FinishQuality />
-        </section>
-        <section id="12" data-section="12">
-          <MasonryVideo />
-        </section>
-        <section id="13" data-section="13">
-          <Closing />
-        </section>
-        <section id="14" data-section="14">
-          <PunchoutVideo />
-        </section>
-        <section id="15" data-section="15">
-          <Warranty />
-        </section>
-        <section id="16" data-section="16">
-          <CTA />
-        </section>
+        {sections.map(({ id, component }) => (
+          <section id={id} key={id} data-section={id}>
+            {component}
+          </section>
+        ))}
       </div>
     </div>
   );

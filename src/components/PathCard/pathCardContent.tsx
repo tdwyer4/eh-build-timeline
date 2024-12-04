@@ -1,71 +1,66 @@
-import React from 'react';
+import React from "react";
 import { motion } from "framer-motion";
-import PathCard from './pathCard';
-import readyImage from '../../media/ready.jpg';
-import earlyImage from '../../media/early.jpg';
-import midImage from '../../media/mid.jpg';
-import presoldImage from '../../media/pre.jpg';
+import PathCard from "./pathCard";
+import readyImage from "../../media/ready.jpg";
+import earlyImage from "../../media/early.jpg";
+import midImage from "../../media/mid.jpg";
+import presoldImage from "../../media/pre.jpg";
+import styles from "./pathCardContent.module.css";
 
-import styles from './pathCardContent.module.css';
+interface PathCardContentProps {
+  isAnimationComplete: boolean;
+  onPhaseSelect: (title: string) => void; // Callback to notify parent
+}
 
-
-
-export default function PathCardContent({ isAnimationComplete }: { isAnimationComplete: boolean }) {
-  const handleClick = (phase: string) => {
-    console.log(`Phase clicked: ${phase}`);
-  };
-
+export default function PathCardContent({
+  isAnimationComplete,
+  onPhaseSelect,
+}: PathCardContentProps) {
   const phases = [
     {
       image: presoldImage,
-      title: 'PRE-SOLD',
-      buildTime: '5-6 Months',
-      backgroundColor: 'yellowBG',
-      onClick: () => handleClick('Pre'),
+      title: "PRE-SOLD",
+      buildTime: "5-6 Months",
+      backgroundColor: "yellowBG",
     },
     {
       image: earlyImage,
-      title: 'EARLY CONSTRUCTION',
-      buildTime: '3-4 Months',
-      backgroundColor: 'orangeBG',
-      onClick: () => handleClick('Early'),
+      title: "EARLY CONSTRUCTION",
+      buildTime: "3-4 Months",
+      backgroundColor: "orangeBG",
     },
     {
       image: midImage,
-      title: 'MID-CONSTRUCTION',
-      buildTime: '2-3 Months',
-      backgroundColor: 'purpleBG',
-      onClick: () => handleClick('Mid'),
+      title: "MID-CONSTRUCTION",
+      buildTime: "2-3 Months",
+      backgroundColor: "purpleBG",
     },
     {
       image: readyImage,
-      title: 'MOVE IN READY',
-      buildTime: 'Available Now!',
-      backgroundColor: 'seafoamBG',
-      onClick: () => handleClick('Ready'),
+      title: "MOVE IN READY",
+      buildTime: "Available Now!",
+      backgroundColor: "seafoamBG",
     },
   ];
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 40 }, // Cards start faded out and further down
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }, // Cards fade in and move up
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
   };
 
   if (!isAnimationComplete) {
-    return <></>
+    return null;
   }
 
   return (
-    
     <div className={styles.gansterWrapper}>
-    {/* Cards Section */}
       <motion.div
         className={styles.pathCardContainer}
         initial="hidden"
         animate="visible"
         transition={{
-          delay: 1.2, // Delay for cards to start after text animation completes
-          staggerChildren: 0.3, // Stagger between card animations
+          delay: 1.2,
+          staggerChildren: 0.3,
         }}
       >
         {phases.map((phase, index) => (
@@ -75,7 +70,7 @@ export default function PathCardContent({ isAnimationComplete }: { isAnimationCo
               title={phase.title}
               buildTime={phase.buildTime}
               backgroundColor={phase.backgroundColor}
-              onClick={phase.onClick}
+              onClick={() => onPhaseSelect(phase.title)} // Trigger parent callback
             />
           </motion.div>
         ))}

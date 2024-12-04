@@ -1,45 +1,94 @@
+.progressContainer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 100%;
+  z-index: 1000;
+}
 
-/* Circular Progress Bar Wrapper */
-.push-progressBarWrapper {
-    position: relative;
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background-color: transparent; /* Transparent center */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 4px; /* 4px gap between progress ring and nav items */
-    z-index: 2;
-  }
-  
-  /* Static Background Circle */
-  .push-progressBarBackground {
-    stroke: #ff0f0f; /* Background color of the ring */
-    stroke-width: 2;
-    stroke-dasharray: 200;
-    stroke-linecap: round;
-    transform: rotate(-90deg); /* Makes the ring start from top */
-  }
-  
-  /* Progress Circle (Dynamic) */
-  .push-progressBarProgress {
-    stroke: #3dccc8; /* Color of the progress ring */
-    stroke-width: 10;
-    fill: none;
-    stroke-dasharray: 440;
-    stroke-linecap: round;
-    stroke-dashoffset: calc(440 - (440 * 19) / 100); /* Example for 19% progress */
-    transition: stroke-dashoffset 0.3s ease;
-    animation: progressAnimation 1.5s linear;
-  }
-  
+.hamburgerContainer {
+  position: fixed;
+  top: 20px;
+  right: 40px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  z-index: 1100;
+}
 
-/* Centered Percentage Label */
-.push-progressLabel {
-    position: absolute;
-    color: white;
-    font-size: 24px;
-    font-weight: 600;
-    z-index: 3; /* Ensuring text is on top */
-  }
+.hamburger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: tomato;
+  border-radius: 4px;
+}
+
+.title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+}
+
+.progressBarBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(41, 174, 191, 0.05); /* Light teal background with transparency */
+}
+
+.progressBar {
+  position: absolute;
+  top: 0; /* Start filling from the bottom */
+  width: 100%;
+  background: linear-gradient(to bottom, #00b7ff 1%, #76D5D8, #76d5d800 );
+  height: 0%; /* Initial height (progress is applied dynamically) */
+  transition: height 0.3s ease-in-out; /* Smooth transition for progress changes */
+}
+
+
+.navItems {
+  position: absolute;
+  top: 80px;
+  right: 60px;
+  list-style: none;
+  color: white; /* Default color for list items */
+  margin: 0;
+  padding: 0;
+  z-index: 1200;
+}
+
+.navItems a {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Inherit color from parent (.navItems or .navItem) */
+  font-family: "Montserrat", sans-serif; /* Ensure consistent typography */
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.navItems a:hover {
+  color: #3dccc8; /* Change color on hover to a teal shade */
+}
+
+.navItems li {
+  margin-bottom: 10px; /* Add spacing between items */
+}
+
+
+.navItem {
+  margin-bottom: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.activeItem {
+  font-weight: bold;
+  color: #3dccc8;
+}
