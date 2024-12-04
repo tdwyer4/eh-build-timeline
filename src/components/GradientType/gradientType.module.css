@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap');
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Container for gradient with text */
+.containerGradientType {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    min-height: 30vh; /* Ensure it has a minimum height */
+    max-height: 50vh; /* Prevent it from growing too large */
+    background-color: transparent;
+    overflow: hidden; /* Ensure the gradient doesn't overflow */
+    padding: 1rem; /* Add some padding for better spacing */
+}
+
+/* Gradient text animation with background clip */
+.gradientText {
+    display: flex;
+    padding-top: 8%;
+    background: linear-gradient(300deg, #76D5D8, #defeff, #FE7E66, #76D5D8, #426b9b);
+    background-size: 400% 400%;  /* Adjust for a wider gradient */
+    animation: gradient-animation 10s ease infinite;
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-family: Montserrat;
+    -webkit-text-fill-color: transparent;
+    font-size: 5rem;
+    font-weight: 100;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    max-width: 90%;
+    word-wrap: break-word; /* Ensure text wraps if needed */
+}
+
+/* Adjust for screen sizes */
+h1 {
+    font-size: 64px;
+    line-height: 1.05;
+    text-align: center;
+    font-weight: 100;
+    color: transparent; /* Ensure text is transparent for the gradient */
+}
+
+/* Responsive typography adjustments */
+@media screen and (max-width: 1210px) {
+    .gradientText {
+        font-size: 5rem;
+    }
+}
+
+@media screen and (max-width: 1040px) {
+    .gradientText {
+        font-size: 4.5rem;
+    }
+}
+
+@media screen and (max-width: 880px) {
+    .gradientText {
+        font-size: 4rem;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .gradientText {
+        font-size: 3.5rem;
+    }
+}
+
+@media screen and (max-width: 690px) {
+    .gradientText {
+        font-size: 3rem;
+    }
+}
+
+@media screen and (max-width: 598px) {
+    .gradientText {
+        font-size: 2.5rem;
+    }
+}
+
+@media screen and (max-width: 490px) {
+    .gradientText {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 432px) {
+    .gradientText {
+        font-size: 1.8rem;
+    }
+}
+
+@media screen and (max-width: 386px) {
+    .gradientText {
+        font-size: 1.6rem;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .gradientText {
+        font-size: 1.5rem;
+    }
+}
+
+/* Responsive design for smaller screens */
+@media screen and (max-width: 450px) {
+    .containerGradientType {
+        min-height: 20vh; /* Reduce the minimum height for smaller screens */
+        max-height: 30vh; /* Adjust max height to prevent overflow */
+    }
+}

@@ -1,0 +1,20 @@
+.spotlight {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+
+  /* Radial gradient using CSS custom properties */
+  background: radial-gradient(
+    circle at var(--cursor-x, 50%) var(--cursor-y, 50%),
+    #1a222900 0%,
+    #1A2229 50%,
+    #1A2229 100%
+  );
+
+  /* Smooth transition for gradient updates */
+  transition: background 0.05s ease-out;
+}

@@ -1,71 +1,110 @@
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.gradientContainer {
-  position: absolute; 
-  top: 0; 
-  left: 0; 
-  width: 75vw; 
-  height: 75vh; 
-  --size: 750px;
-  --speed: 50s;
-  --easing: cubic-bezier(0.8, 0.2, 0.2, 0.8);
-  filter: 
-      blur(calc(var(--size) / 5)); 
-      
-  background-image: linear-gradient(#76d5d8, #76D5D890);
-  animation: rotate var(--speed) var(--easing) alternate infinite; 
-  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; 
-  
-  z-index: -1; 
-  overflow: hidden; /* Prevent overflow */
-
-
-}
-
+/* Body container styling */
 .body {
   display: flex;
-  flex-direction: column; /* Stack main container and video container */
-  height: 100vh; /* Full viewport height */
-  width: 100vw; /* Full viewport width */
-  overflow: hidden; /* Prevent overflow */
-  background: #1A2229;
-  background-size: 100% 100%;
-  background-position: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: space-between;
+  height: 100vh;
+  width: 100vw;
+  background: #1a222900;
+  margin: 0;
+  position: relative;
 }
 
-.mainContainer {
+/* Background gradients */
+.backgroundGradients {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 25%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.radialGradient1,
+.radialGradient2 {
+  position: absolute;
+  filter: blur(25px);
+  z-index: -1;
+  width: 100%;
+  height: 80%;
+  opacity: 50%;
+}
+
+.radialGradient1 {
+  background: radial-gradient(circle, #76d5d8 0%, rgba(118, 213, 216, 0) 65%);
+  bottom: -50%;
+  left: 0;
+  animation: moveGradient1 20s infinite linear;
+}
+
+.radialGradient2 {
+  background: radial-gradient(circle, #aa7cff 0%, rgba(170, 124, 255, 0) 65%);
+  bottom: -50%;
+  right: 0;
+  animation: moveGradient2 20s infinite linear;
+}
+
+@keyframes moveGradient1 {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  25% {
+    transform: translateX(10%) translateY(-10%);
+  }
+  50% {
+    transform: translateX(-5%) translateY(5%);
+  }
+  75% {
+    transform: translateX(15%) translateY(10%);
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}
+
+@keyframes moveGradient2 {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  25% {
+    transform: translateX(-5%) translateY(15%);
+  }
+  50% {
+    transform: translateX(10%) translateY(-15%);
+  }
+  75% {
+    transform: translateX(-15%) translateY(5%);
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}
+
+/* Main wrapper for text and buttons */
+.contentWrapper {
   display: flex;
-  flex-direction: column; /* Stack elements vertically */
-  align-items: center; /* Center items horizontally */
-  justify-content: center; /* Center items vertically */
-  width: 100%; /* Full width */
-  height: 50%; /* Leave space for the video container */
-  z-index: 1; /* Above the gradient */
-}
-
-
-.textContainer {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
   text-align: center;
-  color: white;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 0;
 }
 
-.heading {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 200;
-  font-size: 64px;
-  text-transform: uppercase;
+/* Text styling */
+.textContainer {
+  color: white;
 }
 
 .subheading {
   font-size: 24px;
   font-weight: 300;
+  margin-top: 10px;
 }
 
 .buttonContainer {
@@ -73,55 +112,58 @@
   justify-content: center;
   gap: 20px;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
-.exploreButton {
-  background-color: white;
-  color: black;
+/* Buttons */
+button {
+  margin-top: 10px;
   padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.contactButton {
-  background-color: #333;
+  background-color: transparent;
   color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
+  border: 1px solid #76d5d8;
+  border-radius: 32px;
   cursor: pointer;
-  font-size: 16px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  font-size: 1rem;
 }
 
-.videoContainer {
-  position: absolute; /* Position it absolutely */
-  bottom: 0; /* Align to the bottom */
-  left: 50; /* Align to the left */
-  right: 50; /* Align to the right */
+button:hover {
+  transform: scale(1.05);
+  border-color: transparent;
+}
+
+.tealButton {
+  color: #76d5d8;
+  border: 1px solid #76d5d8;
+}
+
+.tealButton:hover {
+  background-color: #76d5d8;
+  color: rgb(11, 91, 76);
+}
+
+.purpleButton {
+  color: #aa7cff;
+  border: 1px solid #aa7cff;
+}
+
+.purpleButton:hover {
+  background-color: #aa7cff;
+  color: rgb(67, 11, 116);
+}
+
+/* EE Container */
+.eeContainer {
+  position: absolute;
+  bottom: 0; 
+  left: 50%; 
+  transform: translateX(-50%); 
   display: flex;
-  width: 75vw;
-  height: 50vh;
-  justify-content: center; /* Center video within the container */
-  padding:  16px 16px 0 16px; /* Horizontal padding */
-  border-radius: 16px 16px  0 0;
-  background-color: #ffffff; /* Background color */
-  overflow: hidden; /* Hide overflow from video corners */
-}
-
-.videoFrame {
-  position: absolute; /* Position the video absolutely within the container */
-  top: 0; /* Align to the top */
-  left: 50; /* Align to the left */
-  width: 100%; /* Full width of the container */
-  height: auto; /* Maintain aspect ratio */
-  max-height: none; /* Allow the height to exceed the container */
-  object-fit: cover; /* Cover the entire container */
-  border-radius: 8px 8px 0 0; /* Rounded corners */
-  z-index: 4; /* Ensure the video is on top */
-}
-
-.videoFit {
-  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  width: auto; 
+  margin-bottom: 0;
 }
