@@ -1,6 +1,6 @@
 import styles from "./SplineLoader.module.css";
 import { useRef, useState, startTransition } from "react";
-import { PreSold } from "./PreSold";
+import PreSold from "./PreSold";
 import { EarlyConstruction } from "./EarlyConstruction";
 import { MidConstruction } from "./MidConstruction";
 import { MoveInReady } from "./MoveInReady";

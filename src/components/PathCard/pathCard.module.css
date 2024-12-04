@@ -1,0 +1,137 @@
+.btnInfoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 100%;
+  max-width: 300px;
+  position: relative;
+  overflow: visible;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.btnInfoContainer::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  transform: translate(-50%, -50%);
+  filter: blur(20px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.yellowBG::before {
+  background: radial-gradient(circle, rgba(255, 209, 56, 0.168) 20%, rgba(255, 207, 56, 0) 70%);
+}
+
+.orangeBG::before {
+  background: radial-gradient(circle, rgba(254, 125, 102, 0.209) 20%, rgba(254, 126, 102, 0) 70%);
+}
+
+.purpleBG::before {
+  background: radial-gradient(circle, rgba(151, 71, 255, 0.234) 20%, rgba(151, 71, 255, 0) 70%);
+}
+
+.seafoamBG::before {
+  background: radial-gradient(circle, rgba(118, 213, 216, 0.177) 20%, rgba(118, 213, 216, 0) 70%);
+}
+
+
+.infoHeader {
+  font-size: 1.5rem;
+  color: white;
+  font-weight: 200;
+  align-items: center;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  height: 3rem; /* Fixed height to accommodate up to two lines of text */
+  display: flex; /* Ensures vertical centering */
+  justify-content: center; /* Ensures horizontal alignment */
+  text-align: center; /* Centers the text within the container */
+  overflow: hidden; /* Prevents overflow */
+}
+
+.infoSub {
+  margin-top: 0px;
+}
+
+.infoInfo {
+  font-size: 1rem;
+  justify-content: left;
+  background-color: #dddddd25;
+  border-radius: 16px;
+  padding: 2px;
+  color: #ddd;
+}
+
+.infoTime {
+  font-size: 1.2rem;
+  color: white;
+  font-weight: 200;
+  margin-top: 10px;
+}
+
+.infoImage {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: transparent;
+  color: white;
+  border: 1px solid #76d5d8;
+  border-radius: 32px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: transparent;
+  color: #76d5d8;
+  border: 1px solid #76d5d8;
+  border-radius: 32px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  color: rgba(255, 255, 255, 0.331); 
+  border-color: transparent; 
+}
+
+/* Hover states for each gradient */
+.yellowBG button:hover {
+  background-color: rgba(255, 207, 56, 0.2); 
+  color: #ffd138; 
+}
+
+.orangeBG button:hover {
+  background-color: rgba(254, 126, 102, 0.2); 
+  color: #fe7e66; 
+}
+
+.purpleBG button:hover {
+  background-color: rgba(112, 12, 243, 0.379); 
+  color: #aa7cff; 
+}
+
+.seafoamBG button:hover {
+  background-color: rgba(118, 213, 216, 0.2); 
+  color: #76d5d8; 
+}
+

@@ -2,14 +2,14 @@ import styles from "./SplineLoader.module.css";
 import { useRef, useState, useEffect, startTransition } from "react";
 import { motion } from "framer-motion";
 import FirstLoad from "./FirstLoad";
-import { PreSold } from "./PreSold";
+import PreSold from "./PreSold";
 import { EarlyConstruction } from "./EarlyConstruction";
 import { MidConstruction } from "./MidConstruction";
 import { MoveInReady } from "./MoveInReady";
 import Manifest from "../components/Manifest/Manifest";
 import HeroVideo from "../media/HeroAnimation2.mp4";
 import HeroImage from "../media/particles2.mp4";
-import ParticlesBackground from "../components/ParticleBG/ParticleBG";
+import ParticlesBackground from "../components/ParticlesBackground/ParticlesBackground";
 
 export default function SplineLoader() {
   const [currentContent, setCurrentContent] = useState<string>("Load");
