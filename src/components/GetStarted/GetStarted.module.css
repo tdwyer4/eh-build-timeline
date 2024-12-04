@@ -11,7 +11,7 @@
 .gsWrap {
     grid-template-columns: repeat(2,minmax(0,1fr));
     gap: 32px;
-    height: 200vh;
+    height: 225vh;
     display: grid;
     margin: auto;
     position: relative;
@@ -176,19 +176,34 @@
     gap: 16px;
     margin-bottom: 16px;
     box-sizing: border-box;
+    aspect-ratio: 16/9;
   }
 
   .chooseCardImage {
-    margin-bottom: 8px;
-    width: 40%;
-    object-fit: contain;
-    padding: 24px;
+    width: 100%;
+    object-fit: cover;
   }
   
   .chooseCard {
     position: relative;
     display: flex;
     flex-direction: row;
+    justify-content: flex-start;
+    background: #27333d;
+    border: #76D5D8 0.5px solid;
+    border-radius: 16px;
+    margin: 0;
+    color: #fff;
+    overflow: hidden;
+    transition: filter 0.3s ease;
+    gap: 8px;
+    height: 100%;
+  }
+
+  .chooseCardAlt {
+    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
     justify-content: flex-start;
     background: #27333d;
     border: #76D5D8 0.5px solid;
@@ -237,4 +252,47 @@
     color: rgba(255, 255, 255, 0.415);
     padding-left: 16px;
     padding-right: 16px;
+  }
+
+  .chooseStyleContainer {
+    width: 100%;
+    object-fit: contain;
+  }
+  
+  .chooseStyle {
+    position: relative;
+    background: #27333d;
+    border: #76D5D8 0.5px solid;
+    border-radius: 16px;
+    margin: 0;
+    color: #fff;
+    overflow: hidden;
+    transition: filter 0.3s ease;
+  }
+
+  .chooseStyleTextContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    background: #1a222995;
+    align-items: center;
+    width: 100%;
+    padding: 12px 0px;
+  }
+    
+  .chooseStyleTitle {
+    font-size: 24px;
+    font-weight: 200;
+    text-transform: uppercase;
+    margin: 0;
+  }
+    
+  
+  .chooseStyleDescription {
+    font-size: 12px;
+    font-weight: 400;
+    color: #fff;
+    margin: 0;
   }

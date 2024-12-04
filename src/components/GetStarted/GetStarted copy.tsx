@@ -3,7 +3,7 @@ import UpgradesPic from "../../media/upgrades.jpg";
 import React, { useState, useEffect, useRef } from "react";
 import { motion, animate, useInView } from "framer-motion";
 
-const GetStarted: React.FC = () => {
+const GetStartedOld: React.FC = () => {
   return (
     <div className={styles.mainContainer}>
       <div className={styles.leftContainer}>
@@ -139,4 +139,4 @@ const Stat = ({ num, suffix, decimals = 0, subheading }: Props) => {
   );
 };
 
-export default GetStarted;
+export default GetStartedOld;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "./cursorSpot.module.css";
+import styles from "./CursorSpot.module.css";
 
 const CursorSpot: React.FC = () => {
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
