@@ -17,7 +17,7 @@ export const MasonryVideo = () => {
     <>
       <div ref={ref} className={styles.vidSliderWrap}>
         <VidSectionHeader
-          title="Masonry, Paint & Grading"
+          title="Exterior Finishes"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -29,6 +29,7 @@ export const MasonryVideo = () => {
             slide={s}
             scrollYProgress={scrollYProgress}
             position={idx + 1}
+            numItems={s.ni}
           />
         ))}
       </div>
@@ -41,9 +42,10 @@ interface SlideProps {
   position: number;
   slide: SlideType;
   scrollYProgress: MotionValue;
+  numItems: number;
 }
 
-const Slide = ({ position, slide, scrollYProgress }: SlideProps) => {
+const Slide = ({ position, slide, scrollYProgress, numItems }: SlideProps) => {
   const scaleFromPct = (position - 1) / SLIDES.length;
   const y = useTransform(
     scrollYProgress,
@@ -51,23 +53,25 @@ const Slide = ({ position, slide, scrollYProgress }: SlideProps) => {
     [0, -SLIDE_HEIGHT]
   );
 
-  const isOddSlide = position % 2;
+  const stepSize = 1 / numItems;
+  const end = stepSize * position;
+  const start = end - stepSize;
+  const mid = (start + end) / 2;
+
+  const opacity = useTransform(scrollYProgress, [start, mid, end], [0.9, 1, 0]);
+  const scale = useTransform(scrollYProgress, [start, end], [1, 0.9]);
 
   return (
     <motion.div
       style={{
         height: SLIDE_HEIGHT,
         y: position === SLIDES.length ? undefined : y,
-        // background: isOddSlide ? "black" : "white",
-        // color: isOddSlide ? "white" : "black",
       }}
       className={styles.slideContainer}
     >
       <motion.div
         className={styles.slideVideoContainer}
-        initial={{ scale: 0.85, opacity: 1, borderRadius: 24 }}
-        whileInView={{ scale: 0.95, opacity: 1, borderRadius: 24 }}
-        transition={{ duration: 1 }}
+        style={{ opacity, scale }}
       >
         <motion.video
           src={slide.video}
@@ -84,11 +88,15 @@ const Slide = ({ position, slide, scrollYProgress }: SlideProps) => {
           }}
         ></motion.video>
         <motion.div
-          className={styles.slideVideoOverlay}
-          whileInView={{ opacity: 0.3 }}
-        />
-        <motion.div className={styles.slideTextContainer}>
-          <h3 className={styles.slideTitle}>{slide.title}</h3>
+          className={styles.slideTextContainer}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className={styles.slideHeaderWrap}>
+            <h3 className={styles.slideTitle}>{slide.title}</h3>
+            <h5 className={styles.slidePhase}>Exterior Finishes</h5>
+          </div>
           <p className={styles.slideParagraph}>{slide.paragraph}</p>
         </motion.div>
       </motion.div>
@@ -100,6 +108,7 @@ const SLIDE_HEIGHT = 960;
 
 type SlideType = {
   id: number;
+  ni: number;
   title: string;
   paragraph: string;
   video: string;
@@ -108,6 +117,7 @@ type SlideType = {
 const SLIDES: SlideType[] = [
   {
     id: 1,
+    ni: 2,
     title: "Masonry",
     paragraph:
       "Each of our homes features full masonry below the plate line. We have dozens of premium brick and stone options to choose from to personalize your home. The skilled masons place each brick and stone by hand, making your home truly one of a kind! ",
@@ -115,13 +125,7 @@ const SLIDES: SlideType[] = [
   },
   {
     id: 2,
-    title: "Paint",
-    paragraph:
-      "Painting involves much more than paint. The painters start by caulking the cabinets and trim, then move to sanding the cabinets and doors, and then tape off areas of the home. Then they're ready to paint!",
-    video: `${Paint}`,
-  },
-  {
-    id: 3,
+    ni: 2,
     title: "Grading",
     paragraph:
       "The yard is graded in two stages - rough grade and final grade. During each stage, the yard is laser leveled to ensure proper grades and swales are established to protect the foundation. We also offer underground drains at our exact cost for those wanting upgraded drainage.",
