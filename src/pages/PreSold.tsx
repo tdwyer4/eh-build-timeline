@@ -87,8 +87,6 @@ const PreSold: React.FC = () => {
           </ul>
         </div>
       </div>
-
-      {/* Page Content */}
       <div>
         <section id="2">
           <GetStarted />
@@ -141,5 +139,3 @@ const PreSold: React.FC = () => {
 };
 
 export default PreSold;
-
-
