@@ -187,14 +187,23 @@ const CardItem = ({
   return (
     <motion.div
       className={styles.card}
-      style={{ opacity, scale }}
+      style={{
+        opacity,
+        scale,
+        backgroundImage: `url(${img})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        height: "300px",
+        width: "100%",
+      }}
       initial={{ y: 0 }}
       transition={{ duration: 1, ease: "easeInOut" }}
     >
-      <img className={styles.cardImage} src={img} />
-      <h5 className={styles.cardStep}>{step}</h5>
-      <h3 className={styles.cardTitle}>{title}</h3>
-      <p className={styles.cardDescription}>{desc}</p>
+      {/* <h5 className={styles.cardStep}>{step}</h5> */}
+      <div className={styles.cardTextBackground}>
+        <h3 className={styles.cardTitle}>{title}</h3>
+        <p className={styles.cardDescription}>{desc}</p>
+      </div>
     </motion.div>
   );
 };

@@ -11,7 +11,7 @@
 .gsWrap {
     grid-template-columns: repeat(2,minmax(0,1fr));
     gap: 32px;
-    height: 225vh;
+    height: 200vh;
     display: grid;
     margin: auto;
     position: relative;
@@ -29,7 +29,7 @@
     -webkit-text-fill-color: transparent;
     text-transform: uppercase;
     line-height: 75px;
-    margin: 0; 
+    margin: 0;
   }
   
   .subtitle {
@@ -128,7 +128,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: flex-end;
     background: #27333d;
     border: #76D5D8 0.5px solid;
     border-radius: 16px;
@@ -136,6 +136,7 @@
     color: #fff;
     overflow: hidden;
     transition: filter 0.3s ease;
+    height: 100%;
   }
 
   .cardStep {
@@ -151,23 +152,35 @@
     text-align: center;
     padding: 2px;
   }
+
+  .cardTextBackground {
+    background: #1a2229e5;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    justify-content: flex-start;
+  }
     
   .cardTitle {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 200;
     text-transform: uppercase;
     margin: 0;
+    margin-top: 8px;
     padding-left: 16px;
     padding-right: 16px;
+    color: #fff;
   }
     
   
   .cardDescription {
     font-size: 12px;
     font-weight: 400;
-    color: rgba(255, 255, 255, 0.415);
+    color: #fff;
     padding-left: 16px;
     padding-right: 16px;
+    margin: 0;
   }
 
   .chooseCardContainer {
@@ -276,7 +289,7 @@
     justify-content: center;
     position: absolute;
     top: 0;
-    background: #1a222995;
+    background: #1a2229e5;
     align-items: center;
     width: 100%;
     padding: 12px 0px;

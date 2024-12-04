@@ -38,7 +38,9 @@ const GetStartedStyle = () => {
                   key={key}
                   onClick={() => setActiveStyle(key)}
                   whileHover={{ y: 0 }}
-                  className={styles.button}
+                  className={`${styles.button} ${
+                    activeStyle === key ? styles.activeButton : ""
+                  }`}
                 >
                   {key.charAt(0).toUpperCase() + key.slice(1)}
                 </motion.button>
