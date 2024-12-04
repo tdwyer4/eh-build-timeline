@@ -81,6 +81,7 @@ const Slide = ({ position, slide, scrollYProgress }: SlideProps) => {
         />
       </motion.div>
       <motion.div className={styles.slideTextContainer}>
+        <h5 className={styles.slidePhase}>Foundation</h5>
         <h3 className={styles.slideTitle}>{slide.title}</h3>
         <p className={styles.slideParagraph}>{slide.paragraph}</p>
       </motion.div>

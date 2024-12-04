@@ -100,7 +100,10 @@ const Slide = ({ position, slide, scrollYProgress, numItems }: SlideProps) => {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <h3 className={styles.slideTitle}>{slide.title}</h3>
+          <div className={styles.slideHeaderWrap}>
+            <h3 className={styles.slideTitle}>{slide.title}</h3>
+            <h5 className={styles.slidePhase}>Foundation</h5>
+          </div>
           <p className={styles.slideParagraph}>{slide.paragraph}</p>
         </motion.div>
       </motion.div>
