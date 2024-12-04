@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import styles from "./Cta.module.css";
 import GradientType from "../GradientType/gradientType";
 import ParticlesBackground from "../ParticlesBackground/ParticlesBackground";
+import EE from "./EE";
 
 const staggerContainer = {
   hidden: { opacity: 0 },
@@ -26,10 +27,6 @@ const CTA: React.FC = () => {
         <div className={styles.radialGradient2}></div>
       </div>
 
-      <div className={styles.particlesContainer}>
-        <ParticlesBackground />
-      </div>
-
       <motion.div
         className={styles.mainContainer}
         variants={staggerContainer}
@@ -51,6 +48,9 @@ const CTA: React.FC = () => {
               </motion.button>
             </motion.div>
           </motion.div>
+          <div className={styles.eeContainer}>
+          <EE />
+          </div>
         </div>
       </motion.div>
     </div>
