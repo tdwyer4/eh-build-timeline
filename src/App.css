@@ -5,6 +5,12 @@ body, html {
   background-color: #fff;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;700&display=swap');
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
 .hero-container {
   position: relative;
   width: 100vw;

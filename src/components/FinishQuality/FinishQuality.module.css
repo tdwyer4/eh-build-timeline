@@ -1,105 +1,172 @@
+.mainContainer {
+  position: relative;
+  height: 100vh;
+  background-color: #1a2229;
+  padding-left: 48px;
+  padding-right: 48px;
+}
+
+.mainContainerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  
+}
+
+.mainContainerContentWrap {
+  background: #1a222995;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+  align-items: center;
+}
+
+.topTextContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 12px 0px;
+  text-align: center;
+}
+  
+.topTitle {
+  font-size: 24px;
+  font-weight: 200;
+  text-transform: uppercase;
+  margin: 0;
+  color: #fff;
+}
+  
+.topDescription {
+  font-size: 12px;
+  font-weight: 400;
+  color: #fff;
+  margin: 0;
+  width: 50%;
+}
+
+.topButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 8px;
+  padding: 12px 0px;
+}
+
+.topButton {
+  color: #fff;
+  background: transparent;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 12px;
+  border: #76D5D8 1px solid;
+  border-radius: 9999px;
+  width: 120px;
+  text-align: center;
+  padding: 4px;
+  transition: 0.3s ease;
+}
+
+.topButton:hover {
+  transition: 0.3s ease;
+  background: #76D5D870;
+  color: #fff;
+}
+
+.styleContainer {
+  height: 100%;
+  padding-left: 48px;
+  padding-right: 48px;
+  background-color: #1a2229;
+  
+}
+
 .container {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    background-size: cover;
-    background-position: center;
-    overflow: hidden;
-  }
+  position: relative;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16/9;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  display: flex;
+  border-radius: 24px;
+}
+
+.bottomContent {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  width: 100%;
   
-  .buttonContainer {
-    position: absolute;
-    bottom: 16px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 36px;
-    width: fit-content;
-    height: 5vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 8px;
-    background: rgba(213, 213, 213, 0.1);
-    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-  }
+}
+
+.bottomContentWrap {
+  background: #1a222995;
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  width: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+  align-items: center;
+}
+
+.chooseStyleTextContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  padding: 12px 0px;
+}
   
-  .button {
-    margin: 8px;
-    padding: 0.5rem 1.5rem;
-    border: 1px solid white;
-    border-radius: 25px;
-    background: transparent;
-    color: white;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
-    transition: 0.3s ease;
-  }
+.chooseStyleTitle {
+  font-size: 24px;
+  font-weight: 200;
+  text-transform: uppercase;
+  margin: 0;
+  color: #fff;
+}
   
-  .hotpoint {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: #76d5d8;
-    border-radius: 50%;
-    box-shadow: 0px 0px 12px #29313932;
-    z-index: 3;
-    cursor: pointer;
-    animation: pulse 1.5s infinite ease-in-out;
-  }
-  
-  @keyframes pulse {
-    0%, 100% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.2);
-    }
-  }
-  
-  .tooltip {
-    width: 280px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 12px;
-    padding: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    opacity: 0;
-    transform-origin: top left;
-    backdrop-filter: blur(4px);
-    box-shadow: 0px 0px 24px rgba(41, 49, 57, 0.8);
-    transition: opacity 0.3s ease;
-    z-index: 1000;
-  }
-  
-  .tooltip.active {
-    opacity: 1;
-  }
-  
-  .tooltip img {
-    width: 100%;
-    height: auto;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 8px;
-  }
-  
-  .tooltip h1 {
-    font-size: 1.25rem;
-    color: #ffffff;
-    margin: 0;
-    text-align: center;
-  }
-  
-  .tooltip p {
-    font-size: 0.875rem;
-    color: #ffffff;
-    margin-top: 4px;
-    text-align: center;
-  }
+
+.chooseStyleDescription {
+  font-size: 12px;
+  font-weight: 400;
+  color: #fff;
+  margin: 0;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 8px;
+  padding: 12px 0px;
+}
+
+.button {
+  color: #1a2229;
+  background: #76D5D8;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 12px;
+  border: #76D5D8 1px solid;
+  border-radius: 9999px;
+  width: 120px;
+  text-align: center;
+  padding: 4px;
+  transition: 0.3s ease;
+}
+
+.button:hover {
+  transition: 0.3s ease;
+  background: #76D5D870;
+  color: #fff;
+}
+
+
+
