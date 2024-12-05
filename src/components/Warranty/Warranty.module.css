@@ -1,8 +1,7 @@
 .sectionWrap {
   overflow: hidden; 
   position: relative; 
-  width: 100%; 
-  background: #1A2229;
+  width: 100%;
   height: 100vh;
 }
 
