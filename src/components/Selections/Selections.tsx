@@ -5,7 +5,7 @@ import styles from "./Selections.module.css";
 const CARD_SIZE_LG = 365;
 const CARD_SIZE_SM = 290;
 
-const BORDER_SIZE = 0.5;
+const BORDER_SIZE = 1;
 const CORNER_CLIP = 0;
 const CORNER_LINE_LEN = Math.sqrt(
   CORNER_CLIP * CORNER_CLIP + CORNER_CLIP * CORNER_CLIP
@@ -20,7 +20,6 @@ const SECTION_HEIGHT = 800;
 
 export const Selections = () => {
   const [cardSize, setCardSize] = useState(CARD_SIZE_LG);
-
   const [selections, setselections] = useState(SELECTIONS_DATA);
 
   const handleMove = (position: number) => {
@@ -96,7 +95,7 @@ export const Selections = () => {
         return (
           <SelectionsCard
             key={t.tempId}
-            testimonial={t}
+            selection={t}
             handleMove={handleMove}
             position={position}
             cardSize={cardSize}
@@ -117,14 +116,14 @@ export const Selections = () => {
 
 interface SelectionsProps {
   position: number;
-  testimonial: SelectionsType;
+  selection: SelectionsType;
   handleMove: Function;
   cardSize: number;
 }
 
 const SelectionsCard = ({
   position,
-  testimonial,
+  selection,
   handleMove,
   cardSize,
 }: SelectionsProps) => {
@@ -167,93 +166,104 @@ const SelectionsCard = ({
           height: BORDER_SIZE,
         }}
       />
-      <img
-        src={testimonial.imgSrc}
-        alt={`Testimonial image for ${testimonial.by}`}
+      <motion.div
         className={styles.cardImage}
-        style={{}}
-      />
-      <h3
-        className={`${styles.cardHeader} ${
-          isActive
-            ? `${styles.cardHeaderActive}`
-            : `${styles.cardHeaderInactive}`
-        }`}
+        style={{
+          backgroundImage: `url(${selection.imgSrc})`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          height: "100%",
+          width: "100%",
+        }}
+        initial={{ y: 0 }}
+        transition={{ duration: 1, ease: "easeInOut" }}
       >
-        {testimonial.testimonial}
-      </h3>
-      <p
-        className={`${styles.cardDesc} ${
-          isActive ? `${styles.cardDescActive}` : `${styles.cardDescInactive}`
-        }`}
-      >
-        {testimonial.by}
-      </p>
+        <div className={styles.selectionTextBackground}>
+          <h3
+            className={`${styles.cardHeader} ${
+              isActive
+                ? `${styles.cardHeaderActive}`
+                : `${styles.cardHeaderInactive}`
+            }`}
+          >
+            {selection.title}
+          </h3>
+          <p
+            className={`${styles.cardDesc} ${
+              isActive
+                ? `${styles.cardDescActive}`
+                : `${styles.cardDescInactive}`
+            }`}
+          >
+            {selection.desc}
+          </p>
+        </div>
+      </motion.div>
     </motion.div>
   );
 };
 
 type SelectionsType = {
   tempId: number;
-  testimonial: string;
-  by: string;
+  title: string;
+  desc: string;
   imgSrc: string;
 };
 
 const SELECTIONS_DATA: SelectionsType[] = [
   {
     tempId: 0,
-    testimonial: "Masonry",
-    by: "Every home features full brick below the plate line.",
+    title: "Masonry",
+    desc: "Every home features full brick below the plate line.",
     imgSrc:
       "https://assets.cloud.executivehomes.com/prod/public/catalog-item/CIT~NYV-DHbQeguPXMVW/SMD~T90NB09LtsQWqEMc",
   },
   {
     tempId: 1,
-    testimonial: "Light Fixtures",
-    by: "Our lighting vendor can source most anything you'd like! ",
+    title: "Light Fixtures",
+    desc: "Our lighting vendor can source most anything you'd like! ",
     imgSrc:
       "https://assets.cloud.executivehomes.com/prod/public/catalog-item/CIT~xusBvPi17Y4ecTey/SMD~lDmKMufAkDFF2nzE",
   },
   {
     tempId: 2,
-    testimonial: "Paint Colors",
-    by: "Personalize your colors or choose one of our time-tested combos. ",
+    title: "Paint Colors",
+    desc: "Personalize your colors or choose one of our time-tested combos. ",
     imgSrc:
       "https://assets.cloud.executivehomes.com/prod/public/catalog-item/CIT~-qq2eU15drq4_JfU/SMD~mfTG064n_TpLyL1j",
   },
   {
     tempId: 3,
-    testimonial: "Countertops",
-    by: "Dozens of high-end natural stone options are available!",
+    title: "Countertops",
+    desc: "Dozens of high-end natural stone options are available!",
     imgSrc:
       "https://assets.cloud.executivehomes.com/prod/public/catalog-item/CIT~FraxVi0GJGdERbTb/SMD~etT73hz7MdcdSv1P",
   },
   {
     tempId: 4,
-    testimonial: "Backsplash",
-    by: "Choose a backsplash to accent your countertop choice.",
+    title: "Backsplash",
+    desc: "Choose a backsplash to accent your countertop choice.",
     imgSrc:
       "https://assets.cloud.executivehomes.com/prod/public/catalog-item/CIT~TmqmVUO0vFNma52i/SMD~wLxOcDNHG87zs9CG",
   },
   {
     tempId: 5,
-    testimonial: "Floor Stain",
-    by: "Every home features real oak floors",
+    title: "Floor Stain",
+    desc: "Every home features real oak floors",
     imgSrc:
       "https://assets.cloud.executivehomes.com/prod/public/catalog-item/CIT~MNw6H0Et13l3iRRF/SMD~j1lKk3ZDOZrkNpGE",
   },
   {
     tempId: 6,
-    testimonial: "Tile & Carpet",
-    by: "High-end tile and carpet are standard.",
+    title: "Tile & Carpet",
+    desc: "High-end tile and carpet are standard.",
     imgSrc:
       "https://assets.cloud.executivehomes.com/prod/public/catalog-item/CIT~6RuS72GS_ZNJ3-R2/SMD~EIclyb14nPSmSJbt",
   },
   {
     tempId: 7,
-    testimonial: "Front Door",
-    by: "Choose from premium iron and wood options.",
+    title: "Front Door",
+    desc: "Choose from premium iron and wood options.",
     imgSrc:
       "https://assets.cloud.executivehomes.com/prod/public/catalog-item/CIT~93YJg1822ETNocCG/SMD~y427fX_82kVM-ZKi",
   },
