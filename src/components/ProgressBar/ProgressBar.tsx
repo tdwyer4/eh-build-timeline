@@ -1,108 +1,86 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import styles from "./ProgressBar.module.css";
+import classNames from "classnames";
 
 interface ProgressBarProps {
-  progress: number; // Progress percentage (0-100)
-  activeIndex: number; // Current active section index
-  items: { id: string; title: string }[]; // List of navigation items
-  pageTitle: string; // Current page title
+  activeIndex: number;
+  items: { id: string; title: string }[];
+  pageTitle: string;
+  variant?: "dots" | "bar";
 }
 
 const ProgressBar: React.FC<ProgressBarProps> = ({
-  progress,
   activeIndex,
   items,
   pageTitle,
+  variant,
 }) => {
-  const [navExpanded, setNavExpanded] = useState(false); // State for navigation menu
+  const itemRefs = useRef<(HTMLLIElement | null)[]>([]); // Store refs for all nav items
+  const [barHeight, setBarHeight] = useState(0);
 
-  const toggleNav = () => setNavExpanded((prev) => !prev); // Toggle navigation state
+  useEffect(() => {
+    const calculateBarHeight = () => {
+      const totalHeight = window.innerHeight; // Full viewport height (100vh)
+      const itemHeight = totalHeight / items.length; // Each item's height (evenly spaced)
+      setBarHeight(itemHeight * (activeIndex + 1)); // Grow the bar to the current active item
+    };
 
-  const listVariants = {
-    hidden: { opacity: 0, y: 10 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: { delay: i * 0.1, duration: 0.4, ease: "easeOut" },
-    }),
-  };
+    calculateBarHeight();
+    window.addEventListener("resize", calculateBarHeight); // Recalculate on resize
+    return () => window.removeEventListener("resize", calculateBarHeight); // Cleanup
+  }, [activeIndex, items]);
+
+  const variantClass = variant === "dots" ? styles.dots : styles.bar;
 
   return (
-    <div className={styles.progressContainer}>
-      {/* Hamburger and Title */}
-        
-      <div className={styles.hamburgerContainer}>
-        <div>
-            <span className={styles.title}>{pageTitle}</span>
-        </div>
-        <div className={styles.hamburger} onClick={toggleNav}>
-            <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            >
-            <path
-                d="M4 6H20"
-                stroke="white"
-                strokeWidth="2"
-                strokeLinecap="round"
-            />
-            <path
-                d="M4 12H20"
-                stroke="white"
-                strokeWidth="2"
-                strokeLinecap="round"
-            />
-            <path
-                d="M4 18H20"
-                stroke="white"
-                strokeWidth="2"
-                strokeLinecap="round"
-            />
-            </svg>
-
-        </div>
-        </div>
+    <div className={classNames(styles.progressContainer, variantClass)}>
+      <div className={classNames(styles.hamburgerContainer, variantClass)}>
+        <span className={classNames(styles.title, variantClass)}>
+          {pageTitle}
+        </span>
+      </div>
 
       {/* Progress Bar */}
-      <div className={styles.progressBarBackground}>
+      <div className={classNames(styles.progressBarBackground, variantClass)}>
         <motion.div
-          className={styles.progressBar}
-          style={{ height: `${progress}%` }}
+          className={classNames(styles.progressBar, variantClass)}
+          style={{
+            height: `${barHeight}px`,
+          }}
+          animate={{
+            height: `${barHeight}px`,
+          }}
+          transition={{
+            duration: 0.3,
+            ease: "easeOut",
+          }}
         />
       </div>
 
-      {/* Navigation Items (Appear on Hamburger Click) */}
-      <AnimatePresence>
-        {navExpanded && (
-          <motion.ul
-            className={styles.navItems}
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 20 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+      {/* Navigation Items */}
+      <div className={classNames(styles.navItemsContainer)}>
+      <motion.ul
+        className={classNames(styles.navItems, variantClass)}
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+      >
+        {items.map((item, index) => (
+          <motion.li
+            key={item.id}
+            ref={(el) => (itemRefs.current[index] = el)} // Assign ref to each item
+            className={classNames(
+              styles.navItem,
+              variantClass,
+              activeIndex === index ? styles.activeItem : ""
+            )}
           >
-            {items.map((item, index) => (
-              <motion.li
-                key={item.id}
-                custom={index}
-                initial="hidden"
-                animate="visible"
-                exit="hidden"
-                variants={listVariants}
-                className={`${styles.navItem} ${
-                  activeIndex === index ? styles.activeItem : ""
-                }`}
-              >
-                <a href={`#${item.id}`}>{item.title}</a>
-              </motion.li>
-            ))}
-          </motion.ul>
-        )}
-      </AnimatePresence>
+            <a href={`#${item.id}`}>{item.title}</a>
+          </motion.li>
+        ))}
+      </motion.ul>
+      </div>
     </div>
   );
 };

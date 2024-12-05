@@ -1,10 +1,21 @@
+
 .progressContainer {
   position: fixed;
   top: 0;
   right: 0;
   width: 20px;
-  height: 100%;
+  height: 100vh;
   z-index: 1000;
+}
+
+.progressContainer.dots {
+  right: 12px;
+  width: 2px;
+}
+
+.progressContainer.bar {
+  right: 0;
+  width: 20px;
 }
 
 .hamburgerContainer {
@@ -18,77 +29,216 @@
   z-index: 1100;
 }
 
-.hamburger {
+.hamburgerContainer.dots {
+  right: 30px;
+}
+
+.hamburgerContainer.bar {
+  right: 40px;
+}
+
+.hamburger.bar {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 40px;
   height: 40px;
-  color: tomato;
+  border-radius: 4px;
+}
+
+.hamburger.dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  opacity: 15%;
   border-radius: 4px;
 }
 
 .title {
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 300;
   color: white;
+}
+
+.title.dots {
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  color: #76d5d8;
+}
+
+.title.bar {
+  font-size: 14px;
 }
 
 .progressBarBackground {
   position: absolute;
-  top: 0;
+  top: 0px;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(41, 174, 191, 0.05); /* Light teal background with transparency */
+  background: rgba(41, 174, 191, 0.05);
 }
 
-.progressBar {
+.progressBarBackground.dots {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.progressBarBackground.bar {
+  background: rgba(41, 174, 191, 0.05);
+}
+
+.progressBar.dots {
   position: absolute;
-  top: 0; /* Start filling from the bottom */
-  width: 100%;
-  background: linear-gradient(to bottom, #00b7ff 1%, #76D5D8, #76d5d800 );
-  height: 0%; /* Initial height (progress is applied dynamically) */
-  transition: height 0.3s ease-in-out; /* Smooth transition for progress changes */
+  left: 0;
+  width: 2px; /* Set the width of the bar */
+  background: #76d5d8; /* Teal color for the bar */
+  transition: top 0.3s ease, height 0.3s ease;
+  margin-top: 20px; /* Smooth animation when active item changes */
 }
 
+
+.progressBar.dots {
+  background:  #76d5d8;
+}
+
+.progressBar.bar {
+  background: linear-gradient(to bottom, #00b7ff 1%, #76d5d8, transparent);
+}
+
+.navItemsContainer {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.navItemsContainer.dots {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
 
 .navItems {
   position: absolute;
   top: 80px;
   right: 60px;
   list-style: none;
-  color: white; /* Default color for list items */
+  color: white;
   margin: 0;
   padding: 0;
   z-index: 1200;
 }
 
+.navItems.dots {
+  right: 26px;
+  text-align: right;
+  height: 100%;
+  display: flex; 
+  flex-direction: column; 
+  justify-content: space-between; 
+  align-items: flex-end; 
+}
+
+.navItems.bar {
+  right: 60px;
+}
+
 .navItems a {
-  text-decoration: none; /* Remove underline */
-  color: inherit; /* Inherit color from parent (.navItems or .navItem) */
-  font-family: "Montserrat", sans-serif; /* Ensure consistent typography */
+  text-decoration: none;
+  color: inherit;
+  justify-items: right;
+  font-family: "Montserrat", sans-serif;
   font-size: 14px;
   transition: color 0.3s ease;
 }
 
-.navItems a:hover {
-  color: #3dccc8; /* Change color on hover to a teal shade */
+.navItems.dots a {
+  font-size: 12px;
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  transition: color 0.3s ease;
+  display: inline-block; 
+  position: relative; 
+}
+
+.navItems a.bar {
+  font-size: 14px;
+}
+
+.navItems.dots a:hover {
+  color: #76d5d8; 
 }
 
 .navItems li {
-  margin-bottom: 10px; /* Add spacing between items */
+  margin-bottom: 10px;
 }
 
+.navItems.dots li {
+  margin-bottom: 8px;
+  position: relative; 
+}
+
+.navItems.bar li {
+  margin-bottom: 10px;
+}
 
 .navItem {
   margin-bottom: 10px;
-  color: white;
+  color: rgba(255, 255, 255, 0.534);
   cursor: pointer;
+}
+
+.navItem.dots {
+  font-size: 12px;
+}
+
+.navItem.bar {
+  font-size: 14px;
 }
 
 .activeItem {
   font-weight: bold;
   color: #3dccc8;
+}
+
+.activeItem.dots {
+  font-weight: bold;
+  color: #76d5d8;
+}
+
+.activeItem.bar {
+  font-weight: bold;
+  color: #3dccc8;
+}
+
+.activeItem::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -15px; 
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border: 2px solid #3dccc8; 
+  border-radius: 50%;
+}
+
+.activeItem.dots::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -32px; 
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  background: #232323; 
+  border: 2px solid #76d5d8; 
+  border-radius: 50%;
 }
