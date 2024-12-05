@@ -16,7 +16,7 @@ export const FramingVideo = () => {
     <>
       <div ref={ref} className={styles.vidSliderWrap}>
         <VidSectionHeader
-          title="Footing"
+          title="Framing"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -28,6 +28,7 @@ export const FramingVideo = () => {
             slide={s}
             scrollYProgress={scrollYProgress}
             position={idx + 1}
+            numItems={s.ni}
           />
         ))}
       </div>
@@ -40,9 +41,10 @@ interface SlideProps {
   position: number;
   slide: SlideType;
   scrollYProgress: MotionValue;
+  numItems: number;
 }
 
-const Slide = ({ position, slide, scrollYProgress }: SlideProps) => {
+const Slide = ({ position, slide, scrollYProgress, numItems }: SlideProps) => {
   const scaleFromPct = (position - 1) / SLIDES.length;
   const y = useTransform(
     scrollYProgress,
@@ -50,23 +52,25 @@ const Slide = ({ position, slide, scrollYProgress }: SlideProps) => {
     [0, -SLIDE_HEIGHT]
   );
 
-  const isOddSlide = position % 2;
+  const stepSize = 1 / numItems;
+  const end = stepSize * position;
+  const start = end - stepSize;
+  const mid = (start + end) / 2;
+
+  const opacity = useTransform(scrollYProgress, [start, mid, end], [0.9, 1, 0]);
+  const scale = useTransform(scrollYProgress, [start, end], [1, 0.9]);
 
   return (
     <motion.div
       style={{
         height: SLIDE_HEIGHT,
         y: position === SLIDES.length ? undefined : y,
-        // background: isOddSlide ? "black" : "white",
-        // color: isOddSlide ? "white" : "black",
       }}
       className={styles.slideContainer}
     >
       <motion.div
         className={styles.slideVideoContainer}
-        initial={{ scale: 0.85, opacity: 1, borderRadius: 24 }}
-        whileInView={{ scale: 0.95, opacity: 1, borderRadius: 24 }}
-        transition={{ duration: 1 }}
+        style={{ opacity, scale }}
       >
         <motion.video
           src={slide.video}
@@ -83,11 +87,15 @@ const Slide = ({ position, slide, scrollYProgress }: SlideProps) => {
           }}
         ></motion.video>
         <motion.div
-          className={styles.slideVideoOverlay}
-          whileInView={{ opacity: 0.3 }}
-        />
-        <motion.div className={styles.slideTextContainer}>
-          <h3 className={styles.slideTitle}>{slide.title}</h3>
+          className={styles.slideTextContainer}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className={styles.slideHeaderWrap}>
+            <h3 className={styles.slideTitle}>{slide.title}</h3>
+            <h5 className={styles.slidePhase}>Framing</h5>
+          </div>
           <p className={styles.slideParagraph}>{slide.paragraph}</p>
         </motion.div>
       </motion.div>
@@ -99,6 +107,7 @@ const SLIDE_HEIGHT = 960;
 
 type SlideType = {
   id: number;
+  ni: number;
   title: string;
   paragraph: string;
   video: string;
@@ -107,6 +116,7 @@ type SlideType = {
 const SLIDES: SlideType[] = [
   {
     id: 1,
+    ni: 2,
     title: "Framing",
     paragraph:
       "Framing is split into several phases. The first step involves standing the walls and setting the ceiling joists. Then, the framers add the rafters that form the roof line. From there, the cornice details are installed and roof is decked. The framers will make a return trip for their punch work after the rough trades are finished.",
@@ -114,6 +124,7 @@ const SLIDES: SlideType[] = [
   },
   {
     id: 2,
+    ni: 2,
     title: "Roofing",
     paragraph:
       "The roofers arrive once the decking is installed. Our roofing contractor is the best in the area and has roofed thousands of homes. Their expertise during construction, as well as during the warranty after closing, is one of many reasons our homeowners have experienced unmatched new home resale value.",
