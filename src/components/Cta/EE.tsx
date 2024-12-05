@@ -10,7 +10,7 @@ const EE: React.FC = () => {
     duration={5000}
     stagger={25}
     fade={true}
-    playback={"infinite alternate-reverse both" as any} // TypeScript override
+    playback={"infinite alternate-reverse both" as any} 
     timing="ease-in-out"
     >
         <svg width="70" height="70" viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg">

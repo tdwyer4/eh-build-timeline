@@ -48,7 +48,7 @@ export default function SplineLoader() {
       default:
         return <FirstLoad />;
       case "Pre":
-        return <PreSold />;
+        return <PreSold pageTitle="Pre-Sold Phase" />;
       case "Early":
         return <EarlyConstruction />;
       case "Mid":

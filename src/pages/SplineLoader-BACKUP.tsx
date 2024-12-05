@@ -1,6 +1,7 @@
 import styles from "./SplineLoader.module.css";
 import { useRef, useState, startTransition } from "react";
 import PreSold from "./PreSold";
+import FirstLoad from "./FirstLoad";
 import { EarlyConstruction } from "./EarlyConstruction";
 import { MidConstruction } from "./MidConstruction";
 import { MoveInReady } from "./MoveInReady";
@@ -23,9 +24,11 @@ export default function SplineLoader() {
 
   const renderContent = () => {
     switch (currentContent) {
-      case "Pre":
+      case "Load":
       default:
-        return <PreSold />;
+        return <FirstLoad />;
+      case "Pre":
+        return <PreSold pageTitle="Pre-Sold Phase" />;
       case "Early":
         return <EarlyConstruction />;
       case "Mid":
