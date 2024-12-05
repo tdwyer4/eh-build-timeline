@@ -4,6 +4,7 @@ import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
 import Punchout from "../../media/videos/phases/16Punchout.mp4";
 import FinalTouches from "../../media/videos/phases/17FinalTouches.mp4";
 import { VidSectionHeader } from "./VidSectionHeader";
+import { SectionHeader } from "../SectionHeaderText/SectionHeaderText";
 
 export const PunchoutVideo = () => {
   const ref = useRef(null);
@@ -15,7 +16,7 @@ export const PunchoutVideo = () => {
   return (
     <>
       <div ref={ref} className={styles.vidSliderWrap}>
-        <VidSectionHeader
+        <SectionHeader
           title="Closing"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
