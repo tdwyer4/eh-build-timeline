@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import styles from "./FinishQuality.module.css";
 import signatureImage from "../../media/signature.jpeg";
 import transitionalImage from "../../media/transitional.jpeg";
+import { SectionHeader } from "../SectionHeaderText/SectionHeaderText";
 
 type Style = "signature" | "transitional";
 
@@ -15,15 +16,10 @@ const FinishQuality = () => {
     <motion.div className={styles.mainContainer}>
       <div className={styles.mainContainerContent}>
         <div className={styles.mainContainerContentWrap}>
-          <div className={styles.topTextContainer}>
-            <h3 className={styles.topTitle}>Finish Quality</h3>
-            <p className={styles.topDescription}>
-              Our two distinctive styles, Signature and Transitional, feature
-              impeccable craftsmanship, unmatched attention to detail, and are
-              loaded with features that most builders consider to be costly
-              upgrades.
-            </p>
-          </div>
+          <SectionHeader
+            title="Finish Quality"
+            description="Our two distinctive styles, Signature and Transitional, feature impeccable craftsmanship, unmatched attention to detail, and are loaded with features that most builders consider to be costly upgrades."
+          />
           <div className={styles.topButtonContainer}>
             {(Object.keys(sliders) as Style[]).map((style) => (
               <motion.button

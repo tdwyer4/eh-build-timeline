@@ -5,6 +5,7 @@ import Masonry from "../../media/videos/phases/13Masonry.mp4";
 import Paint from "../../media/videos/phases/14Paint.mp4";
 import Grading from "../../media/videos/phases/15Grading.mp4";
 import { VidSectionHeader } from "./VidSectionHeader";
+import { SectionHeader } from "../SectionHeaderText/SectionHeaderText";
 
 export const MasonryVideo = () => {
   const ref = useRef(null);
@@ -16,7 +17,7 @@ export const MasonryVideo = () => {
   return (
     <>
       <div ref={ref} className={styles.vidSliderWrap}>
-        <VidSectionHeader
+        <SectionHeader
           title="Exterior Finishes"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad

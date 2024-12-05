@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import styles from "./Selections.module.css";
+import { SectionHeader } from "../SectionHeaderText/SectionHeaderText";
 
 const CARD_SIZE_LG = 365;
 const CARD_SIZE_SM = 290;
@@ -74,13 +75,13 @@ export const Selections = () => {
     <div className={styles.sectionWrap} style={{}}>
       <div className={styles.topContainer}>
         <motion.div className={styles.copyContainer}>
-          <h2 className={styles.header}>STREAMLINED SELECTION EXPERIENCE</h2>
-          <p className={styles.paragraph}>
-            We’ve streamlined the home personalization process so you can choose
+          <SectionHeader
+            title="STREAMLINED SELECTION EXPERIENCE"
+            description="We’ve streamlined the home personalization process so you can choose
             all of the fun, value-added selections, without the time-consuming
             minutiae that’s often associated with custom building. To make it
-            even easier, most every selection can be made remotely!{" "}
-          </p>
+            even easier, most every selection can be made remotely!"
+          />
         </motion.div>
       </div>
       {selections.map((t, idx) => {

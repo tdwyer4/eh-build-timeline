@@ -12,7 +12,7 @@ import RoughPlumbing from "../../media/videos/phases/2RoughPlumbing.mp4";
 import PostTension from "../../media/videos/phases/3PostTension.mp4";
 import Termite from "../../media/videos/phases/4Termite.mp4";
 import Slab from "../../media/videos/phases/5Slab.mp4";
-import { VidSectionHeader } from "./VidSectionHeader";
+import { SectionHeader } from "../SectionHeaderText/SectionHeaderText";
 
 export const FootingVideo = () => {
   const ref = useRef(null);
@@ -23,7 +23,7 @@ export const FootingVideo = () => {
   return (
     <>
       <div ref={ref} className={styles.vidSliderWrap}>
-        <VidSectionHeader
+        <SectionHeader
           title="Foundation"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
