@@ -14,7 +14,7 @@ import FinishQuality from "../components/FinishQuality/FinishQuality";
 import { MasonryVideo } from "../components/VidSection/Masonry";
 import Closing from "../components/Closing/Closing";
 import { PunchoutVideo } from "../components/VidSection/PunchoutVideo";
-import { Warranty } from "../components/Warranty/Warranty";
+import Warranty from "../components/Warranty/Warranty";
 import styles from "./FullPageStyles.module.css";
 import CTA from "../components/Cta/Cta";
 

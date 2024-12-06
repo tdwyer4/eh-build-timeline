@@ -1,0 +1,39 @@
+.sliderWrap {
+  position: relative;
+  display: flex;
+  justify-content: flex-start; /* Aligns children to the top */
+  flex-direction: column;
+  align-items: stretch; /* Prevents centering */
+  gap: 2rem;
+  padding: 0;
+  margin: 0;
+  z-index: 0;
+  border: rgb(71, 74, 255) solid 1px;
+}
+
+.cards {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; 
+  width: 100%;
+  height: auto; /* Adjust dynamically */
+  padding: 2rem 0; /* Consistent spacing inside */
+  margin: 0;
+  gap: 1rem;
+  border: tomato solid 1px;
+}
+
+.controls {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 2rem;
+  padding: 0;
+  margin: 0;
+  z-index: 10;
+  border: rgb(71, 255, 95) solid 1px;
+}

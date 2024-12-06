@@ -66,6 +66,7 @@
 .title.dots {
   font-size: 14px;
   font-family: "Montserrat", sans-serif;
+  text-decoration: uppercase;
   font-weight: 300;
   color: #76d5d8;
 }
@@ -131,6 +132,7 @@
   right: 60px;
   list-style: none;
   color: white;
+  text-decoration: uppercase;
   margin: 0;
   padding: 0;
   z-index: 1200;
@@ -155,13 +157,13 @@
   color: inherit;
   justify-items: right;
   font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
   font-size: 14px;
   transition: color 0.3s ease;
 }
 
 .navItems.dots a {
   font-size: 12px;
-  text-decoration: none;
   font-family: "Montserrat", sans-serif;
   transition: color 0.3s ease;
   display: inline-block; 
@@ -196,7 +198,7 @@
 }
 
 .navItem.dots {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .navItem.bar {
