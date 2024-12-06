@@ -4,7 +4,6 @@
     height: 100vh;
     background: #1a2229;
 } 
-
 .topContainer {
     display: flex;
     flex-direction: row;

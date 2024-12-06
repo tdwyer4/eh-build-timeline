@@ -48,10 +48,14 @@ const PreSold: React.FC<PreSoldProps> = ({ pageTitle }) => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        let mostVisibleEntry: IntersectionObserverEntry | null = null as IntersectionObserverEntry | null;
+        let mostVisibleEntry: IntersectionObserverEntry | null =
+          null as IntersectionObserverEntry | null;
 
         entries.forEach((entry) => {
-          const sectionId = parseInt(entry.target.getAttribute("id") || "0", 10);
+          const sectionId = parseInt(
+            entry.target.getAttribute("id") || "0",
+            10
+          );
 
           if (entry.isIntersecting && !isNaN(sectionId)) {
             if (
@@ -75,7 +79,8 @@ const PreSold: React.FC<PreSoldProps> = ({ pageTitle }) => {
       { threshold: 0.1 }
     );
 
-    const sectionElements: NodeListOf<HTMLElement> = document.querySelectorAll("section[id]");
+    const sectionElements: NodeListOf<HTMLElement> =
+      document.querySelectorAll("section[id]");
     sectionElements.forEach((section) => observer.observe(section));
 
     return () => observer.disconnect();
@@ -86,12 +91,12 @@ const PreSold: React.FC<PreSoldProps> = ({ pageTitle }) => {
   return (
     <div className={styles.pageContent}>
       <div className={styles.progress}>
-      <ProgressBar
-        activeIndex={activeIndex}
-        items={sections.map(({ id, title }) => ({ id, title }))}
-        pageTitle={pageTitle}
-        variant="dots"
-      />
+        <ProgressBar
+          activeIndex={activeIndex}
+          items={sections.map(({ id, title }) => ({ id, title }))}
+          pageTitle={pageTitle}
+          variant="dots"
+        />
       </div>
       <div className={styles.sections}>
         {sections.map(({ id, component }) => (
