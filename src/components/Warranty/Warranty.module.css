@@ -39,7 +39,7 @@
 .btnContainer {
   display: flex;
   position: relative;
-  gap: 2rem;
+  gap: 32px;
   justify-content: center;
   flex-direction: row;
   margin: auto;
