@@ -9,8 +9,8 @@ import {
   useTransform,
   MotionValue,
 } from "framer-motion";
-import PLImage from "../../media/PickALot-V2.png";
-import FPImage from "../../media/PickFloorPlan-V2.png";
+import PLImage from "../../media/videos/PickALot-V2.mp4";
+import FPImage from "../../media/videos/PickFloorPlan-V2.mp4";
 import GetStartedStyle from "./GetStartedStyle/GetStartedStyle";
 
 export const GetStarted = () => {
@@ -70,7 +70,7 @@ const Cards = () => {
         <ChooseItem
           scrollYProgress={scrollYProgress}
           position={1}
-          numItems={6}
+          numItems={4}
           img={PLImage}
           title="Choose A Lot"
           desc="Start by picking a lot in one of our neighborhoods. The website will identify every floor plan that's a match for your lot. "
@@ -79,7 +79,7 @@ const Cards = () => {
         <ChooseItem
           scrollYProgress={scrollYProgress}
           position={2}
-          numItems={6}
+          numItems={4}
           img={FPImage}
           title="Pick A Floor Plan"
           desc="Or start by picking your floor plan. The website will show you every lot where your plan can be built. "
@@ -88,30 +88,18 @@ const Cards = () => {
         <ChooseStyle
           scrollYProgress={scrollYProgress}
           position={3}
-          numItems={6}
+          numItems={4}
           title="Choose Your Style"
           desc="Select from our Signature or Transitional style homes. "
         />
-      </div>
-      <div className={styles.cardContainer}>
-        <CardItem
+        <ChooseItem
           scrollYProgress={scrollYProgress}
           position={4}
-          numItems={6}
-          img="https://assets.cloud.executivehomes.com/prod/public/house-styles/STY~TRANSITIONAL/SMD~g-xsZbV9EQ0wUZvd"
-          step="Step 2"
-          title="Luxury Is Included"
-          desc="Every home is loaded with premium finishes at no additional cost."
-        />
-        <CardItem
-          scrollYProgress={scrollYProgress}
-          position={4}
-          numItems={6}
-          img={UpgradesPic}
-          step="Step 3"
-          title="Customize with Upgrades"
-          desc="100+ upgrades are available to choose online to personalize your
-              home."
+          numItems={4}
+          img={FPImage}
+          title="Pick A Floor Plan"
+          desc="Or start by picking your floor plan. The website will show you every lot where your plan can be built. "
+          altStyle={styles.chooseCardAlt}
         />
       </div>
     </div>
@@ -239,12 +227,11 @@ const ChooseItem = ({
       initial={{ y: 0 }}
       transition={{ duration: 1, ease: "easeInOut" }}
     >
-      <motion.img
+      <motion.video
         className={styles.chooseCardImage}
         src={img}
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1, ease: "easeInOut" }}
+        muted
+        autoPlay
       />
       <div className={styles.chooseCardTextContainer}>
         <h3 className={styles.chooseCardTitle}>{title}</h3>
