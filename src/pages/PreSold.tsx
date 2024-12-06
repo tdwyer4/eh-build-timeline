@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import Hero from "../components/Hero/Hero";
+import React, { useEffect, useMemo, useState } from "react";
 import ProgressBar from "../components/ProgressBar/ProgressBar";
 import { GetStarted } from "../components/GetStarted/GetStarted";
 import PAList from "../components/PAList/PAList";
@@ -25,39 +24,64 @@ interface PreSoldProps {
 const PreSold: React.FC<PreSoldProps> = ({ pageTitle }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [progress, setProgress] = useState(0);
-  const [navExpanded, setNavExpanded] = useState(false);
 
-  const sections = [
-    { id: "2", title: "Get Started", component: <GetStarted /> },
-    { id: "3", title: "Purchase Agreement", component: <PAList /> },
-    { id: "4", title: "Foundation", component: <FootingVideo /> },
-    { id: "5", title: "Communication", component: <Communication /> },
-    { id: "6", title: "Framing", component: <FramingVideo /> },
-    { id: "7", title: "Selections", component: <Selections /> },
-    { id: "8", title: "Rough Trades", component: <RoughVideo /> },
-    { id: "9", title: "Quality", component: <ConstructionQuality /> },
-    { id: "10", title: "Insulation", component: <InsulationVideo /> },
-    { id: "11", title: "Finish", component: <FinishQuality /> },
-    { id: "12", title: "Exterior", component: <MasonryVideo /> },
-    { id: "13", title: "Close", component: <Closing /> },
-    { id: "14", title: "Punch", component: <PunchoutVideo /> },
-    { id: "15", title: "Warranty", component: <Warranty /> },
-    { id: "16", title: "Let's build!", component: <CTA /> },
-  ];
+  const sections = useMemo(() => [
+    {
+      categoryName: "Get Started",
+      items: [
+        { id: "2", title: "Get Started", component: <GetStarted /> },
+        { id: "3", title: "Purchase Agreement", component: <PAList /> },
+      ],
+    },
+    {
+      categoryName: "Foundation",
+      items: [{ id: "4", title: "Foundation", component: <FootingVideo /> }],
+    },
+    {
+      categoryName: "Communication",
+      items: [{ id: "5", title: "Communication", component: <Communication /> }],
+    },
+    {
+      categoryName: "Rough Trades",
+      items: [
+        { id: "6", title: "Framing", component: <FramingVideo /> },
+        { id: "8", title: "Rough Trades", component: <RoughVideo /> },
+      ],
+    },
+    {
+      categoryName: "Quality",
+      items: [
+        { id: "7", title: "Selections", component: <Selections /> },
+        { id: "9", title: "Quality", component: <ConstructionQuality /> },
+        { id: "10", title: "Insulation", component: <InsulationVideo /> },
+      ],
+    },
+    {
+      categoryName: "Interior",
+      items: [{ id: "11", title: "Finish", component: <FinishQuality /> }],
+    },
+    {
+      categoryName: "Exterior",
+      items: [{ id: "12", title: "Exterior", component: <MasonryVideo /> }],
+    },
+    {
+      categoryName: "Close",
+      items: [
+        { id: "13", title: "Close", component: <Closing /> },
+        { id: "14", title: "Punch", component: <PunchoutVideo /> },
+        { id: "15", title: "Warranty", component: <Warranty /> },
+        { id: "16", title: "Let's build!", component: <CTA /> },
+      ],
+    },
+  ], []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        let mostVisibleEntry: IntersectionObserverEntry | null =
-          null as IntersectionObserverEntry | null;
+        let mostVisibleEntry: IntersectionObserverEntry | null = null as IntersectionObserverEntry | null;
 
         entries.forEach((entry) => {
-          const sectionId = parseInt(
-            entry.target.getAttribute("id") || "0",
-            10
-          );
-
-          if (entry.isIntersecting && !isNaN(sectionId)) {
+          if (entry.isIntersecting) {
             if (
               !mostVisibleEntry ||
               entry.intersectionRatio > mostVisibleEntry.intersectionRatio
@@ -67,13 +91,16 @@ const PreSold: React.FC<PreSoldProps> = ({ pageTitle }) => {
           }
         });
 
-        if (mostVisibleEntry) {
+        if (mostVisibleEntry && mostVisibleEntry.target instanceof HTMLElement) {
           const visibleSectionId = parseInt(
             mostVisibleEntry.target.getAttribute("id") || "0",
             10
           );
+
+          const totalItems = sections.flatMap(({ items }) => items).length;
+
           setActiveIndex(visibleSectionId - 2);
-          setProgress(((visibleSectionId - 2) / (sections.length - 1)) * 100);
+          setProgress(((visibleSectionId - 2) / (totalItems - 1)) * 100); // Calculate progress percentage
         }
       },
       { threshold: 0.1 }
@@ -86,24 +113,27 @@ const PreSold: React.FC<PreSoldProps> = ({ pageTitle }) => {
     return () => observer.disconnect();
   }, [sections]);
 
-  const toggleNav = () => setNavExpanded(!navExpanded);
-
   return (
     <div className={styles.pageContent}>
-      <div className={styles.progress}>
-        <ProgressBar
-          activeIndex={activeIndex}
-          items={sections.map(({ id, title }) => ({ id, title }))}
-          pageTitle={pageTitle}
-          variant="dots"
-        />
-      </div>
+      <ProgressBar
+        activeIndex={activeIndex}
+        categories={sections.map((category, index) => ({
+          categoryName: category.categoryName,
+          items:
+            activeIndex === index
+              ? category.items // Show nested items only for the active category
+              : [], // Otherwise, show no nested items
+        }))}
+        pageTitle={pageTitle}
+      />
       <div className={styles.sections}>
-        {sections.map(({ id, component }) => (
-          <section id={id} key={id} data-section={id}>
-            {component}
-          </section>
-        ))}
+        {sections.flatMap(({ items }) =>
+          items.map(({ id, component }) => (
+            <section key={id} id={id}>
+              {component}
+            </section>
+          ))
+        )}
       </div>
     </div>
   );
