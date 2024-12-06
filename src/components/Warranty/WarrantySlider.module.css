@@ -1,14 +1,13 @@
 .sliderWrap {
   position: relative;
   display: flex;
-  justify-content: flex-start; /* Aligns children to the top */
+  justify-content: flex-start;
   flex-direction: column;
-  align-items: stretch; /* Prevents centering */
-  gap: 2rem;
+  align-items: center;
   padding: 0;
   margin: 0;
   z-index: 0;
-  border: rgb(71, 74, 255) solid 1px;
+  
 }
 
 .cards {
@@ -18,11 +17,11 @@
   align-items: center;
   flex-wrap: wrap; 
   width: 100%;
-  height: auto; /* Adjust dynamically */
-  padding: 2rem 0; /* Consistent spacing inside */
+  height: 45vh;
+  padding: 0; 
   margin: 0;
   gap: 1rem;
-  border: tomato solid 1px;
+  
 }
 
 .controls {
@@ -35,5 +34,27 @@
   padding: 0;
   margin: 0;
   z-index: 10;
-  border: rgb(71, 255, 95) solid 1px;
+  
+}
+
+
+.prevButton,
+.nextButton {
+  display: grid;
+  place-content: center;
+  border-radius: 9999px;
+  background-color: transparent;
+  border: #76D5D8 solid 1px;
+  color: #fff;
+  width: 3.5rem;
+  height: 3.5rem;
+  font-size: 1.875rem;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.prevButton:hover,
+.nextButton:hover {
+  color: #000;
+  background-color: #76D5D8;
 }
