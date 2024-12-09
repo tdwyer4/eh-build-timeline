@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import styles from "./VidSection.module.css";
 import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
 import Framing from "../../media/videos/phases/6Framing.mp4";
@@ -45,6 +45,9 @@ interface SlideProps {
 }
 
 const Slide = ({ position, slide, scrollYProgress, numItems }: SlideProps) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [progress, setProgress] = useState(0);
+
   const scaleFromPct = (position - 1) / SLIDES.length;
   const y = useTransform(
     scrollYProgress,
@@ -60,6 +63,15 @@ const Slide = ({ position, slide, scrollYProgress, numItems }: SlideProps) => {
   const opacity = useTransform(scrollYProgress, [start, mid, end], [0.9, 1, 0]);
   const scale = useTransform(scrollYProgress, [start, end], [1, 0.9]);
 
+  const handleTimeUpdate = () => {
+    const video = videoRef.current;
+    if (video) {
+      const currentTime = video.currentTime;
+      const duration = video.duration;
+      setProgress((currentTime / duration) * 100);
+    }
+  };
+
   return (
     <motion.div
       style={{
@@ -73,10 +85,12 @@ const Slide = ({ position, slide, scrollYProgress, numItems }: SlideProps) => {
         style={{ opacity, scale }}
       >
         <motion.video
+          ref={videoRef}
           src={slide.video}
           muted
           autoPlay
           loop={true}
+          onTimeUpdate={handleTimeUpdate}
           className={styles.slideVideo}
           style={{
             height: "100%",
@@ -91,12 +105,26 @@ const Slide = ({ position, slide, scrollYProgress, numItems }: SlideProps) => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
+          exit={{ opacity: 0 }}
         >
-          <div className={styles.slideHeaderWrap}>
-            <h3 className={styles.slideTitle}>{slide.title}</h3>
-            <h5 className={styles.slidePhase}>Framing</h5>
+          <div className={styles.slideContentsContainer}>
+            <div className={styles.slideHeaderWrap}>
+              <h3 className={styles.slideTitle}>{slide.title}</h3>
+              <div className={styles.progressBarWrapper}>
+                <motion.div
+                  className={styles.progressBar}
+                  initial={{ width: "0%" }}
+                  animate={{ width: `${progress}%` }}
+                  transition={{
+                    type: "tween",
+                  }}
+                />
+              </div>
+            </div>
+
+            <p className={styles.slideParagraph}>{slide.paragraph}</p>
           </div>
-          <p className={styles.slideParagraph}>{slide.paragraph}</p>
+          <div></div>
         </motion.div>
       </motion.div>
     </motion.div>

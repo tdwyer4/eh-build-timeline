@@ -40,13 +40,13 @@ position: relative;
   bottom: 0;
   right: 0;
   left: 0;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: flex-start;
   color: white;
   text-align: left;
   background: #1a2229e5;
   height: fit-content;
-  width: 100%;
+  /* width: 100%; */
   gap: 4px;
   padding: 16px;
 }
@@ -56,6 +56,15 @@ position: relative;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  width: 100%;
+}
+
+.slideContentsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
   width: 100%;
 }
 
@@ -148,4 +157,40 @@ background-color: #000000;
   padding: 4px;
   width: 50%;
   margin: auto;
+}
+
+.progressBarWrapper {
+  position: relative;
+  width: 5%;
+  height: 10px;
+  background-color: #1a2229;
+  overflow: hidden;
+  border-radius: 9999px;
+  margin-left: 8px;
+  box-shadow: #76D5D8 0px 0px 5px 0px;
+}
+
+.progressBar {
+  height: 100%;
+  background-color: #76D5D8;
+  transform-origin: left;
+  
+}
+
+.drawerContainer {
+  overflow: hidden;
+  position: relative;
+}
+
+.drawerContents {
+  position: relative;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
