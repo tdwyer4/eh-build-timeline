@@ -7,10 +7,6 @@ const CARD_SIZE_LG = 365;
 const CARD_SIZE_SM = 290;
 
 const BORDER_SIZE = 1;
-const CORNER_CLIP = 0;
-const CORNER_LINE_LEN = Math.sqrt(
-  CORNER_CLIP * CORNER_CLIP + CORNER_CLIP * CORNER_CLIP
-);
 
 const ROTATE_DEG = 0.8;
 
@@ -158,15 +154,7 @@ const SelectionsCard = ({
         damping: 50,
       }}
     >
-      <span
-        className={styles.cardWrap}
-        style={{
-          right: -BORDER_SIZE,
-          top: CORNER_CLIP - BORDER_SIZE,
-          width: CORNER_LINE_LEN,
-          height: BORDER_SIZE,
-        }}
-      />
+      <span className={styles.cardWrap} style={{}} />
       <motion.div
         className={styles.cardImage}
         style={{
