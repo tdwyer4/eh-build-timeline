@@ -244,3 +244,288 @@
   border: 2px solid #76d5d8; 
   border-radius: 50%;
 }
+
+.progressContainer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 90vh;
+  z-index: 1000;
+}
+
+.progressContainer.dots {
+  right: 12px;
+  width: 2px;
+}
+
+.progressContainer.bar {
+  right: 0;
+  width: 20px;
+}
+
+.hamburgerContainer {
+  position: fixed;
+  top: 20px;
+  right: 40px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.hamburgerContainer.dots {
+  right: 38px;
+}
+
+.hamburgerContainer.bar {
+  right: 40px;
+}
+
+.hamburger.bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+}
+
+.hamburger.dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  opacity: 15%;
+  border-radius: 4px;
+}
+
+.title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  right: 20px;
+  font-weight: 300;
+  color: white;
+  
+}
+
+.title.dots {
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  text-decoration: uppercase;
+  background-color: #76d5d84f;
+  padding: 4px 8px 4px 8px;
+  border-radius: 16px;
+  font-weight: 300;
+  color: #ffffff;
+  
+}
+
+.title.bar {
+  font-size: 14px;
+}
+
+.progressBarBackground {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(41, 174, 191, 0.05);
+}
+
+.progressBarBackground.dots {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.progressBarBackground.bar {
+  background: rgba(41, 174, 191, 0.05);
+}
+
+.progressBar.dots {
+  position: absolute;
+  left: 0;
+  width: 2px; /* Set the width of the bar */
+  background: linear-gradient(rgb(218, 36, 36) 0%, rgba(118,213,216,1) 100%);
+  transition: top 0.3s ease, height 0.3s ease;
+  margin-top: 0px; /* Smooth animation when active item changes */
+}
+
+
+.progressBar.dots {
+  background: linear-gradient(rgb(36, 142, 218) 0%, rgba(118,213,216,1) 100%);
+}
+
+.progressBar.bar {
+  background: linear-gradient(to bottom, #00b7ff 1%, #76d5d8, transparent);
+}
+
+.navItemsContainer {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  border:#00b7ff 0px solid;
+}
+
+.navItemsContainer.dots {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 35%;
+}
+
+.navItems {
+  position: absolute;
+  top: 80px;
+  right: 60px;
+  list-style: none;
+  color: white;
+  text-decoration: uppercase;
+  padding: 0;
+  width: 200px;
+  z-index: 1200;
+  border:#00b7ff 0px solid;
+
+}
+
+.navItems.dots {
+  right: 26px;
+  text-align: right;
+  height: 100%;
+  display: flex; 
+  flex-direction: column; 
+  justify-content: space-between; 
+  align-items: flex-end; 
+}
+
+.navItems.bar {
+  right: 60px;
+}
+
+.navItems a {
+  text-decoration: none;
+  color: inherit;
+  justify-items: right;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.navItems.dots a {
+  
+  font-family: "Montserrat", sans-serif;
+  transition: color 0.3s ease;
+  display: inline-block; 
+  position: relative; 
+}
+
+
+.navItems.dots a:hover {
+  color: #76d5d8; 
+}
+
+.navItems li {
+  margin-bottom: 10px;
+}
+
+.navItems.dots li {
+  margin-bottom: 8px;
+  position: relative; 
+}
+
+.navItems.bar li {
+  margin-bottom: 10px;
+}
+
+.navItem {
+  margin-bottom: 10px;
+  color: rgba(255, 255, 255, 0.534);
+  cursor: pointer;
+}
+
+.navItem.dots {
+  font-size: 12px;
+}
+
+.navItem.bar {
+  font-size: 14px;
+}
+
+.activeItem {
+  font-weight: bold;
+  color: #3dccc8;
+}
+
+.activeItem.dots {
+  font-weight: bold;
+  color: #76d5d8;
+}
+
+.activeItem.bar {
+  font-weight: bold;
+  color: #3dccc8;
+}
+
+.activeItem::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -15px; 
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border: 2px solid #3dccc8; 
+  border-radius: 50%;
+}
+
+.activeItem.dots::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -32px; 
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  background: #232323; 
+  border: 2px solid #76d5d8; 
+  border-radius: 50%;
+}
+
+.subNavItems {
+  position: relative; 
+  top: 100%; 
+  right: 0px; 
+  margin: 0; 
+  padding: 0; 
+  list-style: none; 
+  border-radius: 4px; 
+  min-width: 150px;
+  max-width: 300px; 
+  overflow-wrap: break-word; 
+  z-index: 1000; 
+}
+
+.subNavItem {
+  font-size: 12px; 
+  padding: 10px 00px; 
+  font-weight: 400; 
+  color: rgba(255, 255, 255, 0.8); 
+  text-align: right; 
+  cursor: pointer;
+}
+
+.subNavItem a {
+  text-decoration: none; 
+  color: inherit; 
+  display: block; 
+  width: 100%; 
+}
+
+.subNavItem a:hover {
+  color: #76d5d8; 
+}
