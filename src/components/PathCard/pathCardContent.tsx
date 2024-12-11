@@ -70,7 +70,7 @@ export default function PathCardContent({
               title={phase.title}
               buildTime={phase.buildTime}
               backgroundColor={phase.backgroundColor}
-              onClick={() => onPhaseSelect(phase.title)} // Trigger parent callback
+              onClick={() => onPhaseSelect(phase.title)}
             />
           </motion.div>
         ))}

@@ -21,9 +21,6 @@ function VideoBackground() {
 
   return (
     <div className={styles.videoContainer}>
-      {/* Cursor Spotlight */}
-      <CursorSpot />
-
       <div className={styles.splineContainer}>
         <video
           src={EES}
@@ -48,6 +45,9 @@ function VideoBackground() {
           </>
         )}
       </div>
+
+      {/* Conditionally render CursorSpot after the first video ends */}
+      {videoEnded && <CursorSpot />}
     </div>
   );
 }
