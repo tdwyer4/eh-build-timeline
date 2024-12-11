@@ -1,5 +1,4 @@
 import styles from "./GetStarted.module.css";
-import UpgradesPic from "../../media/upgrades.jpg";
 import React, { useState, useEffect, useRef } from "react";
 import {
   motion,
@@ -9,8 +8,10 @@ import {
   useTransform,
   MotionValue,
 } from "framer-motion";
-import PLImage from "../../media/videos/PickALot-V2.mp4";
-import FPImage from "../../media/videos/PickFloorPlan-V2.mp4";
+import PLImage from "../../media/videos/PickALot-V4.mp4";
+import FPImage from "../../media/videos/PickFloorPlan-V4.mp4";
+import Upgrades from "../../media/videos/Upgrades-V2.mp4";
+import Styles from "../../media/videos/Styles.mp4";
 import GetStartedStyle from "./GetStartedStyle/GetStartedStyle";
 
 export const GetStarted = () => {
@@ -70,7 +71,7 @@ const Cards = () => {
         <ChooseItem
           scrollYProgress={scrollYProgress}
           position={1}
-          numItems={4}
+          numItems={5}
           img={PLImage}
           title="Choose A Lot"
           desc="Start by picking a lot in one of our neighborhoods. The website will identify every floor plan that's a match for your lot. "
@@ -79,27 +80,31 @@ const Cards = () => {
         <ChooseItem
           scrollYProgress={scrollYProgress}
           position={2}
-          numItems={4}
+          numItems={5}
           img={FPImage}
           title="Pick A Floor Plan"
           desc="Or start by picking your floor plan. The website will show you every lot where your plan can be built. "
-          altStyle={styles.chooseCardAlt}
+          altStyle={styles.chooseCard}
         />
-        <ChooseStyle
+        <ChooseItem
           scrollYProgress={scrollYProgress}
           position={3}
-          numItems={4}
-          title="Choose Your Style"
-          desc="Select from our Signature or Transitional style homes. "
+          numItems={5}
+          img={Styles}
+          title="Select Your Style"
+          desc="Choose the style that best matches your preferences. 
+
+"
+          altStyle={styles.chooseCard}
         />
         <ChooseItem
           scrollYProgress={scrollYProgress}
           position={4}
-          numItems={4}
-          img={FPImage}
-          title="Pick A Floor Plan"
-          desc="Or start by picking your floor plan. The website will show you every lot where your plan can be built. "
-          altStyle={styles.chooseCardAlt}
+          numItems={5}
+          img={Upgrades}
+          title="Customize With Upgrades"
+          desc="100+ upgrades are available to choose online to personalize your home."
+          altStyle={styles.chooseCard}
         />
       </div>
     </div>
@@ -231,6 +236,7 @@ const ChooseItem = ({
         className={styles.chooseCardImage}
         src={img}
         muted
+        loop={true}
         autoPlay
       />
       <div className={styles.chooseCardTextContainer}>

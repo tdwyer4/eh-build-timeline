@@ -162,12 +162,12 @@ background-color: #000000;
 .progressBarWrapper {
   position: relative;
   width: 5%;
-  height: 10px;
-  background-color: #1a2229;
+  height: 6px;
+  background-color: #fff;
   overflow: hidden;
-  border-radius: 9999px;
+  border-radius: 2px;
   margin-left: 8px;
-  box-shadow: #76D5D8 0px 0px 5px 0px;
+  /* box-shadow: #76D5D8 0px 0px 5px 0px; */
 }
 
 .progressBar {
