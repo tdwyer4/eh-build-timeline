@@ -8,17 +8,13 @@
 
 .pathCardContainer {
   display: flex;
-  flex-direction: row; 
-  gap: 20px; 
+  flex-direction: row;
+  gap: 20px;
 }
 
-.pathCardContainer > div {
-  flex: 1;
-  min-width: 200px; 
-  max-width: 300px; 
-  text-align: center; 
-  padding: 15px;
-  transition: transform 0.2s ease;
+.pathCardContainer > div:hover {
+  transform: scale(1.05);
+  z-index: 1; /* Ensures hovered card appears above others */
 }
 
 .pathCardContainer > div:hover {

@@ -25,78 +25,79 @@
   pointer-events: none;
 }
 
-.yellowBG::before {
-  background: radial-gradient(circle, rgba(118, 213, 216, 0.04) 20%, rgba(118, 213, 216, 0) 70%);
-}
-
-.orangeBG::before {
-  background: radial-gradient(circle, rgba(118, 213, 216, 0.04) 20%, rgba(118, 213, 216, 0) 70%);
-}
-
-.purpleBG::before {
-  background: radial-gradient(circle, rgba(118, 213, 216, 0.04) 20%, rgba(118, 213, 216, 0) 70%);
-}
-
+.yellowBG::before,
+.orangeBG::before,
+.purpleBG::before,
 .seafoamBG::before {
   background: radial-gradient(circle, rgba(118, 213, 216, 0.04) 20%, rgba(118, 213, 216, 0) 70%);
 }
-
 
 .infoHeader {
   font-size: 1.5rem;
   color: white;
   font-weight: 200;
-  align-items: center;
   text-transform: uppercase;
   margin-bottom: 10px;
-  height: 3rem; /* Fixed height to accommodate up to two lines of text */
-  display: flex; /* Ensures vertical centering */
-  justify-content: center; /* Ensures horizontal alignment */
-  text-align: center; /* Centers the text within the container */
-  overflow: hidden; /* Prevents overflow */
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
 }
 
 .infoSub {
   margin-top: 0px;
 }
 
-.infoInfo {
+.infoDescription {
   font-size: 1rem;
-  justify-content: left;
-  background-color: #dddddd25;
-  border-radius: 16px;
-  padding: 2px;
-  color: #ddd;
+  color: rgba(255, 255, 255, 0.413);
+  font-weight: 200;
+  margin-top: 10px;
+  text-align: center;
 }
 
 .infoTime {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   font-size: 1.2rem;
+  line-height: 1.2; /* Add this to ensure proper text alignment */
   color: white;
   font-weight: 200;
   margin-top: 10px;
 }
 
+.svgIcon {
+  width: 16px;
+  height: 16px;
+  stroke: white;
+  fill: none;
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle; /* Align the icon with the middle of the text */
+}
+
 .imageWrapper {
-  position: relative; 
+  position: relative;
   width: 200px;
-  height: 200px; 
+  height: 200px;
   overflow: hidden;
   background: radial-gradient(circle, rgba(118, 213, 216, 0.04) 20%, rgba(118, 213, 216, 0) 70%);
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.321) 0px 0px 30px;
-
-  
 }
 
 .infoImage {
-  position: absolute; 
-  top: 50%; 
-  left: 50%; 
-  transform: translate(-50%, -50%) scale(1.2); 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.2);
   width: auto;
-  height: 100%; 
-  object-fit: cover; 
-  pointer-events: none; 
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
 }
 
 button {
@@ -104,18 +105,6 @@ button {
   padding: 10px 20px;
   background-color: transparent;
   color: white;
-  border: 1px solid #76d5d8;
-  border-radius: 32px;
-  cursor: pointer;
-  text-transform: uppercase;
-  transition: all 0.2s ease;
-}
-
-button {
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: transparent;
-  color: #76d5d8;
   border: 1px solid #76d5d8;
   border-radius: 32px;
   cursor: pointer;
@@ -126,28 +115,14 @@ button {
 
 button:hover {
   transform: scale(1.05);
-  color: rgba(255, 255, 255, 0.331); 
-  border-color: transparent; 
+  color: rgba(255, 255, 255, 0.331);
+  border-color: transparent;
 }
 
-/* Hover states for each gradient */
-.yellowBG button:hover {
-  background-color: rgba(118, 213, 216, 0.2); 
-  color: #76d5d8; 
-}
-
-.orangeBG button:hover {
-  background-color: rgba(118, 213, 216, 0.2); 
-  color: #76d5d8;
-}
-
-.purpleBG button:hover {
-  background-color: rgba(118, 213, 216, 0.2); 
-  color: #76d5d8;
-}
-
+.yellowBG button:hover,
+.orangeBG button:hover,
+.purpleBG button:hover,
 .seafoamBG button:hover {
-  background-color: rgba(118, 213, 216, 0.2); 
-  color: #76d5d8; 
+  background-color: rgba(118, 213, 216, 0.2);
+  color: #76d5d8;
 }
-
