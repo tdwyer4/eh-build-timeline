@@ -1,42 +1,36 @@
-.sliderWrap {
-  position: relative;
+.sliderWrapper {
+  position: relative; /* Ensures the slider is in the normal flow of the layout */
   display: flex;
-  justify-content: flex-start;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 0;
-  margin: 0;
-  z-index: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden; /* Hides any overflow from the slider */
   
 }
 
 .cards {
-  position: relative;
+  position: relative; /* Ensures cards are in the normal flow of the layout */
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap; 
+  height: 45vh; /* Adjust height based on content */
   width: 100%;
-  height: 45vh;
-  padding: 0; 
-  margin: 0;
   gap: 1rem;
+  margin-bottom: 3rem; /* Adds space below the cards for the controls */
   
 }
 
 .controls {
-  position: relative;
+  position: relative; /* Ensures controls appear below the cards */
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   gap: 2rem;
-  padding: 0;
-  margin: 0;
-  z-index: 10;
-  
+  z-index: 10; /* Makes sure buttons appear above any other elements */
 }
-
 
 .prevButton,
 .nextButton {

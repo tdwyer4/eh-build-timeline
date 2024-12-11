@@ -4,7 +4,7 @@
   top: 0;
   right: 0;
   width: 20px;
-  height: 100vh;
+  height: 90vh;
   z-index: 1000;
 }
 
@@ -30,7 +30,7 @@
 }
 
 .hamburgerContainer.dots {
-  right: 30px;
+  right: 38px;
 }
 
 .hamburgerContainer.bar {
@@ -59,16 +59,22 @@
 .title {
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
+  right: 20px;
   font-weight: 300;
   color: white;
+  
 }
 
 .title.dots {
-  font-size: 14px;
+  font-size: 16px;
   font-family: "Montserrat", sans-serif;
   text-decoration: uppercase;
+  background-color: #76d5d84f;
+  padding: 4px 8px 4px 8px;
+  border-radius: 16px;
   font-weight: 300;
-  color: #76d5d8;
+  color: #ffffff;
+  
 }
 
 .title.bar {
@@ -96,14 +102,14 @@
   position: absolute;
   left: 0;
   width: 2px; /* Set the width of the bar */
-  background: #76d5d8; /* Teal color for the bar */
+  background: linear-gradient(rgb(218, 36, 36) 0%, rgba(118,213,216,1) 100%);
   transition: top 0.3s ease, height 0.3s ease;
-  margin-top: 20px; /* Smooth animation when active item changes */
+  margin-top: 0px; /* Smooth animation when active item changes */
 }
 
 
 .progressBar.dots {
-  background:  #76d5d8;
+  background: linear-gradient(rgb(36, 142, 218) 0%, rgba(118,213,216,1) 100%);
 }
 
 .progressBar.bar {
@@ -116,6 +122,7 @@
   padding: 0;
   height: 100%;
   width: 100%;
+  border:#00b7ff 0px solid;
 }
 
 .navItemsContainer.dots {
@@ -123,7 +130,7 @@
   margin: 0;
   padding: 0;
   height: 100%;
-  width: 100%;
+  width: 35%;
 }
 
 .navItems {
@@ -133,9 +140,11 @@
   list-style: none;
   color: white;
   text-decoration: uppercase;
-  margin: 0;
   padding: 0;
+  width: 200px;
   z-index: 1200;
+  border:#00b7ff 0px solid;
+
 }
 
 .navItems.dots {
@@ -158,21 +167,17 @@
   justify-items: right;
   font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
-  font-size: 14px;
   transition: color 0.3s ease;
 }
 
 .navItems.dots a {
-  font-size: 12px;
+  
   font-family: "Montserrat", sans-serif;
   transition: color 0.3s ease;
   display: inline-block; 
   position: relative; 
 }
 
-.navItems a.bar {
-  font-size: 14px;
-}
 
 .navItems.dots a:hover {
   color: #76d5d8; 
@@ -198,7 +203,7 @@
 }
 
 .navItem.dots {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .navItem.bar {
@@ -243,4 +248,38 @@
   background: #232323; 
   border: 2px solid #76d5d8; 
   border-radius: 50%;
+}
+
+.subNavItems {
+  position: relative; 
+  top: 100%; 
+  right: 0px; 
+  margin: 0; 
+  padding: 0; 
+  list-style: none; 
+  border-radius: 4px; 
+  min-width: 150px;
+  max-width: 300px; 
+  overflow-wrap: break-word; 
+  z-index: 1000; 
+}
+
+.subNavItem {
+  font-size: 12px; 
+  padding: 10px 00px; 
+  font-weight: 400; 
+  color: rgba(255, 255, 255, 0.8); 
+  text-align: right; 
+  cursor: pointer;
+}
+
+.subNavItem a {
+  text-decoration: none; 
+  color: inherit; 
+  display: block; 
+  width: 100%; 
+}
+
+.subNavItem a:hover {
+  color: #76d5d8; 
 }
