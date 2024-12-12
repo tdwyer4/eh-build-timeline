@@ -1,0 +1,318 @@
+.scrollWrap {
+    /* background-color: #1a2229; */
+    height: fit-content;
+    position: relative;
+}
+
+.pagePosition {
+    /* background-color: #1a2229; */
+}
+
+.gsWrap {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 32px;
+    height: 200vh;
+    display: grid;
+    margin: auto;
+    position: relative;
+}
+  
+  .title {
+    font-size: 83px;
+    font-weight: 100;
+    text-align: left;
+    background: linear-gradient(300deg, #76D5D8, #defeff, #00eeff, #76D5D8, #426b9b);
+    background-size: 360% 360%;
+    animation: gradient-animation 10s ease infinite;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    line-height: 75px;
+    margin: 0;
+  }
+  
+  .subtitle {
+    font-size: 1.75rem;
+    font-weight: 200;
+    text-transform: uppercase;
+    color: white;
+    margin-bottom: 15px;
+  }
+  
+  .description {
+    margin: 15px 0;
+    font-size: 1rem;
+    color: rgba(188, 188, 188, 0.478);
+    line-height: 1.5;
+  }
+ 
+  .leftContainer {
+    display: flex;
+    /* width: 100%; */
+    padding-left: 48px;
+    padding-right: 48px;
+    flex-direction: column;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+  }
+  
+  .statsContainer {
+    display: grid; 
+    grid-template-columns: 1fr 1fr;
+    justify-content: center; 
+    align-items: center; 
+  }
+  
+  .stat {
+    display: flex; 
+    padding-top: 2rem;
+    padding-bottom: 2rem; 
+    flex-direction: column; 
+    align-items: center; 
+    width: 18rem; 
+
+    @media (min-width: 640px) { 
+      padding-top: 0;
+    padding-bottom: 0; 
+ }
+
+  }
+  
+  .statNumber {
+    margin-bottom: 0.5rem; 
+    font-size: 24px;
+    line-height: 1; 
+    font-weight: 600; 
+    text-align: center; 
+    color: #76D5D8;
+
+    @media (min-width: 640px) { 
+      font-size: 48px;
+    line-height: 1; 
+ }
+
+  }
+  
+  .statDescription {
+    text-align: center; 
+    color: #fff;
+    text-transform: uppercase;
+
+  }
+
+  .rightContainer {
+    margin-left: 48px;
+    margin-right: 48px;
+    position: relative;
+    top: 15%;
+  }
+
+  .cardContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+    box-sizing: border-box;
+  }
+
+  .cardImage {
+    margin-bottom: 8px;
+    height: 50%;
+    object-fit: cover;
+  }
+  
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background: #1a2229;
+    border: #76D5D8 0.5px solid;
+    border-radius: 16px;
+    margin: 0;
+    color: #fff;
+    overflow: hidden;
+    transition: filter 0.3s ease;
+    height: 100%;
+  }
+
+  .cardStep {
+    margin-left: 16px;
+    margin-right: 16px;
+    color: #76D5D8;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 10px;
+    border: #76D5D8 1px solid;
+    border-radius: 9999px;
+    width: 50px;
+    text-align: center;
+    padding: 2px;
+  }
+
+  .cardTextBackground {
+    background: #1a2229e5;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    justify-content: flex-start;
+  }
+    
+  .cardTitle {
+    font-size: 16px;
+    font-weight: 200;
+    text-transform: uppercase;
+    margin: 0;
+    margin-top: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    color: #fff;
+  }
+    
+  
+  .cardDescription {
+    font-size: 12px;
+    font-weight: 400;
+    color: #fff;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin: 0;
+  }
+
+  .chooseCardContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    aspect-ratio: 16/9;
+  }
+
+  .chooseCardImage {
+    width: 100%;
+    object-fit: cover;
+  }
+  
+  .chooseCard {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    background: #1a2229;
+    border: #76D5D8 0.5px solid;
+    border-radius: 16px;
+    margin: 0;
+    color: #fff;
+    overflow: hidden;
+    transition: filter 0.3s ease;
+    gap: 8px;
+    height: 100%;
+  }
+
+  .chooseCardAlt {
+    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    background: #27333d;
+    border: #76D5D8 0.5px solid;
+    border-radius: 16px;
+    margin: 0;
+    color: #fff;
+    overflow: hidden;
+    transition: filter 0.3s ease;
+    gap: 8px;
+    height: 100%;
+  }
+
+  .chooseCardStep {
+    margin-left: 16px;
+    margin-right: 16px;
+    color: #76D5D8;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 10px;
+    border: #76D5D8 1px solid;
+    border-radius: 9999px;
+    width: 50px;
+    text-align: center;
+    padding: 2px;
+  }
+
+  .chooseCardTextContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    height: 100%;
+    background: linear-gradient(90deg, #1a2229, transparent);
+  }
+    
+  .chooseCardTitle {
+    font-size: 24px;
+    font-weight: 200;
+    text-transform: uppercase;
+    margin: 0;
+    padding-left: 16px;
+    padding-right: 16px;
+    width: 50%;
+    color: #76D5D8;
+  }
+    
+  
+  .chooseCardDescription {
+    font-size: 12px;
+    font-weight: 400;
+    color: #ffffff;
+    padding-left: 16px;
+    padding-right: 16px;
+    width: 50%;
+  }
+
+  .chooseStyleContainer {
+    width: 100%;
+    object-fit: contain;
+  }
+  
+  .chooseStyle {
+    position: relative;
+    background: #27333d;
+    border: #76D5D8 0.5px solid;
+    border-radius: 16px;
+    margin: 0;
+    color: #fff;
+    overflow: hidden;
+    transition: filter 0.3s ease;
+  }
+
+  .chooseStyleTextContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    background: #1a2229e5;
+    align-items: center;
+    width: 100%;
+    padding: 12px 0px;
+  }
+    
+  .chooseStyleTitle {
+    font-size: 24px;
+    font-weight: 200;
+    text-transform: uppercase;
+    margin: 0;
+  }
+    
+  
+  .chooseStyleDescription {
+    font-size: 12px;
+    font-weight: 400;
+    color: #fff;
+    margin: 0;
+  }

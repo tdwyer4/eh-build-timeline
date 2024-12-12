@@ -1,0 +1,134 @@
+.container {
+    display: flex;
+    width: 100vw;
+  }
+  
+  .timelineContainer {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    background-color: #3E454C;
+    height: 100vh;
+    scrollbar-width: none;
+    top: 0;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  .timeline {
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align to the right of the line */
+    /* padding: 20px; */
+  }
+  
+  .hotspotContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: calc(100vh / 4);
+  }
+  
+  .hotspotContainer.active .hotSpot {
+    background-color: #ffffff; /* Active background color */
+    border: #76d5d8 1px solid;
+    transform: scale(1.2);  /* Enlarged size */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .hotSpot {
+    width: 30px;
+    height: 30px;
+    background-color: #76d5d8;
+    border-radius: 50%;
+    border: 1px solid white;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    animation: pulse 2s infinite;
+  }
+  
+  .hotSpot:active {
+    background-color: #ffffff;
+    border: #76d5d8 1px solid;
+    transform: scale(1.2); /* Enlarged when selected */
+  }
+
+  
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(118, 213, 216, 0.7);
+    }
+    70% {
+      box-shadow: 0 0 20px 20px rgba(118, 213, 216, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(118, 213, 216, 0);
+    }
+  }
+  
+  .line {
+    width: 5px;
+    height: calc(100vh / 4);
+    background-color: #76d5d8;
+    /* margin-right: 20px; */
+  }
+
+  .lineHor {
+    border: #76d5d8 2px solid;
+    width: 20px;
+    margin: auto;
+  }
+  
+  .hotspotLabel {
+    margin-left: 50px;
+    font-size: 24px;
+    color: rgb(184, 184, 184);
+    white-space: nowrap;
+    position: relative;
+    display: flex;
+    margin-top: 5px;
+  }
+
+  .hotspotContainer.active .hotspot-label {
+    color: rgb(255, 255, 255);
+  }
+  
+  .textContainer {
+    width: 100%;
+    background-color: #fff;
+    text-align: center;
+    border-top: 2px solid #76d5d8;
+    position: absolute;
+    bottom: 0;
+  }
+  
+  .textContainer p {
+    padding: 10px 20px;
+    text-align: left;
+    font-size: 12px;
+  }
+
+  .imageContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fafafa;
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+  
+  .imgTimeline {
+    min-height: 100vh;
+    object-fit: cover;
+  }
+  
+  

@@ -1,0 +1,232 @@
+.timelineWrap {
+  background-color: #ffffff;
+}
+
+.boxContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* padding: 20px; */
+  max-width: 100vw;
+  margin: auto;
+  /* border: 1px solid rgb(107, 236, 225);
+  box-shadow: 0px 4px 8px rgba(107, 236, 225, 0.5); */
+  background: #ffffff;
+  color: #2b2b2b;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+.timelineContainer {
+  display: flex;
+  width: 100vw;
+  height: 100vh; /* Adjust the height as needed */
+}
+
+/* Left-side styles */
+.leftContainer {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  gap: 56px;
+}
+
+.timelineItem {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: baseline;
+  cursor: default;
+  margin: 0px 0px 0px 0px;
+  height: 100%;
+  width: 100%;
+
+    h3 {
+      
+      text-transform: uppercase;
+      margin: 0;
+      color: rgb(37, 37, 37);
+      transform-origin: left;
+      transition: all 0.5s ease-in-out;
+    }
+  
+    &.active {
+      h3 {
+        background: linear-gradient(300deg, #76d5d8, #dfe5e5, #fe7e66, #76d5d8, #fe7e66);
+        background-size: 360% 360%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradient-animation 30s ease infinite;
+        transform: scale(1.1);
+        transform-origin: left;
+        transition: all 0.5s ease-in-out;
+      }
+  
+      .dot {
+        background-color: #fe7e66;
+        transform: scale(1.3);
+      }
+    }
+  
+    &:hover h3 {
+      background: linear-gradient(300deg, #76d5d8, #defeff, #fe7e66, #76d5d8, #fe7e66);
+        background-size: 360% 360%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradient-animation 30s ease infinite;
+    }
+    
+    &:not(:hover) {
+      transform: scale(1);
+        transform-origin: left;
+        transition: all 0.5s ease-in-out;
+    }
+  }
+  
+
+  @keyframes gradient-animation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+}
+
+
+.dot {
+  display: flex;
+  width: 10px;
+  height: 10px;
+  background-color: #76d5d8;
+  border-radius: 50%;
+  margin: 0px 16px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+.content h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 200;
+  }
+
+.content p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #2b2b2b;
+  }
+
+.week {
+  display: flex;
+  justify-content: center;
+  background-color: #cef2f3;
+  padding: 4px 8px;
+  width: 50px;
+  border-radius: 24px;
+}
+
+.week p {
+  color: #2b2b2b;
+  font-size: 8px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.lineLine {
+  width: 2px;
+  height: 0px;
+  background-color: #76d5d8;
+}
+
+.paragraphText {
+  overflow: hidden;
+  p {
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+}
+
+/* Right-side styles */
+.rightContainer {
+  width: 50%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageContainer {
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .overlayText {
+    position: absolute;
+    bottom: 0%;
+    /* left: 5%; */
+    color: white;
+    text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.7);
+    padding: 20px;
+
+    h2 {
+      font-size: 3rem;
+      margin: 0;
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+/* Hover effect on the dots */
+.timelineItem:hover .dot {
+  background-color: #fe7e66;
+  transform: scale(1.3);
+  transition: all 0.5s ease-in-out;
+  transform-origin: center;
+}
+
+.timelineItem:not(:hover) .dot {
+  transform: scale(1);
+    transform-origin: center;
+    transition: all 0.5s ease-in-out;
+}
+
+.targetRefStyle {
+  position: absolute; 
+  left: 0;
+  top: 0; 
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-direction: column;
+}

@@ -1,0 +1,139 @@
+.sectionWrap {
+    overflow: hidden; 
+    position: relative;
+    height: 100vh;
+    background: #1a2229;
+} 
+.topContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.copyContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.btnContainer {
+    display: flex;
+    position: relative;
+    gap: 2rem;
+    justify-content: center;
+    flex-direction: row;
+    margin: auto;
+    width: 100%; 
+    top: 60%;
+}
+
+.btnWrap {
+    display: grid;
+    place-content: center; 
+    border-radius: 9999px;
+    background-color: transparent;
+    border: #76D5D8 solid 1px;
+    color: #fff;
+    width: 3.5rem; 
+    height: 3.5rem; 
+    font-size: 1.875rem;
+    line-height: 2.25rem; 
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms; 
+}
+
+.btnWrap:hover {
+    color: #000; 
+    background-color: #76D5D8; 
+}
+
+.cardContainer {
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    border-radius: 8px;
+    border: 1px solid transparent;
+    color: #000000; 
+    transition-property: color, fill;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms; 
+    cursor: pointer; 
+}
+
+.cardActive {
+    z-index: 10; 
+    background-color: #1A2229; 
+    box-shadow: #76D5D8 0px 0px 30px 0px;
+    border: 1px solid #76D5D8;
+}
+
+.cardInactive {
+    z-index: 0; 
+    border: 1px solid #76D5D8;
+    background-color: #1A2229;
+    filter: blur(3px);
+}
+
+.cardWrap {
+    display: block; 
+    object-fit: cover; 
+    position: absolute; 
+    --transform-rotate: 45deg; 
+    transform-origin: top right; 
+}
+
+.cardImage {
+    object-fit: cover; 
+    object-position: center; 
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.selectionTextBackground {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: absolute;
+    background: #1a2229e5;
+    width: 100%;
+    border-radius: 0px 0px 8px 8px;
+    padding: 12px 0px;
+    gap: 6px;
+}
+
+.cardHeader {
+    font-size: 20px;
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: 16px; 
+    margin: 0;
+    padding-left: 16px;
+    padding-right: 16px; 
+}
+
+.cardHeaderActive {
+    color: #76D5D8;
+}
+
+.cardHeaderInactive {
+    color: #76D5D8;
+}
+
+.cardDesc {
+    margin: 0; 
+    font-weight: 200;
+    line-height: 16px;
+    padding-left: 16px;
+    padding-right: 16px; 
+}
+
+.cardDescActive {
+    color: #ffffff;
+}
+
+.cardDescInactive {
+    color: #ffffff;
+}

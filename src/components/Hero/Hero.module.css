@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+.heroContainer {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    align-items: center;
+    z-index: 1;
+  }
+  
+
+
+  .textWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 50px;
+    margin-top: 0;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .heroSubText {
+    font-size: 1.5rem;
+    font-weight: 200;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    margin-top: 20px;
+  }

@@ -1,0 +1,102 @@
+.carouselContainer {
+  overflow: hidden; 
+  position: relative; 
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+.cursorContainer {
+  display: flex; 
+  align-items: center; 
+  cursor: grab; 
+}
+
+.navContainer {
+  display: flex; 
+  gap: 0.5rem; 
+  justify-content: center; 
+  width: 100%; 
+}
+
+.navDot {
+  border-radius: 9999px; 
+  width: 0.75rem; 
+  height: 0.75rem; 
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms; 
+}
+
+.navDotActive {
+  background-color: aqua;
+}
+
+.navDotInactive {
+  background-color: black;
+}
+
+.slideContainer {
+  display: flex; 
+  position: relative; 
+  top: 0; 
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center; 
+  transform-origin: top;
+}
+
+.slideVideoContainer {
+  z-index: 1;
+  width: 100vw;
+  border-radius: 0px;
+}
+
+.slideVideo {
+  object-fit: contain;
+  border-radius: 24px;
+  width: 1280px;
+}
+
+.slideVideoOverlay {
+  position: absolute; 
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; 
+  background: #000000;
+  border-radius: 24px;
+}
+
+.slideTextContainer {
+  position: absolute;
+  display: flex;
+  top: 0;
+  bottom: 0;
+  /* left: 0; */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  color: white;
+  padding: 16px;
+  text-align: center;
+  max-width: 100%;
+}
+
+.slideTitle {
+  margin-bottom: 0; 
+  font-size: 56px;
+  line-height: 56px; 
+  font-weight: 400;
+  letter-spacing: 2px;
+  max-width: 100%;
+  text-transform: uppercase;
+}
+
+.slideParagraph {
+  margin-bottom: 32px; 
+  max-width: 50%; 
+  font-size: 16px;
+  font-weight: 00;
+  line-height: 1.25rem; 
+}

@@ -1,0 +1,86 @@
+/* Carousel.module.css */
+.carousel {
+  /* background-color: rgb(255, 255, 255); */
+  height: 500vh;
+  width: 100vw;
+  background: 
+    radial-gradient(
+      farthest-side at bottom left,
+      #76D5D8, 
+      transparent
+    ),
+    radial-gradient(
+      farthest-corner at bottom right,
+      rgba(50, 255, 238, 0.5), 
+      transparent 400px
+    );
+}
+
+.contentContainer {
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+.images {
+  display: grid;
+  grid-template-columns: repeat(12, 25vw); /* 9 columns, each 25% of viewport width */
+  grid-template-rows: 1fr;
+  grid-gap: 5vw;
+  padding: 0 4rem 0 4rem;
+}
+
+.imageItem {
+  min-width: 25vw;
+  height: auto; /* Adjust height */
+  background-color: white;
+  border: 0px solid black;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  text-align: left;
+  padding: 15px;
+  box-shadow: #76d5d8 0px 0px 0px 00px;
+  transition: all 0.5s ease-in-out;
+}
+
+.imageItem:hover {
+  border: 0px solid #76d5d8; /* Highlight active card */
+  box-shadow: #76d5d8 0px 0px 30px 10px;
+  transition: all 0.5s ease-in-out;
+}
+
+.imageItem img {
+  width: 100%;
+  height: 50vh; /*  Adjust image height */
+  object-fit: cover;
+}
+
+.text {
+  margin-top: 0;
+  text-align: left;
+}
+
+.text h2 {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.text p {
+  font-size: 1rem;
+  color: #666;
+}
+
+.headerTitle {
+  color: white;
+  margin: auto 30px;
+  font-size: 24px;
+  padding: 25px;
+}

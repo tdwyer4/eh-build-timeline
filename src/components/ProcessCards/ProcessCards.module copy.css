@@ -1,0 +1,60 @@
+.scrollContainer {
+  background-color: #fff;
+}
+
+.mainContainer {
+  background: linear-gradient(#1A2229, #fff);
+  height: 300vh;
+  position: relative;
+}
+
+.cardContainer {
+  overflow: hidden;
+  align-items: center;
+  height: 100vh;
+  display: flex;
+  top: 0;
+  position: sticky;
+}
+
+.card {
+  gap: 0px;
+  display: flex;
+}
+
+.cardTypeContainer {
+  --tw-bg-opacity: 1;
+  background-color: #3E454C;
+  overflow: hidden;
+  width: 50vw;
+  height: 50vh;
+  position: relative;
+  border-radius: 20px;
+}
+
+.cardImgContainer {
+  z-index: 0;
+  inset: 0;
+  position: absolute;
+}
+
+/* .cardHover {} */
+
+.cardTitleContainer {
+  place-content: center;
+  display: grid;
+  z-index: 10;
+  inset: 0;
+  position: absolute;
+}
+
+.cardTitle {
+  --tw-backdrop-blur: blur(16px);
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 200;
+  font-size: 48px;
+  line-height: 1;
+  padding: 32px;
+  margin: 0;
+}
