@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import styles from "./ProgressBar.module.css";
 import classNames from "classnames";
 
@@ -25,7 +25,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   const itemRefs = useRef<(HTMLLIElement | null)[]>([]);
   const [barHeight, setBarHeight] = useState(0);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [localActiveIndex, setLocalActiveIndex] = useState<number>(activeIndex); // Local activeIndex state
+  const [localActiveIndex, setLocalActiveIndex] = useState<number>(activeIndex);
 
   useEffect(() => {
     const calculateBarHeight = () => {
@@ -47,6 +47,24 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
     window.addEventListener("resize", calculateBarHeight);
     return () => window.removeEventListener("resize", calculateBarHeight);
   }, [localActiveIndex]);
+
+  // Track scroll position and update active index
+  useEffect(() => {
+    const handleScroll = () => {
+      items.forEach((item, index) => {
+        const section = document.getElementById(item.id);
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+            setLocalActiveIndex(index);
+          }
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [items]);
 
   const handleNavigationClick = (
     event: React.MouseEvent,

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap');
+
 .btnInfoContainer {
   display: flex;
   flex-direction: column;
@@ -32,7 +34,14 @@
   background: radial-gradient(circle, rgba(118, 213, 216, 0.04) 20%, rgba(118, 213, 216, 0) 70%);
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap');
+
+.seafoamBG::before {
+  background: radial-gradient(circle, rgba(118, 213, 216, 0.04) 20%, rgba(118, 213, 216, 0) 70%);
+}
+
 .infoHeader {
+  font-family: 'Montserrat', sans-serif;
   font-size: 1.5rem;
   color: white;
   font-weight: 200;
@@ -46,10 +55,12 @@
 }
 
 .infoSub {
+  font-family: 'Montserrat', sans-serif;
   margin-top: 0px;
 }
 
 .infoDescription {
+  font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.413);
   font-weight: 200;
@@ -58,6 +69,7 @@
 }
 
 .infoTime {
+  font-family: 'Montserrat', sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,8 +77,6 @@
   font-size: 1.2rem;
   line-height: 1.2; /* Add this to ensure proper text alignment */
   color: white;
-  font-weight: 200;
-  margin-top: 10px;
 }
 
 .svgIcon {
@@ -104,6 +114,7 @@ button {
   margin-top: 10px;
   padding: 10px 20px;
   background-color: transparent;
+  font-family: 'Montserrat', sans-serif;
   color: white;
   border: 1px solid #76d5d8;
   border-radius: 32px;
