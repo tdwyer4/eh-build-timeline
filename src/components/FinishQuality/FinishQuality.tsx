@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
 import styles from "./FinishQuality.module.css";
 import signatureImage from "../../media/signature.jpeg";
 import transitionalImage from "../../media/transitional.jpeg";

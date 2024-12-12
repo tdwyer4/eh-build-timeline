@@ -5,7 +5,7 @@ import GradientType from "../GradientType/gradientType"; // Correct path to Grad
 import styles from "./Warranty.module.css";
 
 const Warranty: React.FC = () => {
-  const warrantyData = cards.map((card) => ({
+  cards.map((card) => ({
     tempId: card.id,
     testimonial: card.title,
     by: card.description,

@@ -1,10 +1,9 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import styles from "./VidSection.module.css";
 import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
 import TopOut from "../../media/videos/phases/8TopOut.mp4";
 import HVACRough from "../../media/videos/phases/9HVACRough.mp4";
 import ElectricRough from "../../media/videos/phases/10ElectricRough.mp4";
-import { VidSectionHeader } from "./VidSectionHeader";
 import { SectionHeader } from "../SectionHeaderText/SectionHeaderText";
 
 export const RoughVideo = () => {

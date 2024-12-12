@@ -1,7 +1,6 @@
-import React, { useRef, useState } from "react";
+import { useRef } from "react";
 import styles from "./VidSection.module.css";
 import {
-  AnimatePresence,
   motion,
   MotionValue,
   useScroll,

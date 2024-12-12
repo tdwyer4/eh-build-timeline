@@ -4,7 +4,6 @@ import {
   useTransform,
   motion,
   MotionValue,
-  easeInOut,
 } from "framer-motion";
 import styles from "./Communication.module.css";
 import statusUpdates from "../../media/statusUpdates.png";

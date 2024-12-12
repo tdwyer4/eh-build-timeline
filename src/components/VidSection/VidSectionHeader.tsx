@@ -1,8 +1,5 @@
 import styles from "./VidSection.module.css";
 import { motion } from "framer-motion";
-import GlowBG from "../../media/glowBG.png";
-import { type } from "os";
-import { title } from "process";
 
 type vidSectionHeaderProps = {
   title: string;

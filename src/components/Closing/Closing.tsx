@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { motion, animate, useInView } from "framer-motion";
 import styles from "./Closing.module.css"; // Importing CSS module
 import GlowBG from "../../media/glowBG.png";

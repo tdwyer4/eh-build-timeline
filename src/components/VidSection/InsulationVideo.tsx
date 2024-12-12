@@ -1,10 +1,9 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import styles from "./VidSection.module.css";
 import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
 import SprayFoam from "../../media/videos/phases/11SprayFoam.mp4";
 import Drywall from "../../media/videos/phases/12Drywall.mp4";
 import Paint from "../../media/videos/phases/14Paint.mp4";
-import { VidSectionHeader } from "./VidSectionHeader";
 import { SectionHeader } from "../SectionHeaderText/SectionHeaderText";
 
 export const InsulationVideo = () => {

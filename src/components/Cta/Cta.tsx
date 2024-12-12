@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import styles from "./Cta.module.css";
 import GradientType from "../GradientType/gradientType";
-import ParticlesBackground from "../ParticlesBackground/ParticlesBackground";
 import EE from "./EE";
 
 const staggerContainer = {

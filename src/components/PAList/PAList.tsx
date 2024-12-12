@@ -1,11 +1,4 @@
-import { ReactLenis } from "lenis/dist/lenis-react";
-import {
-  motion,
-  useMotionTemplate,
-  useScroll,
-  useTransform,
-} from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import styles from "./PAList.module.css";
 
 const PAList = () => {

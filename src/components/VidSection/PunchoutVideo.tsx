@@ -1,9 +1,8 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import styles from "./VidSection.module.css";
 import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
 import Punchout from "../../media/videos/phases/16Punchout.mp4";
 import FinalTouches from "../../media/videos/phases/17FinalTouches.mp4";
-import { VidSectionHeader } from "./VidSectionHeader";
 import { SectionHeader } from "../SectionHeaderText/SectionHeaderText";
 
 export const PunchoutVideo = () => {
