@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 import styles from "./Selections.module.css";
 import { SectionHeader } from "../SectionHeaderText/SectionHeaderText";
 
-const CARD_SIZE_LG = 365;
-const CARD_SIZE_SM = 290;
+const CARD_SIZE_LG = 500;
+const CARD_SIZE_SM = 250;
 
 const BORDER_SIZE = 1;
 
@@ -12,8 +12,6 @@ const ROTATE_DEG = 0.8;
 
 const STAGGER = 0;
 const CENTER_STAGGER = 0;
-
-const SECTION_HEIGHT = 800;
 
 export const Selections = () => {
   const [cardSize, setCardSize] = useState(CARD_SIZE_LG);

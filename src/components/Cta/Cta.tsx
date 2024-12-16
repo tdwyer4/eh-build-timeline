@@ -35,7 +35,7 @@ const CTA: React.FC = () => {
       >
         <div className={styles.contentWrapper}>
           <motion.div className={styles.textContainer} variants={fadeInUp}>
-            <GradientType delay={0.5}>Your Dream Home Awaits</GradientType>
+            <GradientType>Your Dream Home Awaits</GradientType>
             <motion.h2 className={styles.subheading} variants={fadeInUp}>
               Find your perfect space today
             </motion.h2>

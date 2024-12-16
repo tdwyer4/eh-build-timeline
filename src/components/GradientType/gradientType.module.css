@@ -17,12 +17,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100vw;
+    width: 100%;
     min-height: 30vh; /* Ensure it has a minimum height */
     max-height: 50vh; /* Prevent it from growing too large */
     background-color: transparent;
     overflow: hidden; /* Ensure the gradient doesn't overflow */
-    padding: 1rem; /* Add some padding for better spacing */
 }
 
 /* Gradient text animation with background clip */
